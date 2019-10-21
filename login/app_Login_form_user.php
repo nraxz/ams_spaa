@@ -217,10 +217,10 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 
 						<ul class="list-unstyled">
 							<li>
-								<a href="https://www.spaa.com/terms-and-conditions" target="_blank">Terms and Conditions</a>
+								<a href="https://www.spaa.ae/terms-and-conditions" target="_blank">Terms and Conditions</a>
 							</li>
 							<li>
-								<a href="https://www.spaa.com/privacy-policy" target="_blank">Privacy Policy</a>
+								<a href="https://www.spaa.ae/privacy-policy" target="_blank">Privacy Policy</a>
 							</li>
 
 
@@ -240,7 +240,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 								<a href="http://www.considerthisuk.co.uk" target="_blank">Consider This UK</a>
 							</li>
 							<li>
-								<a href="http://www.performthis.com">Audition Management System</a>
+								<a href="http://www.performthis.com" target="_blank">Audition Management System</a>
 							</li>
 
 						</ul>
@@ -256,7 +256,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 
 			<!-- Copyright -->
 			<div class="footer-copyright text-center py-3">© Copyright:
-				<a href="https://www.spaa.com">Sharjah Performing Arts Academy</a>
+				<a href="https://www.spaa.ae" target="_blank">Sharjah Performing Arts Academy</a>
 			</div>
 			<!-- Copyright -->
 
