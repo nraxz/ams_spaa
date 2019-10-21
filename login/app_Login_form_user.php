@@ -200,7 +200,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 
 						<!-- Content -->
 						<h5 class="text-uppercase">Audition</h5>
-						<p>Auditions for the normal September entry are held from the preceding December to April. Candidates select their own audition date on the application and will be notified via email of the details upon receipt of the completed application form and fee. <a href="https://www.spaa.com/admissions/audition" target="_blank">More...</a>
+						<p>Auditions for the normal September entry are held from the preceding December to April. Candidates select their own audition date on the application and will be notified via email of the details upon receipt of the completed application form and fee. <a href="https://www.spaa.ae/admissions/audition" target="_blank">More...</a>
 
 						</p>
 
