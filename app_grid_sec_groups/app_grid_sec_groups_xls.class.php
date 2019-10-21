@@ -13,6 +13,7 @@ class app_grid_sec_groups_xls
    var $Xls_row;
    var $sc_proc_grid; 
    var $NM_cmp_hidden = array();
+   var $NM_ctrl_style = array();
    var $Arquivo;
    var $Tit_doc;
    //---- 
@@ -364,6 +365,7 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
                  $this->Nm_ActiveSheet->getRowDimension($row)->setRowHeight($height);
              } 
          } 
+         $this->xls_set_style();
          $rs->MoveNext();
       }
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_groups']['embutida'] && $prim_reg)
@@ -479,7 +481,7 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -579,19 +581,18 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
    function NM_export_group_id()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "RIGHT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          if (!NM_is_utf8($this->group_id))
          {
              $this->group_id = sc_convert_encoding($this->group_id, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-         }
          if (is_numeric($this->group_id))
          {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getNumberFormat()->setFormatCode('#,##0');
+             $this->NM_ctrl_style[$current_cell_ref]['format'] = '#,##0';
          }
          $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $this->group_id);
          $this->Xls_col++;
@@ -600,17 +601,16 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
    function NM_export_description()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->description = html_entity_decode($this->description, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
          $this->description = strip_tags($this->description);
          if (!NM_is_utf8($this->description))
          {
              $this->description = sc_convert_encoding($this->description, "UTF-8", $_SESSION['scriptcase']['charset']);
-         }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
          }
          if ($this->Use_phpspreadsheet) {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->description, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -656,6 +656,42 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
            {
                $this->arr_export['lines'][$row][$col] = $dados;
            }
+       }
+   }
+   function xls_set_style()
+   {
+       if (!empty($this->NM_ctrl_style))
+       {
+           foreach ($this->NM_ctrl_style as $col => $dados)
+           {
+               $cell_ref = $col . $dados['ini'] . ":" . $col . $dados['end'];
+               if ($this->Use_phpspreadsheet) {
+                   if ($dados['align'] == "LEFT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                   }
+                   elseif ($dados['align'] == "RIGHT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                   }
+                   else {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                   }
+               }
+               else {
+                   if ($dados['align'] == "LEFT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                   }
+                   elseif ($dados['align'] == "RIGHT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+                   }
+                   else {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                   }
+               }
+               if (isset($dados['format'])) {
+                   $this->Nm_ActiveSheet->getStyle($cell_ref)->getNumberFormat()->setFormatCode($dados['format']);
+               }
+           }
+           $this->NM_ctrl_style = array();
        }
    }
    function quebra_geral_sc_free_total_bot() 

@@ -295,16 +295,6 @@ $_SESSION['scriptcase']['grid_venue_audition_nested']['contr_erro'] = 'off';
          $this->look_country = str_replace('>', '&gt;', $this->look_country);
          $this->Texto_tag .= "<td>" . $this->look_country . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_venue_audition_nested']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_venue_audition_nested']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

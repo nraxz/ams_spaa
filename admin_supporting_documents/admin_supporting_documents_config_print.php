@@ -16,7 +16,7 @@
     }
     $SC_cod_proj = "SPAA_AMS";
     $SC_apl_proc = "admin_supporting_documents";
-    $SC_conf_opt = explode(",","tem_res_cons,tem_res_res,opc,cor");
+    $SC_conf_opt = explode(",","opc,cor");
 /* sc_apl_default */
     if (!isset($_SESSION['sc_session']))
     {
@@ -54,7 +54,6 @@
     $ini_prt_res  = (isset($_GET['nm_ini_prt_res'])) ? explode(",", $_GET['nm_ini_prt_res']) : array();
     $all_modules  = (isset($_GET['nm_all_modules'])) ? explode(",", $_GET['nm_all_modules']) : array();
     $password     = (isset($_GET['password']))       ? $_GET['password']       : "s";
-    $password = "n";
 
 /*--- exportacoes ajax */
     $export_ajax = (isset($_GET['export_ajax'])) ? $_GET['export_ajax'] : 'N';

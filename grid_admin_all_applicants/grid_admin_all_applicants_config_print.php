@@ -54,7 +54,6 @@
     $ini_prt_res  = (isset($_GET['nm_ini_prt_res'])) ? explode(",", $_GET['nm_ini_prt_res']) : array();
     $all_modules  = (isset($_GET['nm_all_modules'])) ? explode(",", $_GET['nm_all_modules']) : array();
     $password     = (isset($_GET['password']))       ? $_GET['password']       : "s";
-    $password = "n";
 
 /*--- exportacoes ajax */
     $export_ajax = (isset($_GET['export_ajax'])) ? $_GET['export_ajax'] : 'N';

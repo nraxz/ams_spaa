@@ -13,6 +13,7 @@ class grid_audition_panel_admin_xls
    var $Xls_row;
    var $sc_proc_grid; 
    var $NM_cmp_hidden = array();
+   var $NM_ctrl_style = array();
    var $Arquivo;
    var $Tit_doc;
    //---- 
@@ -383,6 +384,7 @@ class grid_audition_panel_admin_xls
                  $this->Nm_ActiveSheet->getRowDimension($row)->setRowHeight($height);
              } 
          } 
+         $this->xls_set_style();
          $rs->MoveNext();
       }
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['embutida'] && $prim_reg)
@@ -498,7 +500,7 @@ class grid_audition_panel_admin_xls
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -628,17 +630,16 @@ class grid_audition_panel_admin_xls
    function NM_export_panel()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->look_panel = html_entity_decode($this->look_panel, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
          $this->look_panel = strip_tags($this->look_panel);
          if (!NM_is_utf8($this->look_panel))
          {
              $this->look_panel = sc_convert_encoding($this->look_panel, "UTF-8", $_SESSION['scriptcase']['charset']);
-         }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
          }
          if ($this->Use_phpspreadsheet) {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->look_panel, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -652,19 +653,18 @@ class grid_audition_panel_admin_xls
    function NM_export_id()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "RIGHT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          if (!NM_is_utf8($this->id))
          {
              $this->id = sc_convert_encoding($this->id, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-         }
          if (is_numeric($this->id))
          {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getNumberFormat()->setFormatCode('#,##0');
+             $this->NM_ctrl_style[$current_cell_ref]['format'] = '#,##0';
          }
          $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $this->id);
          $this->Xls_col++;
@@ -673,19 +673,18 @@ class grid_audition_panel_admin_xls
    function NM_export_audition_id()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "RIGHT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          if (!NM_is_utf8($this->audition_id))
          {
              $this->audition_id = sc_convert_encoding($this->audition_id, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-         }
          if (is_numeric($this->audition_id))
          {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getNumberFormat()->setFormatCode('#,##0');
+             $this->NM_ctrl_style[$current_cell_ref]['format'] = '#,##0';
          }
          $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $this->audition_id);
          $this->Xls_col++;
@@ -700,7 +699,7 @@ class grid_audition_panel_admin_xls
              $this->look_panel = sc_convert_encoding($this->look_panel, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->look_panel;
-         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "left";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
          $this->Xls_col++;
@@ -739,6 +738,42 @@ class grid_audition_panel_admin_xls
            {
                $this->arr_export['lines'][$row][$col] = $dados;
            }
+       }
+   }
+   function xls_set_style()
+   {
+       if (!empty($this->NM_ctrl_style))
+       {
+           foreach ($this->NM_ctrl_style as $col => $dados)
+           {
+               $cell_ref = $col . $dados['ini'] . ":" . $col . $dados['end'];
+               if ($this->Use_phpspreadsheet) {
+                   if ($dados['align'] == "LEFT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                   }
+                   elseif ($dados['align'] == "RIGHT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                   }
+                   else {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                   }
+               }
+               else {
+                   if ($dados['align'] == "LEFT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                   }
+                   elseif ($dados['align'] == "RIGHT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+                   }
+                   else {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                   }
+               }
+               if (isset($dados['format'])) {
+                   $this->Nm_ActiveSheet->getStyle($cell_ref)->getNumberFormat()->setFormatCode($dados['format']);
+               }
+           }
+           $this->NM_ctrl_style = array();
        }
    }
    function quebra_geral_sc_free_total_bot() 

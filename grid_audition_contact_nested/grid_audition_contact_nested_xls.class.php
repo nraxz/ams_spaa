@@ -13,6 +13,7 @@ class grid_audition_contact_nested_xls
    var $Xls_row;
    var $sc_proc_grid; 
    var $NM_cmp_hidden = array();
+   var $NM_ctrl_style = array();
    var $Arquivo;
    var $Tit_doc;
    //---- 
@@ -349,6 +350,7 @@ class grid_audition_contact_nested_xls
                  $this->Nm_ActiveSheet->getRowDimension($row)->setRowHeight($height);
              } 
          } 
+         $this->xls_set_style();
          $rs->MoveNext();
       }
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['embutida'] && $prim_reg)
@@ -464,7 +466,7 @@ class grid_audition_contact_nested_xls
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -624,17 +626,16 @@ class grid_audition_contact_nested_xls
    function NM_export_contact_person()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->contact_person = html_entity_decode($this->contact_person, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
          $this->contact_person = strip_tags($this->contact_person);
          if (!NM_is_utf8($this->contact_person))
          {
              $this->contact_person = sc_convert_encoding($this->contact_person, "UTF-8", $_SESSION['scriptcase']['charset']);
-         }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
          }
          if ($this->Use_phpspreadsheet) {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->contact_person, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -648,17 +649,16 @@ class grid_audition_contact_nested_xls
    function NM_export_email()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->email = html_entity_decode($this->email, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
          $this->email = strip_tags($this->email);
          if (!NM_is_utf8($this->email))
          {
              $this->email = sc_convert_encoding($this->email, "UTF-8", $_SESSION['scriptcase']['charset']);
-         }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
          }
          if ($this->Use_phpspreadsheet) {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->email, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -672,17 +672,16 @@ class grid_audition_contact_nested_xls
    function NM_export_phone()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->phone = html_entity_decode($this->phone, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
          $this->phone = strip_tags($this->phone);
          if (!NM_is_utf8($this->phone))
          {
              $this->phone = sc_convert_encoding($this->phone, "UTF-8", $_SESSION['scriptcase']['charset']);
-         }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
          }
          if ($this->Use_phpspreadsheet) {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->phone, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -696,17 +695,16 @@ class grid_audition_contact_nested_xls
    function NM_export_website()
    {
          $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
          $this->website = html_entity_decode($this->website, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
          $this->website = strip_tags($this->website);
          if (!NM_is_utf8($this->website))
          {
              $this->website = sc_convert_encoding($this->website, "UTF-8", $_SESSION['scriptcase']['charset']);
-         }
-         if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-         }
-         else {
-             $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
          }
          if ($this->Use_phpspreadsheet) {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->website, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
@@ -784,6 +782,42 @@ class grid_audition_contact_nested_xls
            {
                $this->arr_export['lines'][$row][$col] = $dados;
            }
+       }
+   }
+   function xls_set_style()
+   {
+       if (!empty($this->NM_ctrl_style))
+       {
+           foreach ($this->NM_ctrl_style as $col => $dados)
+           {
+               $cell_ref = $col . $dados['ini'] . ":" . $col . $dados['end'];
+               if ($this->Use_phpspreadsheet) {
+                   if ($dados['align'] == "LEFT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                   }
+                   elseif ($dados['align'] == "RIGHT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                   }
+                   else {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                   }
+               }
+               else {
+                   if ($dados['align'] == "LEFT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                   }
+                   elseif ($dados['align'] == "RIGHT") {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+                   }
+                   else {
+                       $this->Nm_ActiveSheet->getStyle($cell_ref)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                   }
+               }
+               if (isset($dados['format'])) {
+                   $this->Nm_ActiveSheet->getStyle($cell_ref)->getNumberFormat()->setFormatCode($dados['format']);
+               }
+           }
+           $this->NM_ctrl_style = array();
        }
    }
    function quebra_geral_sc_free_total_bot() 

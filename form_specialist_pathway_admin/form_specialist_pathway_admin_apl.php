@@ -25,7 +25,7 @@ class form_specialist_pathway_admin_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2624,18 +2624,18 @@ $_SESSION['scriptcase']['form_specialist_pathway_admin']['contr_erro'] = 'off';
       $NM_val_form['seq'] = $this->seq;
       $NM_val_form['status'] = $this->status;
       $NM_val_form['id'] = $this->id;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
-      if ($this->seq == "")  
+      if ($this->seq === "")  
       { 
           $this->seq = 0;
           $this->sc_force_zero[] = 'seq';
       } 
       if ($this->nmgp_opcao == "alterar")
       {
-      if ($this->status == "")  
+      if ($this->status === "")  
       { 
           $this->status = 0;
           $this->sc_force_zero[] = 'status';

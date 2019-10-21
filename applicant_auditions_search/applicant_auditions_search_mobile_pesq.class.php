@@ -72,7 +72,14 @@ class applicant_auditions_search_pesq
                       $arr_tmp = array();
                       foreach($cada_dado['value'] as $ix => $dados)
                       {
-                          $arr_tmp[] = $dados['opt'];
+                          if (isset($dados['opt']))
+                          {
+                              $arr_tmp[] = $dados['opt'];
+                          }
+                          else
+                          {
+                              $arr_tmp[] = $dados;
+                          }
                       }
                       $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_auditions_search']['campos_busca'][$field] = $arr_tmp; 
                   }
@@ -1967,8 +1974,6 @@ function nm_open_popup(parms)
       $delimitador = "##@@";
       if (empty($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_auditions_search']['campos_busca']) && $bprocessa != "recarga" && $bprocessa != "save_form" && $bprocessa != "filter_save" && $bprocessa != "filter_delete")
       {
-          $audition_date = "";
-          $audition_title = "";
       }
       if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_auditions_search']['campos_busca']) && $bprocessa != "recarga" && $bprocessa != "save_form" && $bprocessa != "filter_save" && $bprocessa != "filter_delete")
       { 

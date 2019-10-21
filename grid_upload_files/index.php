@@ -213,7 +213,7 @@ class grid_upload_files_ini
       $this->nm_hr_criacao   = "160827"; 
       $this->nm_autor_alt    = "admin"; 
       $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "100042"; 
+      $this->nm_hr_ult_alt   = "121758"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -871,7 +871,7 @@ class grid_upload_files_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQFYDuBqHArYHuBOHgrwV9BUDWFYHMFGHQNmVINUHIBOZMBqHgNOHEBUHEFqHIrqD9FYDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZSBqHArKV5FUDMrYZSXeV5FqHIJsHQNmZ9XGHANOD5rqHuvmDkBOV5X7DoJeDcFYZSB/HABYHuFUHgBOZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaHuzGVcFKDWFYVoJwDcBqZSFaHAN7D5FaDEBOVkJGHEXCVoB/HQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoraDcJUH9FaHAN7V5JeDMzGHENiV5FaZuB/D9NwDQJsHIBeV5JwHgvsVcBOH5XCVoJwDcJUZSB/DSrYV5FGDMzGHEJGH5X/VoBiD9NwDQJsHIrKV5JeDMvmVcFKV5BmVoBqD9BsZkFGHArKHQBiDMveHErCDWr/DoF7D9XsDuFaHIrKD5NUHuBYVcBUDuX7DorqHQNmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQNmDuBqDSvCVWJwDMzGVcBUH5FqHIBiHQBiZ1FUZ1rYHuFUDMvCHENiH5FGZuFaHQNmDQBOZ1BYHQFaDMrYV9BUDWFYHMX7HQNwZ1FUZ1rYHuB/HgrKZSJqH5FYHMBiHQJKZ9rqD1BeD5rqHuvmVcBOH5B7VoBqHQXOZ1BiDSvmD5XGHgveVkJ3V5B3DoJeHQFYZ9rqZ1BYHQrqDMBODkB/DWFaHIraHQNwVIraZ1vOZMB/HgNKDkXKDWFqHMBqDcXGDuBOZ1zGVWBqHgrwVcXKHEFYHMXGHQBqZ1FUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDuBqDSN7HQFaDMvmZSJqDur/HINUHQNmVIraZ1rYHQX7DMvCDkB/DWrGZuBODcXGZ9JeZ1BYHQB/DMvmV9BUDWF/HIBiHQBqZ1FUZ1rYHQBiHgvsHErCDuX/DoXGHQXOZ9JeD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDErKHEFiDWX7ZuFaD9JKDQB/Z1rwHuF7DMvsZSrCV5X7HIBiD9XOZSB/Z1BeV5BODErKVkXeDWX7VoFGDcJUDQFaHAN7D5BqHuNOVcFKDWFYVoFGDcBwZ1FUHIveZMXGHgBYHErsDWB3VoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7DoB/D9NmZSFGHIrwVWXGHuzGVIBOV5X7VoraD9BiZ1FUZ1BeD5JeDMBYZSJGDWr/VoXGD9NwDQJwD1veV5FGHgvsVcFCH5FqDoraHQFYVIJwD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuvmVcFKV5X7VoFGD9BiZ1X7Z1BeHuXGHgBeHEJqDWr/HIFUHQFYZSBiHIvsD5F7DMvOVcBUDWB3VoF7HQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWB3VoX7HQNmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQXODQFaHArYHQF7DMBOVcFCDur/DoX7HQXOZ1FGHArYV5JsHgNODkXKH5F/ZuFaHQBiDQBqHIrwVWJsHuvmVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvsVkXeDWX7DoJeDcBwDQFGD1BeD5BOHgNKVcXKH5FqDoX7DcBqZ1B/HIveV5JeHgBeHEFiV5B3DoF7D9XsDuFaHANKVWBqDMrwZSNiDWB3VEB/";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBiH9FUHAveVWBqDMBOVIBODWFYVoraHQBqZ1FGZ1NOV5JwDMveDkXKDWXCDorqD9FYDQJwHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHAN7HQJwDEBODkFeH5FYVoFGHQJKDQFaDSN7D5JeHuvmVcFeH5XCVEFGD9XOZ1F7Z1NOHuFGHgBOVkXeH5F/HIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HIBeD5XGDEBeHEXeH5F/DoFUD9NmDQFGHAveD5rqHuNODkBODWFaDoNUDcNwH9B/HANOV5JeDEBOHEFiDWFqDoXGHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBODkXKH5X/ZuBOHQBiZSX7HINaVWJsDMBYDkBsDWFYDoJeHQXOZkFGHArKV5FUDMrYZSXeV5FqHIJsHQNmDuBqDSvCVWJwDMzGVcBUH5FqHIBiHQBiZ1FUZ1rYHuFUDMvCHENiH5FGZuFaHQNmDQBOZ1BYHQFaDMrYV9BUDWFYHMX7HQNwZ1FUZ1rYHuB/HgrKZSJqH5FYHMBiHQJKZ9rqD1BeD5rqHuvmVcBOH5B7VoBqHQXOZ1BiDSvmD5XGHgveVkJ3V5B3DoJeHQFYZ9rqZ1BYHQrqDMBODkB/DWFaHIraHQNwVIraZ1vOZMB/HgNKDkXKDWFqHMBqDcXGDuBOZ1zGVWBqHgrwVcXKHEFYHMXGHQBqZ1FUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDuBqDSvCV5BqDMzGVIBsDuFqHIJsHQBiZkFUZ1rYHuJwHgBeVkJqDWr/HIBODcXGDQBOZ1BYHuraDMNOV9BUDWJeHMX7HQBiVIraZ1rYD5JwHgBeDkXKDWFqHMFaHQXsDuBOD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDErKHEFiDWX7ZuFaD9JKDQB/Z1rwHuF7DMvsZSrCV5X7HIBiD9XOZSB/Z1BeV5BODErKVkXeDWX7VoFGDcJUDQFaHAN7D5BqHuNOVcFKDWFYVoFGDcBwZ1FUHIveZMXGHgBYHErsDWB3VoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7DoB/D9NmZSFGHIrwVWXGHuzGVIBOV5X7VoraD9BiZ1FUZ1BeD5JeDMBYZSJGDWr/VoXGD9NwDQJwD1veV5FGHgvsVcFCH5FqDoraHQFYVIJwD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuvmVcFKV5X7VoFGD9BiZ1X7Z1BeHuXGHgBeHEJqDWr/HIFUHQFYZSBiHIvsD5F7DMvOVcBUDWB3VoF7HQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWB3VoX7HQNmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQFYDQB/Z1rwD5JwHgrwVcB/H5XCHIrqD9XOZ1FaHIBeD5XGDENOHEBUDuFaDoXGHQBiZSFGDSBYHuFaHuNOZSrCH5FqDoXGHQJmZ1FGZ1NOD5NUDErKVkXeDWFqDoXGD9JKDQBOHAveHQF7HuvmVcFKDWFaDoX7D9JmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQJeDuBOZ1vCV5Je";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['initialize'])  
       { 
@@ -1897,6 +1897,7 @@ class grid_upload_files_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida_ibase'] = true;
       }
       $this->Ini->Proc_print      = false;
+      $this->Ini->Export_det_zip  = false;
       $this->Ini->Export_html_zip = false;
       $this->Ini->Export_img_zip  = false;
       $this->Ini->Img_export_zip  = array();
@@ -2161,6 +2162,20 @@ class grid_upload_files_apl
       { 
           $this->Ini->SC_module_export = "grid,resume";
       }
+      if ($nmgp_opcao == 'print' || $nmgp_opcao == 'res_print') {
+          $this->Ini->Proc_print = true;
+          if (!empty($nmgp_password)) {
+              $this->Ini->Export_html_zip = true;
+          }
+          $_SESSION['scriptcase']['proc_mobile'] = false;
+          if ($nmgp_opcao == 'print') {
+              $this->ret_print = "volta_grid";
+          }
+          else {
+              $this->ret_print = "resumo";
+          }
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['print_return'] = $this->ret_print;
+      }
       if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
       {
           if ($this->Ini->Export_html_zip)
@@ -2180,10 +2195,6 @@ class grid_upload_files_apl
               }
               $nm_saida->seta_arquivo($this->Ini->root . $this->Ini->path_imag_temp . $nm_arquivo_html);
           }
-      }
-      if ($nmgp_opcao == 'print' || $nmgp_opcao == 'res_print') {
-          $this->Ini->Proc_print = true;
-          $_SESSION['scriptcase']['proc_mobile'] = false;
       }
       if ($nmgp_opcao == "doc_word") {  
           $this->ret_word = "volta_grid";
@@ -2716,6 +2727,15 @@ class grid_upload_files_apl
       { 
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao']     = "detalhe";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['det_print'] = "print";
+          if (!empty($nmgp_password)) {
+              $this->Ini->Export_det_zip = true;
+          }
+          if ($this->Ini->Export_det_zip)
+          {
+              $this->Ini->Export_img_zip = true;
+              $nm_arquivo_html = "/sc_grid_upload_files_det_" . session_id() . ".html";
+              $nm_saida->seta_arquivo($this->Ini->root . $this->Ini->path_imag_temp . $nm_arquivo_html);
+          }
       } 
       if (substr($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'], 0, 7) == "grafico")  
       { 
@@ -3184,6 +3204,10 @@ class grid_upload_files_apl
          if ($this->Ini->Export_html_zip)
          {
              $this->html_export_print($nm_arquivo_html, $nmgp_password);
+         }
+         if ($this->Ini->Export_det_zip)
+         {
+             $this->det_export_print($nm_arquivo_html, $nmgp_password);
          }
          if ($ajax_opc_print)
          {
@@ -3994,7 +4018,7 @@ else
                exec($str_zip);
            }
            // ----- ZIP log
-           $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+           $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
            if ($fp)
            {
                @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -4002,7 +4026,8 @@ else
            }
            foreach ($this->Ini->Img_export_zip as $cada_img_zip)
            {
-              $str_zip    = "";
+              $str_zip      = "";
+              $cada_img_zip = '"' . $cada_img_zip . '"';
               if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
               {
                   $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j -u " . $Word_password . " " . $Zip_f . " " . $cada_img_zip;
@@ -4019,7 +4044,7 @@ else
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+               $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -4194,15 +4219,21 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5]
                exec($str_zip);
            }
            // ----- ZIP log
-           $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+           $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
            if ($fp)
            {
                @fwrite($fp, $str_zip . "\r\n\r\n");
                @fclose($fp);
            }
+           $this->Ini->Img_export_zip[] = $this->Ini->root . $this->Ini->path_imag_cab . "/" . $this->Ini->Label_sort;
+           $this->Ini->Img_export_zip[] = $this->Ini->root . $this->Ini->path_imag_cab . "/" . $this->Ini->Label_sort_desc;
+           $this->Ini->Img_export_zip[] = $this->Ini->root . $this->Ini->path_imag_cab . "/" . $this->Ini->Label_sort_asc;
+           $this->Ini->Img_export_zip[] = $this->Ini->root . $this->Ini->path_imag_cab . "/" . $this->Ini->Label_summary_sort_desc;
+           $this->Ini->Img_export_zip[] = $this->Ini->root . $this->Ini->path_imag_cab . "/" . $this->Ini->Label_summary_sort_asc;
            foreach ($this->Ini->Img_export_zip as $cada_img_zip)
            {
-               $str_zip    = "";
+               $str_zip      = "";
+              $cada_img_zip = '"' . $cada_img_zip . '"';
                if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
                {
                    $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j -u " . $Html_password . " " . $Zip_f . " " . $cada_img_zip;
@@ -4219,7 +4250,7 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5]
                    exec($str_zip);
                }
                // ----- ZIP log
-               $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+               $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                if ($fp)
                {
                    @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -4230,81 +4261,26 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5]
                unlink($Arq_base);
                $nm_arquivo_html = $Arq_htm;
            } 
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
-<HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
-<HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> upload_files :: Doc</TITLE>
- <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
-<?php
-if ($_SESSION['scriptcase']['proc_mobile'])
-{
-?>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<?php
-}
-$path_doc_md5 = md5($this->Ini->path_imag_temp . $nm_arquivo_html);
-$_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5][0] = $this->Ini->path_imag_temp . $nm_arquivo_html;
-$_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5][1] = substr($nm_arquivo_html, 1);
-?>
- <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
- <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>
- <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
- <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
- <META http-equiv="Pragma" content="no-cache"/>
- <link rel="shortcut icon" href="../_lib/img/grp__NM__ico__NM__logo.png">
-  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export.css" /> 
-  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" /> 
- <link rel="stylesheet" href="<?php echo $this->Ini->path_prod ?>/third/font-awesome/css/all.min.css" type="text/css" media="screen" />
- <?php
- if(isset($this->Ini->str_google_fonts) && !empty($this->Ini->str_google_fonts))
- {
- ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->str_google_fonts ?>" />
- <?php
- }
- ?>
-  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_css ?>" /> 
-</HEAD>
-<BODY class="scExportPage">
-<?php echo $this->Ini->Ajax_result_set ?>
-<table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: middle">
- <table class="scExportTable" align="center">
-  <tr>
-   <td class="scExportTitle" style="height: 25px">HTML</td>
-  </tr>
-  <tr>
-   <td class="scExportLine" style="width: 100%">
-    <table style="border-collapse: collapse; border-width: 0; width: 100%"><tr><td class="scExportLineFont" style="padding: 3px 0 0 0" id="idMessage">
-    <?php echo $this->Ini->Nm_lang['lang_othr_file_msge'] ?>
-    </td><td class="scExportLineFont" style="text-align:right; padding: 3px 0 0 0">
-     <?php echo nmButtonOutput($this->arr_buttons, "bexportview", "document.Fview.submit()", "document.Fview.submit()", "idBtnView", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
- ?>
-     <?php echo nmButtonOutput($this->arr_buttons, "bdownload", "document.Fdown.submit()", "document.Fdown.submit()", "idBtnDown", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
- ?>
-     <?php echo nmButtonOutput($this->arr_buttons, "bvoltar", "document.F0.submit()", "document.F0.submit()", "idBtnBack", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
- ?>
-    </td></tr></table>
-   </td>
-  </tr>
- </table>
-</td></tr></table>
-<form name="Fview" method="get" action="<?php echo $this->Ini->path_imag_temp . $nm_arquivo_html ?>" target="_blank" style="display: none"> 
-</form>
-<form name="Fdown" method="get" action="grid_upload_files_download.php" target="_blank" style="display: none"> 
-<input type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
-<input type="hidden" name="nm_tit_doc" value="grid_upload_files"> 
-<input type="hidden" name="nm_name_doc" value="<?php echo $path_doc_md5 ?>"> 
-</form>
-<FORM name="F0" method=post action="./"> 
-<INPUT type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
-<INPUT type="hidden" name="script_case_session" value="<?php echo NM_encode_input(session_id()); ?>"> 
-<INPUT type="hidden" name="nmgp_opcao" value="<?php echo NM_encode_input($this->ret_word) ?>"> 
-</FORM> 
-</BODY>
-</HTML>
-<?php
+          $path_doc_md5 = md5($this->Ini->path_imag_temp . $nm_arquivo_html);
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5][0] = $this->Ini->path_imag_temp . $nm_arquivo_html;
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5][1] = substr($nm_arquivo_html, 1);
+          require_once($this->Ini->path_lib_php . "/sc_progress_bar.php");
+          $this->pb = new scProgressBar();
+          $this->pb->setRoot($this->Ini->root);
+          $this->pb->setDir($_SESSION['scriptcase']['grid_upload_files']['glo_nm_path_imag_temp'] . "/");
+          $this->pb->setProgressbarMd5($_GET['pbmd5']);
+          $this->pb->initialize();
+          $Mens_bar = $this->Ini->Nm_lang['lang_othr_file_msge'];
+          if ($_SESSION['scriptcase']['charset'] != "UTF-8") {
+              $Mens_bar = sc_convert_encoding($Mens_bar, "UTF-8", $_SESSION['scriptcase']['charset']);
+          }
+          $this->pb->setProgressbarMessage($Mens_bar);
+          $this->pb->setDownloadLink($this->Ini->path_imag_temp . $nm_arquivo_html);
+          $this->pb->setDownloadMd5($path_doc_md5);
+          $this->pb->setReturnUrl("./");
+          $this->pb->setReturnOption($this->ret_print);
+          $this->pb->completed();
+          return;
   }
   function html_pdf_detalhe($nm_arquivo_pdf_det)
   {
@@ -4369,6 +4345,169 @@ if ($_SESSION['scriptcase']['proc_mobile'])
  </table>
 </td></tr></table>
 <form name="Fview" method="get" action="<?php echo  NM_encode_input($nm_arquivo_pdf_det) ?>" target="_blank" style="display: none"> 
+</form>
+<form name="Fdown" method="get" action="grid_upload_files_download.php" target="_blank" style="display: none"> 
+<input type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
+<input type="hidden" name="nm_tit_doc" value="grid_upload_files"> 
+<input type="hidden" name="nm_name_doc" value="<?php echo $path_doc_md5 ?>"> 
+</form>
+<FORM name="F0" method=post action="./"> 
+<INPUT type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
+<INPUT type="hidden" name="script_case_session" value="<?php echo NM_encode_input(session_id()); ?>"> 
+<INPUT type="hidden" name="nmgp_opcao" value="detalhe"> 
+</FORM> 
+</BODY>
+</HTML>
+<?php
+  }
+  function det_export_print($nm_arquivo_html, $nmgp_password)
+  {
+      global $nm_url_saida;
+      $Html_password = "";
+          $Arq_base  = $this->Ini->root . $this->Ini->path_imag_temp . $nm_arquivo_html;
+          $Parm_pass = ($Html_password != "") ? " -p" : "";
+          $Arq_zip   = $Arq_base;
+          $Pos = strrpos($Arq_base, ".");
+          if ($Pos !== false) {
+              $Arq_zip = substr($Arq_base, 0, $Pos);
+          }
+          $Arq_zip .= ".zip";
+          $Arq_htm  = $nm_arquivo_html;
+          $Pos = strrpos($nm_arquivo_html, ".");
+          if ($Pos !== false) {
+              $Arq_htm = substr($nm_arquivo_html, 0, $Pos);
+          }
+          $Arq_htm  .= ".zip";
+          $Zip_f     = (FALSE !== strpos($Arq_zip, ' ')) ? " \"" . $Arq_zip . "\"" :  $Arq_zip;
+          $Arq_input = (FALSE !== strpos($Arq_base, ' ')) ? " \"" . $Arq_base . "\"" :  $Arq_base;
+           if (is_file($Arq_zip)) {
+               unlink($Arq_zip);
+           }
+           $str_zip = "";
+           if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+           {
+               chdir($this->Ini->path_third . "/zip/windows");
+               $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j " . $Html_password . " " . $Zip_f . " " . $Arq_input;
+           }
+           elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+           {
+                if (FALSE !== strpos(strtolower(php_uname()), 'i686')) 
+                {
+                    chdir($this->Ini->path_third . "/zip/linux-i386/bin");
+                }
+                else
+                {
+                    chdir($this->Ini->path_third . "/zip/linux-amd64/bin");
+                }
+               $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $Arq_input;
+           }
+           elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+           {
+               chdir($this->Ini->path_third . "/zip/mac/bin");
+               $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $Arq_input;
+           }
+           if (!empty($str_zip)) {
+               exec($str_zip);
+           }
+           // ----- ZIP log
+           $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
+           if ($fp)
+           {
+               @fwrite($fp, $str_zip . "\r\n\r\n");
+               @fclose($fp);
+           }
+           foreach ($this->Ini->Img_export_zip as $cada_img_zip)
+           {
+               $str_zip      = "";
+              $cada_img_zip = '"' . $cada_img_zip . '"';
+               if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+               {
+                   $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j -u " . $Html_password . " " . $Zip_f . " " . $cada_img_zip;
+               }
+               elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+               {
+                   $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $cada_img_zip;
+               }
+               elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+               {
+                   $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $cada_img_zip;
+               }
+               if (!empty($str_zip)) {
+                   exec($str_zip);
+               }
+               // ----- ZIP log
+               $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
+               if ($fp)
+               {
+                   @fwrite($fp, $str_zip . "\r\n\r\n");
+                   @fclose($fp);
+               }
+           }
+           if (is_file($Arq_zip)) {
+               unlink($Arq_base);
+               $nm_arquivo_html = $Arq_htm;
+           } 
+          $path_doc_md5 = md5($this->Ini->path_imag_temp . $nm_arquivo_html);
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5][0] = $this->Ini->path_imag_temp . $nm_arquivo_html;
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files'][$path_doc_md5][1] = substr($nm_arquivo_html, 1);
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+            "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
+<HEAD>
+ <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> upload_files :: Doc</TITLE>
+ <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
+<?php
+if ($_SESSION['scriptcase']['proc_mobile'])
+{
+?>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<?php
+}
+?>
+ <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
+ <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>
+ <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
+ <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
+ <META http-equiv="Pragma" content="no-cache"/>
+ <link rel="shortcut icon" href="../_lib/img/grp__NM__ico__NM__logo.png">
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export.css" /> 
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" /> 
+ <link rel="stylesheet" href="<?php echo $this->Ini->path_prod ?>/third/font-awesome/css/all.min.css" type="text/css" media="screen" />
+ <?php
+ if(isset($this->Ini->str_google_fonts) && !empty($this->Ini->str_google_fonts))
+ {
+ ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->str_google_fonts ?>" />
+ <?php
+ }
+ ?>
+  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_css ?>" /> 
+</HEAD>
+<BODY class="scExportPage">
+<?php echo $this->Ini->Ajax_result_set ?>
+<table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: middle">
+ <table class="scExportTable" align="center">
+  <tr>
+   <td class="scExportTitle" style="height: 25px"><?php echo $this->Ini->Nm_lang['lang_othr_detl_titl'] ?></td>
+  </tr>
+  <tr>
+   <td class="scExportLine" style="width: 100%">
+    <table style="border-collapse: collapse; border-width: 0; width: 100%"><tr><td class="scExportLineFont" style="padding: 3px 0 0 0" id="idMessage">
+    <?php echo $this->Ini->Nm_lang['lang_othr_file_msge'] ?>
+    </td><td class="scExportLineFont" style="text-align:right; padding: 3px 0 0 0">
+     <?php echo nmButtonOutput($this->arr_buttons, "bexportview", "document.Fview.submit()", "document.Fview.submit()", "idBtnView", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+ ?>
+     <?php echo nmButtonOutput($this->arr_buttons, "bdownload", "document.Fdown.submit()", "document.Fdown.submit()", "idBtnDown", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+ ?>
+     <?php echo nmButtonOutput($this->arr_buttons, "bvoltar", "document.F0.submit()", "document.F0.submit()", "idBtnBack", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+ ?>
+    </td></tr></table>
+   </td>
+  </tr>
+ </table>
+</td></tr></table>
+<form name="Fview" method="get" action="<?php echo  $this->Ini->path_imag_temp . $nm_arquivo_html ?>" target="_blank" style="display: none"> 
 </form>
 <form name="Fdown" method="get" action="grid_upload_files_download.php" target="_blank" style="display: none"> 
 <input type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 

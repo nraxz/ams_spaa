@@ -25,7 +25,7 @@ class form_audition_contact_admin_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2510,7 +2510,7 @@ $_SESSION['scriptcase']['form_audition_contact_admin']['contr_erro'] = 'off';
       $NM_val_form['phone'] = $this->phone;
       $NM_val_form['website'] = $this->website;
       $NM_val_form['id'] = $this->id;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 

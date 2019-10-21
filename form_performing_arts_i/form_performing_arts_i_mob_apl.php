@@ -25,7 +25,7 @@ class form_performing_arts_i_mob_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),

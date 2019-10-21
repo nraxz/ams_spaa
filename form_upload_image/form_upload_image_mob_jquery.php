@@ -226,8 +226,9 @@ function scJQCalendarAdd(iSeqRow) {
     showOtherMonths: true,
     showOn: "button",
 <?php
-$miniCalendarIcon = $this->jqueryIconFile('calendar');
-$miniCalendarFA   = $this->jqueryFAFile('calendar');
+$miniCalendarIcon   = $this->jqueryIconFile('calendar');
+$miniCalendarFA     = $this->jqueryFAFile('calendar');
+$miniCalendarButton = $this->jqueryButtonText('calendar');
 if ('' != $miniCalendarIcon) {
 ?>
     buttonImage: "<?php echo $miniCalendarIcon; ?>",
@@ -239,11 +240,15 @@ elseif ('' != $miniCalendarFA) {
     buttonText: "<?php echo $miniCalendarFA; ?>",
 <?php
 }
+elseif ('' != $miniCalendarButton[0]) {
+?>
+    buttonText: "<?php echo $miniCalendarButton[0]; ?>",
+<?php
+}
 ?>
     currentText: "<?php  echo html_entity_decode($this->Ini->Nm_lang["lang_per_today"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]);       ?>",
     closeText: "<?php  echo html_entity_decode($this->Ini->Nm_lang["lang_btns_mess_clse"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]);       ?>",
   });
-
 } // scJQCalendarAdd
 
 function scJQUploadAdd(iSeqRow) {

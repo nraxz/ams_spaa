@@ -341,16 +341,6 @@ class admin_next_of_kin_rtf
          $this->login = str_replace('>', '&gt;', $this->login);
          $this->Texto_tag .= "<td>" . $this->login . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

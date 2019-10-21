@@ -25,7 +25,7 @@ class admin_form_howyouhear_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -1567,7 +1567,7 @@ class admin_form_howyouhear_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
@@ -1655,7 +1655,7 @@ class admin_form_howyouhear_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->display_order == "")  
+      if ($this->display_order === "")  
       { 
           $this->display_order = 0;
           $this->sc_force_zero[] = 'display_order';
@@ -2668,16 +2668,16 @@ $_SESSION['scriptcase']['admin_form_howyouhear']['contr_erro'] = 'off';
       $NM_val_form['name'] = $this->name;
       $NM_val_form['display_order'] = $this->display_order;
       $NM_val_form['status'] = $this->status;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
-      if ($this->display_order == "")  
+      if ($this->display_order === "")  
       { 
           $this->display_order = 0;
           $this->sc_force_zero[] = 'display_order';
       } 
-      if ($this->status == "")  
+      if ($this->status === "")  
       { 
           $this->status = 0;
           $this->sc_force_zero[] = 'status';

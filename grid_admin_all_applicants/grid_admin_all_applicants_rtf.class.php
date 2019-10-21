@@ -615,16 +615,6 @@ class grid_admin_all_applicants_rtf
          $this->audition_audition_title = str_replace('>', '&gt;', $this->audition_audition_title);
          $this->Texto_tag .= "<td>" . $this->audition_audition_title . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

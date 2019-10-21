@@ -411,7 +411,7 @@ class grid_marks_examiners_csv
               exec($str_zip);
           }
           // ----- ZIP log
-          $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+          $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
           if ($fp)
           {
               @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -438,7 +438,7 @@ class grid_marks_examiners_csv
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -515,16 +515,6 @@ class grid_marks_examiners_csv
       $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $this->applicant_id);
       $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
       $this->NM_prim_col++;
-   }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_marks_examiners']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_marks_examiners']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
    }
 
    function nm_conv_data_db($dt_in, $form_in, $form_out)

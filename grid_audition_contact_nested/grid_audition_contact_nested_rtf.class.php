@@ -320,16 +320,6 @@ class grid_audition_contact_nested_rtf
          $this->website = str_replace('>', '&gt;', $this->website);
          $this->Texto_tag .= "<td>" . $this->website . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

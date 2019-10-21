@@ -25,7 +25,7 @@ class admin_form_outcomes_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -1672,7 +1672,7 @@ class admin_form_outcomes_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->deposit_amount == "")  
+      if ($this->deposit_amount === "")  
       { 
           $this->deposit_amount = 0;
           $this->sc_force_zero[] = 'deposit_amount';
@@ -2745,11 +2745,11 @@ $_SESSION['scriptcase']['admin_form_outcomes']['contr_erro'] = 'off';
       $NM_val_form['deposit_amount'] = $this->deposit_amount;
       $NM_val_form['active'] = $this->active;
       $NM_val_form['id'] = $this->id;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
-      if ($this->deposit_amount == "")  
+      if ($this->deposit_amount === "")  
       { 
           $this->deposit_amount = 0;
           $this->sc_force_zero[] = 'deposit_amount';

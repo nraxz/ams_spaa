@@ -25,7 +25,7 @@ class form_applicant_grades_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2693,16 +2693,16 @@ class form_applicant_grades_apl
       $NM_val_form['login_'] = $this->login_;
       $NM_val_form['level_'] = $this->level_;
       $NM_val_form['submitted_date_'] = $this->submitted_date_;
-      if ($this->id_ == "")  
+      if ($this->id_ === "")  
       { 
           $this->id_ = 0;
       } 
-      if ($this->academic_id_ == "")  
+      if ($this->academic_id_ === "")  
       { 
           $this->academic_id_ = 0;
           $this->sc_force_zero[] = 'academic_id_';
       } 
-      if ($this->level_ == "")  
+      if ($this->level_ === "")  
       { 
           $this->level_ = 0;
           $this->sc_force_zero[] = 'level_';
@@ -3685,6 +3685,9 @@ class form_applicant_grades_apl
               $this->sc_evento = "novo"; 
               $this->sc_max_reg_incl = $this->sc_seq_vert; 
           } 
+          elseif (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_applicant_grades']['embutida_multi']) && $_SESSION['sc_session'][$this->Ini->sc_page]['form_applicant_grades']['embutida_multi']) 
+          { 
+          } 
           else 
           { 
               $this->sc_max_reg_incl = 0; 
@@ -4057,6 +4060,60 @@ class form_applicant_grades_apl
 
        return '' == $sFA ? '' : "<span class='scButton_fontawesome " . $sFA . "'></span>";
    } // jqueryFAFile
+
+   function jqueryButtonText($sModule)
+   {
+       $sClass = '';
+       $sText  = '';
+       if ('calendar' == $sModule)
+       {
+           if (isset($this->arr_buttons['bcalendario']) && isset($this->arr_buttons['bcalendario']['type']) && ('image' == $this->arr_buttons['bcalendario']['type'] || 'button' == $this->arr_buttons['bcalendario']['type']))
+           {
+               if ('only_text' == $this->arr_buttons['bcalendario']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   $sText  = $this->arr_buttons['bcalendario']['value'];
+               }
+               elseif ('text_fontawesomeicon' == $this->arr_buttons['bcalendario']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   if ('text_right' == $this->arr_buttons['bcalendario']['display_position'])
+                   {
+                       $sText = "<i class='icon_fa " . $this->arr_buttons['bcalendario']['fontawesomeicon'] . "'></i> " . $this->arr_buttons['bcalendario']['value'];
+                   }
+                   else
+                   {
+                       $sText = $this->arr_buttons['bcalendario']['value'] . " <i class='icon_fa " . $this->arr_buttons['bcalendario']['fontawesomeicon'] . "'></i>";
+                   }
+               }
+           }
+       }
+       elseif ('calculator' == $sModule)
+       {
+           if (isset($this->arr_buttons['bcalculadora']) && isset($this->arr_buttons['bcalculadora']['type']) && ('image' == $this->arr_buttons['bcalculadora']['type'] || 'button' == $this->arr_buttons['bcalculadora']['type']))
+           {
+               if ('only_text' == $this->arr_buttons['bcalculadora']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   $sText  = $this->arr_buttons['bcalculadora']['value'];
+               }
+               elseif ('text_fontawesomeicon' == $this->arr_buttons['bcalculadora']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   if ('text_right' == $this->arr_buttons['bcalendario']['display_position'])
+                   {
+                       $sText = "<i class='icon_fa " . $this->arr_buttons['bcalculadora']['fontawesomeicon'] . "'></i> " . $this->arr_buttons['bcalculadora']['value'];
+                   }
+                   else
+                   {
+                       $sText = $this->arr_buttons['bcalculadora']['value'] . " <i class='icon_fa " . $this->arr_buttons['bcalculadora']['fontawesomeicon'] . "'></i> ";
+                   }
+               }
+           }
+       }
+
+       return '' == $sText ? array('', '') : array($sText, $sClass);
+   } // jqueryButtonText
 
 
     function scCsrfGetToken()

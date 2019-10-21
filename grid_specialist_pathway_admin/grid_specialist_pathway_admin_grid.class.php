@@ -826,6 +826,18 @@ class grid_specialist_pathway_admin_grid
            $this->pb->setReturnOption($_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin']['word_return']);
            $this->pb->setTotalSteps($this->count_ger);
        }
+       if ($this->Ini->Proc_print && $this->Ini->Export_html_zip  && !$this->Ini->sc_export_ajax)
+       {
+           require_once($this->Ini->path_lib_php . "/sc_progress_bar.php");
+           $this->pb = new scProgressBar();
+           $this->pb->setRoot($this->Ini->root);
+           $this->pb->setDir($_SESSION['scriptcase']['grid_specialist_pathway_admin']['glo_nm_path_imag_temp'] . "/");
+           $this->pb->setProgressbarMd5($_GET['pbmd5']);
+           $this->pb->initialize();
+           $this->pb->setReturnUrl("./");
+           $this->pb->setReturnOption($_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin']['print_return']);
+           $this->pb->setTotalSteps($this->count_ger);
+       }
        if (!$this->Ini->sc_export_ajax && !$this->Print_All && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin']['opcao'] == "pdf" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin']['pdf_res'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin']['embutida_pdf'] != "pdf")
        {
            //---------- Gauge ----------
@@ -2461,6 +2473,16 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin'
           $this->Rows_span = 1;
           $this->NM_field_style = array();
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_specialist_pathway_admin']['doc_word'] && !$this->Ini->sc_export_ajax)
+          {
+              $nm_prog_barr++;
+              $Mens_bar = $this->Ini->Nm_lang['lang_othr_prcs'];
+              if ($_SESSION['scriptcase']['charset'] != "UTF-8") {
+                  $Mens_bar = sc_convert_encoding($Mens_bar, "UTF-8", $_SESSION['scriptcase']['charset']);
+              }
+              $this->pb->setProgressbarMessage($Mens_bar . ": " . $nm_prog_barr . $PB_tot);
+              $this->pb->addSteps(1);
+          }
+          if ($this->Ini->Proc_print && $this->Ini->Export_html_zip  && !$this->Ini->sc_export_ajax)
           {
               $nm_prog_barr++;
               $Mens_bar = $this->Ini->Nm_lang['lang_othr_prcs'];

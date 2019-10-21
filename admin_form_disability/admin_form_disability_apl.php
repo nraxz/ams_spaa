@@ -25,7 +25,7 @@ class admin_form_disability_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -1561,7 +1561,7 @@ class admin_form_disability_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->hesa_code == "")  
+      if ($this->hesa_code === "")  
       { 
           $this->hesa_code = 0;
           $this->sc_force_zero[] = 'hesa_code';
@@ -2581,16 +2581,16 @@ $_SESSION['scriptcase']['admin_form_disability']['contr_erro'] = 'off';
       $NM_val_form['label'] = $this->label;
       $NM_val_form['status'] = $this->status;
       $NM_val_form['id'] = $this->id;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
-      if ($this->hesa_code == "")  
+      if ($this->hesa_code === "")  
       { 
           $this->hesa_code = 0;
           $this->sc_force_zero[] = 'hesa_code';
       } 
-      if ($this->status == "")  
+      if ($this->status === "")  
       { 
           $this->status = 0;
           $this->sc_force_zero[] = 'status';

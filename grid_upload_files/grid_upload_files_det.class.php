@@ -245,7 +245,7 @@ $_SESSION['scriptcase']['grid_upload_files']['contr_erro'] = 'off';
            $nm_saida->saida("     var sc_ajaxBordW = '" . $this->Ini->Border_w_ajax . "';\r\n");
            $nm_saida->saida("   </script>\r\n");
    $nm_saida->saida(" <link rel=\"stylesheet\" href=\"" . $this->Ini->path_prod . "/third/jquery_plugin/thickbox/thickbox.css\" type=\"text/css\" media=\"screen\" />\r\n");
-   if ($this->Ini->sc_export_ajax && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['det_print'] == "print")
+   if (($this->Ini->sc_export_ajax || $this->Ini->Export_det_zip) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['det_print'] == "print")
    {
        if (strtoupper($nmgp_cor_print) == "PB")
        {
@@ -309,7 +309,7 @@ $_SESSION['scriptcase']['grid_upload_files']['contr_erro'] = 'off';
        $nm_saida->saida(" <link rel=\"stylesheet\" href=\"../_lib/css/" . $_SESSION['scriptcase']['erro']['str_schema_dir'] . "\" type=\"text/css\" media=\"screen\" />\r\n");
    }
    $nm_saida->saida("</HEAD>\r\n");
-   if (!$this->Ini->Export_html_zip && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['det_print'] == "print")
+   if (!$this->Ini->Export_html_zip && !$this->Ini->Export_det_zip && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['det_print'] == "print")
    {
        $nm_saida->saida(" <link rel=\"stylesheet\" type=\"text/css\" href=\"../_lib/buttons/" . $this->Ini->Str_btn_css . "\" /> \r\n");
        $nm_saida->saida("  <body class=\"scGridPage\"  style=\"-webkit-print-color-adjust: exact;\">\r\n");
@@ -509,7 +509,10 @@ $_SESSION['scriptcase']['grid_upload_files']['contr_erro'] = 'off';
    $nm_saida->saida("                  target=\"jan_print\" style=\"display: none\"> \r\n");
    $nm_saida->saida(" <input type=\"hidden\" name=\"path_botoes\" value=\"" . $this->Ini->path_botoes . "\"/> \r\n");
    $nm_saida->saida(" <input type=\"hidden\" name=\"opcao\" value=\"det_print\"/>\r\n");
+   $nm_saida->saida(" <input type=\"hidden\" name=\"nmgp_opcao\" value=\"det_print\"/>\r\n");
    $nm_saida->saida(" <input type=\"hidden\" name=\"cor_print\" value=\"CO\"/>\r\n");
+   $nm_saida->saida(" <input type=\"hidden\" name=\"nmgp_cor_print\" value=\"CO\"/>\r\n");
+   $nm_saida->saida(" <input type=\"hidden\" name=\"nmgp_password\" value=\"\"/>\r\n");
    $nm_saida->saida(" <input type=\"hidden\" name=\"script_case_init\" value=\"" . NM_encode_input($this->Ini->sc_page) . "\"/> \r\n");
    $nm_saida->saida(" <input type=\"hidden\" name=\"script_case_session\" value=\"" . NM_encode_input(session_id()) . "\"/> \r\n");
    $nm_saida->saida("</form> \r\n");
@@ -558,8 +561,18 @@ $_SESSION['scriptcase']['grid_upload_files']['contr_erro'] = 'off';
    $nm_saida->saida("       }\r\n");
    $nm_saida->saida("       else\r\n");
    $nm_saida->saida("       {\r\n");
+   $nm_saida->saida("          document.Fprint.nmgp_password.value = password;\r\n");
    $nm_saida->saida("          document.Fprint.cor_print.value = cor;\r\n");
-   $nm_saida->saida("          window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("          document.Fprint.nmgp_cor_print.value = cor;\r\n");
+   $nm_saida->saida("          if (password != \"\")\r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              document.Fprint.action=\"./\";\r\n");
+   $nm_saida->saida("              document.Fprint.target=\"_self\";\r\n");
+   $nm_saida->saida("          }\r\n");
+   $nm_saida->saida("          else\r\n");
+   $nm_saida->saida("          {\r\n");
+   $nm_saida->saida("              window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("          }\r\n");
    $nm_saida->saida("          document.Fprint.submit() ;\r\n");
    $nm_saida->saida("      }\r\n");
    $nm_saida->saida("   }\r\n");
@@ -588,7 +601,7 @@ $_SESSION['scriptcase']['grid_upload_files']['contr_erro'] = 'off';
        }
        if ($this->nmgp_botoes['det_print'] == "on")
        {
-         $Cod_Btn = nmButtonOutput($this->arr_buttons, "bprint", "", "", "Dprint_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_upload_files/grid_upload_files_config_print.php?nm_opc=detalhe&nm_cor=CO&language=en_us&KeepThis=true&TB_iframe=true&modal=true", "", "only_text", "text_right", "", "", "", "", "", "", "");
+         $Cod_Btn = nmButtonOutput($this->arr_buttons, "bprint", "", "", "Dprint_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_upload_files/grid_upload_files_config_print.php?nm_opc=detalhe&nm_cor=CO&password=n&language=en_us&KeepThis=true&TB_iframe=true&modal=true", "", "only_text", "text_right", "", "", "", "", "", "", "");
          $nm_saida->saida("           $Cod_Btn \r\n");
        }
        $Cod_Btn = nmButtonOutput($this->arr_buttons, "bvoltar", "document.F3.submit();", "document.F3.submit();", "sc_b_sai_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
@@ -615,7 +628,7 @@ $_SESSION['scriptcase']['grid_upload_files']['contr_erro'] = 'off';
        }
        if ($this->nmgp_botoes['det_print'] == "on")
        {
-         $Cod_Btn = nmButtonOutput($this->arr_buttons, "bprint", "", "", "Dprint_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_upload_files/grid_upload_files_config_print.php?nm_opc=detalhe&nm_cor=CO&language=en_us&KeepThis=true&TB_iframe=true&modal=true", "", "only_text", "text_right", "", "", "", "", "", "", "");
+         $Cod_Btn = nmButtonOutput($this->arr_buttons, "bprint", "", "", "Dprint_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_upload_files/grid_upload_files_config_print.php?nm_opc=detalhe&nm_cor=CO&password=n&language=en_us&KeepThis=true&TB_iframe=true&modal=true", "", "only_text", "text_right", "", "", "", "", "", "", "");
          $nm_saida->saida("           $Cod_Btn \r\n");
        }
        $Cod_Btn = nmButtonOutput($this->arr_buttons, "bvoltar", "document.F3.submit();", "document.F3.submit();", "sc_b_sai_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");

@@ -25,7 +25,7 @@ class form_marks_examiner_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2017,7 +2017,7 @@ class form_marks_examiner_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->id_ == "")  
+      if ($this->id_ === "")  
       { 
           $this->id_ = 0;
       } 
@@ -3027,21 +3027,21 @@ $_SESSION['scriptcase']['form_marks_examiner']['contr_erro'] = 'off';
       $NM_val_form['audition_id_'] = $this->audition_id_;
       $NM_val_form['applicant_id_'] = $this->applicant_id_;
       $NM_val_form['examiner_'] = $this->examiner_;
-      if ($this->id_ == "")  
+      if ($this->id_ === "")  
       { 
           $this->id_ = 0;
       } 
-      if ($this->audition_id_ == "")  
+      if ($this->audition_id_ === "")  
       { 
           $this->audition_id_ = 0;
           $this->sc_force_zero[] = 'audition_id_';
       } 
-      if ($this->category_id_ == "")  
+      if ($this->category_id_ === "")  
       { 
           $this->category_id_ = 0;
           $this->sc_force_zero[] = 'category_id_';
       } 
-      if ($this->marks_ == "")  
+      if ($this->marks_ === "")  
       { 
           $this->marks_ = 0;
           $this->sc_force_zero[] = 'marks_';
@@ -4127,6 +4127,9 @@ else
               $sc_seq_vert = $this->sc_seq_vert; 
               $this->sc_evento = "novo"; 
               $this->sc_max_reg_incl = $this->sc_seq_vert; 
+          } 
+          elseif (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_marks_examiner']['embutida_multi']) && $_SESSION['sc_session'][$this->Ini->sc_page]['form_marks_examiner']['embutida_multi']) 
+          { 
           } 
           else 
           { 

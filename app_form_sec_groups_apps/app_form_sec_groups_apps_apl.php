@@ -27,7 +27,7 @@ class app_form_sec_groups_apps_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -3616,7 +3616,7 @@ $_SESSION['scriptcase']['app_form_sec_groups_apps']['contr_erro'] = 'off';
       $NM_val_form['priv_export_'] = $this->priv_export_;
       $NM_val_form['priv_print_'] = $this->priv_print_;
       $NM_val_form['group_id_'] = $this->group_id_;
-      if ($this->group_id_ == "")  
+      if ($this->group_id_ === "")  
       { 
           $this->group_id_ = 0;
       } 
@@ -4787,6 +4787,9 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['app_form_sec_groups_apps']['Lookup
               $sc_seq_vert = $this->sc_seq_vert; 
               $this->sc_evento = "novo"; 
               $this->sc_max_reg_incl = $this->sc_seq_vert; 
+          } 
+          elseif (isset($_SESSION['sc_session'][$this->Ini->sc_page]['app_form_sec_groups_apps']['embutida_multi']) && $_SESSION['sc_session'][$this->Ini->sc_page]['app_form_sec_groups_apps']['embutida_multi']) 
+          { 
           } 
           elseif ($this->Embutida_form) 
           { 

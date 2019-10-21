@@ -25,7 +25,7 @@ class form_examiner_panel_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -1861,7 +1861,7 @@ class form_examiner_panel_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->audition_id_ == "")  
+      if ($this->audition_id_ === "")  
       { 
           $this->audition_id_ = 0;
           $this->sc_force_zero[] = 'audition_id_';
@@ -1947,7 +1947,7 @@ class form_examiner_panel_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->id_ == "")  
+      if ($this->id_ === "")  
       { 
           $this->id_ = 0;
       } 
@@ -2852,11 +2852,11 @@ $_SESSION['scriptcase']['form_examiner_panel']['contr_erro'] = 'off';
       $NM_val_form['audition_id_'] = $this->audition_id_;
       $NM_val_form['panel_'] = $this->panel_;
       $NM_val_form['id_'] = $this->id_;
-      if ($this->id_ == "")  
+      if ($this->id_ === "")  
       { 
           $this->id_ = 0;
       } 
-      if ($this->audition_id_ == "")  
+      if ($this->audition_id_ === "")  
       { 
           $this->audition_id_ = 0;
           $this->sc_force_zero[] = 'audition_id_';
@@ -3826,6 +3826,9 @@ else
               $sc_seq_vert = $this->sc_seq_vert; 
               $this->sc_evento = "novo"; 
               $this->sc_max_reg_incl = $this->sc_seq_vert; 
+          } 
+          elseif (isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_examiner_panel']['embutida_multi']) && $_SESSION['sc_session'][$this->Ini->sc_page]['form_examiner_panel']['embutida_multi']) 
+          { 
           } 
           else 
           { 

@@ -315,16 +315,6 @@ class grid_audition_panel_admin_rtf
          $this->audition_id = str_replace('>', '&gt;', $this->audition_id);
          $this->Texto_tag .= "<td>" . $this->audition_id . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

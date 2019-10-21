@@ -96,7 +96,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
   }
  </style>
 <?php
-$miniCalendarFA  = $this->jqueryFAFile('calendar');
+$miniCalendarFA = $this->jqueryFAFile('calendar');
 if ('' != $miniCalendarFA) {
 ?>
 <style type="text/css">
@@ -1260,9 +1260,17 @@ else
  ?>
 <input type="hidden" name="audition_date" value="<?php echo $this->form_encode_input($audition_date) . "\">" . $audition_date . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_audition_date" class="sc-ui-readonly-audition_date css_audition_date_line" style="<?php echo $sStyleReadLab_audition_date; ?>"><?php echo $this->form_encode_input($audition_date); ?></span><span id="id_read_off_audition_date" class="css_read_off_audition_date" style="white-space: nowrap;<?php echo $sStyleReadInp_audition_date; ?>">
+<span id="id_read_on_audition_date" class="sc-ui-readonly-audition_date css_audition_date_line" style="<?php echo $sStyleReadLab_audition_date; ?>"><?php echo $this->form_encode_input($audition_date); ?></span><span id="id_read_off_audition_date" class="css_read_off_audition_date" style="white-space: nowrap;<?php echo $sStyleReadInp_audition_date; ?>"><?php
+$miniCalendarButton = $this->jqueryButtonText('calendar');
+if ('scButton_' == substr($miniCalendarButton[1], 0, 9)) {
+    $miniCalendarButton[1] = substr($miniCalendarButton[1], 9);
+}
+?>
+<span class='trigger-picker-<?php echo $miniCalendarButton[1]; ?>'>
+
  <input class="sc-js-input scFormObjectOdd css_audition_date_obj" style="" id="id_sc_field_audition_date" type=text name="audition_date" value="<?php echo $this->form_encode_input($audition_date) ?>"
- size=18 alt="{datatype: 'datetime', dateSep: '<?php echo $this->field_config['audition_date']['date_sep']; ?>', dateFormat: '<?php echo $this->field_config['audition_date']['date_format']; ?>', timeSep: '<?php echo $this->field_config['audition_date']['time_sep']; ?>', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ><?php
+ size=18 alt="{datatype: 'datetime', dateSep: '<?php echo $this->field_config['audition_date']['date_sep']; ?>', dateFormat: '<?php echo $this->field_config['audition_date']['date_format']; ?>', timeSep: '<?php echo $this->field_config['audition_date']['time_sep']; ?>', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span>
+<?php
 $tmp_form_data = $this->field_config['audition_date']['date_format'];
 $tmp_form_data = str_replace('aaaa', 'yyyy', $tmp_form_data);
 $tmp_form_data = str_replace('dd'  , $this->Ini->Nm_lang['lang_othr_date_days'], $tmp_form_data);

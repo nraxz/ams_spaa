@@ -25,7 +25,7 @@ class form_subjects_grades_mob_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2822,16 +2822,16 @@ $_SESSION['scriptcase']['form_subjects_grades_mob']['contr_erro'] = 'off';
       $NM_val_form['id'] = $this->id;
       $NM_val_form['login'] = $this->login;
       $NM_val_form['submitted_date'] = $this->submitted_date;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
-      if ($this->academic_id == "")  
+      if ($this->academic_id === "")  
       { 
           $this->academic_id = 0;
           $this->sc_force_zero[] = 'academic_id';
       } 
-      if ($this->level == "")  
+      if ($this->level === "")  
       { 
           $this->level = 0;
           $this->sc_force_zero[] = 'level';
@@ -3928,6 +3928,60 @@ $_SESSION['scriptcase']['form_subjects_grades_mob']['contr_erro'] = 'off';
 
        return '' == $sFA ? '' : "<span class='scButton_fontawesome " . $sFA . "'></span>";
    } // jqueryFAFile
+
+   function jqueryButtonText($sModule)
+   {
+       $sClass = '';
+       $sText  = '';
+       if ('calendar' == $sModule)
+       {
+           if (isset($this->arr_buttons['bcalendario']) && isset($this->arr_buttons['bcalendario']['type']) && ('image' == $this->arr_buttons['bcalendario']['type'] || 'button' == $this->arr_buttons['bcalendario']['type']))
+           {
+               if ('only_text' == $this->arr_buttons['bcalendario']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   $sText  = $this->arr_buttons['bcalendario']['value'];
+               }
+               elseif ('text_fontawesomeicon' == $this->arr_buttons['bcalendario']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   if ('text_right' == $this->arr_buttons['bcalendario']['display_position'])
+                   {
+                       $sText = "<i class='icon_fa " . $this->arr_buttons['bcalendario']['fontawesomeicon'] . "'></i> " . $this->arr_buttons['bcalendario']['value'];
+                   }
+                   else
+                   {
+                       $sText = $this->arr_buttons['bcalendario']['value'] . " <i class='icon_fa " . $this->arr_buttons['bcalendario']['fontawesomeicon'] . "'></i>";
+                   }
+               }
+           }
+       }
+       elseif ('calculator' == $sModule)
+       {
+           if (isset($this->arr_buttons['bcalculadora']) && isset($this->arr_buttons['bcalculadora']['type']) && ('image' == $this->arr_buttons['bcalculadora']['type'] || 'button' == $this->arr_buttons['bcalculadora']['type']))
+           {
+               if ('only_text' == $this->arr_buttons['bcalculadora']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   $sText  = $this->arr_buttons['bcalculadora']['value'];
+               }
+               elseif ('text_fontawesomeicon' == $this->arr_buttons['bcalculadora']['display'])
+               {
+                   $sClass = 'scButton_' . $this->arr_buttons['bcalendario']['style'];
+                   if ('text_right' == $this->arr_buttons['bcalendario']['display_position'])
+                   {
+                       $sText = "<i class='icon_fa " . $this->arr_buttons['bcalculadora']['fontawesomeicon'] . "'></i> " . $this->arr_buttons['bcalculadora']['value'];
+                   }
+                   else
+                   {
+                       $sText = $this->arr_buttons['bcalculadora']['value'] . " <i class='icon_fa " . $this->arr_buttons['bcalculadora']['fontawesomeicon'] . "'></i> ";
+                   }
+               }
+           }
+       }
+
+       return '' == $sText ? array('', '') : array($sText, $sClass);
+   } // jqueryButtonText
 
 
     function scCsrfGetToken()

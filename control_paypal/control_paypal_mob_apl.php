@@ -25,7 +25,7 @@ class control_paypal_mob_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2280,7 +2280,7 @@ $_SESSION['scriptcase']['control_paypal_mob']['contr_erro'] = 'off';
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->application_fee == "")  
+      if ($this->application_fee === "")  
       { 
           $this->application_fee = 0;
           $this->sc_force_zero[] = 'application_fee';

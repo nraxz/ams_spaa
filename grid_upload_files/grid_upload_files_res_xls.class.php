@@ -367,13 +367,13 @@ class grid_upload_files_res_xls
           $this->Arquivo = $this->Arq_zip;
           $this->Xls_f   = $this->Zip_f;
           $this->Tit_doc = $this->Tit_zip;
-           // ----- ZIP log
-           $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
-           if ($fp)
-           {
-               @fwrite($fp, $str_zip . "\r\n\r\n");
-               @fclose($fp);
-           }
+          // ----- ZIP log
+          $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
+          if ($fp)
+          {
+              @fwrite($fp, $str_zip . "\r\n\r\n");
+              @fclose($fp);
+          }
       } 
    }
 

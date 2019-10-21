@@ -399,16 +399,6 @@ class grid_admin_all_register_rtf
          $this->view = str_replace('>', '&gt;', $this->view);
          $this->Texto_tag .= "<td>" . $this->view . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_register']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_register']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

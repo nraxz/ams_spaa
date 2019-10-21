@@ -133,7 +133,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 					<div class="col-lg-7">
 						<div class="bs-component">
 							<h4 class="text-primary">New User</h4>                  
-							<p class="mt-5 mb-5">If this is your first time here please click Register to create an account with us and submit your Audition Application. You can log in and update your information at any time. <a href="https://www.spaa.com/admissions/how-to-apply" targer="_blank">How to apply</a></p>
+							<p class="mt-5 mb-5">If this is your first time here please click Register to create an account with us and submit your Audition Application. You can log in and update your information at any time. <a href="https://www.spaa.ae/admissions/how-to-apply" targer="_blank">How to apply</a></p>
 							
 							<p class="lead mt-5">
 								<a class="btn btn-primary btn-lg mt-2" href="../applicant_upcomming_auditions/" role="button">Register</a>

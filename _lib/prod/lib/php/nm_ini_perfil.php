@@ -426,71 +426,71 @@ function carrega_perfil($perfil, $dir, $prot = 'S', $dir_prod_conf="")
 
 function carrega_perfil_change_edit($perfil)
 {
-        //macro de alterar conexao em tempo de voo
-        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]) && is_array($_SESSION['scriptcase']['sc_connection_edit'][$perfil]) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]))
+    //macro de alterar conexao em tempo de voo
+    if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]) && is_array($_SESSION['scriptcase']['sc_connection_edit'][$perfil]) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]))
+    {
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['drive']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['drive']))
         {
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['drive']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['drive']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_tpbanco'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['drive'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['server']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['server']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_servidor'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['server'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['user']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['user']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_usuario'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['user'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['password']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['password']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_senha'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['password'];
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_senha_protect'] = "N";
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['database']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['database']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_banco'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['database'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['persistent']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['persistent']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_use_persistent'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['persistent'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_schema']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_schema']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_use_schema'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_schema'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['date_separator']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['date_separator']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_date_separator'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['date_separator'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['encoding']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['encoding']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_database_encoding'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['encoding'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_ssl']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_ssl']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_use_ssl'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_ssl'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_key']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_key'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_key'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cert']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_cert'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cert'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_capath']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_capath'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_capath'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_ca']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_ca'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_ca'];
-                }
-                if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cipher']))
-                {
-                        $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_cipher'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cipher'];
-                }
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_tpbanco'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['drive'];
         }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['server']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['server']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_servidor'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['server'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['user']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['user']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_usuario'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['user'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['password']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['password']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_senha'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['password'];
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_senha_protect'] = "N";
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['database']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['database']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_banco'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['database'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['persistent']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['persistent']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_use_persistent'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['persistent'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_schema']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_schema']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_use_schema'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_schema'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['date_separator']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['date_separator']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_date_separator'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['date_separator'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['encoding']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['encoding']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_database_encoding'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['encoding'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_ssl']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_ssl']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_use_ssl'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['use_ssl'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_key']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_key'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_key'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cert']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_cert'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cert'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_capath']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_capath'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_capath'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_ca']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_ca'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_ca'];
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cipher']))
+        {
+                $_SESSION['nm_session']['prod_v8'][$perfil]['glo_mysql_ssl_cipher'] = $_SESSION['scriptcase']['sc_connection_edit'][$perfil]['mysql_ssl_cipher'];
+        }
+    }
 }
 
 function lista_perfil($dir_prod_lib_php, $dir_prod_conf="")
@@ -1322,65 +1322,66 @@ function db_conect_devel($str_conn, $str_path, $projeto, $opcao = 1)
     }
 
    
-    if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['drive']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['drive']))
+    
+    if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]))
     {
+        //macro de alterar conexao em tempo de voo
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['drive']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['drive']))
+        {
             $tpbanco = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['drive'];
-    }
-    if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['server']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['server']))
-    {
-      //macro de alterar conexao em tempo de voo
-        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]) && is_array($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]))
+        }
+        if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['server']) && is_array($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['server']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['server']))
         {
             $servidor = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['server'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['user']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['user']))
         {
-                $usuario = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['user'];
+            $usuario = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['user'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['password']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['password']))
         {
-                $senha = encode_string($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['password']);
+            $senha = encode_string($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['password']);
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['database']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['database']))
         {
-                $banco = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['database'];
+            $banco = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['database'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['persistent']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['persistent']))
         {
-                $persistent = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['persistent'];
+            $persistent = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['persistent'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['date_separator']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['date_separator']))
         {
-                $date_separator = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['date_separator'];
+            $date_separator = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['date_separator'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['encoding']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['encoding']))
         {
-                $database_encoding = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['encoding'];
+            $database_encoding = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['encoding'];
         }
 
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['use_ssl']) && !empty($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['use_ssl']))
         {
-                $use_ssl = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['use_ssl'];
+            $use_ssl = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['use_ssl'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_key']))
         {
-                $mysql_ssl_key = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_key'];
+            $mysql_ssl_key = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_key'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_cert']))
         {
-                $mysql_ssl_cert = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_cert'];
+            $mysql_ssl_cert = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_cert'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_capath']))
         {
-                $mysql_ssl_capath = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_capath'];
+            $mysql_ssl_capath = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_capath'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_ca']))
         {
-                $mysql_ssl_ca = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_ca'];
+            $mysql_ssl_ca = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_ca'];
         }
         if(isset($_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_cipher']))
         {
-                $mysql_ssl_cipher = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_cipher'];
+            $mysql_ssl_cipher = $_SESSION['scriptcase']['sc_connection_edit'][$str_conn]['mysql_ssl_cipher'];
         }
     }
 

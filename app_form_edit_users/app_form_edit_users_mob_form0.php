@@ -96,7 +96,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
   }
  </style>
 <?php
-$miniCalendarFA  = $this->jqueryFAFile('calendar');
+$miniCalendarFA = $this->jqueryFAFile('calendar');
 if ('' != $miniCalendarFA) {
 ?>
 <style type="text/css">

@@ -113,7 +113,7 @@ else
   }
  </style>
 <?php
-$miniCalendarFA  = $this->jqueryFAFile('calendar');
+$miniCalendarFA = $this->jqueryFAFile('calendar');
 if ('' != $miniCalendarFA) {
 ?>
 <style type="text/css">

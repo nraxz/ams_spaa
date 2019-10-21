@@ -72,7 +72,14 @@ class grid_audition_panel_admin_pesq
                       $arr_tmp = array();
                       foreach($cada_dado['value'] as $ix => $dados)
                       {
-                          $arr_tmp[] = $dados['opt'];
+                          if (isset($dados['opt']))
+                          {
+                              $arr_tmp[] = $dados['opt'];
+                          }
+                          else
+                          {
+                              $arr_tmp[] = $dados;
+                          }
                       }
                       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['campos_busca'][$field] = $arr_tmp; 
                   }
@@ -2124,9 +2131,6 @@ function nm_open_popup(parms)
       $delimitador = "##@@";
       if (empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['campos_busca']) && $bprocessa != "recarga" && $bprocessa != "save_form" && $bprocessa != "filter_save" && $bprocessa != "filter_delete")
       {
-          $id = "";
-          $panel = "";
-          $audition_id = "";
       }
       if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['campos_busca']) && $bprocessa != "recarga" && $bprocessa != "save_form" && $bprocessa != "filter_save" && $bprocessa != "filter_delete")
       { 
@@ -3127,6 +3131,10 @@ function nm_open_popup(parms)
                       continue;
                   }
                   $return_fields['set_selmult'][] = array('field' => $Cada_cmp[0], 'value' => $list);
+              }
+              elseif ($tp_fields[$Cada_cmp[0]] == 'ddcheckbox')
+              {
+                  $return_fields['set_ddcheckbox'][] = array('field' => $Cada_cmp[0], 'value' => $list);
               }
               elseif ($tp_fields[$Cada_cmp[0]] == 'checkbox')
               {

@@ -169,6 +169,24 @@ function ajax_select_filter(parm)
              }
           }
         }
+        if (oResp["set_ddcheckbox"]) {
+          for (i = 0; i < oResp["set_ddcheckbox"].length; i++) {
+             var obj_sel = document.getElementById(oResp["set_ddcheckbox"][i]["field"]);
+             var cmp_chk = oResp["set_ddcheckbox"][i]["field"].substring(3);
+             $('#' + oResp["set_ddcheckbox"][i]["field"]).dropdownchecklist('destroy');
+             $('#' + oResp["set_ddcheckbox"][i]["field"] + ' option').each(function() {
+                $(this).attr('selected',false);
+             });
+             for (x = 0; x < obj_sel.length; x++) {
+                 for (y = 0; y < oResp["set_ddcheckbox"][i]["value"].length; y++) {
+                     if (obj_sel[x].value == oResp["set_ddcheckbox"][i]["value"][y]) {
+                         obj_sel[x].selected = true;
+                     }
+                 }
+             }
+          }
+          Sc_carga_ddcheckbox(cmp_chk);
+        }
         if (oResp["set_dselect"]) {
           for (i = 0; i < oResp["set_dselect"].length; i++) {
               var obj_sel_orig = document.getElementById(oResp["set_dselect"][i]["field"] + "_orig");

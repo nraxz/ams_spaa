@@ -398,7 +398,7 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -429,7 +429,7 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
                       exec($str_zip);
                   }
                   // ----- ZIP log
-                  $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+                  $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                   if ($fp)
                   {
                       @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -474,7 +474,7 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
                       exec($str_zip);
                   }
                   // ----- ZIP log
-                  $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+                  $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                   if ($fp)
                   {
                       @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -503,7 +503,7 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
                           exec($str_zip);
                       }
                       // ----- ZIP log
-                      $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+                      $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                       if ($fp)
                       {
                           @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -581,16 +581,6 @@ $_SESSION['scriptcase']['app_grid_sec_groups']['contr_erro'] = 'off';
          {
              $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->description) . "\"";
          }
-   }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_groups']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_groups']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
    }
 
    //----- 

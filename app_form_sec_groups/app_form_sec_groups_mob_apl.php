@@ -26,7 +26,7 @@ class app_form_sec_groups_mob_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2303,7 +2303,7 @@ $_SESSION['scriptcase']['app_form_sec_groups_mob']['contr_erro'] = 'off';
       } 
       $NM_val_form['description'] = $this->description;
       $NM_val_form['group_id'] = $this->group_id;
-      if ($this->group_id == "")  
+      if ($this->group_id === "")  
       { 
           $this->group_id = 0;
       } 

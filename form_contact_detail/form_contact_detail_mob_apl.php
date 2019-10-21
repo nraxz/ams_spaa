@@ -25,7 +25,7 @@ class form_contact_detail_mob_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -2463,7 +2463,7 @@ $_SESSION['scriptcase']['form_contact_detail_mob']['contr_erro'] = 'off';
       $NM_val_form['country'] = $this->country;
       $NM_val_form['contact_number'] = $this->contact_number;
       $NM_val_form['login'] = $this->login;
-      if ($this->country == "")  
+      if ($this->country === "")  
       { 
           $this->country = 0;
           $this->sc_force_zero[] = 'country';

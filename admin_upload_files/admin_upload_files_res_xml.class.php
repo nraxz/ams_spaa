@@ -290,7 +290,7 @@ class admin_upload_files_res_xml
               exec($str_zip);
           }
           // ----- ZIP log
-          $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+          $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
           if ($fp)
           {
               @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -339,7 +339,7 @@ class admin_upload_files_res_xml
               unlink($Arq_input);
               $this->Arquivo_view = $zip_arq_v;
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+              $fp = @fopen(str_replace(".zip", ".log", $Zip_f), 'a');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");

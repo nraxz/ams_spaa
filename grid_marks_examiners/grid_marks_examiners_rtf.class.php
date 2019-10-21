@@ -400,16 +400,6 @@ class grid_marks_examiners_rtf
          $this->applicant_id = str_replace('>', '&gt;', $this->applicant_id);
          $this->Texto_tag .= "<td>" . $this->applicant_id . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_marks_examiners']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_marks_examiners']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

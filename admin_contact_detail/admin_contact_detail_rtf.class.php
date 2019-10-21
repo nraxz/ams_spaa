@@ -301,16 +301,6 @@ class admin_contact_detail_rtf
          $this->contact_number = str_replace('>', '&gt;', $this->contact_number);
          $this->Texto_tag .= "<td>" . $this->contact_number . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

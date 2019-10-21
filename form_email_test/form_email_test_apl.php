@@ -25,7 +25,7 @@ class form_email_test_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -3243,11 +3243,11 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_test']['Lookup_active']
       $NM_val_form['sent_to'] = $this->sent_to;
       $NM_val_form['id'] = $this->id;
       $NM_val_form['smtp_password'] = $this->smtp_password;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
-      if ($this->port == "")  
+      if ($this->port === "")  
       { 
           $this->port = 0;
           $this->sc_force_zero[] = 'port';

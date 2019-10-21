@@ -2427,7 +2427,12 @@ if($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_applicants_audition'
                        }
                        $nm_saida->saida("   " . $this->comp_field[$iYAxysIndex] . "\r\n");
                        if ($hasOrder) {
-                           $nm_saida->saida("     <img style=\"vertical-align: middle" . $sInitialDisplay . "\" src=\"" . $this->Ini->path_img_global . "/" . $sInitialSrc . "\" border=\"0\"/>\r\n");
+                           if (!$this->Ini->Export_html_zip) {
+                               $nm_saida->saida("     <img style=\"vertical-align: middle" . $sInitialDisplay . "\" src=\"" . $this->Ini->path_img_global . "/" . $sInitialSrc . "\" border=\"0\"/>\r\n");
+                           }
+                           else {
+                               $nm_saida->saida("     <img style=\"vertical-align: middle" . $sInitialDisplay . "\" src=\"" . $sInitialSrc . "\" border=\"0\"/>\r\n");
+                           }
                            $nm_saida->saida("    </span>\r\n");
                        }
                        $nm_saida->saida("  </td>\r\n");
@@ -2443,7 +2448,12 @@ if($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_applicants_audition'
                    $nm_saida->saida("   " . $apl_cab_resumo . "\r\n");
                        if (0 < $this->comp_order_col)
                        {
-                       $nm_saida->saida("    <IMG style=\"vertical-align: middle\" SRC=\"" . $this->Ini->path_img_global . "/" . $this->Ini->Label_summary_sort_asc . "\" BORDER=\"0\"/>\r\n");
+                           if (!$this->Ini->Export_html_zip) {
+                           $nm_saida->saida("    <IMG style=\"vertical-align: middle\" SRC=\"" . $this->Ini->path_img_global . "/" . $this->Ini->Label_summary_sort_asc . "\" BORDER=\"0\"/>\r\n");
+                       }
+                       else {
+                           $nm_saida->saida("    <IMG style=\"vertical-align: middle\" SRC=\"" . $this->Ini->Label_summary_sort_asc . "\" BORDER=\"0\"/>\r\n");
+                       }
                        $nm_saida->saida("    </a>\r\n");
                        }
                $nm_saida->saida("  </td>\r\n");
@@ -3005,6 +3015,7 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_applicants_auditio
          $nm_saida->saida("   <link rel=\"stylesheet\" href=\"" . $this->Ini->summary_css . "\" type=\"text/css\" media=\"screen\" />\r\n");
      }
       $nm_saida->saida(" <style type=\"text/css\">\r\n");
+     if (!$this->Ini->Export_html_zip)     {
            $nm_saida->saida(" .scGridSummaryLabel a img[src$='" . $this->Ini->Label_sort_desc . "'], \r\n");
            $nm_saida->saida(" .scGridSummaryLabel a img[src$='" . $this->Ini->Label_sort_asc . "'], \r\n");
            $nm_saida->saida(" .scGridSummaryLabel a img[src$='" . $this->arr_buttons['bgraf']['image'] . "']{opacity:1!important;} \r\n");
@@ -3014,7 +3025,8 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_applicants_auditio
            $nm_saida->saida(" .scGridSummaryLabel span > img[src$='" . $this->Ini->Label_sort_asc . "']{opacity:1!important;} \r\n");
            $nm_saida->saida(" .scGridSummaryLabel span > img{opacity:0;transition:all .2s;} \r\n");
            $nm_saida->saida(" .scGridSummaryLabel:HOVER span > img{opacity:1;transition:all .2s;} \r\n");
-       $nm_saida->saida(" .scGridTabela TD { white-space: nowrap }\r\n");
+     }
+      $nm_saida->saida(" .scGridTabela TD { white-space: nowrap }\r\n");
       $nm_saida->saida(" </style>\r\n");
            $nm_saida->saida("   <script type=\"text/javascript\"> \r\n");
            $nm_saida->saida("   var scBtnGrpStatus = {};\r\n");
@@ -3839,6 +3851,9 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_applicants_auditio
    $nm_saida->saida("  <input type=\"hidden\" name=\"opcao\" value=\"res_print\"/>\r\n");
    $nm_saida->saida("  <input type=\"hidden\" name=\"tp_print\" value=\"RC\"/>\r\n");
    $nm_saida->saida("  <input type=\"hidden\" name=\"cor_print\" value=\"CO\"/>\r\n");
+   $nm_saida->saida("  <input type=\"hidden\" name=\"nmgp_opcao\" value=\"res_print\"/>\r\n");
+   $nm_saida->saida("  <input type=\"hidden\" name=\"nmgp_tipo_print\" value=\"RC\"/>\r\n");
+   $nm_saida->saida("  <input type=\"hidden\" name=\"nmgp_cor_print\" value=\"CO\"/>\r\n");
    $nm_saida->saida("  <input type=\"hidden\" name=\"SC_module_export\" value=\"\"/>\r\n");
    $nm_saida->saida("  <input type=\"hidden\" name=\"nmgp_password\" value=\"\"/>\r\n");
    $nm_saida->saida("  <input type=\"hidden\" name=\"script_case_init\" value=\"" . NM_encode_input($this->Ini->sc_page) . "\"/> \r\n");
@@ -3910,9 +3925,19 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_applicants_auditio
       $nm_saida->saida("       {\r\n");
       $nm_saida->saida("           document.Fprint.tp_print.value = tp;\r\n");
       $nm_saida->saida("           document.Fprint.cor_print.value = cor;\r\n");
+   $nm_saida->saida("           document.Fprint.nmgp_tipo_print.value = tp;\r\n");
+   $nm_saida->saida("           document.Fprint.nmgp_cor_print.value = cor;\r\n");
       $nm_saida->saida("           document.Fprint.SC_module_export.value = SC_module_export;\r\n");
       $nm_saida->saida("           document.Fprint.nmgp_password.value = password;\r\n");
-      $nm_saida->saida("           window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("           if (password != \"\")\r\n");
+   $nm_saida->saida("           {\r\n");
+   $nm_saida->saida("               document.Fprint.target = '_self';\r\n");
+   $nm_saida->saida("               document.Fprint.action = \"admin_grid_applicants_audition_export_ctrl.php\";\r\n");
+   $nm_saida->saida("           }\r\n");
+   $nm_saida->saida("           else\r\n");
+   $nm_saida->saida("           {\r\n");
+      $nm_saida->saida("               window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("           }\r\n");
       $nm_saida->saida("           document.Fprint.submit() ;\r\n");
       $nm_saida->saida("       }\r\n");
       $nm_saida->saida("   }\r\n");

@@ -391,7 +391,7 @@ class admin_contact_detail_xml
                   exec($str_zip);
               }
               // ----- ZIP log
-              $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'w');
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
               if ($fp)
               {
                   @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -422,7 +422,7 @@ class admin_contact_detail_xml
                       exec($str_zip);
                   }
                   // ----- ZIP log
-                  $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+                  $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                   if ($fp)
                   {
                       @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -467,7 +467,7 @@ class admin_contact_detail_xml
                       exec($str_zip);
                   }
                   // ----- ZIP log
-                  $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+                  $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                   if ($fp)
                   {
                       @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -496,7 +496,7 @@ class admin_contact_detail_xml
                           exec($str_zip);
                       }
                       // ----- ZIP log
-                      $fp = @fopen(str_replace(".zip", "", $Zip_f) . '.log', 'a');
+                      $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
                       if ($fp)
                       {
                           @fwrite($fp, $str_zip . "\r\n\r\n");
@@ -599,16 +599,6 @@ class admin_contact_detail_xml
          {
              $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->contact_number) . "\"";
          }
-   }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
    }
 
    //----- 

@@ -490,16 +490,6 @@ $_SESSION['scriptcase']['my_audition_examiner']['contr_erro'] = 'off';
          $this->look_venue_country = str_replace('>', '&gt;', $this->look_venue_country);
          $this->Texto_tag .= "<td>" . $this->look_venue_country . "</td>\r\n";
    }
-   function xls_sub_cons_copy_label($row)
-   {
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['nolabel']) || $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['nolabel'])
-       {
-           foreach ($this->arr_export['label'] as $col => $dados)
-           {
-               $this->arr_export['lines'][$row][$col] = $dados;
-           }
-       }
-   }
 
    //----- 
    function grava_arquivo_rtf()

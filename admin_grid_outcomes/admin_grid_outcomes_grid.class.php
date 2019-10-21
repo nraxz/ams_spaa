@@ -853,6 +853,18 @@ class admin_grid_outcomes_grid
            $this->pb->setReturnOption($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['word_return']);
            $this->pb->setTotalSteps($this->count_ger);
        }
+       if ($this->Ini->Proc_print && $this->Ini->Export_html_zip  && !$this->Ini->sc_export_ajax)
+       {
+           require_once($this->Ini->path_lib_php . "/sc_progress_bar.php");
+           $this->pb = new scProgressBar();
+           $this->pb->setRoot($this->Ini->root);
+           $this->pb->setDir($_SESSION['scriptcase']['admin_grid_outcomes']['glo_nm_path_imag_temp'] . "/");
+           $this->pb->setProgressbarMd5($_GET['pbmd5']);
+           $this->pb->initialize();
+           $this->pb->setReturnUrl("./");
+           $this->pb->setReturnOption($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['print_return']);
+           $this->pb->setTotalSteps($this->count_ger);
+       }
        if (!$this->Ini->sc_export_ajax && !$this->Print_All && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['opcao'] == "pdf" && !$_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['pdf_res'] && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['embutida_pdf'] != "pdf")
        {
            //---------- Gauge ----------
@@ -2842,6 +2854,16 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['proc_pd
               $this->pb->setProgressbarMessage($Mens_bar . ": " . $nm_prog_barr . $PB_tot);
               $this->pb->addSteps(1);
           }
+          if ($this->Ini->Proc_print && $this->Ini->Export_html_zip  && !$this->Ini->sc_export_ajax)
+          {
+              $nm_prog_barr++;
+              $Mens_bar = $this->Ini->Nm_lang['lang_othr_prcs'];
+              if ($_SESSION['scriptcase']['charset'] != "UTF-8") {
+                  $Mens_bar = sc_convert_encoding($Mens_bar, "UTF-8", $_SESSION['scriptcase']['charset']);
+              }
+              $this->pb->setProgressbarMessage($Mens_bar . ": " . $nm_prog_barr . $PB_tot);
+              $this->pb->addSteps(1);
+          }
           //---------- Gauge ----------
           if (!$this->Ini->sc_export_ajax && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['opcao'] == "pdf" && -1 < $this->progress_grid)
           {
@@ -4158,8 +4180,12 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['proc_pd
    $nm_saida->saida("                     target=\"jan_print\" style=\"display: none\"> \r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"path_botoes\" value=\"" . $this->Ini->path_botoes . "\"/> \r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"opcao\" value=\"print\"/>\r\n");
+   $nm_saida->saida("    <input type=\"hidden\" name=\"nmgp_opcao\" value=\"print\"/>\r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"tp_print\" value=\"RC\"/>\r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"cor_print\" value=\"CO\"/>\r\n");
+   $nm_saida->saida("    <input type=\"hidden\" name=\"nmgp_opcao\" value=\"print\"/>\r\n");
+   $nm_saida->saida("    <input type=\"hidden\" name=\"nmgp_tipo_print\" value=\"RC\"/>\r\n");
+   $nm_saida->saida("    <input type=\"hidden\" name=\"nmgp_cor_print\" value=\"CO\"/>\r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"SC_module_export\" value=\"\"/>\r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"nmgp_password\" value=\"\"/>\r\n");
    $nm_saida->saida("    <input type=\"hidden\" name=\"script_case_init\" value=\"" . NM_encode_input($this->Ini->sc_page) . "\"/> \r\n");
@@ -4692,9 +4718,19 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_outcomes']['proc_pd
    $nm_saida->saida("       {\r\n");
    $nm_saida->saida("           document.Fprint.tp_print.value = tp;\r\n");
    $nm_saida->saida("           document.Fprint.cor_print.value = cor;\r\n");
+   $nm_saida->saida("           document.Fprint.nmgp_tipo_print.value = tp;\r\n");
+   $nm_saida->saida("           document.Fprint.nmgp_cor_print.value = cor;\r\n");
    $nm_saida->saida("           document.Fprint.SC_module_export.value = SC_module_export;\r\n");
    $nm_saida->saida("           document.Fprint.nmgp_password.value = password;\r\n");
-   $nm_saida->saida("           window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("           if (password != \"\")\r\n");
+   $nm_saida->saida("           {\r\n");
+   $nm_saida->saida("               document.Fprint.target = '_self';\r\n");
+   $nm_saida->saida("               document.Fprint.action = \"admin_grid_outcomes_export_ctrl.php\";\r\n");
+   $nm_saida->saida("           }\r\n");
+   $nm_saida->saida("           else\r\n");
+   $nm_saida->saida("           {\r\n");
+   $nm_saida->saida("               window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
+   $nm_saida->saida("           }\r\n");
    $nm_saida->saida("           document.Fprint.submit() ;\r\n");
    $nm_saida->saida("       }\r\n");
    $nm_saida->saida("   }\r\n");

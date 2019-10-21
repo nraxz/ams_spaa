@@ -3100,7 +3100,7 @@ function scJs_alert_sweetalert(message, callbackOk, params) {
 			}
 		}
 		else if (result.dismiss == Swal.DismissReason.timer) {
-			$(".swal2-container").hide();
+			Swal.close();
 		}
 	});
 } // scJs_alert_sweetalert

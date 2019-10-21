@@ -25,7 +25,7 @@ class admin_form_marking_categories_mob_apl
                                 'fieldLabel'        => array(),
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
-                                'ajaxAlert'         => '',
+                                'ajaxAlert'         => array(),
                                 'ajaxMessage'       => '',
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
@@ -1562,7 +1562,7 @@ class admin_form_marking_categories_mob_apl
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 
@@ -2651,7 +2651,7 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
       $NM_val_form['short'] = $this->short;
       $NM_val_form['type_of_audition'] = $this->type_of_audition;
       $NM_val_form['active'] = $this->active;
-      if ($this->id == "")  
+      if ($this->id === "")  
       { 
           $this->id = 0;
       } 

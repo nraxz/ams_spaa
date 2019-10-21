@@ -96,7 +96,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
   }
  </style>
 <?php
-$miniCalendarFA  = $this->jqueryFAFile('calendar');
+$miniCalendarFA = $this->jqueryFAFile('calendar');
 if ('' != $miniCalendarFA) {
 ?>
 <style type="text/css">
@@ -1236,9 +1236,17 @@ unset($NM_ult_sep);
  ?>
 <input type="hidden" name="created_at" value="<?php echo $this->form_encode_input($created_at) . "\">" . $created_at . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_created_at" class="sc-ui-readonly-created_at css_created_at_line" style="<?php echo $sStyleReadLab_created_at; ?>"><?php echo $this->form_encode_input($created_at); ?></span><span id="id_read_off_created_at" class="css_read_off_created_at" style="white-space: nowrap;<?php echo $sStyleReadInp_created_at; ?>">
+<span id="id_read_on_created_at" class="sc-ui-readonly-created_at css_created_at_line" style="<?php echo $sStyleReadLab_created_at; ?>"><?php echo $this->form_encode_input($created_at); ?></span><span id="id_read_off_created_at" class="css_read_off_created_at" style="white-space: nowrap;<?php echo $sStyleReadInp_created_at; ?>"><?php
+$miniCalendarButton = $this->jqueryButtonText('calendar');
+if ('scButton_' == substr($miniCalendarButton[1], 0, 9)) {
+    $miniCalendarButton[1] = substr($miniCalendarButton[1], 9);
+}
+?>
+<span class='trigger-picker-<?php echo $miniCalendarButton[1]; ?>'>
+
  <input class="sc-js-input scFormObjectOdd css_created_at_obj" style="" id="id_sc_field_created_at" type=text name="created_at" value="<?php echo $this->form_encode_input($created_at) ?>"
- size=18 alt="{datatype: 'datetime', dateSep: '<?php echo $this->field_config['created_at']['date_sep']; ?>', dateFormat: '<?php echo $this->field_config['created_at']['date_format']; ?>', timeSep: '<?php echo $this->field_config['created_at']['time_sep']; ?>', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ><?php
+ size=18 alt="{datatype: 'datetime', dateSep: '<?php echo $this->field_config['created_at']['date_sep']; ?>', dateFormat: '<?php echo $this->field_config['created_at']['date_format']; ?>', timeSep: '<?php echo $this->field_config['created_at']['time_sep']; ?>', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span>
+<?php
 $tmp_form_data = $this->field_config['created_at']['date_format'];
 $tmp_form_data = str_replace('aaaa', 'yyyy', $tmp_form_data);
 $tmp_form_data = str_replace('dd'  , $this->Ini->Nm_lang['lang_othr_date_days'], $tmp_form_data);
