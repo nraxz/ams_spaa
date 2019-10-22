@@ -321,7 +321,11 @@ if (!isset($_SESSION['scriptcase']['menu_admin']['session_timeout']['redir']) &&
       $link_url = false;
       $parms_session = "";
 
-      if (isset($_SESSION['scriptcase']['sc_def_menu']['menu_admin']))
+      if ($_SESSION['scriptcase']['sc_item_menu'] == "menu_admin")
+      {
+              $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("dashboard") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=1&script_case_session=" . session_id() . "";
+      }
+      elseif (isset($_SESSION['scriptcase']['sc_def_menu']['menu_admin']))
       {
          foreach($_SESSION['scriptcase']['sc_def_menu']['menu_admin'] as $id_item => $arr_item)
          {
