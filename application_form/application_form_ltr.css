@@ -1,0 +1,39 @@
+.css_firstname_label { }
+.css_firstname_line { }
+.css_firstname_obj { }
+.css_lastname_label { }
+.css_lastname_line { }
+.css_lastname_obj { }
+.css_nationality_label { }
+.css_nationality_line {text-align:left;}
+.css_nationality_obj {text-align:left;}
+.css_dateofbirth_label { }
+.css_dateofbirth_line { }
+.css_dateofbirth_obj { }
+.css_gender_label { }
+.css_gender_line {font-size:14px;color:#006600;font-weight:bold;}
+.css_gender_obj { }
+.css_resident_label { }
+.css_resident_line {font-size:14px;color:#006600;font-weight:bold;text-align:left;}
+.css_resident_obj {font-size:18px;width:24px;height:24px;}
+.css_email_label { }
+.css_email_line { }
+.css_email_obj { }
+.css_venue_id_label { }
+.css_venue_id_line { }
+.css_venue_id_obj { }
+.css_audition_id_label { }
+.css_audition_id_line {text-align:left;}
+.css_audition_id_obj { }
+.css_course_id_label { }
+.css_course_id_line { }
+.css_course_id_obj { }
+.css_password_label { }
+.css_password_line { }
+.css_password_obj { }
+.css_confirm_password_label { }
+.css_confirm_password_line { }
+.css_confirm_password_obj { }
+.css_accept_tnc_label {font-weight:normal;text-align:left;}
+.css_accept_tnc_line {font-size:15px;color:#009900;font-weight:bold;text-align:center;}
+.css_accept_tnc_obj {font-size:18px;color:#009900;font-weight:bold;border-width:1px;text-align:center;width:40px;height:24px;}
