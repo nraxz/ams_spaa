@@ -52,7 +52,6 @@ class admin_grid_marking_category_grid
    var $count_ger;
    var $category;
    var $short;
-   var $type_of_audition;
    var $active;
    var $id;
 //--- 
@@ -302,7 +301,6 @@ class admin_grid_marking_category_grid
    $this->nmgp_botoes['qsearch'] = "on";
    $this->Cmps_ord_def['category'] = " asc";
    $this->Cmps_ord_def['short'] = " asc";
-   $this->Cmps_ord_def['type_of_audition'] = " asc";
    $this->Cmps_ord_def['active'] = " asc";
    $this->Cmps_ord_def['id'] = " desc";
    if (isset($_SESSION['scriptcase']['sc_apl_conf']['admin_grid_marking_category']['btn_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['admin_grid_marking_category']['btn_display']))
@@ -340,12 +338,6 @@ class admin_grid_marking_category_grid
        if ($_SESSION['scriptcase']['charset'] != "UTF-8")
        {
            $Busca_temp = NM_conv_charset($Busca_temp, $_SESSION['scriptcase']['charset'], "UTF-8");
-       }
-       $this->type_of_audition = $Busca_temp['type_of_audition']; 
-       $tmp_pos = strpos($this->type_of_audition, "##@@");
-       if ($tmp_pos !== false && !is_array($this->type_of_audition))
-       {
-           $this->type_of_audition = substr($this->type_of_audition, 0, $tmp_pos);
        }
        $this->id = $Busca_temp['id']; 
        $tmp_pos = strpos($this->id, "##@@");
@@ -724,15 +716,15 @@ class admin_grid_marking_category_grid
 //----- 
    if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
    { 
-       $nmgp_select = "SELECT category, short, type_of_audition, active, id from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT category, short, active, id from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
    { 
-       $nmgp_select = "SELECT category, short, type_of_audition, active, id from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT category, short, active, id from " . $this->Ini->nm_tabela; 
    } 
    else 
    { 
-       $nmgp_select = "SELECT category, short, type_of_audition, active, id from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT category, short, active, id from " . $this->Ini->nm_tabela; 
    } 
    $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['where_pesq']; 
    $nmgp_order_by = ""; 
@@ -811,9 +803,8 @@ class admin_grid_marking_category_grid
    { 
        $this->category = $this->rs_grid->fields[0] ;  
        $this->short = $this->rs_grid->fields[1] ;  
-       $this->type_of_audition = $this->rs_grid->fields[2] ;  
-       $this->active = $this->rs_grid->fields[3] ;  
-       $this->id = $this->rs_grid->fields[4] ;  
+       $this->active = $this->rs_grid->fields[2] ;  
+       $this->id = $this->rs_grid->fields[3] ;  
        $this->id = (string)$this->id;
        $this->SC_seq_register = $this->nmgp_reg_start ; 
        $this->SC_seq_page = 0;
@@ -825,9 +816,8 @@ class admin_grid_marking_category_grid
            $this->rs_grid->MoveNext(); 
            $this->category = $this->rs_grid->fields[0] ;  
            $this->short = $this->rs_grid->fields[1] ;  
-           $this->type_of_audition = $this->rs_grid->fields[2] ;  
-           $this->active = $this->rs_grid->fields[3] ;  
-           $this->id = $this->rs_grid->fields[4] ;  
+           $this->active = $this->rs_grid->fields[2] ;  
+           $this->id = $this->rs_grid->fields[3] ;  
        } 
    } 
    $this->nmgp_reg_inicial = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['final'] + 1;
@@ -1976,8 +1966,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $this->css_category_grid_line = $compl_css_emb . "css_category_grid_line";
    $this->css_short_label = $compl_css_emb . "css_short_label";
    $this->css_short_grid_line = $compl_css_emb . "css_short_grid_line";
-   $this->css_type_of_audition_label = $compl_css_emb . "css_type_of_audition_label";
-   $this->css_type_of_audition_grid_line = $compl_css_emb . "css_type_of_audition_grid_line";
    $this->css_active_label = $compl_css_emb . "css_active_label";
    $this->css_active_grid_line = $compl_css_emb . "css_active_grid_line";
    $this->css_id_label = $compl_css_emb . "css_id_label";
@@ -2359,62 +2347,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
           $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
       }
    $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('short')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
-   }
-   else
-   {
-   $nm_saida->saida("" . nl2br($SC_Label) . "\r\n");
-   }
-   $nm_saida->saida("</TD>\r\n");
-   } 
- }
- function NM_label_type_of_audition()
- {
-   global $nm_saida;
-   $SC_Label = (isset($this->New_label['type_of_audition'])) ? $this->New_label['type_of_audition'] : "Type Of Audition"; 
-   if (!isset($this->NM_cmp_hidden['type_of_audition']) || $this->NM_cmp_hidden['type_of_audition'] != "off") { 
-   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_type_of_audition_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_type_of_audition_label'] . "\" >\r\n");
-   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['opcao'] != "pdf")
-   {
-      $link_img = "";
-      $nome_img = $this->Ini->Label_sort;
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['ordem_cmp'] == 'type_of_audition')
-      {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['ordem_label'] == "desc")
-          {
-              $nome_img = $this->Ini->Label_sort_desc;
-          }
-          else
-          {
-              $nome_img = $this->Ini->Label_sort_asc;
-          }
-      }
-      if (empty($this->Ini->Label_sort_pos) || $this->Ini->Label_sort_pos == "right")
-      {
-          $this->Ini->Label_sort_pos = "right_field";
-      }
-      $Css_compl_sort = " style=\"display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;justify-content:inherit;\"";
-      if (empty($nome_img))
-      {
-          $link_img = nl2br($SC_Label);
-          $Css_compl_sort = "";
-      }
-      elseif ($this->Ini->Label_sort_pos == "right_field")
-      {
-          $link_img = "<span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
-      }
-      elseif ($this->Ini->Label_sort_pos == "left_field")
-      {
-          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
-      }
-      elseif ($this->Ini->Label_sort_pos == "right_cell")
-      {
-          $link_img = "<span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
-      }
-      elseif ($this->Ini->Label_sort_pos == "left_cell")
-      {
-          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
-      }
-   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('type_of_audition')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
    }
    else
    {
@@ -2823,9 +2755,8 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category'][
           $this->Lin_impressas++;
           $this->category = $this->rs_grid->fields[0] ;  
           $this->short = $this->rs_grid->fields[1] ;  
-          $this->type_of_audition = $this->rs_grid->fields[2] ;  
-          $this->active = $this->rs_grid->fields[3] ;  
-          $this->id = $this->rs_grid->fields[4] ;  
+          $this->active = $this->rs_grid->fields[2] ;  
+          $this->id = $this->rs_grid->fields[3] ;  
           $this->id = (string)$this->id;
           $this->SC_seq_page++; 
           $this->SC_seq_register = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['final'] + 1; 
@@ -3064,27 +2995,6 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category'][
    $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_short_grid_line . "\"  style=\"" . $this->Css_Cmp['css_short_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_short_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
       }
  }
- function NM_grid_type_of_audition()
- {
-      global $nm_saida;
-      if (!isset($this->NM_cmp_hidden['type_of_audition']) || $this->NM_cmp_hidden['type_of_audition'] != "off") { 
-          $conteudo = sc_strip_script($this->type_of_audition); 
-          if ($conteudo === "") 
-          { 
-              $conteudo = "&nbsp;" ;  
-              $graf = "" ;  
-          } 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['proc_pdf'])
-          {
-              $this->SC_nowrap = "";
-          }
-          else
-          {
-              $this->SC_nowrap = "";
-          }
-   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_type_of_audition_grid_line . "\"  style=\"" . $this->Css_Cmp['css_type_of_audition_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_type_of_audition_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
-      }
- }
  function NM_grid_active()
  {
       global $nm_saida;
@@ -3133,7 +3043,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category'][
  }
  function NM_calc_span()
  {
-   $this->NM_colspan  = 7;
+   $this->NM_colspan  = 6;
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_grid_marking_category']['opc_psq'])
    {
        $this->NM_colspan++;

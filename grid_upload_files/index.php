@@ -212,8 +212,8 @@ class grid_upload_files_ini
       $this->nm_dt_criacao   = "20190907"; 
       $this->nm_hr_criacao   = "160827"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -283,8 +283,6 @@ class grid_upload_files_ini
       $this->path_css        = $this->root . $this->path_link . "_lib/css/";
       $this->path_lib_php    = $this->root . $this->path_link . "_lib/lib/php";
       $this->path_lib_js     = $this->root . $this->path_link . "_lib/lib/js";
-      $pos_path = strrpos($this->path_prod, "/");
-      $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['path_grid_sv'] = $this->root . substr($this->path_prod, 0, $pos_path) . "/conf/grid_sv/";
       $this->path_lang       = "../_lib/lang/";
       $this->path_lang_js    = "../_lib/js/";
       $this->path_chart_theme = $this->root . $this->path_link . "_lib/chart/";
@@ -871,7 +869,7 @@ class grid_upload_files_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXGZSBiD1BeHuFUHgrwVcB/V5X7VoB/DcFYH9BqHABYHuJeDMvCHArsDWF/HIBiDcJeDQFGD1BeHuNUDMBOVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgveHArCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQBiZSBiDSN7HQJeHgrwVcFeV5X/DoXGHQXGZ1FGHAN7HuFGDMvCVkJqH5BmVoFGHQXsDuFaD1vOV5BOHgvOVcFeV5BmDoXGDcNmZSBqHAvCZMFaHgrKVkJ3H5FGDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBeDkXKDWX7VoBODcJeDuBqHArYV5JwDMNOVcFKH5FqHIJeD9XOZ1FGDSrYV5BODMvCVkJqH5FYHMJsHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoraDcJUH9FaHAN7V5JeDMzGHENiV5FaZuB/D9NwDQJsHIBeV5JwHgvsVcBOH5XCVoJwDcJUZSB/DSrYV5FGDMzGHEJGH5X/VoBiD9NwDQJsHIrKV5JeDMvmVcFKV5BmVoBqD9BsZkFGHArKHQJwDEBODkFeH5FYVoFGHQJKDQJwD1BeHuraHuBOVcBOV5X7VENUHQNmZSBOHArYHuFaHgNOHEXeDuFYHMBqHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVorqDcJUZ1BOZ1BeD5F7DErKVkXeV5FaVoBiD9FYH9X7HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHAvCD5BqHgveHArsHEB7DoBqHQBiDQBqHAvmV5BODMvmVcFKV5BmVoBqD9BsZkFGHAvsV5X7DEBOZSXeDWFqHIJwHQJKH9X7HAN7HuBqHgrwV9BUDWB3VoX7D9JmZSFaD1rKV5X7DErKHErsDWXCVoJeHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKDQX7HABYHQB/HuzGZSJ3V5FYVEX7D9BiH9B/D1rKD5XGHgBeHArCDWr/VoFGHQNmH9FGHAvmVWXGDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5BOHgvsHArsHEB3ZuB/HQNwDQBqD1BeHQFaDMBYVcFiV5FYHIJsDcFYZ1X7D1zGZMB/HgvsHEFKV5FqHMJsHQXODuBqHABYHuBODMrYVcFiV5FYHINUHQXOH9BOD1rwHuFUHgBeDkBsH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEBmVoX7HQNmZSBqZ1vmD5XGHgNODkBsV5FqHMX7HQFYZSFUHArYHQJwDMrYZSrCV5X/VENUHQNwVINUHArYHuBODMvCHAFKV5B7ZuXGDcXGDQB/DSBYHuF7DMvsVcFiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEB3DoXGHQNwH9BiHIBeHQNUDMBYV9FiV5FYHIBiHQJmZSBOHAN7HQBqDMvCHEFKV5FqHIFUHQXsDuBqHANOHuBODMBYZSrCV5FYVoBiHQJmVINUHArYHuB/HgBOHAFKH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqHgNKVcFiDur/VEX7HQBqZ1BiHAvmV5JeHgvCZSJ3V5XCVoB/D9NmDQFaZ1BYV5FUHuvmDkBOH5XKVoraD9BiVINUDSvOD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HIX7HQJmZ1BOHAN7HQBiHgNOZSJ3DurmVoFGHQBiDQBqHANKV5XGDMvmVcFKV5BmVoBqD9BsZkFGHArKHuBOHgveVkJ3DuFYDoF7D9XsDQB/Z1NaV5XGHgrKVIBODuX7HIrqHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcBwZSFGHANOD5BqHgrKVcXKV5X7VEraD9XOZ1F7HIrwD5FaDMBYHEXeH5F/DoFUDcBwH9X7DSBYD5rqHgrKVcFCH5B7DoJsD9XOZ1F7HIveD5BqHgBeHEFiV5B3DoF7D9XsDuFaHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHIveHuBOHgveHENiH5F/HMXGDcBwZSFGHAveVWBODMrYVcXKDur/VEraD9XGZ1FGHINKZMXGHgNOVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaHuzGVcFKDWFYVoJwDcBqZSFaHAN7D5FaDEBOVkJGHEXCVoB/HQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQNmZ1BiHAzGZMJeHgveHArsDWBmDoJeHQXODuFaHAveD5NUHgNKDkBOV5FYHMBiDcNmZSFaHANOHuJeDMzGHENiDWBmZuXGD9NmH9BiHANOV5JwDMvOVcBOH5XCHMBiD9BsVIraD1rwV5X7HgBeHErCV5XCDoraD9NwH9X7HABYV5BqHuvmVcFiDWXCHIXGD9JmZ1F7HABYV5XGDEBeHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvsV9FiV5BmVorq";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_upload_files']['initialize'])  
       { 
@@ -1809,10 +1807,6 @@ class grid_upload_files_apl
    var $Graf;
    var $pesq;
    var $pdf;
-   var $xls;
-   var $xml;
-   var $csv;
-   var $rtf;
 //
 //----- 
    function prep_modulos($modulo)
@@ -1828,7 +1822,7 @@ class grid_upload_files_apl
    function controle($linhas = 0)
    {
       global $nm_saida, $nm_url_saida, $script_case_init, $nmgp_parms_pdf, $nmgp_graf_pdf, $nm_apl_dependente, $nmgp_navegator_print, $nmgp_tipo_print, $nmgp_cor_print, $nmgp_cor_word, $Det_use_pass_pdf, $Det_pdf_zip, $NMSC_conf_apl, $NM_contr_var_session, $NM_run_iframe, $SC_module_export, $nmgp_password,
-             $glo_senha_protect, $nmgp_opcao, $nm_call_php, $rec, $nmgp_quant_linhas, $nmgp_fast_search, $nmgp_cond_fast_search, $nmgp_arg_fast_search, $nmgp_ordem;
+             $glo_senha_protect, $nmgp_opcao, $nm_call_php, $rec, $nmgp_ordem;
 
       $Parms_form_pdf = false;
       if (isset($_SESSION['sc_session']['scriptcase']['embutida_form_pdf']['grid_upload_files']))
@@ -2031,16 +2025,6 @@ class grid_upload_files_apl
               if ($nmgp_opcao == "muda_qt_linhas")
               {
                   $nmgp_quant_linhas  = strtolower($_POST['parm']);
-              }
-              if ($nmgp_opcao == "fast_search")
-              {
-                  $_POST['parm'] = str_replace("__NM_PLUS__", "+", $_POST['parm']);
-                  $_POST['parm'] = str_replace("__NM_AMP__", "&", $_POST['parm']);
-                  $_POST['parm'] = str_replace("__NM_PRC__", "%", $_POST['parm']);
-                  $temp = explode("_SCQS_", $_POST['parm']);
-                  $nmgp_fast_search      = (isset($temp[0])) ? $temp[0] : "";
-                  $nmgp_cond_fast_search = (isset($temp[1])) ? $temp[1] : "";
-                  $nmgp_arg_fast_search  = (isset($temp[2])) ? $temp[2] : "";
               }
               if ($nmgp_opcao == "ordem")
               {
@@ -2334,71 +2318,6 @@ class grid_upload_files_apl
       $this->Ini->Str_btn_grid    = trim($str_button) . "/" . trim($str_button) . $_SESSION['scriptcase']['reg_conf']['css_dir'] . ".php";
       $this->Ini->Str_btn_css     = trim($str_button) . "/" . trim($str_button) . ".css";
       include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
-      $this->arr_buttons['group_group_3']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt_email_title'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt_email'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__envelope.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_1']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__export.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_4']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt_email_title'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt_email'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__envelope.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_1']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__export.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_2']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_settings'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_settings'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__gear.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida']) || !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
       { 
       $this->Ini->Color_bg_ajax            = (!isset($str_ajax_bg)       || "" == trim($str_ajax_bg))         ? "#000" : $str_ajax_bg;
@@ -2448,7 +2367,6 @@ class grid_upload_files_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['field_order'][] = "fileid";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['field_order'][] = "login";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['field_order'][] = "uploaded";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['field_order_orig'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['field_order'];
           if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['usr_cmp_sel']))
           { 
               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['usr_cmp_sel'] = array();
@@ -2745,23 +2663,6 @@ class grid_upload_files_apl
       { 
           $this->Ini->path_img_modelo = $this->Ini->path_img_modelo;
       } 
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "fast_search")  
-      { 
-          $this->SC_fast_search($GLOBALS["nmgp_fast_search"], $GLOBALS["nmgp_cond_fast_search"], $GLOBALS["nmgp_arg_fast_search"]);
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_ant'] == $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'])
-          { 
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] = 'igual';
-          } 
-          else 
-          { 
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_ant'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'];
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['contr_array_resumo'] = "NAO";
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['contr_total_geral']  = "NAO";
-              unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['tot_geral']);
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] = 'pesq';
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['orig_pesq'] = 'grid';
-          } 
-      } 
       $this->Ini->grid_search_change_fil = false;
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "grid_search" || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "grid_search_res")
       { 
@@ -2833,7 +2734,6 @@ class grid_upload_files_apl
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_ant']   = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['cond_pesq'] = ""; 
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'] = "";
-         $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'] = "";
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['contr_total_geral'] = "NAO";
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['sc_total']);
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['tot_geral']);
@@ -2895,21 +2795,6 @@ class grid_upload_files_apl
           $this->Ini->nm_limite_lin_res_prt = 0;
           $GLOBALS['nmgp_cor_print']        = "CO";
       } 
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "xls")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_upload_files/grid_upload_files_xls.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_upload_files_xls.class.php"); 
-          } 
-          $this->xls  = new grid_upload_files_xls();
-          $this->prep_modulos("xls");
-          $this->xls->monta_xls();
-      }
-      else
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "xls_res")  
       { 
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
@@ -2923,21 +2808,6 @@ class grid_upload_files_apl
           $this->xls  = new grid_upload_files_res_xls();
           $this->prep_modulos("xls");
           $this->xls->monta_xls();
-      }
-      else
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "xml")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_upload_files/grid_upload_files_xml.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_upload_files_xml.class.php"); 
-          } 
-          $this->xml  = new grid_upload_files_xml();
-          $this->prep_modulos("xml");
-          $this->xml->monta_xml();
       }
       else
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "xml_res")  
@@ -2955,21 +2825,6 @@ class grid_upload_files_apl
           $this->xml->monta_xml();
       }
       else
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "csv")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_upload_files/grid_upload_files_csv.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_upload_files_csv.class.php"); 
-          } 
-          $this->csv  = new grid_upload_files_csv();
-          $this->prep_modulos("csv");
-          $this->csv->monta_csv();
-      }
-      else   
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "csv_res")  
       { 
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
@@ -2985,21 +2840,6 @@ class grid_upload_files_apl
           $this->csv->monta_csv();
       }
       else   
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "rtf")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_upload_files/grid_upload_files_rtf.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_upload_files_rtf.class.php"); 
-          } 
-          $this->rtf  = new grid_upload_files_rtf();
-          $this->prep_modulos("rtf");
-          $this->rtf->monta_rtf();
-      }
-      else
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['opcao'] == "rtf_res")  
       { 
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['embutida'])
@@ -3593,197 +3433,6 @@ else
           $this->Db->Close(); 
       }
   }
-   function SC_fast_search($field, $arg_search, $data_search)
-   {
-      if (empty($data_search)) 
-      {
-          $tmp_cmd = "";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'] = "";
-          if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_orig'])) 
-          {
-              $tmp_cmd = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_orig']; 
-          }
-          if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'])) 
-          {
-              if (!empty($tmp_cmd)) 
-              {
-                  $tmp_cmd .= " and (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'] . ")"; 
-              }
-              else
-              {
-                  $tmp_cmd = " where (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'] . ")"; 
-              }
-          }
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'] = $tmp_cmd;
-          unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['fast_search']);
-          return;
-      }
-      $comando = "";
-      if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($data_search))
-      {
-          $data_search = NM_conv_charset($data_search, $_SESSION['scriptcase']['charset'], "UTF-8");
-      }
-      $sv_data = $data_search;
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "fileid", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "login", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "filename", $arg_search, $data_search);
-      }
-      if (empty($comando)) 
-      {
-          $comando = " 1 <> 1 "; 
-      }
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'] = $comando;
-      $tmp_cmd = "";
-      if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_orig'])) 
-      {
-          $tmp_cmd = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_orig']; 
-      }
-      if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'])) 
-      {
-          if (!empty($tmp_cmd)) 
-          {
-              $tmp_cmd .= " and (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'] . ")"; 
-          }
-          else
-          {
-              $tmp_cmd = " where (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_filtro'] . ")"; 
-          }
-      }
-      if (!empty($tmp_cmd)) 
-      {
-          $comando = $tmp_cmd . " and (" . $comando . ")"; 
-      }
-      else
-      {
-          $comando = " where (" . $comando . ")"; 
-      }
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'] = $comando;
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['fast_search'][0] = $field;
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['fast_search'][1] = $arg_search;
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['fast_search'][2] = $sv_data;
-   }
-   function SC_monta_condicao(&$comando, $nome, $condicao, $campo, $tp_campo="")
-   {
-      $nm_aspas   = "'";
-      $nm_aspas1  = "'";
-      $nm_numeric = array();
-      $Nm_datas   = array();
-      $nm_esp_postgres = array();
-      $campo_join = strtolower(str_replace(".", "_", $nome));
-      $nm_ini_lower = "";
-      $nm_fim_lower = "";
-      $nm_numeric[] = "fileid";
-      if (in_array($campo_join, $nm_numeric))
-      {
-         if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['decimal_db'] == ".")
-         {
-             $nm_aspas  = "";
-             $nm_aspas1 = "";
-         }
-         if (is_array($campo))
-         {
-             foreach ($campo as $Ind => $Cmp)
-             {
-                if (!is_numeric($Cmp))
-                {
-                    return;
-                }
-                if ($Cmp == "")
-                {
-                    $campo[$Ind] = 0;
-                }
-             }
-         }
-         else
-         {
-             if (!is_numeric($campo))
-             {
-                 return;
-             }
-             if ($campo == "")
-             {
-                $campo = 0;
-             }
-         }
-      }
-      if (in_array($campo_join, $nm_numeric) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_postgres) && (strtoupper($condicao) == "II" || strtoupper($condicao) == "QP" || strtoupper($condicao) == "NP"))
-      {
-          $nome      = "CAST ($nome AS TEXT)";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-      if (in_array($campo_join, $nm_esp_postgres) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_postgres))
-      {
-          $nome      = "CAST ($nome AS TEXT)";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-      if (in_array($campo_join, $nm_numeric) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase) && (strtoupper($condicao) == "II" || strtoupper($condicao) == "QP" || strtoupper($condicao) == "NP"))
-      {
-          $nome      = "CAST ($nome AS VARCHAR)";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-      if (in_array($campo_join, $nm_numeric) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_progress) && (strtoupper($condicao) == "II" || strtoupper($condicao) == "QP" || strtoupper($condicao) == "NP"))
-      {
-          $nome      = "CAST ($nome AS VARCHAR(255))";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-         $comando .= (!empty($comando) ? " or " : "");
-         if (is_array($campo))
-         {
-             $prep = "";
-             foreach ($campo as $Ind => $Cmp)
-             {
-                 $prep .= (!empty($prep)) ? "," : "";
-                 $Cmp   = substr($this->Db->qstr($Cmp), 1, -1);
-                 $prep .= $nm_aspas . $Cmp . $nm_aspas1;
-             }
-             $prep .= (empty($prep)) ? $nm_aspas . $nm_aspas1 : "";
-             $comando .= $nm_ini_lower . $nome . $nm_fim_lower . " in (" . $prep . ")";
-             return;
-         }
-         $campo  = substr($this->Db->qstr($campo), 1, -1);
-         switch (strtoupper($condicao))
-         {
-            case "EQ":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower . " = " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "II":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower . " like '" . $campo . "%'";
-            break;
-            case "QP":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower ." like '%" . $campo . "%'";
-            break;
-            case "NP":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower ." not like '%" . $campo . "%'";
-            break;
-            case "DF":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower . " <> " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "GT":     // 
-               $comando        .= " $nome > " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "GE":     // 
-               $comando        .= " $nome >= " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "LT":     // 
-               $comando        .= " $nome < " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "LE":     // 
-               $comando        .= " $nome <= " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-         }
-   }
    function SC_proc_grid_search($Parms)
    {
        $ix     = 0;

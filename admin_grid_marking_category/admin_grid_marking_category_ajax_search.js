@@ -76,10 +76,9 @@ function ajax_save_filter(save_name, save_opt, parm, pos)
 
 // ---------- select_filter
 var Table_sv_fil = new Array();
-Table_sv_fil[0] = "type_of_audition";
-Table_sv_fil[1] = "id";
-Table_sv_fil[2] = "category";
-Table_sv_fil[3] = "short";
+Table_sv_fil[0] = "id";
+Table_sv_fil[1] = "category";
+Table_sv_fil[2] = "short";
 function ajax_select_filter(parm)
 {
     nmAjaxProcOn();

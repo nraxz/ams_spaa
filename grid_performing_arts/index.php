@@ -212,8 +212,8 @@ class grid_performing_arts_ini
       $this->nm_dt_criacao   = "20151222"; 
       $this->nm_hr_criacao   = "155940"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -831,10 +831,10 @@ class grid_performing_arts_ini
 
       $this->arr_buttons_usr['new_record']['hint']             = "";
       $this->arr_buttons_usr['new_record']['type']             = "button";
-      $this->arr_buttons_usr['new_record']['value']            = "new_record";
+      $this->arr_buttons_usr['new_record']['value']            = "Add detail";
       $this->arr_buttons_usr['new_record']['display']          = "text_fontawesomeicon";
       $this->arr_buttons_usr['new_record']['display_position'] = "text_right";
-      $this->arr_buttons_usr['new_record']['style']            = "default";
+      $this->arr_buttons_usr['new_record']['style']            = "check";
       $this->arr_buttons_usr['new_record']['image']            = "";
       $this->arr_buttons_usr['new_record']['has_fa']            = "true";
       $this->arr_buttons_usr['new_record']['fontawesomeicon']            = "fas fa-plus";
@@ -946,7 +946,7 @@ class grid_performing_arts_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_performing_arts']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_performing_arts']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXGDQFUHABYV5FUHuzGV9FeDuX7HMB/HQNmZ1F7Z1vmZMXGDMzGDkXKDuFaHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeHMBiD9BsVIraD1rwV5X7HgBeHErsDWF/VoJsDcBwH9X7D1BeD5BODMzGVIBOV5X7VoFGHQNmH9FaD1rwHQBqDMBYHEJGDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HIBeD5XGDEBeHEXeH5F/DoFUD9NwDQJsHABYV5BOHgrKVIBOV5X7VoX7D9BsZ1B/DSrYV5FUDMzGZSJqV5FaDoraD9NwH9FGD1veV5BqDMrwVIFCDWXCDoX7D9XOZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQNmH9FGHAveD5XGHuBYVcBUDWFYHMXGHQXGZ1B/HIrwHQJeHgveHEXeHEXCHINUD9JKH9BiHAveD5NUHgNKDkBOV5FYHMBiHQBiZkBiDSvmZMFaHgrKHErsH5FYHMJsHQNmDQBOZ1BYHQNUHgrwVcXKH5XKVENUHQBiZ1FUZ1rYHuJwHgNKHArsDWFqHIJeHQXODQBOZ1BYHQJsDMzGDkB/H5FqHIJsHQJmVIJwD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSvCV5BODMvOVIBsV5BmVoX7HQXGVIJwZ1rYHuFGHgNOZSJqDWX7HMB/HQXOZ9JeZ1zGVWJsDMrYZSNiDWFYHIF7DcFYZkFUZ1vOZMJeDMvCHENiHEFqHIFGHQJeDQBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSvmD5JeHgrKVkJ3DuFYHMBiHQNmDuBOZ1BYHQFaDMvmVIB/DWJeHMrqDcFYZ1FUZ1rYHQBiHgBOHArsDWr/HIJeHQNmZ9JeZ1BYV5FaDMvmZSNiDWFYHINUHQBsZkFUD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQX7HgBYDkFeV5FaHMJsD9NwH9X7Z1rwD5XGHuzGVIBODWFaDoXGDcBwZ1FGHANOV5JeDEBOHEFiDWFqDoXGDcJUDQBOHIrKVWBODMvsVcBUDWBmDoFGHQFYH9BqZ1NOV5FaDEvsHErCV5FqDoraD9JKZSX7D1vOV5JwHuBYZSNiHEX/VoraD9BiH9FaHIBeZMBODErKVkXeV5FaDoB/D9NmDQBOZ1rwV5BqHgvsDkFCDWJeDoFGD9XOZ1rqD1rKD5rqDMBYHEJGH5FYVoB/HQXGZ9rqD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDEBeHEFiV5FaDoXGD9NmDQB/Z1rwHQBODMvmVcB/DWJeHMJwHQXGH9BqHINKV5X7HgveHErsDWBmDoBqHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQNmZ1BiHAzGZMJeHgveHArsDWBmDoJeHQBiH9BiHAveD5NUHgNKDkBOV5FYHMBiHQXOZ1X7HAN7HQraDMvCHENiV5FaDoJeDcBwH9X7Z1N7VWBqDMvOV9BUDWF/VEX7D9JmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQNmH9X7HArYV5BOHgrKVcFCH5FqDoX7DcBwZ1X7D1rwV5XGDMBYHEXeDuJeVoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VEFGHQFYVINUHAvsZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNmH9FGDSzGD5F7DMvsVcBODuX7DoJeHQJmH9BqHABYHQrqDMBYHArsDWB3DoBOD9XsDQFUHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5FYHMFaHQNmDQB/D1veHQXGDMrwVcB/DWXCHMJeHQXGZSBOHANOHuFUHgvCHArCDWFqHIFUHQBiH9FUHIrKHQBODMrwVcB/HEF/HMJeHQNwZkFGDSNOHQBiDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiD1zGD5BqHgNOVkJqDurmDoJeHQBiZ9F7D1BeVWBOHgvsVIBODur/VErqD9JmH9FaHArKHQBODMzGHArsHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFiV5X7DoF7D9XOZSB/DSrYV5B/DMNKZSJGDWF/VoB/D9NwH9X7HAN7V5JwHuzGVIBOV5FYDoFGD9BsZSB/HIBeD5BiDMBYHEJGDWr/ZuFaD9NwZ9rqZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaHgvsVIBsDWF/HMraHQBqZ1FaHIveV5FGDMBYHArCH5F/HIFGHQNmZSFUHIrKHQNUDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIXGHQJeDQFUDSzGVWBOHuvmVcFeDur/VEF7HQXOZ1FaHIBeD5BiHgveZSJqDWr/HIX7DcBwDQFaZ1BYHQBODMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_performing_arts']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_performing_arts']['initialize'])  
       { 
@@ -3835,6 +3835,10 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_performing_arts'][$path_doc_m
    {
        $_SESSION['usr_login'] = $usr_login;
    }
+   if (isset($nmgp_start) && $nmgp_start == "SC")
+   {
+       $nmgp_outra_jan = "";
+   }
    if (!empty($glo_perfil))  
    { 
       $_SESSION['scriptcase']['glo_perfil'] = $glo_perfil;
@@ -4270,17 +4274,16 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_performing_arts'][$path_doc_m
            }
            else
            {
-               $nm_url_saida = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ""; 
-               $nm_url_saida = str_replace("_fim.php", ".php", $nm_url_saida);
-               if (!empty($nmgp_url_saida)) 
-               { 
-                   $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['retorno_cons'] = $nmgp_url_saida ; 
-               } 
-               if (!empty($_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['retorno_cons'])) 
-               { 
-                   $nm_url_saida = $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['retorno_cons']  . "?script_case_init=" . NM_encode_input($script_case_init);  
-                   $nm_apl_dependente = 1 ; 
-               } 
+               $trab_path             = explode("/", $_SERVER['PHP_SELF']);
+               $trab_count_path       = count($trab_path);
+               $path_retorno_aplicacao  = "";
+               for ($ix = 0; $ix + 2 < $trab_count_path; $ix++)
+               {
+                    $path_retorno_aplicacao .=  $trab_path[$ix] . "/";
+               }
+               $path_retorno_aplicacao .=  "" . SC_dir_app_name('applicant_application_data') . "/";
+               $nm_url_saida = $path_retorno_aplicacao;
+               $nm_apl_dependente = 1; 
                if (!empty($nm_url_saida)) 
                { 
                    $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $nm_url_saida ; 
@@ -4297,7 +4300,6 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_performing_arts'][$path_doc_m
 // 
        if (isset($_SESSION['scriptcase']['nm_sc_retorno']) && !empty($_SESSION['scriptcase']['nm_sc_retorno']) && $nm_apl_dependente != 1 && substr($_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['opcao'], 0, 7) != "grafico" && $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['opcao'] != "pdf" ) 
        { 
-            $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $_SESSION['scriptcase']['nm_sc_retorno']; 
             $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['menu_desenv'] = true;   
        } 
        if (isset($nmgp_parms_ret)) 

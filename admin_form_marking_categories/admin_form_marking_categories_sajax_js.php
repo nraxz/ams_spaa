@@ -2850,43 +2850,6 @@ sajax_show_javascript();
     scAjaxSetFocus();
   } // do_ajax_admin_form_marking_categories_validate_short_cb
 
-  // ---------- Validate type_of_audition
-  function do_ajax_admin_form_marking_categories_validate_type_of_audition()
-  {
-    var nomeCampo_type_of_audition = "type_of_audition";
-    var var_type_of_audition = scAjaxGetFieldSelect(nomeCampo_type_of_audition);
-    var var_script_case_init = document.F1.script_case_init.value;
-    x_ajax_admin_form_marking_categories_validate_type_of_audition(var_type_of_audition, var_script_case_init, do_ajax_admin_form_marking_categories_validate_type_of_audition_cb);
-  } // do_ajax_admin_form_marking_categories_validate_type_of_audition
-
-  function do_ajax_admin_form_marking_categories_validate_type_of_audition_cb(sResp)
-  {
-    oResp = scAjaxResponse(sResp);
-    scAjaxRedir();
-    sFieldValid = "type_of_audition";
-    scEventControl_onBlur(sFieldValid);
-    scAjaxUpdateFieldErrors(sFieldValid, "valid");
-    sFieldErrors = scAjaxListFieldErrors(sFieldValid, false);
-    if ("" == sFieldErrors)
-    {
-      var sImgStatus = sc_img_status_ok;
-      scAjaxHideErrorDisplay(sFieldValid);
-    }
-    else
-    {
-      var sImgStatus = sc_img_status_err;
-      scAjaxShowErrorDisplay(sFieldValid, sFieldErrors);
-    }
-    var $oImg = $('#id_sc_status_' + sFieldValid);
-    if (0 < $oImg.length)
-    {
-      $oImg.attr('src', sImgStatus).css('display', '');
-    }
-    scAjaxShowDebug();
-    scAjaxSetMaster();
-    scAjaxSetFocus();
-  } // do_ajax_admin_form_marking_categories_validate_type_of_audition_cb
-
   // ---------- Validate active
   function do_ajax_admin_form_marking_categories_validate_active()
   {
@@ -3216,7 +3179,6 @@ function scJs_sweetalert_params(params) {
     var var_id = scAjaxGetFieldHidden("id");
     var var_category = scAjaxGetFieldText("category");
     var var_short = scAjaxGetFieldText("short");
-    var var_type_of_audition = scAjaxGetFieldSelect("type_of_audition");
     var var_active = scAjaxGetFieldSelect("active");
     var var_nm_form_submit = document.F1.nm_form_submit.value;
     var var_nmgp_url_saida = document.F1.nmgp_url_saida.value;
@@ -3227,7 +3189,7 @@ function scJs_sweetalert_params(params) {
     var var_script_case_init = document.F1.script_case_init.value;
     var var_csrf_token = scAjaxGetFieldText("csrf_token");
     scAjaxProcOn();
-    x_ajax_admin_form_marking_categories_submit_form(var_id, var_category, var_short, var_type_of_audition, var_active, var_nm_form_submit, var_nmgp_url_saida, var_nmgp_opcao, var_nmgp_ancora, var_nmgp_num_form, var_nmgp_parms, var_script_case_init, var_csrf_token, do_ajax_admin_form_marking_categories_submit_form_cb);
+    x_ajax_admin_form_marking_categories_submit_form(var_id, var_category, var_short, var_active, var_nm_form_submit, var_nmgp_url_saida, var_nmgp_opcao, var_nmgp_ancora, var_nmgp_num_form, var_nmgp_parms, var_script_case_init, var_csrf_token, do_ajax_admin_form_marking_categories_submit_form_cb);
   } // do_ajax_admin_form_marking_categories_submit_form
 
   function do_ajax_admin_form_marking_categories_submit_form_cb(sResp)
@@ -3254,7 +3216,6 @@ function scJs_sweetalert_params(params) {
       scAjaxHideErrorDisplay("id");
       scAjaxHideErrorDisplay("category");
       scAjaxHideErrorDisplay("short");
-      scAjaxHideErrorDisplay("type_of_audition");
       scAjaxHideErrorDisplay("active");
       scLigEditLookupCall();
 <?php
@@ -3310,7 +3271,6 @@ if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categ
     scAjaxHideErrorDisplay("id");
     scAjaxHideErrorDisplay("category");
     scAjaxHideErrorDisplay("short");
-    scAjaxHideErrorDisplay("type_of_audition");
     scAjaxHideErrorDisplay("active");
     var var_id = document.F2.id.value;
     var var_nm_form_submit = document.F2.nm_form_submit.value;
@@ -3399,8 +3359,7 @@ if ($this->Embutida_form)
   ajax_field_list[0] = "id";
   ajax_field_list[1] = "category";
   ajax_field_list[2] = "short";
-  ajax_field_list[3] = "type_of_audition";
-  ajax_field_list[4] = "active";
+  ajax_field_list[3] = "active";
 
   var ajax_block_list = new Array();
   ajax_block_list[0] = "0";
@@ -3409,7 +3368,6 @@ if ($this->Embutida_form)
     "id": {"label": "Id", "valid": new Array(), "onblur": new Array(), "onchange": new Array(), "onclick": new Array(), "onfocus": new Array(), "timeout": 5},
     "category": {"label": "Category", "valid": new Array(), "onblur": new Array(), "onchange": new Array(), "onclick": new Array(), "onfocus": new Array(), "timeout": 5},
     "short": {"label": "Short", "valid": new Array(), "onblur": new Array(), "onchange": new Array(), "onclick": new Array(), "onfocus": new Array(), "timeout": 5},
-    "type_of_audition": {"label": "Type Of Audition", "valid": new Array(), "onblur": new Array(), "onchange": new Array(), "onclick": new Array(), "onfocus": new Array(), "timeout": 5},
     "active": {"label": "Active", "valid": new Array(), "onblur": new Array(), "onchange": new Array(), "onclick": new Array(), "onfocus": new Array(), "timeout": 5}
   };
   var ajax_error_timeout = 5;
@@ -3426,20 +3384,17 @@ if ($this->Embutida_form)
     "id": new Array(),
     "category": new Array(),
     "short": new Array(),
-    "type_of_audition": new Array(),
     "active": new Array()
   };
   ajax_field_mult["id"][1] = "id";
   ajax_field_mult["category"][1] = "category";
   ajax_field_mult["short"][1] = "short";
-  ajax_field_mult["type_of_audition"][1] = "type_of_audition";
   ajax_field_mult["active"][1] = "active";
 
   var ajax_field_id = {
     "id": new Array("hidden_field_label_id", "hidden_field_data_id"),
     "category": new Array("hidden_field_label_category", "hidden_field_data_category"),
     "short": new Array("hidden_field_label_short", "hidden_field_data_short"),
-    "type_of_audition": new Array("hidden_field_label_type_of_audition", "hidden_field_data_type_of_audition"),
     "active": new Array("hidden_field_label_active", "hidden_field_data_active")
   };
 
@@ -3447,7 +3402,6 @@ if ($this->Embutida_form)
     "id": "on",
     "category": "off",
     "short": "off",
-    "type_of_audition": "off",
     "active": "off"
   };
   var bRefreshTable = false;
@@ -3497,23 +3451,6 @@ if ($this->Embutida_form)
     if ("short" == sIndex)
     {
       scAjaxSetFieldText(sIndex, aValue, "", "", true);
-      updateHeaderFooter(sIndex, aValue);
-
-      if ($("#id_sc_field_" + sIndex).length) {
-          $("#id_sc_field_" + sIndex).change();
-      }
-      else if (document.F1.elements[sIndex]) {
-          $(document.F1.elements[sIndex]).change();
-      }
-      else if (document.F1.elements[sFieldName + "[]"]) {
-          $(document.F1.elements[sFieldName + "[]"]).change();
-      }
-
-      return;
-    }
-    if ("type_of_audition" == sIndex)
-    {
-      scAjaxSetFieldSelect(sIndex, aValue, null);
       updateHeaderFooter(sIndex, aValue);
 
       if ($("#id_sc_field_" + sIndex).length) {

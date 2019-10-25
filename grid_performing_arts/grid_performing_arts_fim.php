@@ -74,10 +74,6 @@
    }
    $_SESSION['sc_session'][$script_case_init]['form_performing_arts_i'] = array();
    $fecha_janela = false;
-   if (isset($_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['sc_outra_jan']) && $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['sc_outra_jan'])
-   {
-       $fecha_janela = true;
-   }
    if ((isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['opc_psq']) && $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['opc_psq']) || $fecha_janela)
    {
        if (isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['sc_modal']) && $_SESSION['sc_session'][$script_case_init]['grid_performing_arts']['sc_modal'])

@@ -97,7 +97,6 @@ class grid_medical_information_ini
    var $path_atual;
    var $Gd_missing;
    var $sc_site_ssl;
-   var $link_form_medical_information;
    var $nm_cont_lin;
    var $nm_limite_lin;
    var $nm_limite_lin_prt;
@@ -211,8 +210,8 @@ class grid_medical_information_ini
       $this->nm_dt_criacao   = "20190924"; 
       $this->nm_hr_criacao   = "113019"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -448,8 +447,8 @@ class grid_medical_information_ini
               $this->sc_lig_md5["form_medical_information"] = 'S';
           }
       }
-      $this->sc_lig_target["A_@scinf_"] = '';
-      $this->sc_lig_target["A_@scinf__@scinf_form_medical_information"] = '';
+      $this->sc_lig_target["B_@scinf_sc_btn_0"] = '';
+      $this->sc_lig_target["B_@scinf_sc_btn_0_@scinf_form_medical_information"] = '';
       if ($_SESSION['sc_session'][$this->sc_page]['grid_medical_information']['dashboard_info']['under_dashboard'])
       {
           $sTmpDashboardApp = $_SESSION['sc_session'][$this->sc_page]['grid_medical_information']['dashboard_info']['dashboard_app'];
@@ -464,7 +463,6 @@ class grid_medical_information_ini
               }
           }
       }
-      $this->link_form_medical_information =  $this->sc_protocolo . $this->server . $this->path_link . "" . SC_dir_app_name('form_medical_information') . "/" ; 
       if ($Tp_init == "Path_sub")
       {
           return;
@@ -766,6 +764,17 @@ class grid_medical_information_ini
       { 
           $_SESSION['scriptcase']['sc_num_img'] = 1;
       } 
+      $this->arr_buttons_usr = array();
+
+      $this->arr_buttons_usr['SC_btn_0']['hint']             = "";
+      $this->arr_buttons_usr['SC_btn_0']['type']             = "button";
+      $this->arr_buttons_usr['SC_btn_0']['value']            = "Create Record";
+      $this->arr_buttons_usr['SC_btn_0']['display']          = "text_fontawesomeicon";
+      $this->arr_buttons_usr['SC_btn_0']['display_position'] = "text_right";
+      $this->arr_buttons_usr['SC_btn_0']['style']            = "check";
+      $this->arr_buttons_usr['SC_btn_0']['image']            = "";
+      $this->arr_buttons_usr['SC_btn_0']['has_fa']            = "true";
+      $this->arr_buttons_usr['SC_btn_0']['fontawesomeicon']            = "fas fa-edit";
       $this->str_google_fonts= isset($str_google_fonts)?$str_google_fonts:'';
       $this->regionalDefault();
       $this->Str_btn_grid    = trim($str_button) . "/" . trim($str_button) . $_SESSION['scriptcase']['reg_conf']['css_dir'] . ".php";
@@ -874,7 +883,7 @@ class grid_medical_information_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_medical_information']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_medical_information']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NmDQX7D1veV5XGHgrKVcFeDuX7HMJeHQBsZ1B/DSNOD5JeHgvsZSJ3DuJeHMFGD9XsH9BiHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiD9BsZ1B/D1rwHQraDMBYHArCV5FaHIFUHQXOZSX7Z1BYHQrqHuNODkBsHEX7HMX7DcBqH9BqHIBeHQJwDEBODkFeH5FYVoFGHQJKDQBOZ1rwD5XGHuzGVIBOHEFYDoNUDcNwH9B/Z1rYV5FaDMzGHEFiHEFqDoF7DcJeDQX7HIBeV5raHuvmVcBOV5F/DorqD9BsH9FaHAN7V5X7DMBYHEJGH5F/VoXGD9XsZSX7Z1vCD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcXKDWJeDoX7HQJmZ1B/HArYV5X7HgBOZSXeHEXCDoJsD9NmDuBqHAveHuXGHgrwVIB/DuX7VEX7HQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoBODcBwDQFUZ1rwV5X7HuzGVIBOV5X7DoJsD9XGZSB/HArYHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOV9BUHEX/VoF7HQNmZ1BiHAvCD5XGHgBeHEFiV5B3DoF7D9XsDuFaHAveHQJwHuBOVcFeH5XCHMJeHQXOZ1FGZ1vOD5XGHgrKVkJqDuFaHMJsD9XsZSX7DSBYD5NUDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcJeH9FGHINaV5BqDMzGVcFeDWFaVoFGHQJmH9FaHANOHuFUDEBeHEJGDuJeHIF7HQFYDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZ1B/HIrwD5BODMBYHEXeHEXKZuJeHQFYZSBiDSBYHuXGDMrYV9BUDWJeDoF7HQNwH9BqHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HIrwV5BOHuvmVcBOH5XCVoJwD9BsZ1B/HArYV5B/DEBeHEXeH5FYDoraD9XsDQB/Z1rwD5BqHuNOVIBODWF/VoraD9XOZSB/Z1rYD5NUDEvsHEFiHEFqDoB/D9XsZ9JeZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaHgrwDkFCDWXKVoF7HQBqZkFGHINKD5JeDEBOHEFiV5FaHIrqD9XsH9X7D1BeD5F7DMvmVcBOHEF/DoJeD9XOH9BqHArKV5FUDMrYZSXeV5FqHIJsD9NwDQJsHABYV5raHgvsVIFCDWJeVoraD9BsZSFaDSNOV5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BODMvOVcBUDWXKVEFGHQNmZkBiHAvsD5XGHgNKHArCDWF/VoBiDcJUZSX7Z1BYHuFaHuBYVcBOHEF/HMF7HQNwZ1BOD1NaZMXGDErKHArCDuJeDoJeDcXGZSBiDSrwV5FUDMNODkB/H5XCDorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMJeDcJeDQFGHANOD5JwHuzGDkBODurGVoFaHQXGH9B/HIveD5NUDEBeHEFiHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUHEX/DoJsHQNmZ1XGZ1veZMNU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_medical_information']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_medical_information']['initialize'])  
       { 
@@ -3661,6 +3670,10 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information'][$path_d
    {
        $_SESSION['usr_login'] = $usr_login;
    }
+   if (isset($nmgp_start) && $nmgp_start == "SC")
+   {
+       $nmgp_outra_jan = "";
+   }
    if (!empty($glo_perfil))  
    { 
       $_SESSION['scriptcase']['glo_perfil'] = $glo_perfil;
@@ -4030,10 +4043,6 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information'][$path_d
        {
            $_SESSION["usr_login"] = "";
        }
-       if (!isset($_SESSION['sc_session'][$script_case_init]['grid_medical_information']['mostra_edit'])) 
-       {
-           $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['mostra_edit'] = "S";
-       }
        if (isset($nmgp_lig_edit_lapis)) 
        {
           $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['mostra_edit'] = $nmgp_lig_edit_lapis;
@@ -4069,17 +4078,16 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information'][$path_d
            }
            else
            {
-               $nm_url_saida = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ""; 
-               $nm_url_saida = str_replace("_fim.php", ".php", $nm_url_saida);
-               if (!empty($nmgp_url_saida)) 
-               { 
-                   $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['retorno_cons'] = $nmgp_url_saida ; 
-               } 
-               if (!empty($_SESSION['sc_session'][$script_case_init]['grid_medical_information']['retorno_cons'])) 
-               { 
-                   $nm_url_saida = $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['retorno_cons']  . "?script_case_init=" . NM_encode_input($script_case_init);  
-                   $nm_apl_dependente = 1 ; 
-               } 
+               $trab_path             = explode("/", $_SERVER['PHP_SELF']);
+               $trab_count_path       = count($trab_path);
+               $path_retorno_aplicacao  = "";
+               for ($ix = 0; $ix + 2 < $trab_count_path; $ix++)
+               {
+                    $path_retorno_aplicacao .=  $trab_path[$ix] . "/";
+               }
+               $path_retorno_aplicacao .=  "" . SC_dir_app_name('applicant_application_data') . "/";
+               $nm_url_saida = $path_retorno_aplicacao;
+               $nm_apl_dependente = 1; 
                if (!empty($nm_url_saida)) 
                { 
                    $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $nm_url_saida ; 
@@ -4096,7 +4104,6 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information'][$path_d
 // 
        if (isset($_SESSION['scriptcase']['nm_sc_retorno']) && !empty($_SESSION['scriptcase']['nm_sc_retorno']) && $nm_apl_dependente != 1 && substr($_SESSION['sc_session'][$script_case_init]['grid_medical_information']['opcao'], 0, 7) != "grafico" && $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['opcao'] != "pdf" ) 
        { 
-            $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $_SESSION['scriptcase']['nm_sc_retorno']; 
             $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['menu_desenv'] = true;   
        } 
        if (isset($nmgp_parms_ret)) 

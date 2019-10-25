@@ -315,6 +315,8 @@ class applicant_information_grid_grid
    $this->nmgp_botoes['last'] = "off";
    $this->nmgp_botoes['pdf'] = "on";
    $this->nmgp_botoes['Edit'] = "on";
+   $this->nmgp_botoes['contact_detail'] = "on";
+   $this->nmgp_botoes['nok'] = "on";
    if (isset($_SESSION['scriptcase']['sc_apl_conf']['applicant_information_grid']['btn_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['applicant_information_grid']['btn_display']))
    {
        foreach ($_SESSION['scriptcase']['sc_apl_conf']['applicant_information_grid']['btn_display'] as $NM_cada_btn => $NM_cada_opc)
@@ -2899,6 +2901,32 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
           $nm_saida->saida("          $Cod_Btn \r\n");
           $NM_btn = true;
       } 
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['contact_detail'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_contact_detail"]) && $this->Ini->sc_lig_md5["form_contact_detail"] == "S") {
+               $Parms_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_information_grid@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "contact_detail", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_contact_detail')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_contact_detail');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_contact_detail')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_contact_detail');;", "sc_contact_detail_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['nok'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_next_of_kin"]) && $this->Ini->sc_lig_md5["form_next_of_kin"] == "S") {
+               $Parms_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_information_grid@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "nok", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_next_of_kin')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_next_of_kin');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_next_of_kin')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_next_of_kin');;", "sc_nok_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
       $nm_saida->saida("         </td> \r\n");
@@ -3002,12 +3030,51 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       }
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['Edit'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_basic_information"]) && $this->Ini->sc_lig_md5["form_basic_information"] == "S") {
+               $Parms_Lig  = "SC_glo_par_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinN*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_information_grid@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinN*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "Edit", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_basic_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_basic_information');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_basic_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_basic_information');;", "sc_Edit_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['contact_detail'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_contact_detail"]) && $this->Ini->sc_lig_md5["form_contact_detail"] == "S") {
+               $Parms_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_information_grid@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "contact_detail", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_contact_detail')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_contact_detail');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_contact_detail')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_contact_detail');;", "sc_contact_detail_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['nok'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_next_of_kin"]) && $this->Ini->sc_lig_md5["form_next_of_kin"] == "S") {
+               $Parms_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_information_grid@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_usr_login*scinglo_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "nok", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_next_of_kin')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_next_of_kin');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_next_of_kin')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_next_of_kin');;", "sc_nok_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
       $nm_saida->saida("         </td> \r\n");
       $nm_saida->saida("        </tr> \r\n");
       $nm_saida->saida("       </table> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['ajax_nav'] && $this->force_toolbar)
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['ajax_nav'])
       { 
           $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_toobar_top', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -3021,7 +3088,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("     </tr> \r\n");
       if (!$NM_btn && isset($NM_ult_sep))
       {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['ajax_nav'] && $this->force_toolbar)
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_information_grid']['ajax_nav'])
           { 
               $this->Ini->Arr_result['setDisplay'][] = array('field' => $NM_ult_sep, 'value' => 'none');
           } 
@@ -3515,6 +3582,14 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("       obj.className = '" . $this->css_scGridFieldClick . "';\r\n");
    $nm_saida->saida("   }\r\n");
    $nm_saida->saida("   function Edit() \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("       \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function contact_detail() \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("       \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nok() \r\n");
    $nm_saida->saida("   { \r\n");
    $nm_saida->saida("       \r\n");
    $nm_saida->saida("   } \r\n");

@@ -212,8 +212,8 @@ class grid_next_of_kin_ini
       $this->nm_dt_criacao   = "20190924"; 
       $this->nm_hr_criacao   = "113020"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -282,8 +282,6 @@ class grid_next_of_kin_ini
       $this->path_css        = $this->root . $this->path_link . "_lib/css/";
       $this->path_lib_php    = $this->root . $this->path_link . "_lib/lib/php";
       $this->path_lib_js     = $this->root . $this->path_link . "_lib/lib/js";
-      $pos_path = strrpos($this->path_prod, "/");
-      $_SESSION['sc_session'][$this->sc_page]['grid_next_of_kin']['path_grid_sv'] = $this->root . substr($this->path_prod, 0, $pos_path) . "/conf/grid_sv/";
       $this->path_lang       = "../_lib/lang/";
       $this->path_lang_js    = "../_lib/js/";
       $this->path_chart_theme = $this->root . $this->path_link . "_lib/chart/";
@@ -826,7 +824,7 @@ class grid_next_of_kin_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_next_of_kin']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_next_of_kin']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NmDQB/D1veHQNUHgrYDkB/V5FGVEX7DcBqVINUDSrYHQFGHgvCHEJGDWXCDoBODcBiH9FUHANOD5rqDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgBeHEFiV5B3DoF7D9XsDuFaHAveHQF7HgrYZSJqDWF/HMJeHQBsZkFGDSBeD5BiDENOHEXeH5F/HIBiHQBiZ9F7HAveV5FGHgvOVcFCDur/VoB/HQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoBODcBwDQFUZ1rwV5X7HuzGVIBOV5X7DoJsD9XGZSB/HArYHQJwDEBODkFeH5FYVoFGHQJKDQBOZ1rwD5XGHuzGVIBOHEFYDoNUDcNwH9B/Z1NOV5FaDENOHEBUH5F/DoFUD9XsZSX7HAN7V5raHuvmDkBOHEFYDoJsHQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMBOVcBOV5F/HMraDcBqH9B/HANOHuJwDEvsHENiDuJeHIF7D9NwDuBqHIrwHuFaHuNOZSrCH5FqDoXGHQJmZ1FGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBOHQBiZ9XGHANOHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuFUHgrKZSXeDuFYHMJwDcJeDQFGHAveHuBODMzGVIBODuFqVEF7D9BsZ1BOZ1BeHQBODMzGZSXeV5FaHIJsD9XsZ9JeD1BeD5F7DMvmVcFeV5F/VoB/D9XOZSB/HArYD5JeDEBeHEFKDWF/HMFGD9JKDQJsHArYD5BOHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBYHAFKV5B3DoBO";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJKZSFUDSzGVWJeHuBYVIBsH5FqHIraDcJUZ1X7HArYZMBqDMvCZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvOV9FeV5X/VEBiHQNwZkFGHINKD5JeHgNOHErCDuX/VoFGDcXGDQB/D1veHuJwDMrYVcFeDuB7DoXGHQXGZ1BiD1zGZMFaDMveHErsH5BmVoFGHQNwH9BiDSrwHQF7HgrwVcFeH5B7VoBqD9BsZ1F7DSrYD5rqDMrYZSJ3DurmZuJsHQBiZ9XGHANOHQBODMvOVIB/H5B7DoXGHQXGZSBOD1rwHuJsHgrKDkB/DWB3VoFGHQXODQBqHAvCVWJwDMBYVcB/H5XKDoXGHQBqZ1BOD1rKHQJeHgBeDkB/DurmDoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiHQNmH9BqDSNOHuBqDMvCHErCV5B7VoFGHQFYDQFaHANOHQrqHgrwVIB/H5B3DoXGHQBsZkFGD1zGD5XGDMveHErCV5B3VoFGDcBiH9BiHAvmVWJwDMzGVIBsH5XKVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsDWBmVoJeD9FYDQBqHIvsVWJeDMNaV9FiV5X7HIX7DcJUZ1FaD1rKHuBODMBYHEXeHEFaVoB/HQXGZSFGHAvCVWBqDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQNmH9BiHArYHQrqDMNOVcB/H5FqHMBOHQFYZkBiHAvsD5BqHgveHArCDWF/VoBiDcJUZSX7Z1BYHuFaHgrwVcrsDWF/HIFUD9BiZSBOHINKZMXGHgveHEXeDWXCHMFaD9NwZSFGHAN7HQrqHgrwV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDuFaDoJeD9JKDQX7D1veV5raHuNOVIBODWFYVEX7D9BiZ1X7Z1BeD5FaDMzGVkJqV5FaVoJwD9JKDQX7Z1vCD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcrsDurGVEraHQBiZ1BOD1rwHuBODMzGVkXeDWFqDoJsHQJeDQBqHAveHQBqDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoBqHQFYZSBiHIrwV5X7HuNOVcB/HEX/VoX7DcBqZkBiHArKHQXGDErKZSJqDWF/HIrqHQXGDQFGHANKVWJsDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_next_of_kin']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_next_of_kin']['initialize'])  
       { 
@@ -1659,10 +1657,6 @@ class grid_next_of_kin_apl
    var $Res;
    var $Graf;
    var $pdf;
-   var $xls;
-   var $xml;
-   var $csv;
-   var $rtf;
 //
 //----- 
    function prep_modulos($modulo)
@@ -1678,7 +1672,7 @@ class grid_next_of_kin_apl
    function controle($linhas = 0)
    {
       global $nm_saida, $nm_url_saida, $script_case_init, $nmgp_parms_pdf, $nmgp_graf_pdf, $nm_apl_dependente, $nmgp_navegator_print, $nmgp_tipo_print, $nmgp_cor_print, $nmgp_cor_word, $Det_use_pass_pdf, $Det_pdf_zip, $NMSC_conf_apl, $NM_contr_var_session, $NM_run_iframe, $SC_module_export, $nmgp_password,
-             $glo_senha_protect, $nmgp_opcao, $nm_call_php, $rec, $nmgp_quant_linhas, $nmgp_fast_search, $nmgp_cond_fast_search, $nmgp_arg_fast_search, $nmgp_ordem;
+             $glo_senha_protect, $nmgp_opcao, $nm_call_php, $rec, $nmgp_ordem;
 
       $Parms_form_pdf = false;
       if (isset($_SESSION['sc_session']['scriptcase']['embutida_form_pdf']['grid_next_of_kin']))
@@ -1881,16 +1875,6 @@ class grid_next_of_kin_apl
               if ($nmgp_opcao == "muda_qt_linhas")
               {
                   $nmgp_quant_linhas  = strtolower($_POST['parm']);
-              }
-              if ($nmgp_opcao == "fast_search")
-              {
-                  $_POST['parm'] = str_replace("__NM_PLUS__", "+", $_POST['parm']);
-                  $_POST['parm'] = str_replace("__NM_AMP__", "&", $_POST['parm']);
-                  $_POST['parm'] = str_replace("__NM_PRC__", "%", $_POST['parm']);
-                  $temp = explode("_SCQS_", $_POST['parm']);
-                  $nmgp_fast_search      = (isset($temp[0])) ? $temp[0] : "";
-                  $nmgp_cond_fast_search = (isset($temp[1])) ? $temp[1] : "";
-                  $nmgp_arg_fast_search  = (isset($temp[2])) ? $temp[2] : "";
               }
               if ($nmgp_opcao == "ordem")
               {
@@ -2139,71 +2123,6 @@ class grid_next_of_kin_apl
       $this->Ini->Str_btn_grid    = trim($str_button) . "/" . trim($str_button) . $_SESSION['scriptcase']['reg_conf']['css_dir'] . ".php";
       $this->Ini->Str_btn_css     = trim($str_button) . "/" . trim($str_button) . ".css";
       include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
-      $this->arr_buttons['group_group_3']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt_email_title'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt_email'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__envelope.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_1']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__export.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_4']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt_email_title'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt_email'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__envelope.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_1']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_expt'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__export.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
-      $this->arr_buttons['group_group_2']= array(
-          'value'            => "" . $this->Ini->Nm_lang['lang_btns_settings'] . "",
-          'hint'             => "" . $this->Ini->Nm_lang['lang_btns_settings'] . "",
-          'type'             => "button",
-          'display'          => "text_img",
-          'display_position' => "text_right",
-          'image'            => "scriptcase__NM__gear.png",
-          'fontawesomeicon'  => "",
-          'has_fa'           => true,
-          'content_icons'    => false,
-          'style'            => "default",
-      );
-
       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida']) || !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'])
       { 
       $this->Ini->Color_bg_ajax            = (!isset($str_ajax_bg)       || "" == trim($str_ajax_bg))         ? "#000" : $str_ajax_bg;
@@ -2253,7 +2172,6 @@ class grid_next_of_kin_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['field_order'][] = "mobile";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['field_order'][] = "relationships";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['field_order'][] = "login";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['field_order_orig'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['field_order'];
           if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['usr_cmp_sel']))
           { 
               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['usr_cmp_sel'] = array();
@@ -2529,23 +2447,6 @@ class grid_next_of_kin_apl
       { 
           $this->Ini->path_img_modelo = $this->Ini->path_img_modelo;
       } 
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] == "fast_search")  
-      { 
-          $this->SC_fast_search($GLOBALS["nmgp_fast_search"], $GLOBALS["nmgp_cond_fast_search"], $GLOBALS["nmgp_arg_fast_search"]);
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_ant'] == $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq'])
-          { 
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] = 'igual';
-          } 
-          else 
-          { 
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_ant'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq'];
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['contr_array_resumo'] = "NAO";
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['contr_total_geral']  = "NAO";
-              unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['tot_geral']);
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] = 'pesq';
-              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['orig_pesq'] = 'grid';
-          } 
-      } 
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] == 'pesq' && isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['orig_pesq']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['orig_pesq']))  
       { 
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['orig_pesq'] == "res")  
@@ -2568,7 +2469,6 @@ class grid_next_of_kin_apl
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_ant']   = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['cond_pesq'] = ""; 
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'] = "";
-         $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_fast'] = "";
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['contr_total_geral'] = "NAO";
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['sc_total']);
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['tot_geral']);
@@ -2629,66 +2529,6 @@ class grid_next_of_kin_apl
           $this->Ini->nm_limite_lin_res_prt = 0;
           $GLOBALS['nmgp_cor_print']        = "CO";
       } 
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] == "xls")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_next_of_kin/grid_next_of_kin_xls.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_next_of_kin_xls.class.php"); 
-          } 
-          $this->xls  = new grid_next_of_kin_xls();
-          $this->prep_modulos("xls");
-          $this->xls->monta_xls();
-      }
-      else
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] == "xml")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_next_of_kin/grid_next_of_kin_xml.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_next_of_kin_xml.class.php"); 
-          } 
-          $this->xml  = new grid_next_of_kin_xml();
-          $this->prep_modulos("xml");
-          $this->xml->monta_xml();
-      }
-      else
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] == "csv")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_next_of_kin/grid_next_of_kin_csv.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_next_of_kin_csv.class.php"); 
-          } 
-          $this->csv  = new grid_next_of_kin_csv();
-          $this->prep_modulos("csv");
-          $this->csv->monta_csv();
-      }
-      else   
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'] == "rtf")  
-      { 
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'])
-          { 
-              require_once($this->Ini->path_embutida . "grid_next_of_kin/grid_next_of_kin_rtf.class.php"); 
-          } 
-          else 
-          { 
-              require_once($this->Ini->path_aplicacao . "grid_next_of_kin_rtf.class.php"); 
-          } 
-          $this->rtf  = new grid_next_of_kin_rtf();
-          $this->prep_modulos("rtf");
-          $this->rtf->monta_rtf();
-      }
-      else
       if (substr($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['opcao'], 0, 7) == "grafico")  
       { 
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'])
@@ -3196,201 +3036,6 @@ else
           $this->Db->Close(); 
       }
   }
-   function SC_fast_search($field, $arg_search, $data_search)
-   {
-      if (empty($data_search)) 
-      {
-          $tmp_cmd = "";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_fast'] = "";
-          if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_orig'])) 
-          {
-              $tmp_cmd = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_orig']; 
-          }
-          if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'])) 
-          {
-              if (!empty($tmp_cmd)) 
-              {
-                  $tmp_cmd .= " and (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'] . ")"; 
-              }
-              else
-              {
-                  $tmp_cmd = " where (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'] . ")"; 
-              }
-          }
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq'] = $tmp_cmd;
-          unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['fast_search']);
-          return;
-      }
-      $comando = "";
-      if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($data_search))
-      {
-          $data_search = NM_conv_charset($data_search, $_SESSION['scriptcase']['charset'], "UTF-8");
-      }
-      $sv_data = $data_search;
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "login", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "fullname", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "mobile", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "relationships", $arg_search, $data_search);
-      }
-      if (empty($comando)) 
-      {
-          $comando = " 1 <> 1 "; 
-      }
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_fast'] = $comando;
-      $tmp_cmd = "";
-      if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_orig'])) 
-      {
-          $tmp_cmd = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_orig']; 
-      }
-      if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'])) 
-      {
-          if (!empty($tmp_cmd)) 
-          {
-              $tmp_cmd .= " and (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'] . ")"; 
-          }
-          else
-          {
-              $tmp_cmd = " where (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq_filtro'] . ")"; 
-          }
-      }
-      if (!empty($tmp_cmd)) 
-      {
-          $comando = $tmp_cmd . " and (" . $comando . ")"; 
-      }
-      else
-      {
-          $comando = " where (" . $comando . ")"; 
-      }
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['where_pesq'] = $comando;
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['fast_search'][0] = $field;
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['fast_search'][1] = $arg_search;
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['fast_search'][2] = $sv_data;
-   }
-   function SC_monta_condicao(&$comando, $nome, $condicao, $campo, $tp_campo="")
-   {
-      $nm_aspas   = "'";
-      $nm_aspas1  = "'";
-      $nm_numeric = array();
-      $Nm_datas   = array();
-      $nm_esp_postgres = array();
-      $campo_join = strtolower(str_replace(".", "_", $nome));
-      $nm_ini_lower = "";
-      $nm_fim_lower = "";
-      $nm_numeric[] = "login";
-      if (in_array($campo_join, $nm_numeric))
-      {
-         if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['decimal_db'] == ".")
-         {
-             $nm_aspas  = "";
-             $nm_aspas1 = "";
-         }
-         if (is_array($campo))
-         {
-             foreach ($campo as $Ind => $Cmp)
-             {
-                if (!is_numeric($Cmp))
-                {
-                    return;
-                }
-                if ($Cmp == "")
-                {
-                    $campo[$Ind] = 0;
-                }
-             }
-         }
-         else
-         {
-             if (!is_numeric($campo))
-             {
-                 return;
-             }
-             if ($campo == "")
-             {
-                $campo = 0;
-             }
-         }
-      }
-      if (in_array($campo_join, $nm_numeric) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_postgres) && (strtoupper($condicao) == "II" || strtoupper($condicao) == "QP" || strtoupper($condicao) == "NP"))
-      {
-          $nome      = "CAST ($nome AS TEXT)";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-      if (in_array($campo_join, $nm_esp_postgres) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_postgres))
-      {
-          $nome      = "CAST ($nome AS TEXT)";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-      if (in_array($campo_join, $nm_numeric) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase) && (strtoupper($condicao) == "II" || strtoupper($condicao) == "QP" || strtoupper($condicao) == "NP"))
-      {
-          $nome      = "CAST ($nome AS VARCHAR)";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-      if (in_array($campo_join, $nm_numeric) && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_progress) && (strtoupper($condicao) == "II" || strtoupper($condicao) == "QP" || strtoupper($condicao) == "NP"))
-      {
-          $nome      = "CAST ($nome AS VARCHAR(255))";
-          $nm_aspas  = "'";
-          $nm_aspas1 = "'";
-      }
-         $comando .= (!empty($comando) ? " or " : "");
-         if (is_array($campo))
-         {
-             $prep = "";
-             foreach ($campo as $Ind => $Cmp)
-             {
-                 $prep .= (!empty($prep)) ? "," : "";
-                 $Cmp   = substr($this->Db->qstr($Cmp), 1, -1);
-                 $prep .= $nm_aspas . $Cmp . $nm_aspas1;
-             }
-             $prep .= (empty($prep)) ? $nm_aspas . $nm_aspas1 : "";
-             $comando .= $nm_ini_lower . $nome . $nm_fim_lower . " in (" . $prep . ")";
-             return;
-         }
-         $campo  = substr($this->Db->qstr($campo), 1, -1);
-         switch (strtoupper($condicao))
-         {
-            case "EQ":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower . " = " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "II":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower . " like '" . $campo . "%'";
-            break;
-            case "QP":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower ." like '%" . $campo . "%'";
-            break;
-            case "NP":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower ." not like '%" . $campo . "%'";
-            break;
-            case "DF":     // 
-               $comando        .= $nm_ini_lower . $nome . $nm_fim_lower . " <> " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "GT":     // 
-               $comando        .= " $nome > " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "GE":     // 
-               $comando        .= " $nome >= " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "LT":     // 
-               $comando        .= " $nome < " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-            case "LE":     // 
-               $comando        .= " $nome <= " . $nm_aspas . $campo . $nm_aspas1;
-            break;
-         }
-   }
   function html_doc_word($nm_arquivo_doc_word, $nmgp_password)
   {
       global $nm_url_saida;

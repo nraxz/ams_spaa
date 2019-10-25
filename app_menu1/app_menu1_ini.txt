@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-app_menu1
-SIM
-
-app_menu1
-LigMd5

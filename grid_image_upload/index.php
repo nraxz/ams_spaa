@@ -211,8 +211,8 @@ class grid_image_upload_ini
       $this->nm_dt_criacao   = "20190902"; 
       $this->nm_hr_criacao   = "105157"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -792,7 +792,7 @@ class grid_image_upload_ini
       $this->arr_buttons_usr['new_images']['value']            = "Upload Images";
       $this->arr_buttons_usr['new_images']['display']          = "text_fontawesomeicon";
       $this->arr_buttons_usr['new_images']['display_position'] = "text_right";
-      $this->arr_buttons_usr['new_images']['style']            = "default";
+      $this->arr_buttons_usr['new_images']['style']            = "check";
       $this->arr_buttons_usr['new_images']['image']            = "";
       $this->arr_buttons_usr['new_images']['has_fa']            = "true";
       $this->arr_buttons_usr['new_images']['fontawesomeicon']            = "fas fa-images";
@@ -904,7 +904,7 @@ class grid_image_upload_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_image_upload']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_image_upload']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXGZSX7HANOHuBiDMBOVcFeHEFYHIJeHQBsVINUHIBeHuX7HgBYHEFiHEFqVoB/DcBwH9X7Z1BYV5JeHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveHArCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQBiZSBiDSN7HQJeHgrwVcFeV5X/DoXGHQXGZ1FGHAN7HuFGDMvCVkJqH5BmVoFGHQXsDuFaD1vOV5BOHgvOVcFeV5BmDoXGDcNmZSBqHAvCZMFaHgrKVkJ3H5FGDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwDEBOVkJqDWFqVoBOHQJeDQX7HABYHuFGHgrKV9BUH5XCHMJsHQBiZkBiHANOD5BqDEBOHEFiDuFaHINUDcJeZSBiHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HIBeD5XGDEBeHEXeH5F/DoFUD9JKDQX7Z1BYV5FUHgrKDkBODWFYVoJwD9BiZ1FaHArKV5FGDEBOZSXeDWX7VoFaHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBeHEFiV5B3DoF7D9XsDuFaHAveHQJeHuvmDkBsV5FGVoF7D9JmZSB/HIrwHuFUDMzGDkB/DuFaDoBOHQFYH9BiHAveD5NUHgNKDkBOV5FYHMBiD9XOZ1F7HArYD5BiDMBYVkJGDWr/DoB/D9XsH9FGDSN7D5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgveHErsDWFGZuXGHQBiDuBqHANKV5BODMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDEBeVkJGDWXCHMX7HQBiDQFGHANOHQB/HuBYVIBOV5X7DoBiDcFYZSFaD1rwD5JwHgBeHEFiV5B3DoF7D9XsDuFaHAveHQBOHgvsVcFCDWJeDoraD9XOH9B/HINKD5raHgNOZSXeDuJeDoraD9JKDQJsDSBYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiDSvOV5FUHgveHEBOV5JeZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBwH9BiHIBeHuFUDMzGVIBODuFqDoJsDcNmZkFGD1NaZMFaDMvCHArsH5FYVoX7DcBwDQBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5FYHMFaHQNmDQB/D1veHQXGDMrwVcB/DWXCHMJeHQXGZSBOHANOHuFUHgvCHArCDWFqHIFUHQBiH9FUHIrKHQBODMrwVcB/HEF/HMJeHQNwZkFGDSNOHQBiDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1X7HANOV5FaDEBOZSJ3H5FGDoXGHQBiH9X7D1BeD5NUDMvOVcXKH5FqDoBiD9XOZ1BiHABYHQrqHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgrKDkFCDWJeDoFGDcJUZ1X7Z1BeV5JeDEBOHEXeDWX7VoBqDcBwDQFUZ1rwVWJwHuzGVcFKDuFqVoraDcBqZ1B/D1vsV5FUDErKHEFiDuJeDoBOHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDuX/ZuXGDcBiH9FGHABYVWXGDMBOV9BUDWXCHMBODcJUZSB/Z1NOHQNUDEBOHENiV5FaHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBOHQBiZ9XGHABYHuFaHuNOZSrCH5FqDoXGHQJmZ1F7Z1rYD5JwDEvsHArCDuFYHIXGHQNmZ9XGHIrKD5rqDMvsVcB/DWFaVEFGHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMJeDcJeDQFGHANOD5JwHuzGDkBODurGVoFaHQXGH9B/HIveD5NUDEBeHEFiHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUHEX/DoJsHQNmZ1XGZ1veZMNU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_image_upload']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_image_upload']['initialize'])  
       { 
@@ -3781,6 +3781,10 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_image_upload'][$path_doc_md5]
    {
        $_SESSION['usr_login'] = $usr_login;
    }
+   if (isset($nmgp_start) && $nmgp_start == "SC")
+   {
+       $nmgp_outra_jan = "";
+   }
    if (!empty($glo_perfil))  
    { 
       $_SESSION['scriptcase']['glo_perfil'] = $glo_perfil;
@@ -4216,17 +4220,16 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_image_upload'][$path_doc_md5]
            }
            else
            {
-               $nm_url_saida = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ""; 
-               $nm_url_saida = str_replace("_fim.php", ".php", $nm_url_saida);
-               if (!empty($nmgp_url_saida)) 
-               { 
-                   $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['retorno_cons'] = $nmgp_url_saida ; 
-               } 
-               if (!empty($_SESSION['sc_session'][$script_case_init]['grid_image_upload']['retorno_cons'])) 
-               { 
-                   $nm_url_saida = $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['retorno_cons']  . "?script_case_init=" . NM_encode_input($script_case_init);  
-                   $nm_apl_dependente = 1 ; 
-               } 
+               $trab_path             = explode("/", $_SERVER['PHP_SELF']);
+               $trab_count_path       = count($trab_path);
+               $path_retorno_aplicacao  = "";
+               for ($ix = 0; $ix + 2 < $trab_count_path; $ix++)
+               {
+                    $path_retorno_aplicacao .=  $trab_path[$ix] . "/";
+               }
+               $path_retorno_aplicacao .=  "" . SC_dir_app_name('applicant_application_data') . "/";
+               $nm_url_saida = $path_retorno_aplicacao;
+               $nm_apl_dependente = 1; 
                if (!empty($nm_url_saida)) 
                { 
                    $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $nm_url_saida ; 
@@ -4243,7 +4246,6 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_image_upload'][$path_doc_md5]
 // 
        if (isset($_SESSION['scriptcase']['nm_sc_retorno']) && !empty($_SESSION['scriptcase']['nm_sc_retorno']) && $nm_apl_dependente != 1 && substr($_SESSION['sc_session'][$script_case_init]['grid_image_upload']['opcao'], 0, 7) != "grafico" && $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['opcao'] != "pdf" ) 
        { 
-            $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $_SESSION['scriptcase']['nm_sc_retorno']; 
             $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['menu_desenv'] = true;   
        } 
        if (isset($nmgp_parms_ret)) 

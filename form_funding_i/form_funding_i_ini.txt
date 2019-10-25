@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_funding_i
-SIM
-form
-form_funding_i
-LigMd5

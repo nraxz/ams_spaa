@@ -279,8 +279,8 @@ class form_academic_i_ini
       $this->nm_dt_criacao   = "20151221"; 
       $this->nm_hr_criacao   = "125340"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -936,7 +936,7 @@ class form_academic_i_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJeDQFaHIrKV5FGHgrwVIBOV5F/DoraHQBqZkFGZ1BeHQX7DEBeHENiDWF/DoJeHQXODuFaD1veHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5FYHMFaHQNmDQB/D1veHQXGDMrwVcB/DWXCHMJeHQXGZSBOHANOHuFUHgvCHArCDWFqHIFUHQBiH9FUHIrKHQBODMrwVcB/HEF/HMJeHQNwZkFGDSNOHQBiDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1rqD1rKHQBqDErKHEXeDWXCHMFaDcXGZ9XGDSBYHQNUDMNOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDWXCDoB/D9NwH9X7Z1BYV5raHgvsVcBOH5FqVoB/DcJUZ1F7HArYV5X7DEBeHEXeH5FYDoFUD9JKDuBOZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMrYVcFCDuX7DoNUD9BiZ1BiD1rKHuFUDMveVkJGDuJeHIFUDcJeH9X7HANOV5FUDMrYVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWB3VoX7HQNmZSBqHArKV5FUDMrYZSXeV5FqHIJsHQXsH9BiHANOV5BqHgrwZSJqDWFYHINUDcBqZ1B/Z1NOHQBOHgBOVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJeDQFUDSN7VWBODMNOVcBUDWF/HIX7HQNwH9FaHArYHQJwDEBODkFeH5FYVoFGHQJKDQBqHArYHQXGDMvsZSNiDWFYHMBOHQNmH9BOHArKHuBqHgvCHEJqH5F/HMBiDcXGDuBqD1veHQJeDMrwVcB/DWB3VEraHQNwZ1BOHINKZMB/HgvCHArCHEXCHMB/HQFYZSFUD1veHuF7HgNKDkBODuFqDoFGDcBqVIJwD1rwHQF7HgBYDkXKDWrGDoJeHQNmZ9XGHANOHQF7DMrwVcB/DWJeHIXGHQXGZkFGDSBOZMBqHgvCHArsH5BmZuBOHQXODuFaZ1BYHuJwDMrwV9BUHEFYHIJsDcNmZkFGD1NaZMXGDMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuFGDMvsZSNiH5FqHINUHQBiZ1X7D1rKHuBOHgvCHEJqDWF/HIX7HQFYH9FUHAN7HQNUDMrwV9FeDWFYHMJwHQNmZSBOHIveHuXGHgvCHEJqHEXCHIX7HQXODuFaDSN7HuraHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaDoBODcJeDQFGD1veD5BOHgrYDkBsH5B7VEBiHQFYH9BOHArKD5XGDEBOZSXeDuFaDoJeDcJeDQX7Z1zGV5BiDMNOVIBOHEFYDoJeDcJUZ1FaD1NaD5raHgN7HEBUDurmZuJeHQXOZ9JeDSzGV5JwDMBYVIBODWFYVENUHQBiZ1B/HABYV5JsDMzGHAFKV5FaZuBOHQJeDuBOZ1rwVWXGHuBYDkFCDuX7VoX7D9BsH9B/Z1BeZMB/HgvCZSJGH5FYDoF7D9NwH9X7DSBYV5JeHuBYVcFKH5FqVoB/D9XOH9B/D1zGD5FaDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7DoX7D9BsH9FaD1rwZMB/DMNKZSJ3V5XCHIJwHQFYH9BiHABYHQF7DMzGVcFiV5X/VorqHQNmZ1BiHABYHQJwDEBODkFeH5FYVoFGHQJKDQB/D1BeHuBqDMNOVIBOV5F/DoFUD9BiH9BOHABYHuJwHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgrKVIBOV5X7VoX7D9BsZ1BOZ1BeD5NUDMBYZSXeDWX7VoFaDcBwDQX7Z1BYD5BqHgvsDkB/V5X7DoFGHQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMB/DEvsHErCH5FGDoJeD9NmDQX7D1BeHuNUHgvOVcB/DWJeVoraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoBODcBwDQFUZ1rwV5X7HuzGVIBOV5X7DoJsD9XGZSB/HArYHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOV9BUHEX/VoF7HQNmZ1BiHAvCZMFaHgBeHEFiV5B3DoF7D9XsDuFaHAveD5rqDMNODkBODWFaHMFGHQJmZSFaHArYV5FGHgBOZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_academic_i']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_academic_i']['initialize'])  
       { 
@@ -1667,6 +1667,10 @@ ob_start();
     {
         $_SESSION['sc_session'][$script_case_init]['form_academic_i']['where_filter'] = $SC_where_pdf;
     }
+    if (isset($nmgp_start) && $nmgp_start == "SC")
+    {
+        $nmgp_outra_jan = "";
+    }
 
     if (isset($_POST['rs']) && !is_array($_POST['rs']) && 'ajax_' == substr($_POST['rs'], 0, 5) && isset($_POST['rsargs']) && !empty($_POST['rsargs']) && !isset($_SESSION['scriptcase']['form_academic_i']['session_timeout']['redir']))
     {
@@ -2128,19 +2132,17 @@ ob_start();
         }
         elseif ($_SESSION['sc_session'][$script_case_init]['form_academic_i']['run_iframe'] != "F" && $_SESSION['sc_session'][$script_case_init]['form_academic_i']['run_iframe'] != "R")
         {
-           $nm_url_saida = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ""; 
-           $nm_url_saida = str_replace("_fim.php", ".php", $nm_url_saida); 
+            $trab_path             = explode("/", $_SERVER['PHP_SELF']);
+            $trab_count_path       = count($trab_path);
+            $path_retorno_aplicacao  = "";
+            for ($ix = 0; $ix + 2 < $trab_count_path; $ix++)
+            {
+                 $path_retorno_aplicacao .=  $trab_path[$ix] . "/";
+            }
+            $path_retorno_aplicacao .=  "" . SC_dir_app_name('grid_academic') . "/";
+            $nm_url_saida = $path_retorno_aplicacao;
+            $nm_apl_dependente = 1; 
             $nm_saida_global = $nm_url_saida;
-            if (!empty($nmgp_url_saida) && empty($_SESSION['sc_session'][$script_case_init]['form_academic_i']['retorno_edit'])) 
-            {
-                $_SESSION['sc_session'][$script_case_init]['form_academic_i']['retorno_edit'] = $nmgp_url_saida ; 
-            } 
-            if (!empty($_SESSION['sc_session'][$script_case_init]['form_academic_i']['retorno_edit'])) 
-            {
-                $nm_url_saida = $_SESSION['sc_session'][$script_case_init]['form_academic_i']['retorno_edit'] . "?script_case_init=" . $script_case_init . "&script_case_session=" . session_id();  
-                $nm_apl_dependente = 1 ; 
-                $nm_saida_global = $nm_url_saida;
-            } 
             if ($nm_apl_dependente != 1) 
             { 
                 $_SESSION['sc_session'][$script_case_init]['form_academic_i']['run_iframe'] = "N"; 
@@ -2153,10 +2155,6 @@ ob_start();
                 if ($nm_apl_dependente == 1) 
                 { 
                     $_SESSION['scriptcase']['sc_tp_saida'] = "D"; 
-                } 
-                if (isset($_SESSION['scriptcase']['nm_sc_retorno']) && !empty($_SESSION['scriptcase']['nm_sc_retorno']) && $nm_apl_dependente != 1) 
-                { 
-                    $_SESSION['scriptcase']['sc_url_saida'][$script_case_init] = $_SESSION['scriptcase']['nm_sc_retorno']; 
                 } 
             } 
         }

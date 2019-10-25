@@ -1470,7 +1470,7 @@ else
 <input type=hidden name="status" value="<?php echo $this->form_encode_input($this->status) . "\">"; ?>
 <?php } else { $sc_hidden_no++; ?>
 
-    <TD class="scFormLabelOdd scUiLabelWidthFix css_status_label" id="hidden_field_label_status" style="<?php echo $sStyleHidden_status; ?>"><span id="id_label_status"><?php echo $this->nm_new_label['status']; ?></span></TD>
+    <TD class="scFormLabelOdd scUiLabelWidthFix css_status_label" id="hidden_field_label_status" style="<?php echo $sStyleHidden_status; ?>"><span id="id_label_status"><?php echo $this->nm_new_label['status']; ?></span><?php if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin']['php_cmp_required']['status']) || $_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin']['php_cmp_required']['status'] == "on") { ?> <span class="scFormRequiredOdd">*</span> <?php }?></TD>
     <TD class="scFormDataOdd css_status_line" id="hidden_field_data_status" style="<?php echo $sStyleHidden_status; ?>"><table style="border-width: 0px; border-collapse: collapse; width: 100%"><tr><td  class="scFormDataFontOdd css_status_line" style="vertical-align: top;padding: 0px">
 <?php if ($bTestReadOnly && $this->nmgp_opcao != "novo" && isset($this->nmgp_cmp_readonly["status"]) &&  $this->nmgp_cmp_readonly["status"] == "on") { 
 

@@ -702,6 +702,48 @@ if (isset($rs[0][0]))
 }
 $_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'off';
 }
+function pending_audition($applicant)
+{
+$_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'on';
+  
+
+$check_sql = "SELECT Count(id)"
+   . " FROM application_detail"
+   . " WHERE login = '" . $applicant . "' AND payment_status ='Pending'";
+ 
+      $nm_select = $check_sql; 
+      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
+      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
+      $rs = array();
+      if ($rx = $this->Db->Execute($nm_select)) 
+      { 
+          $y = 0; 
+          $nm_count = $rx->FieldCount();
+          while (!$rx->EOF)
+          { 
+                 for ($x = 0; $x < $nm_count; $x++)
+                 { 
+                        $rs[$y] [$x] = $rx->fields[$x];
+                 }
+                 $y++; 
+                 $rx->MoveNext();
+          } 
+          $rx->Close();
+      } 
+      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
+      { 
+          $rs = false;
+          $rs_erro = $this->Db->ErrorMsg();
+      } 
+;
+
+if (isset($rs[0][0]))     
+{
+   return $counter = $rs[0][0];
+    
+}
+$_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'off';
+}
 function getCountryName($country_id){
 $_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'on';
   

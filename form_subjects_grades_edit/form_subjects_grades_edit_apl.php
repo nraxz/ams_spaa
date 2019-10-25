@@ -2586,6 +2586,15 @@ if ($this->level != "")
    } // ajax_add_parameters
   function nm_proc_onload($bFormat = true)
   {
+      if (!$this->NM_ajax_flag || !isset($this->nmgp_refresh_fields)) {
+      $_SESSION['scriptcase']['form_subjects_grades_edit']['contr_erro'] = 'on';
+  $this->NM_ajax_info['buttonDisplay']['new'] = $this->nmgp_botoes["new"] = "off";;
+$_SESSION['scriptcase']['form_subjects_grades_edit']['contr_erro'] = 'off'; 
+      }
+      if (empty($this->submitted_date))
+      {
+          $this->submitted_date_hora = $this->submitted_date;
+      }
       $this->nm_guardar_campos();
       if ($bFormat) $this->nm_formatar_campos();
   }

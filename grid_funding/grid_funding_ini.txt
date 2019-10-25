@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_funding
-SIM
-cons
-grid_funding
-LigMd5

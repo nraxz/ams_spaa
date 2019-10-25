@@ -278,8 +278,8 @@ class admin_form_marking_categories_ini
       $this->nm_dt_criacao   = "20190911"; 
       $this->nm_hr_criacao   = "163328"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -917,7 +917,7 @@ class admin_form_marking_categories_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXGH9BiHIrwV5BqHuvmDkBOV5FYDoNUD9XGZ1B/HIveHQJwDEBODkFeH5FYVoFGHQJKDQBqHANOHuFaHuNOZSrCH5FqDoXGHQJmZ1FGD1zGZMFaHgNKZSXeHEFqVoXGD9JKDuBqHAvCVWBOHuzGV9FeV5FYVoF7D9XOH9BOHArYD5FaHgNOZSJ3HEXCHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HABYV5B/DEBOHEXeHEFqVoBiDcXOZSX7HAN7V5JwHuzGVIBOV5FYVoJwD9BsZ1B/HABYD5XGDEBeZSXeHEFqVoBiDcBwZSFUZ1rwV5FGHgvsVcFCH5XCDoraDcJUH9B/Z1BeD5XGDEBeHEXeDWFqDoXGHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDENOVkJGDWF/VoFaHQXsZ9F7D1vOVWBqDMBYVcBOH5FqDoJeHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMBqHQJeZ9XGHABYHuX7DMvODkB/DWXCHIrqHQFYZ1BOD1rKHuFUDMvCHArsH5F/HMBOHQXGDQFUHANKVWJwDMrYVcB/DurGVENUHQFYZkFGDSNOHuFaHgNOZSJqH5F/HIFGDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBOHQBqVINUHAvCD5XGHgvsDkXKDWr/HMFGHQXGDQFUHANOHQF7DMBOV9FeHEFGVErqHQFYZkBiD1vsZMBqHgNKHArCV5FqHIB/HQXGDuBqDSBYHQNUHgvOV9FeH5B7VEX7DcBwH9B/HIrwV5JeDMBYDkBsH5FYHIF7HQJeZ9XGD1BeHQJsDMBYVcXKH5XCHIF7HQFYZ1BOHArKHQFGHgNOVkJqDWXCHMBiHQXGDuFaHABYHuraDMvOVIB/Dur/HIX7HQFYZ1BODSNOHQFGHgNKHArCHEXCHIFUDcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeD5BqDMBYHEJGH5F/VoJeDcXOZSBiD1BOVWFaDMrwDkB/DWXCVoX7D9BsH9B/HIBeD5XGDMBYHEXeV5B7DoNUHQXsH9X7DSBYD5rqHgrKVcFCH5B7VoFaHQNGZ1rqHINKZMXGHgNKDkFeHEB7DoB/HQNmH9X7HABYVWJsDMBYVcBODWFaDoFUDcJUZkFUZ1BeZMBqHgBYHAFKV5FaZuBqD9NmZSFGHIrwV5BOHuNODkBOV5X7VENUHQFYH9FaD1rwD5rqDErKVkXeHEFqDoBOD9NmDQJsD1BeV5FUHuzGDkBOH5XKVoraDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwD5BOHuNODkFCH5FqVENUDcNwH9BqZ1NOHQJsHgNOVkJ3DWFqHMFGHQNwDQBOZ1zGV5JeDMvOVcBUDWFaHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVoX7HQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIBqD9NmDQFUDSzGVWXGDMvmDkB/DWFYHIFUHQBiH9FaDSrYHQJeDEBeHEJGHEXCDoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNwDQFGHAN7HQXGDMBYDkBsDWFaHMraDcBqZSB/D1rKHQJwDEBODkFeH5FYVoFGHQJKDQBqHANOHuFaHuNOZSrCH5FqDoXGHQJmZ1FGDSBeZMJwHgBOVkXeHEXCZuXGHQJKZ9F7HANOHuJeDMNOV9FeDWFYVoB/HQJmZSBqHArKV5FUDMrYZSXeV5FqHIJsD9NwDQJsHABYV5raHgvsVIFCDWJeVoraD9BsZSFaDSNOV5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgvsVcBOH5XCDoXGD9JmZ1B/Z1NOD5BiDMzGVkXeV5FaDoJeD9XsDQFUZ1rwD5F7HgvsVcFCDWJeDoFUD9JmZ1B/Z1NOV5BODMNKZSXeH5FYDoraD9NmDQJsHABYD5XGHuNODkFCDWJeDoFGDcJUZ1FaD1NaV5FUDErKHEFiDuJeDoBOHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VENUHQXGZ1B/HAN7ZMXGDEvsZSXeH5FGZuJeHQFYDuFaHABYHQJeDMNOVcrsDur/HMBiD9BsVIraD1rwV5X7HgBeHErCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQBiZSBiDSN7HQJeHgrwVcFeV5X/DoXGHQXGZ1FGHAN7HuFGDMvCVkJqH5BmVoFGHQXsDuFaD1vOV5BOHgvOVcFeV5BmDoXGDcNmZSBqHAvCZMFaHgrKVkJ3H5FGDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoBqHQJeDuBqHAvOV5JeDMvOZSNiDWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWF/HIJeD9NmDQFGHABYHuJwDMvOV9FeDur/HMXGHQJmZ1B/HABYHQFaHgrKHEJqDWF/HIraHQJKH9FGHIrKHuFaHuNOZSrCH5FqDoXGHQJmZ1FGZ1NOD5NUDErKVkXeDWFqDoXGD9JKDQBOHAveHQF7HuvmVcFKDWFaDoX7D9JmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQJeDuBOZ1vCV5Je";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['admin_form_marking_categories']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['admin_form_marking_categories']['initialize'])  
       { 
@@ -1659,11 +1659,6 @@ ob_start();
             $short = NM_utf8_urldecode($_POST['rsargs'][0]);
             $script_case_init = NM_utf8_urldecode($_POST['rsargs'][1]);
         }
-        if ('ajax_admin_form_marking_categories_validate_type_of_audition' == $_POST['rs'])
-        {
-            $type_of_audition = NM_utf8_urldecode($_POST['rsargs'][0]);
-            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][1]);
-        }
         if ('ajax_admin_form_marking_categories_validate_active' == $_POST['rs'])
         {
             $active = NM_utf8_urldecode($_POST['rsargs'][0]);
@@ -1674,16 +1669,15 @@ ob_start();
             $id = NM_utf8_urldecode($_POST['rsargs'][0]);
             $category = NM_utf8_urldecode($_POST['rsargs'][1]);
             $short = NM_utf8_urldecode($_POST['rsargs'][2]);
-            $type_of_audition = NM_utf8_urldecode($_POST['rsargs'][3]);
-            $active = NM_utf8_urldecode($_POST['rsargs'][4]);
-            $nm_form_submit = NM_utf8_urldecode($_POST['rsargs'][5]);
-            $nmgp_url_saida = NM_utf8_urldecode($_POST['rsargs'][6]);
-            $nmgp_opcao = NM_utf8_urldecode($_POST['rsargs'][7]);
-            $nmgp_ancora = NM_utf8_urldecode($_POST['rsargs'][8]);
-            $nmgp_num_form = NM_utf8_urldecode($_POST['rsargs'][9]);
-            $nmgp_parms = NM_utf8_urldecode($_POST['rsargs'][10]);
-            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][11]);
-            $csrf_token = NM_utf8_urldecode($_POST['rsargs'][12]);
+            $active = NM_utf8_urldecode($_POST['rsargs'][3]);
+            $nm_form_submit = NM_utf8_urldecode($_POST['rsargs'][4]);
+            $nmgp_url_saida = NM_utf8_urldecode($_POST['rsargs'][5]);
+            $nmgp_opcao = NM_utf8_urldecode($_POST['rsargs'][6]);
+            $nmgp_ancora = NM_utf8_urldecode($_POST['rsargs'][7]);
+            $nmgp_num_form = NM_utf8_urldecode($_POST['rsargs'][8]);
+            $nmgp_parms = NM_utf8_urldecode($_POST['rsargs'][9]);
+            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][10]);
+            $csrf_token = NM_utf8_urldecode($_POST['rsargs'][11]);
         }
         if ('ajax_admin_form_marking_categories_navigate_form' == $_POST['rs'])
         {
@@ -2137,7 +2131,6 @@ ob_start();
     $inicial_admin_form_marking_categories->inicializa();
 
     $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_info['select_html'] = array();
-    $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_info['select_html']['type_of_audition'] = "class=\"sc-js-input scFormObjectOdd css_type_of_audition_obj\" style=\"\" id=\"id_sc_field_type_of_audition\" name=\"type_of_audition\" size=\"1\" alt=\"{type: \'select\', enterTab: false}\"";
     $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_info['select_html']['active'] = "class=\"sc-js-input scFormObjectOdd css_active_obj\" style=\"\" id=\"id_sc_field_active\" name=\"active\" size=\"1\" alt=\"{type: \'select\', enterTab: false}\"";
 
     if (!defined('SC_SAJAX_LOADED'))
@@ -2155,7 +2148,6 @@ ob_start();
     sajax_export("ajax_admin_form_marking_categories_validate_id");
     sajax_export("ajax_admin_form_marking_categories_validate_category");
     sajax_export("ajax_admin_form_marking_categories_validate_short");
-    sajax_export("ajax_admin_form_marking_categories_validate_type_of_audition");
     sajax_export("ajax_admin_form_marking_categories_validate_active");
     sajax_export("ajax_admin_form_marking_categories_submit_form");
     sajax_export("ajax_admin_form_marking_categories_navigate_form");
@@ -2240,25 +2232,6 @@ ob_start();
         exit;
     } // ajax_validate_short
 
-    function ajax_admin_form_marking_categories_validate_type_of_audition($type_of_audition, $script_case_init)
-    {
-        global $inicial_admin_form_marking_categories;
-        //register_shutdown_function("admin_form_marking_categories_pack_ajax_response");
-        $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_flag          = true;
-        $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_opcao         = 'validate_type_of_audition';
-        $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_info['param'] = array(
-                  'type_of_audition' => NM_utf8_urldecode($type_of_audition),
-                  'script_case_init' => NM_utf8_urldecode($script_case_init),
-                  'buffer_output' => true,
-                 );
-        if ($inicial_admin_form_marking_categories->contr_admin_form_marking_categories->NM_ajax_info['param']['buffer_output'])
-        {
-            ob_start();
-        }
-        $inicial_admin_form_marking_categories->contr_admin_form_marking_categories->controle();
-        exit;
-    } // ajax_validate_type_of_audition
-
     function ajax_admin_form_marking_categories_validate_active($active, $script_case_init)
     {
         global $inicial_admin_form_marking_categories;
@@ -2278,7 +2251,7 @@ ob_start();
         exit;
     } // ajax_validate_active
 
-    function ajax_admin_form_marking_categories_submit_form($id, $category, $short, $type_of_audition, $active, $nm_form_submit, $nmgp_url_saida, $nmgp_opcao, $nmgp_ancora, $nmgp_num_form, $nmgp_parms, $script_case_init, $csrf_token)
+    function ajax_admin_form_marking_categories_submit_form($id, $category, $short, $active, $nm_form_submit, $nmgp_url_saida, $nmgp_opcao, $nmgp_ancora, $nmgp_num_form, $nmgp_parms, $script_case_init, $csrf_token)
     {
         global $inicial_admin_form_marking_categories;
         //register_shutdown_function("admin_form_marking_categories_pack_ajax_response");
@@ -2288,7 +2261,6 @@ ob_start();
                   'id' => NM_utf8_urldecode($id),
                   'category' => NM_utf8_urldecode($category),
                   'short' => NM_utf8_urldecode($short),
-                  'type_of_audition' => NM_utf8_urldecode($type_of_audition),
                   'active' => NM_utf8_urldecode($active),
                   'nm_form_submit' => NM_utf8_urldecode($nm_form_submit),
                   'nmgp_url_saida' => NM_utf8_urldecode($nmgp_url_saida),

@@ -50,8 +50,6 @@ class admin_form_marking_categories_mob_apl
    var $id;
    var $category;
    var $short;
-   var $type_of_audition;
-   var $type_of_audition_1;
    var $active;
    var $active_1;
    var $nm_data;
@@ -153,10 +151,6 @@ class admin_form_marking_categories_mob_apl
           if (isset($this->NM_ajax_info['param']['short']))
           {
               $this->short = $this->NM_ajax_info['param']['short'];
-          }
-          if (isset($this->NM_ajax_info['param']['type_of_audition']))
-          {
-              $this->type_of_audition = $this->NM_ajax_info['param']['type_of_audition'];
           }
           if (isset($this->nmgp_refresh_fields))
           {
@@ -973,7 +967,6 @@ class admin_form_marking_categories_mob_apl
       if (isset($this->id)) { $this->nm_limpa_alfa($this->id); }
       if (isset($this->category)) { $this->nm_limpa_alfa($this->category); }
       if (isset($this->short)) { $this->nm_limpa_alfa($this->short); }
-      if (isset($this->type_of_audition)) { $this->nm_limpa_alfa($this->type_of_audition); }
       if (isset($this->active)) { $this->nm_limpa_alfa($this->active); }
       $Campos_Crit       = "";
       $Campos_erro       = "";
@@ -1055,10 +1048,6 @@ class admin_form_marking_categories_mob_apl
           if ('validate_short' == $this->NM_ajax_opcao)
           {
               $this->Valida_campos($Campos_Crit, $Campos_Falta, $Campos_Erros, 'short');
-          }
-          if ('validate_type_of_audition' == $this->NM_ajax_opcao)
-          {
-              $this->Valida_campos($Campos_Crit, $Campos_Falta, $Campos_Erros, 'type_of_audition');
           }
           if ('validate_active' == $this->NM_ajax_opcao)
           {
@@ -1484,9 +1473,6 @@ class admin_form_marking_categories_mob_apl
            case 'short':
                return "Short";
                break;
-           case 'type_of_audition':
-               return "Type Of Audition";
-               break;
            case 'active':
                return "Active";
                break;
@@ -1541,8 +1527,6 @@ class admin_form_marking_categories_mob_apl
         $this->ValidateField_category($Campos_Crit, $Campos_Falta, $Campos_Erros);
       if ('' == $filtro || 'short' == $filtro)
         $this->ValidateField_short($Campos_Crit, $Campos_Falta, $Campos_Erros);
-      if ('' == $filtro || 'type_of_audition' == $filtro)
-        $this->ValidateField_type_of_audition($Campos_Crit, $Campos_Falta, $Campos_Erros);
       if ('' == $filtro || 'active' == $filtro)
         $this->ValidateField_active($Campos_Crit, $Campos_Falta, $Campos_Erros);
       if (!empty($Campos_Crit) || !empty($Campos_Falta) || !empty($this->Campos_Mens_erro))
@@ -1678,23 +1662,6 @@ class admin_form_marking_categories_mob_apl
         }
     } // ValidateField_short
 
-    function ValidateField_type_of_audition(&$Campos_Crit, &$Campos_Falta, &$Campos_Erros)
-    {
-        global $teste_validade;
-        $hasError = false;
-      if ($this->type_of_audition == "" && $this->nmgp_opcao != "excluir")
-      { 
-      } 
-        if ($hasError) {
-            global $sc_seq_vert;
-            $fieldName = 'type_of_audition';
-            if (isset($sc_seq_vert) && '' != $sc_seq_vert) {
-                $fieldName .= $sc_seq_vert;
-            }
-            $this->NM_ajax_info['fieldsWithErrors'][] = $fieldName;
-        }
-    } // ValidateField_type_of_audition
-
     function ValidateField_active(&$Campos_Crit, &$Campos_Falta, &$Campos_Erros)
     {
         global $teste_validade;
@@ -1738,7 +1705,6 @@ class admin_form_marking_categories_mob_apl
     $this->nmgp_dados_form['id'] = $this->id;
     $this->nmgp_dados_form['category'] = $this->category;
     $this->nmgp_dados_form['short'] = $this->short;
-    $this->nmgp_dados_form['type_of_audition'] = $this->type_of_audition;
     $this->nmgp_dados_form['active'] = $this->active;
     $_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categories_mob']['dados_form'] = $this->nmgp_dados_form;
    }
@@ -2205,7 +2171,6 @@ class admin_form_marking_categories_mob_apl
           $this->ajax_return_values_id();
           $this->ajax_return_values_category();
           $this->ajax_return_values_short();
-          $this->ajax_return_values_type_of_audition();
           $this->ajax_return_values_active();
           if ('navigate_form' == $this->NM_ajax_opcao)
           {
@@ -2261,73 +2226,6 @@ class admin_form_marking_categories_mob_apl
                'type'    => 'text',
                'valList' => array($this->form_encode_input($sTmpValue)),
               );
-          }
-   }
-
-          //----- type_of_audition
-   function ajax_return_values_type_of_audition($bForce = false)
-   {
-          if ('navigate_form' == $this->NM_ajax_opcao || 'backup_line' == $this->NM_ajax_opcao || (isset($this->nmgp_refresh_fields) && in_array("type_of_audition", $this->nmgp_refresh_fields)) || $bForce)
-          {
-              $sTmpValue = NM_charset_to_utf8($this->type_of_audition);
-              $aLookup = array();
-              $this->_tmp_lookup_type_of_audition = $this->type_of_audition;
-
-$aLookup[] = array(admin_form_marking_categories_mob_pack_protect_string('PA') => admin_form_marking_categories_mob_pack_protect_string("Primary Audition Only"));
-$aLookup[] = array(admin_form_marking_categories_mob_pack_protect_string('BT') => admin_form_marking_categories_mob_pack_protect_string("Both Audition"));
-$aLookup[] = array(admin_form_marking_categories_mob_pack_protect_string('RA') => admin_form_marking_categories_mob_pack_protect_string("Recall Audition Only"));
-$_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categories_mob']['Lookup_type_of_audition'][] = 'PA';
-$_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categories_mob']['Lookup_type_of_audition'][] = 'BT';
-$_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categories_mob']['Lookup_type_of_audition'][] = 'RA';
-          $aLookupOrig = $aLookup;
-          $sSelComp = "name=\"type_of_audition\"";
-          if (isset($this->NM_ajax_info['select_html']['type_of_audition']) && !empty($this->NM_ajax_info['select_html']['type_of_audition']))
-          {
-              $sSelComp = $this->NM_ajax_info['select_html']['type_of_audition'];
-          }
-          $sLookup = '';
-          if (empty($aLookup))
-          {
-              $aLookup[] = array('' => '');
-          }
-          foreach ($aLookup as $aOption)
-          {
-              foreach ($aOption as $sValue => $sLabel)
-              {
-
-                  if ($this->type_of_audition == $sValue)
-                  {
-                      $this->_tmp_lookup_type_of_audition = $sLabel;
-                  }
-
-                  $sOpt     = ($sValue !== $sLabel) ? $sValue : $sLabel;
-                  $sLookup .= "<option value=\"" . $sOpt . "\">" . $sLabel . "</option>";
-              }
-          }
-          $aLookup  = $sLookup;
-          $this->NM_ajax_info['fldList']['type_of_audition'] = array(
-                       'row'    => '',
-               'type'    => 'select',
-               'valList' => array($sTmpValue),
-              );
-          $aLabel     = array();
-          $aLabelTemp = array();
-          foreach ($this->NM_ajax_info['fldList']['type_of_audition']['valList'] as $i => $v)
-          {
-              $this->NM_ajax_info['fldList']['type_of_audition']['valList'][$i] = admin_form_marking_categories_mob_pack_protect_string($v);
-          }
-          foreach ($aLookupOrig as $aValData)
-          {
-              if (in_array(key($aValData), $this->NM_ajax_info['fldList']['type_of_audition']['valList']))
-              {
-                  $aLabelTemp[key($aValData)] = current($aValData);
-              }
-          }
-          foreach ($this->NM_ajax_info['fldList']['type_of_audition']['valList'] as $iIndex => $sValue)
-          {
-              $aLabel[$iIndex] = (isset($aLabelTemp[$sValue])) ? $aLabelTemp[$sValue] : $sValue;
-          }
-          $this->NM_ajax_info['fldList']['type_of_audition']['labList'] = $aLabel;
           }
    }
 
@@ -2649,7 +2547,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
       $NM_val_form['id'] = $this->id;
       $NM_val_form['category'] = $this->category;
       $NM_val_form['short'] = $this->short;
-      $NM_val_form['type_of_audition'] = $this->type_of_audition;
       $NM_val_form['active'] = $this->active;
       if ($this->id === "")  
       { 
@@ -2671,13 +2568,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
           { 
               $this->short = "null"; 
               $NM_val_null[] = "short";
-          } 
-          $this->type_of_audition_before_qstr = $this->type_of_audition;
-          $this->type_of_audition = substr($this->Db->qstr($this->type_of_audition), 1, -1); 
-          if ($this->type_of_audition == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->type_of_audition = "null"; 
-              $NM_val_null[] = "type_of_audition";
           } 
           $this->active_before_qstr = $this->active;
           $this->active = substr($this->Db->qstr($this->active), 1, -1); 
@@ -2737,22 +2627,22 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
               if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
               { 
                   $comando = "UPDATE " . $this->Ini->nm_tabela . " SET ";  
-                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', type_of_audition = '$this->type_of_audition', active = '$this->active'"; 
+                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', active = '$this->active'"; 
               } 
               elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
               { 
                   $comando = "UPDATE " . $this->Ini->nm_tabela . " SET ";  
-                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', type_of_audition = '$this->type_of_audition', active = '$this->active'"; 
+                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', active = '$this->active'"; 
               } 
               elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
               { 
                   $comando = "UPDATE " . $this->Ini->nm_tabela . " SET ";  
-                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', type_of_audition = '$this->type_of_audition', active = '$this->active'"; 
+                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', active = '$this->active'"; 
               } 
               else 
               { 
                   $comando = "UPDATE " . $this->Ini->nm_tabela . " SET ";  
-                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', type_of_audition = '$this->type_of_audition', active = '$this->active'"; 
+                  $SC_fields_update[] = "category = '$this->category', short = '$this->short', active = '$this->active'"; 
               } 
               $aDoNotUpdate = array();
               $comando .= implode(",", $SC_fields_update);  
@@ -2796,7 +2686,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
               }   
           $this->category = $this->category_before_qstr;
           $this->short = $this->short_before_qstr;
-          $this->type_of_audition = $this->type_of_audition_before_qstr;
           $this->active = $this->active_before_qstr;
               $this->sc_evento = "update"; 
               $this->nmgp_opcao = "igual"; 
@@ -2817,15 +2706,13 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
               elseif (isset($this->category)) { $this->nm_limpa_alfa($this->category); }
               if     (isset($NM_val_form) && isset($NM_val_form['short'])) { $this->short = $NM_val_form['short']; }
               elseif (isset($this->short)) { $this->nm_limpa_alfa($this->short); }
-              if     (isset($NM_val_form) && isset($NM_val_form['type_of_audition'])) { $this->type_of_audition = $NM_val_form['type_of_audition']; }
-              elseif (isset($this->type_of_audition)) { $this->nm_limpa_alfa($this->type_of_audition); }
               if     (isset($NM_val_form) && isset($NM_val_form['active'])) { $this->active = $NM_val_form['active']; }
               elseif (isset($this->active)) { $this->nm_limpa_alfa($this->active); }
 
               $this->nm_formatar_campos();
 
               $aOldRefresh               = $this->nmgp_refresh_fields;
-              $this->nmgp_refresh_fields = array_diff(array('id', 'category', 'short', 'type_of_audition', 'active'), $aDoNotUpdate);
+              $this->nmgp_refresh_fields = array_diff(array('id', 'category', 'short', 'active'), $aDoNotUpdate);
               $this->ajax_return_values();
               $this->nmgp_refresh_fields = $aOldRefresh;
 
@@ -2873,19 +2760,19 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
           { 
               if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
               { 
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (category, short, type_of_audition, active) VALUES ('$this->category', '$this->short', '$this->type_of_audition', '$this->active')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (category, short, active) VALUES ('$this->category', '$this->short', '$this->active')"; 
               }
               elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
               { 
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "category, short, type_of_audition, active) VALUES (" . $NM_seq_auto . "'$this->category', '$this->short', '$this->type_of_audition', '$this->active')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "category, short, active) VALUES (" . $NM_seq_auto . "'$this->category', '$this->short', '$this->active')"; 
               }
               elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
               {
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "category, short, type_of_audition, active) VALUES (" . $NM_seq_auto . "'$this->category', '$this->short', '$this->type_of_audition', '$this->active')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "category, short, active) VALUES (" . $NM_seq_auto . "'$this->category', '$this->short', '$this->active')"; 
               }
               else
               {
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "category, short, type_of_audition, active) VALUES (" . $NM_seq_auto . "'$this->category', '$this->short', '$this->type_of_audition', '$this->active')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "category, short, active) VALUES (" . $NM_seq_auto . "'$this->category', '$this->short', '$this->active')"; 
               }
               $comando = str_replace("N'null'", "null", $comando) ; 
               $comando = str_replace("'null'", "null", $comando) ; 
@@ -3165,11 +3052,11 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
           } 
           if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
           { 
-              $nmgp_select = "SELECT id, category, short, type_of_audition, active from " . $this->Ini->nm_tabela ; 
+              $nmgp_select = "SELECT id, category, short, active from " . $this->Ini->nm_tabela ; 
           } 
           else 
           { 
-              $nmgp_select = "SELECT id, category, short, type_of_audition, active from " . $this->Ini->nm_tabela ; 
+              $nmgp_select = "SELECT id, category, short, active from " . $this->Ini->nm_tabela ; 
           } 
           $aWhere = array();
           $aWhere[] = $sc_where_filter;
@@ -3275,9 +3162,7 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
               $this->nmgp_dados_select['category'] = $this->category;
               $this->short = $rs->fields[2] ; 
               $this->nmgp_dados_select['short'] = $this->short;
-              $this->type_of_audition = $rs->fields[3] ; 
-              $this->nmgp_dados_select['type_of_audition'] = $this->type_of_audition;
-              $this->active = $rs->fields[4] ; 
+              $this->active = $rs->fields[3] ; 
               $this->nmgp_dados_select['active'] = $this->active;
           $GLOBALS["NM_ERRO_IBASE"] = 0; 
               $this->id = (string)$this->id; 
@@ -3306,8 +3191,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
               $this->nmgp_dados_form["category"] = $this->category;
               $this->short = "";  
               $this->nmgp_dados_form["short"] = $this->short;
-              $this->type_of_audition = "";  
-              $this->nmgp_dados_form["type_of_audition"] = $this->type_of_audition;
               $this->active = "";  
               $this->nmgp_dados_form["active"] = $this->active;
               $_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categories_mob']['dados_form'] = $this->nmgp_dados_form;
@@ -3363,7 +3246,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
            $nmgp_dados_select = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_form_marking_categories_mob']['dados_select'];
            $this->SC_log_arr['fields']['category']['0'] =  $nmgp_dados_select['category'];
            $this->SC_log_arr['fields']['short']['0'] =  $nmgp_dados_select['short'];
-           $this->SC_log_arr['fields']['type_of_audition']['0'] =  $nmgp_dados_select['type_of_audition'];
            $this->SC_log_arr['fields']['active']['0'] =  $nmgp_dados_select['active'];
        }
    }
@@ -3372,7 +3254,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
    {
        $this->SC_log_arr['fields']['category']['1'] =  $this->category;
        $this->SC_log_arr['fields']['short']['1'] =  $this->short;
-       $this->SC_log_arr['fields']['type_of_audition']['1'] =  $this->type_of_audition;
        $this->SC_log_arr['fields']['active']['1'] =  $this->active;
    }
 // 
@@ -3842,16 +3723,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
      }
  } // new_date_format
 
-   function Form_lookup_type_of_audition()
-   {
-       $nmgp_def_dados  = "";
-       $nmgp_def_dados .= "Primary Audition Only?#?PA?#?N?@?";
-       $nmgp_def_dados .= "Both Audition?#?BT?#?N?@?";
-       $nmgp_def_dados .= "Recall Audition Only?#?RA?#?N?@?";
-       $todo = explode("?@?", $nmgp_def_dados);
-       return $todo;
-
-   }
    function Form_lookup_active()
    {
        $nmgp_def_dados  = "";
@@ -3898,14 +3769,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
       if ($field == "SC_all_Cmp") 
       {
           $this->SC_monta_condicao($comando, "short", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $data_lookup = $this->SC_lookup_type_of_audition($arg_search, $data_search);
-          if (is_array($data_lookup) && !empty($data_lookup)) 
-          {
-              $this->SC_monta_condicao($comando, "type_of_audition", $arg_search, $data_lookup);
-          }
       }
       if ($field == "SC_all_Cmp") 
       {
@@ -4068,56 +3931,6 @@ $_SESSION['scriptcase']['admin_form_marking_categories_mob']['contr_erro'] = 'of
                $comando        .= " $nome <= " . $nm_aspas . $campo . $nm_aspas1;
             break;
          }
-   }
-   function SC_lookup_type_of_audition($condicao, $campo)
-   {
-       $data_look = array();
-       $campo  = substr($this->Db->qstr($campo), 1, -1);
-       $data_look['PA'] = "Primary Audition Only";
-       $data_look['BT'] = "Both Audition";
-       $data_look['RA'] = "Recall Audition Only";
-       $result = array();
-       foreach ($data_look as $chave => $label) 
-       {
-           if ($condicao == "eq" && $campo == $label)
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "ii" && $campo == substr($label, 0, strlen($campo)))
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "qp" && strstr($label, $campo))
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "np" && !strstr($label, $campo))
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "df" && $campo != $label)
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "gt" && $label > $campo )
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "ge" && $label >= $campo)
-            {
-               $result[] = $chave;
-           }
-           if ($condicao == "lt" && $label < $campo)
-           {
-               $result[] = $chave;
-           }
-           if ($condicao == "le" && $label <= $campo)
-           {
-               $result[] = $chave;
-           }
-          
-       }
-       return $result;
    }
    function SC_lookup_active($condicao, $campo)
    {

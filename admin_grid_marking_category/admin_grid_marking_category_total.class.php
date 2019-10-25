@@ -21,12 +21,6 @@ class admin_grid_marking_category_total
           {
               $Busca_temp = NM_conv_charset($Busca_temp, $_SESSION['scriptcase']['charset'], "UTF-8");
           }
-          $this->type_of_audition = $Busca_temp['type_of_audition']; 
-          $tmp_pos = strpos($this->type_of_audition, "##@@");
-          if ($tmp_pos !== false && !is_array($this->type_of_audition))
-          {
-              $this->type_of_audition = substr($this->type_of_audition, 0, $tmp_pos);
-          }
           $this->id = $Busca_temp['id']; 
           $tmp_pos = strpos($this->id, "##@@");
           if ($tmp_pos !== false && !is_array($this->id))

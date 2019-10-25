@@ -54,7 +54,6 @@ function scEventControl_init(iSeqRow) {
   scEventControl_data["id" + iSeqRow] = {"blur": false, "change": false, "autocomp": false, "original": "", "calculated": ""};
   scEventControl_data["category" + iSeqRow] = {"blur": false, "change": false, "autocomp": false, "original": "", "calculated": ""};
   scEventControl_data["short" + iSeqRow] = {"blur": false, "change": false, "autocomp": false, "original": "", "calculated": ""};
-  scEventControl_data["type_of_audition" + iSeqRow] = {"blur": false, "change": false, "autocomp": false, "original": "", "calculated": ""};
   scEventControl_data["active" + iSeqRow] = {"blur": false, "change": false, "autocomp": false, "original": "", "calculated": ""};
 }
 
@@ -77,12 +76,6 @@ function scEventControl_active(iSeqRow) {
   if (scEventControl_data["short" + iSeqRow]["change"]) {
     return true;
   }
-  if (scEventControl_data["type_of_audition" + iSeqRow]["blur"]) {
-    return true;
-  }
-  if (scEventControl_data["type_of_audition" + iSeqRow]["change"]) {
-    return true;
-  }
   if (scEventControl_data["active" + iSeqRow]["blur"]) {
     return true;
   }
@@ -97,9 +90,6 @@ function scEventControl_onFocus(oField, iSeq) {
   fieldId = $(oField).attr("id");
   fieldName = fieldId.substr(12);
   scEventControl_data[fieldName]["blur"] = true;
-  if ("type_of_audition" + iSeq == fieldName) {
-    scEventControl_data[fieldName]["blur"] = false;
-  }
   if ("active" + iSeq == fieldName) {
     scEventControl_data[fieldName]["blur"] = false;
   }
@@ -132,8 +122,6 @@ function scJQEventsAdd(iSeqRow) {
                                       .bind('focus', function() { sc_admin_form_marking_categories_category_onfocus(this, iSeqRow) });
   $('#id_sc_field_short' + iSeqRow).bind('blur', function() { sc_admin_form_marking_categories_short_onblur(this, iSeqRow) })
                                    .bind('focus', function() { sc_admin_form_marking_categories_short_onfocus(this, iSeqRow) });
-  $('#id_sc_field_type_of_audition' + iSeqRow).bind('blur', function() { sc_admin_form_marking_categories_type_of_audition_onblur(this, iSeqRow) })
-                                              .bind('focus', function() { sc_admin_form_marking_categories_type_of_audition_onfocus(this, iSeqRow) });
   $('#id_sc_field_active' + iSeqRow).bind('blur', function() { sc_admin_form_marking_categories_active_onblur(this, iSeqRow) })
                                     .bind('focus', function() { sc_admin_form_marking_categories_active_onfocus(this, iSeqRow) });
 } // scJQEventsAdd
@@ -168,16 +156,6 @@ function sc_admin_form_marking_categories_short_onfocus(oThis, iSeqRow) {
   scCssFocus(oThis);
 }
 
-function sc_admin_form_marking_categories_type_of_audition_onblur(oThis, iSeqRow) {
-  do_ajax_admin_form_marking_categories_validate_type_of_audition();
-  scCssBlur(oThis);
-}
-
-function sc_admin_form_marking_categories_type_of_audition_onfocus(oThis, iSeqRow) {
-  scEventControl_onFocus(oThis, iSeqRow);
-  scCssFocus(oThis);
-}
-
 function sc_admin_form_marking_categories_active_onblur(oThis, iSeqRow) {
   do_ajax_admin_form_marking_categories_validate_active();
   scCssBlur(oThis);
@@ -198,7 +176,6 @@ function displayChange_block_0(status) {
 	displayChange_field("id", "", status);
 	displayChange_field("category", "", status);
 	displayChange_field("short", "", status);
-	displayChange_field("type_of_audition", "", status);
 	displayChange_field("active", "", status);
 }
 
@@ -206,7 +183,6 @@ function displayChange_row(row, status) {
 	displayChange_field_id(row, status);
 	displayChange_field_category(row, status);
 	displayChange_field_short(row, status);
-	displayChange_field_type_of_audition(row, status);
 	displayChange_field_active(row, status);
 }
 
@@ -220,9 +196,6 @@ function displayChange_field(field, row, status) {
 	if ("short" == field) {
 		displayChange_field_short(row, status);
 	}
-	if ("type_of_audition" == field) {
-		displayChange_field_type_of_audition(row, status);
-	}
 	if ("active" == field) {
 		displayChange_field_active(row, status);
 	}
@@ -235,9 +208,6 @@ function displayChange_field_category(row, status) {
 }
 
 function displayChange_field_short(row, status) {
-}
-
-function displayChange_field_type_of_audition(row, status) {
 }
 
 function displayChange_field_active(row, status) {

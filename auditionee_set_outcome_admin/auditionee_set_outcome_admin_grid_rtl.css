@@ -1,0 +1,19 @@
+.css_application_detail_number_label {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_application_detail_number_grid_line {vertical-align: top;text-align: right;}
+.css_basic_information_firstname_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_basic_information_firstname_grid_line {vertical-align: top;text-align: right;}
+.css_basic_information_lastname_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_basic_information_lastname_grid_line {vertical-align: top;text-align: right;}
+.css_basic_information_nationality_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_basic_information_nationality_grid_line {vertical-align: top;text-align: right;}
+.css_basic_information_gender_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_basic_information_gender_grid_line {vertical-align: top;text-align: right;}
+.css_avg_marks_label {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_avg_marks_grid_line {text-align: right;}
+.css_outcome_label {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_outcome_grid_line {text-align: center;}
+.css_basic_information_middlename_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_basic_information_middlename_grid_line {vertical-align: top;text-align: right;}
+.css_basic_information_dateofbirth_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_basic_information_dateofbirth_grid_line {vertical-align: top;text-align: right;}
+.css_audition_marks_grid_line {text-align: center;}

@@ -74,10 +74,6 @@
       unset($_SESSION['sc_session'][$script_case_init]['form_upload_image']['sc_redir_insert']);
    }
    $fecha_janela = false;
-   if (isset($script_case_init) && !is_array($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['form_upload_image']['sc_outra_jan']) && $_SESSION['sc_session'][$script_case_init]['form_upload_image']['sc_outra_jan'])
-   {
-       $fecha_janela = true;
-   }
    if (isset($_SESSION['sc_session'][$script_case_init]['form_upload_image']['nm_run_menu']) && $_SESSION['sc_session'][$script_case_init]['form_upload_image']['nm_run_menu'] == 2)
    {
        $fecha_janela   = true;

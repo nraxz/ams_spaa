@@ -51,23 +51,11 @@ class form_files_upload_mob_apl
    var $firstname;
    var $lastname;
    var $middlename;
-   var $address;
-   var $address1;
-   var $town;
-   var $county;
-   var $postcode;
-   var $country;
-   var $telephone;
-   var $mobile;
-   var $dateofbirth;
-   var $sex;
    var $nationality;
-   var $ethnicity;
-   var $disability;
-   var $disbility_specify;
-   var $offeron_disability;
+   var $dateofbirth;
+   var $gender;
+   var $resident;
    var $status;
-   var $application_type;
    var $submitted;
    var $submitted_hora;
    var $how_to;
@@ -847,23 +835,11 @@ class form_files_upload_mob_apl
           if (!isset($this->firstname)){$this->firstname = $this->nmgp_dados_form['firstname'];} 
           if (!isset($this->lastname)){$this->lastname = $this->nmgp_dados_form['lastname'];} 
           if (!isset($this->middlename)){$this->middlename = $this->nmgp_dados_form['middlename'];} 
-          if (!isset($this->address)){$this->address = $this->nmgp_dados_form['address'];} 
-          if (!isset($this->address1)){$this->address1 = $this->nmgp_dados_form['address1'];} 
-          if (!isset($this->town)){$this->town = $this->nmgp_dados_form['town'];} 
-          if (!isset($this->county)){$this->county = $this->nmgp_dados_form['county'];} 
-          if (!isset($this->postcode)){$this->postcode = $this->nmgp_dados_form['postcode'];} 
-          if (!isset($this->country)){$this->country = $this->nmgp_dados_form['country'];} 
-          if (!isset($this->telephone)){$this->telephone = $this->nmgp_dados_form['telephone'];} 
-          if (!isset($this->mobile)){$this->mobile = $this->nmgp_dados_form['mobile'];} 
-          if (!isset($this->dateofbirth)){$this->dateofbirth = $this->nmgp_dados_form['dateofbirth'];} 
-          if (!isset($this->sex)){$this->sex = $this->nmgp_dados_form['sex'];} 
           if (!isset($this->nationality)){$this->nationality = $this->nmgp_dados_form['nationality'];} 
-          if (!isset($this->ethnicity)){$this->ethnicity = $this->nmgp_dados_form['ethnicity'];} 
-          if (!isset($this->disability)){$this->disability = $this->nmgp_dados_form['disability'];} 
-          if (!isset($this->disbility_specify)){$this->disbility_specify = $this->nmgp_dados_form['disbility_specify'];} 
-          if (!isset($this->offeron_disability)){$this->offeron_disability = $this->nmgp_dados_form['offeron_disability'];} 
+          if (!isset($this->dateofbirth)){$this->dateofbirth = $this->nmgp_dados_form['dateofbirth'];} 
+          if (!isset($this->gender)){$this->gender = $this->nmgp_dados_form['gender'];} 
+          if (!isset($this->resident)){$this->resident = $this->nmgp_dados_form['resident'];} 
           if (!isset($this->status)){$this->status = $this->nmgp_dados_form['status'];} 
-          if (!isset($this->application_type)){$this->application_type = $this->nmgp_dados_form['application_type'];} 
           if (!isset($this->submitted)){$this->submitted = $this->nmgp_dados_form['submitted'];} 
       }
       $glo_senha_protect = (isset($_SESSION['scriptcase']['glo_senha_protect'])) ? $_SESSION['scriptcase']['glo_senha_protect'] : "S";
@@ -1060,19 +1036,6 @@ class form_files_upload_mob_apl
    function loadFieldConfig()
    {
       $this->field_config = array();
-      //-- country
-      $this->field_config['country']               = array();
-      $this->field_config['country']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
-      $this->field_config['country']['symbol_fmt'] = $_SESSION['scriptcase']['reg_conf']['num_group_digit'];
-      $this->field_config['country']['symbol_dec'] = '';
-      $this->field_config['country']['symbol_neg'] = $_SESSION['scriptcase']['reg_conf']['simb_neg'];
-      $this->field_config['country']['format_neg'] = $_SESSION['scriptcase']['reg_conf']['neg_num'];
-      //-- dateofbirth
-      $this->field_config['dateofbirth']                 = array();
-      $this->field_config['dateofbirth']['date_format']  = $_SESSION['scriptcase']['reg_conf']['date_format'];
-      $this->field_config['dateofbirth']['date_sep']     = $_SESSION['scriptcase']['reg_conf']['date_sep'];
-      $this->field_config['dateofbirth']['date_display'] = "ddmmaaaa";
-      $this->new_date_format('DT', 'dateofbirth');
       //-- nationality
       $this->field_config['nationality']               = array();
       $this->field_config['nationality']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
@@ -1080,13 +1043,19 @@ class form_files_upload_mob_apl
       $this->field_config['nationality']['symbol_dec'] = '';
       $this->field_config['nationality']['symbol_neg'] = $_SESSION['scriptcase']['reg_conf']['simb_neg'];
       $this->field_config['nationality']['format_neg'] = $_SESSION['scriptcase']['reg_conf']['neg_num'];
-      //-- ethnicity
-      $this->field_config['ethnicity']               = array();
-      $this->field_config['ethnicity']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
-      $this->field_config['ethnicity']['symbol_fmt'] = $_SESSION['scriptcase']['reg_conf']['num_group_digit'];
-      $this->field_config['ethnicity']['symbol_dec'] = '';
-      $this->field_config['ethnicity']['symbol_neg'] = $_SESSION['scriptcase']['reg_conf']['simb_neg'];
-      $this->field_config['ethnicity']['format_neg'] = $_SESSION['scriptcase']['reg_conf']['neg_num'];
+      //-- dateofbirth
+      $this->field_config['dateofbirth']                 = array();
+      $this->field_config['dateofbirth']['date_format']  = $_SESSION['scriptcase']['reg_conf']['date_format'];
+      $this->field_config['dateofbirth']['date_sep']     = $_SESSION['scriptcase']['reg_conf']['date_sep'];
+      $this->field_config['dateofbirth']['date_display'] = "ddmmaaaa";
+      $this->new_date_format('DT', 'dateofbirth');
+      //-- resident
+      $this->field_config['resident']               = array();
+      $this->field_config['resident']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
+      $this->field_config['resident']['symbol_fmt'] = $_SESSION['scriptcase']['reg_conf']['num_group_digit'];
+      $this->field_config['resident']['symbol_dec'] = '';
+      $this->field_config['resident']['symbol_neg'] = $_SESSION['scriptcase']['reg_conf']['simb_neg'];
+      $this->field_config['resident']['format_neg'] = $_SESSION['scriptcase']['reg_conf']['neg_num'];
       //-- status
       $this->field_config['status']               = array();
       $this->field_config['status']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
@@ -1588,56 +1557,20 @@ If you do not click the <strong>save</strong> button at the bottom of the form a
            case 'middlename':
                return "Middlename";
                break;
-           case 'address':
-               return "Address";
-               break;
-           case 'address1':
-               return "Address 1";
-               break;
-           case 'town':
-               return "Town";
-               break;
-           case 'county':
-               return "County";
-               break;
-           case 'postcode':
-               return "Postcode";
-               break;
-           case 'country':
-               return "Country";
-               break;
-           case 'telephone':
-               return "Telephone";
-               break;
-           case 'mobile':
-               return "Mobile";
+           case 'nationality':
+               return "Nationality";
                break;
            case 'dateofbirth':
                return "Dateofbirth";
                break;
-           case 'sex':
-               return "Sex";
+           case 'gender':
+               return "Gender";
                break;
-           case 'nationality':
-               return "Nationality";
-               break;
-           case 'ethnicity':
-               return "Ethnicity";
-               break;
-           case 'disability':
-               return "Disability";
-               break;
-           case 'disbility_specify':
-               return "Disbility Specify";
-               break;
-           case 'offeron_disability':
-               return "Offer On Disability";
+           case 'resident':
+               return "Resident";
                break;
            case 'status':
                return "Status";
-               break;
-           case 'application_type':
-               return "Application Type";
                break;
            case 'submitted':
                return "Submitted";
@@ -1797,23 +1730,11 @@ If you do not click the <strong>save</strong> button at the bottom of the form a
     $this->nmgp_dados_form['firstname'] = $this->firstname;
     $this->nmgp_dados_form['lastname'] = $this->lastname;
     $this->nmgp_dados_form['middlename'] = $this->middlename;
-    $this->nmgp_dados_form['address'] = $this->address;
-    $this->nmgp_dados_form['address1'] = $this->address1;
-    $this->nmgp_dados_form['town'] = $this->town;
-    $this->nmgp_dados_form['county'] = $this->county;
-    $this->nmgp_dados_form['postcode'] = $this->postcode;
-    $this->nmgp_dados_form['country'] = $this->country;
-    $this->nmgp_dados_form['telephone'] = $this->telephone;
-    $this->nmgp_dados_form['mobile'] = $this->mobile;
-    $this->nmgp_dados_form['dateofbirth'] = $this->dateofbirth;
-    $this->nmgp_dados_form['sex'] = $this->sex;
     $this->nmgp_dados_form['nationality'] = $this->nationality;
-    $this->nmgp_dados_form['ethnicity'] = $this->ethnicity;
-    $this->nmgp_dados_form['disability'] = $this->disability;
-    $this->nmgp_dados_form['disbility_specify'] = $this->disbility_specify;
-    $this->nmgp_dados_form['offeron_disability'] = $this->offeron_disability;
+    $this->nmgp_dados_form['dateofbirth'] = $this->dateofbirth;
+    $this->nmgp_dados_form['gender'] = $this->gender;
+    $this->nmgp_dados_form['resident'] = $this->resident;
     $this->nmgp_dados_form['status'] = $this->status;
-    $this->nmgp_dados_form['application_type'] = $this->application_type;
     $this->nmgp_dados_form['submitted'] = $this->submitted;
     $_SESSION['sc_session'][$this->Ini->sc_page]['form_files_upload_mob']['dados_form'] = $this->nmgp_dados_form;
    }
@@ -1822,14 +1743,12 @@ If you do not click the <strong>save</strong> button at the bottom of the form a
       global $nm_form_submit;
          $this->Before_unformat = array();
          $this->formatado = false;
-      $this->Before_unformat['country'] = $this->country;
-      nm_limpa_numero($this->country, $this->field_config['country']['symbol_grp']) ; 
-      $this->Before_unformat['dateofbirth'] = $this->dateofbirth;
-      nm_limpa_data($this->dateofbirth, $this->field_config['dateofbirth']['date_sep']) ; 
       $this->Before_unformat['nationality'] = $this->nationality;
       nm_limpa_numero($this->nationality, $this->field_config['nationality']['symbol_grp']) ; 
-      $this->Before_unformat['ethnicity'] = $this->ethnicity;
-      nm_limpa_numero($this->ethnicity, $this->field_config['ethnicity']['symbol_grp']) ; 
+      $this->Before_unformat['dateofbirth'] = $this->dateofbirth;
+      nm_limpa_data($this->dateofbirth, $this->field_config['dateofbirth']['date_sep']) ; 
+      $this->Before_unformat['resident'] = $this->resident;
+      nm_limpa_numero($this->resident, $this->field_config['resident']['symbol_grp']) ; 
       $this->Before_unformat['status'] = $this->status;
       nm_limpa_numero($this->status, $this->field_config['status']['symbol_grp']) ; 
       $this->Before_unformat['submitted'] = $this->submitted;
@@ -1882,17 +1801,13 @@ If you do not click the <strong>save</strong> button at the bottom of the form a
    }
    function nm_clear_val($Nome_Campo)
    {
-      if ($Nome_Campo == "country")
-      {
-          nm_limpa_numero($this->country, $this->field_config['country']['symbol_grp']) ; 
-      }
       if ($Nome_Campo == "nationality")
       {
           nm_limpa_numero($this->nationality, $this->field_config['nationality']['symbol_grp']) ; 
       }
-      if ($Nome_Campo == "ethnicity")
+      if ($Nome_Campo == "resident")
       {
-          nm_limpa_numero($this->ethnicity, $this->field_config['ethnicity']['symbol_grp']) ; 
+          nm_limpa_numero($this->resident, $this->field_config['resident']['symbol_grp']) ; 
       }
       if ($Nome_Campo == "status")
       {
@@ -2623,38 +2538,21 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
       $NM_val_form['firstname'] = $this->firstname;
       $NM_val_form['lastname'] = $this->lastname;
       $NM_val_form['middlename'] = $this->middlename;
-      $NM_val_form['address'] = $this->address;
-      $NM_val_form['address1'] = $this->address1;
-      $NM_val_form['town'] = $this->town;
-      $NM_val_form['county'] = $this->county;
-      $NM_val_form['postcode'] = $this->postcode;
-      $NM_val_form['country'] = $this->country;
-      $NM_val_form['telephone'] = $this->telephone;
-      $NM_val_form['mobile'] = $this->mobile;
-      $NM_val_form['dateofbirth'] = $this->dateofbirth;
-      $NM_val_form['sex'] = $this->sex;
       $NM_val_form['nationality'] = $this->nationality;
-      $NM_val_form['ethnicity'] = $this->ethnicity;
-      $NM_val_form['disability'] = $this->disability;
-      $NM_val_form['disbility_specify'] = $this->disbility_specify;
-      $NM_val_form['offeron_disability'] = $this->offeron_disability;
+      $NM_val_form['dateofbirth'] = $this->dateofbirth;
+      $NM_val_form['gender'] = $this->gender;
+      $NM_val_form['resident'] = $this->resident;
       $NM_val_form['status'] = $this->status;
-      $NM_val_form['application_type'] = $this->application_type;
       $NM_val_form['submitted'] = $this->submitted;
-      if ($this->country === "")  
-      { 
-          $this->country = 0;
-          $this->sc_force_zero[] = 'country';
-      } 
       if ($this->nationality === "")  
       { 
           $this->nationality = 0;
           $this->sc_force_zero[] = 'nationality';
       } 
-      if ($this->ethnicity === "")  
+      if ($this->resident === "")  
       { 
-          $this->ethnicity = 0;
-          $this->sc_force_zero[] = 'ethnicity';
+          $this->resident = 0;
+          $this->sc_force_zero[] = 'resident';
       } 
       if ($this->status === "")  
       { 
@@ -2692,94 +2590,17 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
               $this->middlename = "null"; 
               $NM_val_null[] = "middlename";
           } 
-          $this->address_before_qstr = $this->address;
-          $this->address = substr($this->Db->qstr($this->address), 1, -1); 
-          if ($this->address == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->address = "null"; 
-              $NM_val_null[] = "address";
-          } 
-          $this->address1_before_qstr = $this->address1;
-          $this->address1 = substr($this->Db->qstr($this->address1), 1, -1); 
-          if ($this->address1 == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->address1 = "null"; 
-              $NM_val_null[] = "address1";
-          } 
-          $this->town_before_qstr = $this->town;
-          $this->town = substr($this->Db->qstr($this->town), 1, -1); 
-          if ($this->town == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->town = "null"; 
-              $NM_val_null[] = "town";
-          } 
-          $this->county_before_qstr = $this->county;
-          $this->county = substr($this->Db->qstr($this->county), 1, -1); 
-          if ($this->county == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->county = "null"; 
-              $NM_val_null[] = "county";
-          } 
-          $this->postcode_before_qstr = $this->postcode;
-          $this->postcode = substr($this->Db->qstr($this->postcode), 1, -1); 
-          if ($this->postcode == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->postcode = "null"; 
-              $NM_val_null[] = "postcode";
-          } 
-          $this->telephone_before_qstr = $this->telephone;
-          $this->telephone = substr($this->Db->qstr($this->telephone), 1, -1); 
-          if ($this->telephone == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->telephone = "null"; 
-              $NM_val_null[] = "telephone";
-          } 
-          $this->mobile_before_qstr = $this->mobile;
-          $this->mobile = substr($this->Db->qstr($this->mobile), 1, -1); 
-          if ($this->mobile == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->mobile = "null"; 
-              $NM_val_null[] = "mobile";
-          } 
           if ($this->dateofbirth == "")  
           { 
               $this->dateofbirth = "null"; 
               $NM_val_null[] = "dateofbirth";
           } 
-          $this->sex_before_qstr = $this->sex;
-          $this->sex = substr($this->Db->qstr($this->sex), 1, -1); 
-          if ($this->sex == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
+          $this->gender_before_qstr = $this->gender;
+          $this->gender = substr($this->Db->qstr($this->gender), 1, -1); 
+          if ($this->gender == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
           { 
-              $this->sex = "null"; 
-              $NM_val_null[] = "sex";
-          } 
-          $this->disability_before_qstr = $this->disability;
-          $this->disability = substr($this->Db->qstr($this->disability), 1, -1); 
-          if ($this->disability == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->disability = "null"; 
-              $NM_val_null[] = "disability";
-          } 
-          $this->disbility_specify_before_qstr = $this->disbility_specify;
-          $this->disbility_specify = substr($this->Db->qstr($this->disbility_specify), 1, -1); 
-          if ($this->disbility_specify == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->disbility_specify = "null"; 
-              $NM_val_null[] = "disbility_specify";
-          } 
-          $this->offeron_disability_before_qstr = $this->offeron_disability;
-          $this->offeron_disability = substr($this->Db->qstr($this->offeron_disability), 1, -1); 
-          if ($this->offeron_disability == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->offeron_disability = "null"; 
-              $NM_val_null[] = "offeron_disability";
-          } 
-          $this->application_type_before_qstr = $this->application_type;
-          $this->application_type = substr($this->Db->qstr($this->application_type), 1, -1); 
-          if ($this->application_type == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
-          { 
-              $this->application_type = "null"; 
-              $NM_val_null[] = "application_type";
+              $this->gender = "null"; 
+              $NM_val_null[] = "gender";
           } 
           if ($this->submitted == "")  
           { 
@@ -2862,37 +2683,9 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
               { 
                   $SC_fields_update[] = "middlename = '$this->middlename'"; 
               } 
-              if (isset($NM_val_form['address']) && $NM_val_form['address'] != $this->nmgp_dados_select['address']) 
+              if (isset($NM_val_form['nationality']) && $NM_val_form['nationality'] != $this->nmgp_dados_select['nationality']) 
               { 
-                  $SC_fields_update[] = "address = '$this->address'"; 
-              } 
-              if (isset($NM_val_form['address1']) && $NM_val_form['address1'] != $this->nmgp_dados_select['address1']) 
-              { 
-                  $SC_fields_update[] = "address1 = '$this->address1'"; 
-              } 
-              if (isset($NM_val_form['town']) && $NM_val_form['town'] != $this->nmgp_dados_select['town']) 
-              { 
-                  $SC_fields_update[] = "town = '$this->town'"; 
-              } 
-              if (isset($NM_val_form['county']) && $NM_val_form['county'] != $this->nmgp_dados_select['county']) 
-              { 
-                  $SC_fields_update[] = "county = '$this->county'"; 
-              } 
-              if (isset($NM_val_form['postcode']) && $NM_val_form['postcode'] != $this->nmgp_dados_select['postcode']) 
-              { 
-                  $SC_fields_update[] = "postcode = '$this->postcode'"; 
-              } 
-              if (isset($NM_val_form['country']) && $NM_val_form['country'] != $this->nmgp_dados_select['country']) 
-              { 
-                  $SC_fields_update[] = "country = $this->country"; 
-              } 
-              if (isset($NM_val_form['telephone']) && $NM_val_form['telephone'] != $this->nmgp_dados_select['telephone']) 
-              { 
-                  $SC_fields_update[] = "telephone = '$this->telephone'"; 
-              } 
-              if (isset($NM_val_form['mobile']) && $NM_val_form['mobile'] != $this->nmgp_dados_select['mobile']) 
-              { 
-                  $SC_fields_update[] = "mobile = '$this->mobile'"; 
+                  $SC_fields_update[] = "nationality = $this->nationality"; 
               } 
               if (isset($NM_val_form['dateofbirth']) && $NM_val_form['dateofbirth'] != $this->nmgp_dados_select['dateofbirth']) 
               { 
@@ -2905,37 +2698,17 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
                       $SC_fields_update[] = "dateofbirth = " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ""; 
                   } 
               } 
-              if (isset($NM_val_form['sex']) && $NM_val_form['sex'] != $this->nmgp_dados_select['sex']) 
+              if (isset($NM_val_form['gender']) && $NM_val_form['gender'] != $this->nmgp_dados_select['gender']) 
               { 
-                  $SC_fields_update[] = "sex = '$this->sex'"; 
+                  $SC_fields_update[] = "gender = '$this->gender'"; 
               } 
-              if (isset($NM_val_form['nationality']) && $NM_val_form['nationality'] != $this->nmgp_dados_select['nationality']) 
+              if (isset($NM_val_form['resident']) && $NM_val_form['resident'] != $this->nmgp_dados_select['resident']) 
               { 
-                  $SC_fields_update[] = "nationality = $this->nationality"; 
-              } 
-              if (isset($NM_val_form['ethnicity']) && $NM_val_form['ethnicity'] != $this->nmgp_dados_select['ethnicity']) 
-              { 
-                  $SC_fields_update[] = "ethnicity = $this->ethnicity"; 
-              } 
-              if (isset($NM_val_form['disability']) && $NM_val_form['disability'] != $this->nmgp_dados_select['disability']) 
-              { 
-                  $SC_fields_update[] = "disability = '$this->disability'"; 
-              } 
-              if (isset($NM_val_form['disbility_specify']) && $NM_val_form['disbility_specify'] != $this->nmgp_dados_select['disbility_specify']) 
-              { 
-                  $SC_fields_update[] = "disbility_specify = '$this->disbility_specify'"; 
-              } 
-              if (isset($NM_val_form['offeron_disability']) && $NM_val_form['offeron_disability'] != $this->nmgp_dados_select['offeron_disability']) 
-              { 
-                  $SC_fields_update[] = "offerOn_disability = '$this->offeron_disability'"; 
+                  $SC_fields_update[] = "resident = $this->resident"; 
               } 
               if (isset($NM_val_form['status']) && $NM_val_form['status'] != $this->nmgp_dados_select['status']) 
               { 
                   $SC_fields_update[] = "status = $this->status"; 
-              } 
-              if (isset($NM_val_form['application_type']) && $NM_val_form['application_type'] != $this->nmgp_dados_select['application_type']) 
-              { 
-                  $SC_fields_update[] = "application_type = '$this->application_type'"; 
               } 
               if (isset($NM_val_form['submitted']) && $NM_val_form['submitted'] != $this->nmgp_dados_select['submitted']) 
               { 
@@ -3119,18 +2892,7 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
           $this->firstname = $this->firstname_before_qstr;
           $this->lastname = $this->lastname_before_qstr;
           $this->middlename = $this->middlename_before_qstr;
-          $this->address = $this->address_before_qstr;
-          $this->address1 = $this->address1_before_qstr;
-          $this->town = $this->town_before_qstr;
-          $this->county = $this->county_before_qstr;
-          $this->postcode = $this->postcode_before_qstr;
-          $this->telephone = $this->telephone_before_qstr;
-          $this->mobile = $this->mobile_before_qstr;
-          $this->sex = $this->sex_before_qstr;
-          $this->disability = $this->disability_before_qstr;
-          $this->disbility_specify = $this->disbility_specify_before_qstr;
-          $this->offeron_disability = $this->offeron_disability_before_qstr;
-          $this->application_type = $this->application_type_before_qstr;
+          $this->gender = $this->gender_before_qstr;
               $this->sc_evento = "update"; 
               $this->nmgp_opcao = "igual"; 
               $this->nm_flag_iframe = true;
@@ -3224,19 +2986,19 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
               }
               if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
               { 
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (login, firstname, lastname, middlename, address, address1, town, county, postcode, country, telephone, mobile, dateofbirth, sex, nationality, ethnicity, disability, disbility_specify, offerOn_disability, status, application_type, submitted) VALUES ('$this->login', '$this->firstname', '$this->lastname', '$this->middlename', '$this->address', '$this->address1', '$this->town', '$this->county', '$this->postcode', $this->country, '$this->telephone', '$this->mobile', #$this->dateofbirth#, '$this->sex', $this->nationality, $this->ethnicity, '$this->disability', '$this->disbility_specify', '$this->offeron_disability', $this->status, '$this->application_type', '$this->submitted')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (login, firstname, lastname, middlename, nationality, dateofbirth, gender, resident, status, submitted) VALUES ('$this->login', '$this->firstname', '$this->lastname', '$this->middlename', $this->nationality, #$this->dateofbirth#, '$this->gender', $this->resident, $this->status, '$this->submitted')"; 
               }
               elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
               { 
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "login, firstname, lastname, middlename, address, address1, town, county, postcode, country, telephone, mobile, dateofbirth, sex, nationality, ethnicity, disability, disbility_specify, offerOn_disability, status, application_type, submitted) VALUES (" . $NM_seq_auto . "'$this->login', '$this->firstname', '$this->lastname', '$this->middlename', '$this->address', '$this->address1', '$this->town', '$this->county', '$this->postcode', $this->country, '$this->telephone', '$this->mobile', " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ", '$this->sex', $this->nationality, $this->ethnicity, '$this->disability', '$this->disbility_specify', '$this->offeron_disability', $this->status, '$this->application_type', '$this->submitted')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "login, firstname, lastname, middlename, nationality, dateofbirth, gender, resident, status, submitted) VALUES (" . $NM_seq_auto . "'$this->login', '$this->firstname', '$this->lastname', '$this->middlename', $this->nationality, " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ", '$this->gender', $this->resident, $this->status, '$this->submitted')"; 
               }
               elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
               {
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "login, firstname, lastname, middlename, address, address1, town, county, postcode, country, telephone, mobile, dateofbirth, sex, nationality, ethnicity, disability, disbility_specify, offerOn_disability, status, application_type, submitted) VALUES (" . $NM_seq_auto . "'$this->login', '$this->firstname', '$this->lastname', '$this->middlename', '$this->address', '$this->address1', '$this->town', '$this->county', '$this->postcode', $this->country, '$this->telephone', '$this->mobile', " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ", '$this->sex', $this->nationality, $this->ethnicity, '$this->disability', '$this->disbility_specify', '$this->offeron_disability', $this->status, '$this->application_type', '$this->submitted')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "login, firstname, lastname, middlename, nationality, dateofbirth, gender, resident, status, submitted) VALUES (" . $NM_seq_auto . "'$this->login', '$this->firstname', '$this->lastname', '$this->middlename', $this->nationality, " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ", '$this->gender', $this->resident, $this->status, '$this->submitted')"; 
               }
               else
               {
-                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "login, firstname, lastname, middlename, address, address1, town, county, postcode, country, telephone, mobile, dateofbirth, sex, nationality, ethnicity, disability, disbility_specify, offerOn_disability, status, application_type, submitted) VALUES (" . $NM_seq_auto . "'$this->login', '$this->firstname', '$this->lastname', '$this->middlename', '$this->address', '$this->address1', '$this->town', '$this->county', '$this->postcode', $this->country, '$this->telephone', '$this->mobile', " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ", '$this->sex', $this->nationality, $this->ethnicity, '$this->disability', '$this->disbility_specify', '$this->offeron_disability', $this->status, '$this->application_type', '$this->submitted')"; 
+                  $comando = "INSERT INTO " . $this->Ini->nm_tabela . " (" . $NM_cmp_auto . "login, firstname, lastname, middlename, nationality, dateofbirth, gender, resident, status, submitted) VALUES (" . $NM_seq_auto . "'$this->login', '$this->firstname', '$this->lastname', '$this->middlename', $this->nationality, " . $this->Ini->date_delim . $this->dateofbirth . $this->Ini->date_delim1 . ", '$this->gender', $this->resident, $this->status, '$this->submitted')"; 
               }
               $comando = str_replace("N'null'", "null", $comando) ; 
               $comando = str_replace("'null'", "null", $comando) ; 
@@ -3651,11 +3413,11 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
           } 
           if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
           { 
-              $nmgp_select = "SELECT login, firstname, lastname, middlename, address, address1, town, county, postcode, country, telephone, mobile, str_replace (convert(char(10),dateofbirth,102), '.', '-') + ' ' + convert(char(8),dateofbirth,20), sex, nationality, ethnicity, disability, disbility_specify, offerOn_disability, status, application_type, submitted from " . $this->Ini->nm_tabela ; 
+              $nmgp_select = "SELECT login, firstname, lastname, middlename, nationality, str_replace (convert(char(10),dateofbirth,102), '.', '-') + ' ' + convert(char(8),dateofbirth,20), gender, resident, status, submitted from " . $this->Ini->nm_tabela ; 
           } 
           else 
           { 
-              $nmgp_select = "SELECT login, firstname, lastname, middlename, address, address1, town, county, postcode, country, telephone, mobile, dateofbirth, sex, nationality, ethnicity, disability, disbility_specify, offerOn_disability, status, application_type, submitted from " . $this->Ini->nm_tabela ; 
+              $nmgp_select = "SELECT login, firstname, lastname, middlename, nationality, dateofbirth, gender, resident, status, submitted from " . $this->Ini->nm_tabela ; 
           } 
           $aWhere = array();
           $aWhere[] = "login = '" . $_SESSION['usr_login'] . "'";
@@ -3773,41 +3535,17 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
               $this->nmgp_dados_select['lastname'] = $this->lastname;
               $this->middlename = $rs->fields[3] ; 
               $this->nmgp_dados_select['middlename'] = $this->middlename;
-              $this->address = $rs->fields[4] ; 
-              $this->nmgp_dados_select['address'] = $this->address;
-              $this->address1 = $rs->fields[5] ; 
-              $this->nmgp_dados_select['address1'] = $this->address1;
-              $this->town = $rs->fields[6] ; 
-              $this->nmgp_dados_select['town'] = $this->town;
-              $this->county = $rs->fields[7] ; 
-              $this->nmgp_dados_select['county'] = $this->county;
-              $this->postcode = $rs->fields[8] ; 
-              $this->nmgp_dados_select['postcode'] = $this->postcode;
-              $this->country = $rs->fields[9] ; 
-              $this->nmgp_dados_select['country'] = $this->country;
-              $this->telephone = $rs->fields[10] ; 
-              $this->nmgp_dados_select['telephone'] = $this->telephone;
-              $this->mobile = $rs->fields[11] ; 
-              $this->nmgp_dados_select['mobile'] = $this->mobile;
-              $this->dateofbirth = $rs->fields[12] ; 
-              $this->nmgp_dados_select['dateofbirth'] = $this->dateofbirth;
-              $this->sex = $rs->fields[13] ; 
-              $this->nmgp_dados_select['sex'] = $this->sex;
-              $this->nationality = $rs->fields[14] ; 
+              $this->nationality = $rs->fields[4] ; 
               $this->nmgp_dados_select['nationality'] = $this->nationality;
-              $this->ethnicity = $rs->fields[15] ; 
-              $this->nmgp_dados_select['ethnicity'] = $this->ethnicity;
-              $this->disability = $rs->fields[16] ; 
-              $this->nmgp_dados_select['disability'] = $this->disability;
-              $this->disbility_specify = $rs->fields[17] ; 
-              $this->nmgp_dados_select['disbility_specify'] = $this->disbility_specify;
-              $this->offeron_disability = $rs->fields[18] ; 
-              $this->nmgp_dados_select['offeron_disability'] = $this->offeron_disability;
-              $this->status = $rs->fields[19] ; 
+              $this->dateofbirth = $rs->fields[5] ; 
+              $this->nmgp_dados_select['dateofbirth'] = $this->dateofbirth;
+              $this->gender = $rs->fields[6] ; 
+              $this->nmgp_dados_select['gender'] = $this->gender;
+              $this->resident = $rs->fields[7] ; 
+              $this->nmgp_dados_select['resident'] = $this->resident;
+              $this->status = $rs->fields[8] ; 
               $this->nmgp_dados_select['status'] = $this->status;
-              $this->application_type = $rs->fields[20] ; 
-              $this->nmgp_dados_select['application_type'] = $this->application_type;
-              $this->submitted = $rs->fields[21] ; 
+              $this->submitted = $rs->fields[9] ; 
               if (substr($this->submitted, 10, 1) == "-") 
               { 
                  $this->submitted = substr($this->submitted, 0, 10) . " " . substr($this->submitted, 11);
@@ -3818,9 +3556,8 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
               } 
               $this->nmgp_dados_select['submitted'] = $this->submitted;
           $GLOBALS["NM_ERRO_IBASE"] = 0; 
-              $this->country = (string)$this->country; 
               $this->nationality = (string)$this->nationality; 
-              $this->ethnicity = (string)$this->ethnicity; 
+              $this->resident = (string)$this->resident; 
               $this->status = (string)$this->status; 
               $_SESSION['sc_session'][$this->Ini->sc_page]['form_files_upload_mob']['parms'] = "login?#?$this->login?@?";
               $_SESSION['sc_session'][$this->Ini->sc_page]['form_files_upload_mob']['sub_dir'][0]  = "/" . $this->nm_tira_formatacao_login($this->login);
@@ -3852,41 +3589,17 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
               $this->nmgp_dados_form["lastname"] = $this->lastname;
               $this->middlename = "";  
               $this->nmgp_dados_form["middlename"] = $this->middlename;
-              $this->address = "";  
-              $this->nmgp_dados_form["address"] = $this->address;
-              $this->address1 = "";  
-              $this->nmgp_dados_form["address1"] = $this->address1;
-              $this->town = "";  
-              $this->nmgp_dados_form["town"] = $this->town;
-              $this->county = "";  
-              $this->nmgp_dados_form["county"] = $this->county;
-              $this->postcode = "";  
-              $this->nmgp_dados_form["postcode"] = $this->postcode;
-              $this->country = "";  
-              $this->nmgp_dados_form["country"] = $this->country;
-              $this->telephone = "";  
-              $this->nmgp_dados_form["telephone"] = $this->telephone;
-              $this->mobile = "";  
-              $this->nmgp_dados_form["mobile"] = $this->mobile;
+              $this->nationality = "";  
+              $this->nmgp_dados_form["nationality"] = $this->nationality;
               $this->dateofbirth = "";  
               $this->dateofbirth_hora = "" ;  
               $this->nmgp_dados_form["dateofbirth"] = $this->dateofbirth;
-              $this->sex = "";  
-              $this->nmgp_dados_form["sex"] = $this->sex;
-              $this->nationality = "";  
-              $this->nmgp_dados_form["nationality"] = $this->nationality;
-              $this->ethnicity = "";  
-              $this->nmgp_dados_form["ethnicity"] = $this->ethnicity;
-              $this->disability = "";  
-              $this->nmgp_dados_form["disability"] = $this->disability;
-              $this->disbility_specify = "";  
-              $this->nmgp_dados_form["disbility_specify"] = $this->disbility_specify;
-              $this->offeron_disability = "";  
-              $this->nmgp_dados_form["offeron_disability"] = $this->offeron_disability;
+              $this->gender = "";  
+              $this->nmgp_dados_form["gender"] = $this->gender;
+              $this->resident = "";  
+              $this->nmgp_dados_form["resident"] = $this->resident;
               $this->status = "";  
               $this->nmgp_dados_form["status"] = $this->status;
-              $this->application_type = "";  
-              $this->nmgp_dados_form["application_type"] = $this->application_type;
               $this->submitted = "";  
               $this->submitted_hora = "" ;  
               $this->nmgp_dados_form["submitted"] = $this->submitted;
@@ -3947,23 +3660,11 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
            $this->SC_log_arr['fields']['firstname']['0'] =  $nmgp_dados_select['firstname'];
            $this->SC_log_arr['fields']['lastname']['0'] =  $nmgp_dados_select['lastname'];
            $this->SC_log_arr['fields']['middlename']['0'] =  $nmgp_dados_select['middlename'];
-           $this->SC_log_arr['fields']['address']['0'] =  $nmgp_dados_select['address'];
-           $this->SC_log_arr['fields']['address1']['0'] =  $nmgp_dados_select['address1'];
-           $this->SC_log_arr['fields']['town']['0'] =  $nmgp_dados_select['town'];
-           $this->SC_log_arr['fields']['county']['0'] =  $nmgp_dados_select['county'];
-           $this->SC_log_arr['fields']['postcode']['0'] =  $nmgp_dados_select['postcode'];
-           $this->SC_log_arr['fields']['country']['0'] =  $nmgp_dados_select['country'];
-           $this->SC_log_arr['fields']['telephone']['0'] =  $nmgp_dados_select['telephone'];
-           $this->SC_log_arr['fields']['mobile']['0'] =  $nmgp_dados_select['mobile'];
-           $this->SC_log_arr['fields']['dateofbirth']['0'] =  $nmgp_dados_select['dateofbirth'];
-           $this->SC_log_arr['fields']['sex']['0'] =  $nmgp_dados_select['sex'];
            $this->SC_log_arr['fields']['nationality']['0'] =  $nmgp_dados_select['nationality'];
-           $this->SC_log_arr['fields']['ethnicity']['0'] =  $nmgp_dados_select['ethnicity'];
-           $this->SC_log_arr['fields']['disability']['0'] =  $nmgp_dados_select['disability'];
-           $this->SC_log_arr['fields']['disbility_specify']['0'] =  $nmgp_dados_select['disbility_specify'];
-           $this->SC_log_arr['fields']['offerOn_disability']['0'] =  $nmgp_dados_select['offeron_disability'];
+           $this->SC_log_arr['fields']['dateofbirth']['0'] =  $nmgp_dados_select['dateofbirth'];
+           $this->SC_log_arr['fields']['gender']['0'] =  $nmgp_dados_select['gender'];
+           $this->SC_log_arr['fields']['resident']['0'] =  $nmgp_dados_select['resident'];
            $this->SC_log_arr['fields']['status']['0'] =  $nmgp_dados_select['status'];
-           $this->SC_log_arr['fields']['application_type']['0'] =  $nmgp_dados_select['application_type'];
            $this->SC_log_arr['fields']['submitted']['0'] =  $nmgp_dados_select['submitted'];
        }
    }
@@ -3973,23 +3674,11 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
        $this->SC_log_arr['fields']['firstname']['1'] =  $this->firstname;
        $this->SC_log_arr['fields']['lastname']['1'] =  $this->lastname;
        $this->SC_log_arr['fields']['middlename']['1'] =  $this->middlename;
-       $this->SC_log_arr['fields']['address']['1'] =  $this->address;
-       $this->SC_log_arr['fields']['address1']['1'] =  $this->address1;
-       $this->SC_log_arr['fields']['town']['1'] =  $this->town;
-       $this->SC_log_arr['fields']['county']['1'] =  $this->county;
-       $this->SC_log_arr['fields']['postcode']['1'] =  $this->postcode;
-       $this->SC_log_arr['fields']['country']['1'] =  $this->country;
-       $this->SC_log_arr['fields']['telephone']['1'] =  $this->telephone;
-       $this->SC_log_arr['fields']['mobile']['1'] =  $this->mobile;
-       $this->SC_log_arr['fields']['dateofbirth']['1'] =  $this->dateofbirth;
-       $this->SC_log_arr['fields']['sex']['1'] =  $this->sex;
        $this->SC_log_arr['fields']['nationality']['1'] =  $this->nationality;
-       $this->SC_log_arr['fields']['ethnicity']['1'] =  $this->ethnicity;
-       $this->SC_log_arr['fields']['disability']['1'] =  $this->disability;
-       $this->SC_log_arr['fields']['disbility_specify']['1'] =  $this->disbility_specify;
-       $this->SC_log_arr['fields']['offerOn_disability']['1'] =  $this->offeron_disability;
+       $this->SC_log_arr['fields']['dateofbirth']['1'] =  $this->dateofbirth;
+       $this->SC_log_arr['fields']['gender']['1'] =  $this->gender;
+       $this->SC_log_arr['fields']['resident']['1'] =  $this->resident;
        $this->SC_log_arr['fields']['status']['1'] =  $this->status;
-       $this->SC_log_arr['fields']['application_type']['1'] =  $this->application_type;
        $this->SC_log_arr['fields']['submitted']['1'] =  $this->submitted;
    }
 // 
@@ -5130,36 +4819,8 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
       {
           $this->SC_monta_condicao($comando, "middlename", $arg_search, $data_search);
       }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "address", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "county", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "postcode", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "country", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "telephone", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "mobile", $arg_search, $data_search);
-      }
       {
           $this->SC_monta_condicao($comando, "dateofbirth", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "sex", $arg_search, $data_search);
       }
       if ($field == "SC_all_Cmp") 
       {
@@ -5167,23 +4828,7 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
       }
       if ($field == "SC_all_Cmp") 
       {
-          $this->SC_monta_condicao($comando, "ethnicity", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "disability", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "disbility_specify", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
           $this->SC_monta_condicao($comando, "status", $arg_search, $data_search);
-      }
-      if ($field == "SC_all_Cmp") 
-      {
-          $this->SC_monta_condicao($comando, "application_type", $arg_search, $data_search);
       }
       {
           $this->SC_monta_condicao($comando, "submitted", $arg_search, $data_search);
@@ -5244,7 +4889,7 @@ $_SESSION['scriptcase']['form_files_upload_mob']['contr_erro'] = 'off';
       $campo_join = strtolower(str_replace(".", "_", $nome));
       $nm_ini_lower = "";
       $nm_fim_lower = "";
-      $nm_numeric[] = "country";$nm_numeric[] = "nationality";$nm_numeric[] = "ethnicity";$nm_numeric[] = "status";
+      $nm_numeric[] = "nationality";$nm_numeric[] = "resident";$nm_numeric[] = "status";
       if (in_array($campo_join, $nm_numeric))
       {
          if ($_SESSION['sc_session'][$this->Ini->sc_page]['form_files_upload_mob']['decimal_db'] == ".")

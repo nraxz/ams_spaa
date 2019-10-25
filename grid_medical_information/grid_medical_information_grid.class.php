@@ -92,7 +92,7 @@ class grid_medical_information_grid
             else
             {
        $nm_saida->saida("                  <TR>\r\n");
-       $nm_saida->saida("                  <TD id='sc_grid_content' style='padding: 0px;' colspan=3>\r\n");
+       $nm_saida->saida("                  <TD id='sc_grid_content' style='padding: 0px;' colspan=1>\r\n");
             } 
        $nm_saida->saida("    <table width='100%' cellspacing=0 cellpadding=0>\r\n");
        $nmgrp_apl_opcao= (isset($_SESSION['sc_session']['scriptcase']['embutida_form_pdf']['grid_medical_information'])) ? "pdf" : $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'];
@@ -276,8 +276,7 @@ class grid_medical_information_grid
    $this->nmgp_botoes['forward'] = "off";
    $this->nmgp_botoes['last'] = "off";
    $this->nmgp_botoes['pdf'] = "on";
-   $this->nmgp_botoes['new']    = "on";
-   $this->nmgp_botoes['insert'] = "on";
+   $this->nmgp_botoes['SC_btn_0'] = "on";
    if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_medical_information']['btn_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['grid_medical_information']['btn_display']))
    {
        foreach ($_SESSION['scriptcase']['sc_apl_conf']['grid_medical_information']['btn_display'] as $NM_cada_btn => $NM_cada_opc)
@@ -391,19 +390,6 @@ $_SESSION['scriptcase']['grid_medical_information']['contr_erro'] = 'off';
        }
    }
 
-   if (isset($_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['insert']) && $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['insert'] != '')
-   {
-       $this->nmgp_botoes['new']    = $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['insert'];
-       $this->nmgp_botoes['insert'] = $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['insert'];
-   }
-   if (isset($_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['update']) && $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['update'] != '')
-   {
-       $this->nmgp_botoes['update'] = $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['update'];
-   }
-   if (isset($_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['delete']) && $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['delete'] != '')
-   {
-       $this->nmgp_botoes['delete'] = $_SESSION['scriptcase']['sc_apl_conf']['form_medical_information']['delete'];
-   }
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'])
    {
        $nmgp_ordem = ""; 
@@ -788,7 +774,7 @@ $_SESSION['scriptcase']['grid_medical_information']['contr_erro'] = 'off';
    if ($this->rs_grid->EOF || ($this->rs_grid === false && $GLOBALS["NM_ERRO_IBASE"] == 1)) 
    { 
        $this->force_toolbar = true;
-       $this->nm_grid_sem_reg = "<a href='../form_medical_information' class='btn btn-primary btn-lg active' role='button' aria-pressed='true'>Click to add medical information.</a>"; 
+       $this->nm_grid_sem_reg = "Please click on the button to add medical report."; 
    }  
    else 
    { 
@@ -1569,14 +1555,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
        }
        $str_iframe_body = ($this->aba_iframe) ? 'marginwidth="0px" marginheight="0px" topmargin="0px" leftmargin="0px"' : '';
        $nm_saida->saida("  <style type=\"text/css\">\r\n");
-       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida_pdf'] != "pdf")
-       {
-           $nm_saida->saida("  .css_iframes   { margin-bottom: 0px; margin-left: 0px;  margin-right: 0px;  margin-top: 0px; }\r\n");
-       }
-       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'])
-       { 
-           $nm_saida->saida("       .ttip {border:1px solid black;font-size:12px;layer-background-color:lightyellow;background-color:lightyellow;color:black;}\r\n");
-       } 
        $nm_saida->saida("  </style>\r\n");
        if (!$write_css)
        {
@@ -1637,10 +1615,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $nm_saida->saida("          <div style=\"height:1px;overflow:hidden\"><H1 style=\"font-size:0;padding:1px\"></H1></div>\r\n");
            }
        } 
-       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['doc_word'])
-       { 
-           $nm_saida->saida("      <div id=\"tooltip\" style=\"position:absolute;visibility:hidden;border:1px solid black;font-size:12px;layer-background-color:lightyellow;background-color:lightyellow;padding:1px;color:black;\"></div>\r\n");
-       } 
        $this->Tab_align  = "center";
        $this->Tab_valign = "top";
        $this->Tab_width = "";
@@ -1666,24 +1640,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
        } 
        $nm_saida->saida("       <TABLE width='100%' cellspacing=0 cellpadding=0>\r\n");
    }
-       if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && 
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print") 
-       { 
-           $nm_saida->saida("    <TR>\r\n");
-           $nm_saida->saida("    <TD  colspan=3 style=\"padding: 0px; border-width: 0px; vertical-align: top;\">\r\n");
-           $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_A_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_A_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-           $nm_saida->saida("    </TD>\r\n");
-           $nm_saida->saida("    </TR>\r\n");
-           $nm_saida->saida("    <TR>\r\n");
-           $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\">\r\n");
-           $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_E_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_E_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-           $nm_saida->saida("    </TD>\r\n");
-           $nm_saida->saida("    <td style=\"padding: 0px;  vertical-align: top;\"><table style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\" width=\"100%\"><tr>\r\n");
-           $nm_saida->saida("    <TD colspan=3 style=\"padding: 0px; border-width: 0px; vertical-align: top;\" width=1>\r\n");
-      $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_AL_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_AL_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-           $nm_saida->saida("    </TD>\r\n");
-           $nm_saida->saida("    </TR>\r\n");
-        } 
    }  
  }  
  function NM_cor_embutida()
@@ -1692,6 +1648,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
    if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'])
    {
+       $this->arr_buttons = array_merge($this->arr_buttons, $this->Ini->arr_buttons_usr);
        $this->NM_css_val_embed = "sznmxizkjnvl";
        $this->NM_css_ajx_embed = "Ajax_res";
    }
@@ -1880,7 +1837,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $nm_saida->saida(" <TR id=\"sc_grid_head\">\r\n");
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf")
    { 
-       $nm_saida->saida("  <TD class=\"" . $this->css_scGridTabelaTd . "\" colspan=3 style=\"vertical-align: top\">\r\n");
+       $nm_saida->saida("  <TD class=\"" . $this->css_scGridTabelaTd . "\" style=\"vertical-align: top\">\r\n");
    } 
    else 
    { 
@@ -1968,7 +1925,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
                    $NM_span_sem_reg  = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['cols_emb'];
                }
                $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['rows_emb']++;
-               $nm_saida->saida("  <TR> <TD class=\"" . $this->css_scGridTabelaTd . " " . "\" colspan = \"$NM_span_sem_reg\" align=\"center\" style=\"vertical-align: top;font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:14px;\">\r\n");
+               $nm_saida->saida("  <TR> <TD class=\"" . $this->css_scGridTabelaTd . " " . "\" colspan = \"$NM_span_sem_reg\" align=\"center\" style=\"vertical-align: top;font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:16px;color:#006600;\">\r\n");
                $nm_saida->saida("     " . $this->nm_grid_sem_reg . "</TD> </TR>\r\n");
                $nm_saida->saida("##NM@@\r\n");
                $this->rs_grid->Close();
@@ -1976,9 +1933,9 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            else
            {
                $nm_saida->saida("<table id=\"apl_grid_medical_information#?#$nm_seq_execucoes\" width=\"100%\" style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\">\r\n");
-               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridTabelaTd . " " . "\" style=\"font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:14px;\"><table style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\" width=\"100%\">\r\n");
+               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridTabelaTd . " " . "\" style=\"font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:16px;color:#006600;\"><table style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\" width=\"100%\">\r\n");
                $nm_id_aplicacao = "";
-               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridFieldOdd . "\"  style=\"padding: 0px; font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:14px;\" colspan = \"6\" align=\"center\">\r\n");
+               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridFieldOdd . "\"  style=\"padding: 0px; font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:16px;color:#006600;\" colspan = \"5\" align=\"center\">\r\n");
                $nm_saida->saida("     " . $this->nm_grid_sem_reg . "\r\n");
                $nm_saida->saida("  </td></tr>\r\n");
                $nm_saida->saida("  </table></td></tr></table>\r\n");
@@ -1992,17 +1949,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
        else
        {
            $nm_saida->saida(" <TR> \r\n");
-           if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && 
-               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print") 
-           { 
-           $nm_saida->saida("    <TD >\r\n");
-           $nm_saida->saida("    <TABLE cellspacing=0 cellpadding=0 width='100%'>\r\n");
-               $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\" width=1>\r\n");
-      $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_EL_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_EL_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-               $nm_saida->saida("    </TD>\r\n");
-               $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\"><TABLE style=\"padding: 0px; border-spacing: 0px; border-width: 0px;\" width=\"100%\"><TR>\r\n");
-           } 
-           $nm_saida->saida("  <td " . $this->Grid_body . " class=\"" . $this->css_scGridTabelaTd . " " . $this->css_scGridFieldOdd . "\" align=\"center\" style=\"vertical-align: top;font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:14px;\">\r\n");
+           $nm_saida->saida("  <td " . $this->Grid_body . " class=\"" . $this->css_scGridTabelaTd . " " . $this->css_scGridFieldOdd . "\" align=\"center\" style=\"vertical-align: top;font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:16px;color:#006600;\">\r\n");
            if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['force_toolbar']))
            { 
                $this->force_toolbar = true;
@@ -2016,25 +1963,9 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
            { 
                $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_body', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
-               $this->Ini->Arr_result['setSrc'][] = array('field' => 'nmsc_iframe_liga_A_grid_medical_information', 'value' => 'NM_Blank_Page.htm');
-               $this->Ini->Arr_result['setSrc'][] = array('field' => 'nmsc_iframe_liga_D_grid_medical_information', 'value' => 'NM_Blank_Page.htm');
-               $this->Ini->Arr_result['setSrc'][] = array('field' => 'nmsc_iframe_liga_E_grid_medical_information', 'value' => 'NM_Blank_Page.htm');
                $_SESSION['scriptcase']['saida_html'] = "";
            } 
            $nm_saida->saida("  </td></tr>\r\n");
-           if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" &&
-               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print") 
-           { 
-               $nm_saida->saida("</TABLE></TD>\r\n");
-               $nm_saida->saida("<TD style=\"padding: 0px; border-width: 0px;\" valign=\"top\" width=1>\r\n");
-      $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_DL_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_DL_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-               $nm_saida->saida("</TD>\r\n");
-               $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\">\r\n");
-               $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_D_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_D_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-               $nm_saida->saida("    </TD>\r\n");
-               $nm_saida->saida("    </TR>\r\n");
-           } 
-       $nm_saida->saida("</TABLE>\r\n");
        }
        return;
    }
@@ -2053,16 +1984,6 @@ else
 {
        $nm_saida->saida("    <TR> \r\n");
 }
-       if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && 
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print") 
-       { 
-           $nm_saida->saida("    <TD  colspan=3>\r\n");
-           $nm_saida->saida("    <TABLE cellspacing=0 cellpadding=0 width='100%'>\r\n");
-           $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\" width=1>\r\n");
-      $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_EL_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_EL_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-           $nm_saida->saida("    </TD>\r\n");
-           $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\"><TABLE style=\"padding: 0px; border-spacing: 0px; border-width: 0px;\" width=\"100%\"><TR>\r\n");
-       } 
        $nm_id_aplicacao = " id=\"apl_grid_medical_information#?#1\"";
    } 
    $TD_padding = (!$this->Print_All && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] == "pdf") ? "padding: 0px !important;" : "";
@@ -2258,31 +2179,6 @@ $nm_saida->saida("   <TR>\r\n");
 $nm_saida->saida("    <TD  style=\"border-width: 0px; border-style: none; \" height=\"\" valign=\"top\" width=\"100%\">\r\n");
 $nm_saida->saida("     <TABLE style=\"padding: 0px; spacing: 0px; border-width: 0px; border-collapse:collapse;\" width=\"100%\">\r\n");
 $nm_saida->saida("      <TR>\r\n");
- if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print") { 
-$nm_saida->saida("     <TD class=\"" . $this->css_line_back . "\"   align=\"center\" valign=\"\"  >\r\n");
-$nm_saida->saida("     &nbsp;\r\n");
-$nm_saida->saida(" <br />\r\n");
- if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['mostra_edit'] != "N"){ 
-              $Sc_parent = ($this->grid_emb_form_full) ? "S" : "";
-              if (isset($this->Ini->sc_lig_md5["form_medical_information"]) && $this->Ini->sc_lig_md5["form_medical_information"] == "S")
-              {
-                  $Parms_Edt  = "login?#?" . str_replace('"', "@aspasd@", $this->login) . "?@?NM_btn_insert?#?S?@?NM_btn_update?#?S?@?NM_btn_delete?#?S?@?NM_btn_navega?#?N?@?nmgp_opcao?#?igual?@?";
-                  $Md5_Edt    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_medical_information@SC_par@" . md5($Parms_Edt);
-                  $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['Lig_Md5'][md5($Parms_Edt)] = $Parms_Edt;
-              }
-              else
-              {
-                  $Md5_Edt  = "login?#?" . str_replace('"', "@aspasd@", $this->login) . "?@?NM_btn_insert?#?S?@?NM_btn_update?#?S?@?NM_btn_delete?#?S?@?NM_btn_navega?#?N?@?nmgp_opcao?#?igual?@?";
-              }
-     $Link_Edit = nmButtonOutput($this->arr_buttons, "bform_editar", "nm_gp_submit4('" .  $this->Ini->link_form_medical_information . "', '$this->nm_location',  '$Md5_Edt' , '". (isset($linkTarget) ? $linkTarget : '_self') . "', '', 'form_medical_information', '" . $this->SC_ancora . "')", "nm_gp_submit4('" .  $this->Ini->link_form_medical_information . "', '$this->nm_location',  '$Md5_Edt' , '". (isset($linkTarget) ? $linkTarget : '_self') . "', '', 'form_medical_information', '" . $this->SC_ancora . "')", "bedit", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-$nm_saida->saida("      " . $Link_Edit . " \r\n");
- } 
- if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['mostra_edit'] == "N"){ 
-$nm_saida->saida("      \r\n");
- } 
-$nm_saida->saida("    </TD>\r\n");
- } 
-$nm_saida->saida("   </tr><tr>\r\n");
 $nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $this->css_any_disability_label . "\"   align=\"\" valign=\"top\"   HEIGHT=\"0px\">\r\n");
    if (isset($this->NM_cmp_hidden['any_disability']) && $this->NM_cmp_hidden['any_disability'] == "off")
    {
@@ -2528,20 +2424,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    { 
        $_SESSION['scriptcase']['contr_link_emb'] = "";   
    } 
-   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" && empty($this->nm_grid_sem_reg) && 
-       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print") 
-   { 
-       $nm_saida->saida("</TABLE></TD>\r\n");
-       $nm_saida->saida("<TD style=\"padding: 0px; border-width: 0px;\" valign=\"top\" width=1>\r\n");
-      $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_DL_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_DL_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-       $nm_saida->saida("</TD>\r\n");
-           $nm_saida->saida("    <TD style=\"padding: 0px; border-width: 0px; vertical-align: top;\">\r\n");
-           $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_D_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_D_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-           $nm_saida->saida("    </TD>\r\n");
-           $nm_saida->saida("    </TR>\r\n");
-           $nm_saida->saida("    </TABLE>\r\n");
-           $nm_saida->saida("    </TD>\r\n");
-   } 
            $nm_saida->saida("    </TR>\r\n");
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'])
    {
@@ -2684,7 +2566,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("      <input type=hidden id=\"script_session_f0_top\" name=\"script_case_session\" value=\"" . NM_encode_input(session_id()) . "\"/>\r\n");
       $nm_saida->saida("      <input type=\"hidden\" id=\"opcao_f0_top\" name=\"nmgp_opcao\" value=\"muda_qt_linhas\"/> \r\n");
       $nm_saida->saida("      </td></tr><tr>\r\n");
-      $nm_saida->saida("       <td id=\"sc_grid_toobar_top\"  colspan=3 class=\"" . $this->css_scGridTabelaTd . "\" valign=\"top\"> \r\n");
+      $nm_saida->saida("       <td id=\"sc_grid_toobar_top\"  class=\"" . $this->css_scGridTabelaTd . "\" valign=\"top\"> \r\n");
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
       { 
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -2745,26 +2627,25 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       }
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
-          $nm_saida->saida("         </td> \r\n");
-          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
-        if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['new'] == "on" && $this->nmgp_botoes['insert'] == "on" && !$this->grid_emb_form)
-        {
-           $Sc_parent = ($this->grid_emb_form_full) ? "S" : "";
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['SC_btn_0'] == "on" && !$this->grid_emb_form) 
+      { 
            if (isset($this->Ini->sc_lig_md5["form_medical_information"]) && $this->Ini->sc_lig_md5["form_medical_information"] == "S") {
-               $Parms_Lig  = "NM_cancel_insert_new*scin1*scoutNM_cancel_return_new*scin1*scoutnmgp_opcao*scinnovo*scoutNM_btn_insert*scinS*scoutNM_btn_new*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinS*scoutNM_btn_navega*scinN*scout";
+               $Parms_Lig  = "SC_glo_par_usr_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
                $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_medical_information@SC_par@" . md5($Parms_Lig);
                $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
            } else {
-               $Md5_Lig  = "NM_cancel_insert_new*scin1*scoutNM_cancel_return_new*scin1*scoutnmgp_opcao*scinnovo*scoutNM_btn_insert*scinS*scoutNM_btn_new*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinS*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig  = "SC_glo_par_usr_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
            }
-         $Cod_Btn = nmButtonOutput($this->arr_buttons, "bnovo", "nm_gp_submit1('" .  $this->Ini->link_form_medical_information . "', '$this->nm_location', '$Md5_Lig', '_self', 'form_medical_information'); return false;;", "nm_gp_submit1('" .  $this->Ini->link_form_medical_information . "', '$this->nm_location', '$Md5_Lig', '_self', 'form_medical_information'); return false;;", "sc_b_new_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-         $nm_saida->saida("           $Cod_Btn \r\n");
-         $NM_btn = true;
-        }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "SC_btn_0", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_medical_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_medical_information');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_medical_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_medical_information');;", "sc_SC_btn_0_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
+          $nm_saida->saida("         </td> \r\n");
+          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
       $nm_saida->saida("         </td> \r\n");
       $nm_saida->saida("        </tr> \r\n");
       $nm_saida->saida("       </table> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'] && $this->force_toolbar)
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
       { 
           $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_toobar_top', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -2778,7 +2659,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("     </tr> \r\n");
       if (!$NM_btn && isset($NM_ult_sep))
       {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'] && $this->force_toolbar)
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
           { 
               $this->Ini->Arr_result['setDisplay'][] = array('field' => $NM_ult_sep, 'value' => 'none');
           } 
@@ -2801,7 +2682,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("      <input type=hidden id=\"script_session_f0_top\" name=\"script_case_session\" value=\"" . NM_encode_input(session_id()) . "\"/>\r\n");
       $nm_saida->saida("      <input type=\"hidden\" id=\"opcao_f0_top\" name=\"nmgp_opcao\" value=\"muda_qt_linhas\"/> \r\n");
       $nm_saida->saida("      </td></tr><tr>\r\n");
-      $nm_saida->saida("       <td id=\"sc_grid_toobar_top\"  colspan=3 class=\"" . $this->css_scGridTabelaTd . "\" valign=\"top\"> \r\n");
+      $nm_saida->saida("       <td id=\"sc_grid_toobar_top\"  class=\"" . $this->css_scGridTabelaTd . "\" valign=\"top\"> \r\n");
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
       { 
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -2862,26 +2743,25 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       }
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
-          $nm_saida->saida("         </td> \r\n");
-          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
-        if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['new'] == "on" && $this->nmgp_botoes['insert'] == "on" && !$this->grid_emb_form)
-        {
-           $Sc_parent = ($this->grid_emb_form_full) ? "S" : "";
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['SC_btn_0'] == "on" && !$this->grid_emb_form) 
+      { 
            if (isset($this->Ini->sc_lig_md5["form_medical_information"]) && $this->Ini->sc_lig_md5["form_medical_information"] == "S") {
-               $Parms_Lig  = "NM_cancel_insert_new*scin1*scoutNM_cancel_return_new*scin1*scoutnmgp_opcao*scinnovo*scoutNM_btn_insert*scinS*scoutNM_btn_new*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinS*scoutNM_btn_navega*scinN*scout";
+               $Parms_Lig  = "SC_glo_par_usr_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
                $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_medical_information@SC_par@" . md5($Parms_Lig);
                $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
            } else {
-               $Md5_Lig  = "NM_cancel_insert_new*scin1*scoutNM_cancel_return_new*scin1*scoutnmgp_opcao*scinnovo*scoutNM_btn_insert*scinS*scoutNM_btn_new*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinS*scoutNM_btn_navega*scinN*scout";
+               $Md5_Lig  = "SC_glo_par_usr_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
            }
-         $Cod_Btn = nmButtonOutput($this->arr_buttons, "bnovo", "nm_gp_submit1('" .  $this->Ini->link_form_medical_information . "', '$this->nm_location', '$Md5_Lig', '_self', 'form_medical_information'); return false;;", "nm_gp_submit1('" .  $this->Ini->link_form_medical_information . "', '$this->nm_location', '$Md5_Lig', '_self', 'form_medical_information'); return false;;", "sc_b_new_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-         $nm_saida->saida("           $Cod_Btn \r\n");
-         $NM_btn = true;
-        }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "SC_btn_0", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_medical_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_medical_information');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_medical_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_medical_information');;", "sc_SC_btn_0_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
+          $nm_saida->saida("         </td> \r\n");
+          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
       $nm_saida->saida("         </td> \r\n");
       $nm_saida->saida("        </tr> \r\n");
       $nm_saida->saida("       </table> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'] && $this->force_toolbar)
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
       { 
           $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_toobar_top', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -2895,7 +2775,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("     </tr> \r\n");
       if (!$NM_btn && isset($NM_ult_sep))
       {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'] && $this->force_toolbar)
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['ajax_nav'])
           { 
               $this->Ini->Arr_result['setDisplay'][] = array('field' => $NM_ult_sep, 'value' => 'none');
           } 
@@ -2925,23 +2805,23 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    {
       global $nm_saida;
       $nm_saida->saida("     <tr id=\"sc_id_save_grid_placeholder_top\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
+      $nm_saida->saida("      <td>\r\n");
       $nm_saida->saida("      </td>\r\n");
       $nm_saida->saida("     </tr>\r\n");
       $nm_saida->saida("     <tr id=\"sc_id_groupby_placeholder_top\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
+      $nm_saida->saida("      <td>\r\n");
       $nm_saida->saida("      </td>\r\n");
       $nm_saida->saida("     </tr>\r\n");
       $nm_saida->saida("     <tr id=\"sc_id_sel_campos_placeholder_top\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
+      $nm_saida->saida("      <td>\r\n");
       $nm_saida->saida("      </td>\r\n");
       $nm_saida->saida("     </tr>\r\n");
       $nm_saida->saida("     <tr id=\"sc_id_export_email_placeholder_top\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
+      $nm_saida->saida("      <td>\r\n");
       $nm_saida->saida("      </td>\r\n");
       $nm_saida->saida("     </tr>\r\n");
       $nm_saida->saida("     <tr id=\"sc_id_order_campos_placeholder_top\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
+      $nm_saida->saida("      <td>\r\n");
       $nm_saida->saida("      </td>\r\n");
       $nm_saida->saida("     </tr>\r\n");
    }
@@ -3067,13 +2947,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    } 
    $nm_saida->saida("   </TABLE></TD>\r\n");
    $nm_saida->saida("   </TR>\r\n");
-   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "pdf" &&
-        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_medical_information']['opcao_print'] != "print" && !$this->Print_All) 
-   { 
-      $nm_saida->saida("     <tr><td colspan=3  class=\"" . $this->css_scGridTabelaTd . "\" style=\"vertical-align: top\"> \r\n");
-      $nm_saida->saida("     <iframe class=\"css_iframes\" id=\"nmsc_iframe_liga_B_grid_medical_information\" marginWidth=\"0px\" marginHeight=\"0px\" frameborder=\"0\" valign=\"top\" height=\"0px\" width=\"0px\" name=\"nm_iframe_liga_B_grid_medical_information\" scrolling=\"auto\" src=\"NM_Blank_Page.htm\"></iframe>\r\n");
-      $nm_saida->saida("     </td></tr> \r\n");
-   } 
    $nm_saida->saida("   </TABLE>\r\n");
    $nm_saida->saida("   </div>\r\n");
    $nm_saida->saida("   </TR>\r\n");
@@ -3366,65 +3239,10 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("       css_tr        = class_obj;\r\n");
    $nm_saida->saida("       obj.className = '" . $this->css_scGridFieldClick . "';\r\n");
    $nm_saida->saida("   }\r\n");
-   $nm_saida->saida("   var tem_hint;\r\n");
-   $nm_saida->saida("   function nm_mostra_hint(nm_obj, nm_evt, nm_mens)\r\n");
-   $nm_saida->saida("   {\r\n");
-   $nm_saida->saida("       if (nm_mens == \"\")\r\n");
-   $nm_saida->saida("       {\r\n");
-   $nm_saida->saida("           return;\r\n");
-   $nm_saida->saida("       }\r\n");
-   $nm_saida->saida("       tem_hint = true;\r\n");
-   $nm_saida->saida("       if (document.layers)\r\n");
-   $nm_saida->saida("       {\r\n");
-   $nm_saida->saida("           theString=\"<DIV CLASS='ttip'>\" + nm_mens + \"</DIV>\";\r\n");
-   $nm_saida->saida("           document.tooltip.document.write(theString);\r\n");
-   $nm_saida->saida("           document.tooltip.document.close();\r\n");
-   $nm_saida->saida("           document.tooltip.left = nm_evt.pageX + 14;\r\n");
-   $nm_saida->saida("           document.tooltip.top = nm_evt.pageY + 2;\r\n");
-   $nm_saida->saida("           document.tooltip.visibility = \"show\";\r\n");
-   $nm_saida->saida("       }\r\n");
-   $nm_saida->saida("       else\r\n");
-   $nm_saida->saida("       {\r\n");
-   $nm_saida->saida("           if(document.getElementById)\r\n");
-   $nm_saida->saida("           {\r\n");
-   $nm_saida->saida("              nmdg_nav = navigator.appName;\r\n");
-   $nm_saida->saida("              elm = document.getElementById(\"tooltip\");\r\n");
-   $nm_saida->saida("              elml = nm_obj;\r\n");
-   $nm_saida->saida("              elm.innerHTML = nm_mens;\r\n");
-   $nm_saida->saida("              if (nmdg_nav == \"Netscape\")\r\n");
-   $nm_saida->saida("              {\r\n");
-   $nm_saida->saida("                  elm.style.height = elml.style.height;\r\n");
-   $nm_saida->saida("                  elm.style.top = nm_evt.pageY + 2 + 'px';\r\n");
-   $nm_saida->saida("                  elm.style.left = nm_evt.pageX + 14 + 'px';\r\n");
-   $nm_saida->saida("              }\r\n");
-   $nm_saida->saida("              else\r\n");
-   $nm_saida->saida("              {\r\n");
-   $nm_saida->saida("                  elm.style.top = nm_evt.y + document.body.scrollTop + 10 + 'px';\r\n");
-   $nm_saida->saida("                  elm.style.left = nm_evt.x + document.body.scrollLeft + 10 + 'px';\r\n");
-   $nm_saida->saida("              }\r\n");
-   $nm_saida->saida("              elm.style.visibility = \"visible\";\r\n");
-   $nm_saida->saida("           }\r\n");
-   $nm_saida->saida("       }\r\n");
-   $nm_saida->saida("   }\r\n");
-   $nm_saida->saida("   function nm_apaga_hint()\r\n");
-   $nm_saida->saida("   {\r\n");
-   $nm_saida->saida("       if (!tem_hint)\r\n");
-   $nm_saida->saida("       {\r\n");
-   $nm_saida->saida("           return;\r\n");
-   $nm_saida->saida("       }\r\n");
-   $nm_saida->saida("       tem_hint = false;\r\n");
-   $nm_saida->saida("       if (document.layers)\r\n");
-   $nm_saida->saida("       {\r\n");
-   $nm_saida->saida("           document.tooltip.visibility = \"hidden\";\r\n");
-   $nm_saida->saida("       }\r\n");
-   $nm_saida->saida("       else\r\n");
-   $nm_saida->saida("       {\r\n");
-   $nm_saida->saida("           if(document.getElementById)\r\n");
-   $nm_saida->saida("           {\r\n");
-   $nm_saida->saida("              elm.style.visibility = \"hidden\";\r\n");
-   $nm_saida->saida("           }\r\n");
-   $nm_saida->saida("       }\r\n");
-   $nm_saida->saida("   }\r\n");
+   $nm_saida->saida("   function SC_btn_0() \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("       \r\n");
+   $nm_saida->saida("   } \r\n");
    if ($this->Rec_ini == 0)
    {
        $nm_saida->saida("   nm_gp_ini = \"ini\";\r\n");
@@ -3463,26 +3281,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("   function nm_gp_submit_ajax(opc, parm) \r\n");
    $nm_saida->saida("   { \r\n");
    $nm_saida->saida("      return ajax_navigate(opc, parm); \r\n");
-   $nm_saida->saida("   } \r\n");
-   $nm_saida->saida("   function nm_gp_submit1(apl_lig, apl_saida, parms, target, apl_name) \r\n");
-   $nm_saida->saida("   { \r\n");
-   $nm_saida->saida("      document.F3.target               = \"_self\"; \r\n");
-   $nm_saida->saida("      if (target != null) \r\n");
-   $nm_saida->saida("      {\r\n");
-   $nm_saida->saida("          document.F3.target = target; \r\n");
-   $nm_saida->saida("      }\r\n");
-   $nm_saida->saida("      document.F3.action               = apl_lig  ;\r\n");
-   $nm_saida->saida("      document.F3.nmgp_url_saida.value = apl_saida ;\r\n");
-   $nm_saida->saida("      document.F3.nmgp_chave.value     = \"\" ;\r\n");
-   $nm_saida->saida("      document.F3.nmgp_opcao.value     = \"edit_novo\" ;\r\n");
-   $nm_saida->saida("      document.F3.nmgp_parms.value     = parms ;\r\n");
-   $nm_saida->saida("      if (target == '_blank') \r\n");
-   $nm_saida->saida("      {\r\n");
-   $nm_saida->saida("          document.F3.nmgp_outra_jan.value = \"true\" ;\r\n");
-   $nm_saida->saida("         window.open('','jan_sc','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
-   $nm_saida->saida("          document.F3.target = \"jan_sc\"; \r\n");
-   $nm_saida->saida("      }\r\n");
-   $nm_saida->saida("      document.F3.submit() ;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_gp_submit2(campo) \r\n");
    $nm_saida->saida("   { \r\n");

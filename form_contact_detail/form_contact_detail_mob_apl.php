@@ -2377,6 +2377,7 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['form_contact_detail_mob']['Lookup_
       $_SESSION['scriptcase']['form_contact_detail_mob']['contr_erro'] = 'on';
 if (!isset($this->sc_temp_usr_login)) {$this->sc_temp_usr_login = (isset($_SESSION['usr_login'])) ? $_SESSION['usr_login'] : "";}
  $this->login  = $this->sc_temp_usr_login;
+$this->NM_ajax_info['buttonDisplay']['new'] = $this->nmgp_botoes["new"] = "off";;
 if (isset($this->sc_temp_usr_login)) { $_SESSION['usr_login'] = $this->sc_temp_usr_login;}
 $_SESSION['scriptcase']['form_contact_detail_mob']['contr_erro'] = 'off'; 
       }

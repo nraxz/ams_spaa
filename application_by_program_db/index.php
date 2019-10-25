@@ -210,8 +210,8 @@ class application_by_program_db_ini
       $this->nm_dt_criacao   = "20191022"; 
       $this->nm_hr_criacao   = "112839"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191022"; 
-      $this->nm_hr_ult_alt   = "113821"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -882,7 +882,7 @@ class application_by_program_db_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXsZSBiZ1rwD5JwDMvmDkFCDuX7HMF7HQBsVIJsHAvsD5XGDErKDkB/H5F/HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeHIBiHQNwZSFaHAN7ZMXGDEvsHErsH5X/ZuB/HQXOZSX7DSN7HQXGHgrYDkBsHEFYHMFUHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1FaD1rKV5JeDEBOZSXeV5XCDoFUDcJeH9FGDSBYV5raHuzGVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHEJqV5FaVoFaDcJeZ9JeZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMzGV9BUHEFYHMFaD9XGZ1BOD1vsD5JeDMzGHEXeDWX7ZuBqD9JKDQX7DSrwD5F7DMBOVIBODWJeVErqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoBODcBwDQFUZ1rwV5X7HuzGVIBOV5X7DoJsD9XGZSB/HArYHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOV9BUHEX/VoF7HQNmZ1BiHAvCD5XGHgBeHEFiV5B3DoF7D9XsDuFaHAveV5XGDMvOV9FeDWFYHIFUD9BiH9FaHArKHQFGHgveZSXeV5B3DoBqDcXGZSBiHArYD5JeHuzGVIB/DWFaHMX7HQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMJeDcJeDQFGHANOD5JwHuzGDkBODurGVoFaHQXGH9B/HIveD5NUDEBeHEFiHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUHEX/DoJsHQNmZ1XGZ1veZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcJeZ9F7HIrKV5JeHgvsVIB/H5FqDoBiDcNwH9FaD1rwV5JeHgNKHEXeDuXKZuXGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMB/D9NwZSFUHAveHuBiDMrwVcFCDWXCVEX7DcJUZ1rqHIBeV5FUDMvCZSJ3V5FaDoB/D9JKZ9F7DSBYV5FUDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHEFKV5FaDoraD9NwDQJwHAveD5rqHuvmVcBOH5FqVoB/D9BiZ1F7DSrYD5FaDEBOVkJqV5FaDorqD9FYDQFUZ1rwV5JeHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMNKZSXeH5F/DorqHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDEBOHErsH5FYDoBOD9JKZ9F7HAvCVWBOHuBYVIBODuFqHIX7DcJUZ1B/D1vsZMFaDEBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMBYV9BUHEBmVEraHQXOZ1BiD1rwHuJwHgvsHEFKV5FqHMBiDcXGDQB/D1vOVWJsDMBYVcFiV5FYHIBiHQNwZkBiHArYHQXGHgNKHEFKV5FqHMFaHQNwZSFUD1BeHQNUDMvmZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqHgrKHErsHEB3DoJeHQBiH9BiZ1vCV5BODMBOZSJ3V5FYHIJeHQXGH9BOHABYHuFaHgNKDkFeV5B7ZuFaHQXOZ9XGHABYHQXGHgrwV9FiV5X/VEFGDcFYZ1X7DSrYHQX7HgBYHEFKH5FYVoX7D9JKDQX7D1BOV5FGDMzGV9BUHEBmVoFGHQXOZSBqHIrwHuFUHgvsHAFKV5FqHMJsHQJKH9FUHANOHuJeHgrwVcFiV5FYHMJwHQBsZkBiHAN7HQXGHgvsDkFeV5FqDoJsHQJKZ9XGHABYHQJsDMNOV9FiH5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9NwDQJsHArYVWJsHuvmVcXKV5X7HMXGHQBqVIraZ1BeHuJwDErKVkXeV5FaVoBqD9NwH9X7HArYD5F7HgNKVcFeDWF/DoFGD9BsZ1F7HArYD5JeDMrYHEFKDuJeZuJeHQJeDQBqHAvCD5BqDMrwDkBsV5F/DoraD9BiZ1FGZ1rYD5NUDEBeZSXeH5FGDoB/D9NmZ9XGDSzGV5JwHuBYDkFCDuX7VEF7D9XOZSB/Z1BeD5FaDEvsHEFKV5FaDoXGDcJeZSFGHANOD5BqHuzGVcrsH5XCVoBqDcBqZ1FaD1rwV5FaHgvCDkBsH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9JmZ1F7Z1BeD5JeDEvsHENiV5FaHMJeHQJKDQFUHANOHuraDMBODkBsDurGDoXGHQNmZ1BiHAvsD5BOHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BODMvOVcBUDWXKVEFGHQNmZkBiHAvsD5XGHgNKHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMBOZSJqDWF/VErqDcJUZ1FaHAN7HuJeHgBeHEJqH5F/VoXGDcBiZ9XGDSBYHQBOHuBYDkBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvsVkXeDWX7DoJeDcBwDQFGD1BeD5BOHgNKVcXKH5FqDoX7DcBqZ1B/HIveV5JeHgBeHEFiV5B3DoF7D9XsDuFaHANKVWBqDMrwZSNiDWB3VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['initialize'])  
       { 
@@ -3978,7 +3978,7 @@ SCEOT;
 	function outputCombinationPrintContent() {
 		return "<html {$_SESSION['scriptcase']['reg_conf']['html_dir']}>\r\n" .
 		       "<head>\r\n" .
-		       "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\" />\r\n" .
+		       "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n" .
 			   $this->outputCombinationPrintCss() .
 		       "</head>\r\n" .
 		       "<body class=\"scGridPage\">\r\n" .
@@ -4411,7 +4411,7 @@ SCEOT;
 
 		return "<html xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:x=\"urn:schemas-microsoft-com:office:word\" xmlns=\"http://www.w3.org/TR/REC-html40\"{$_SESSION['scriptcase']['reg_conf']['html_dir']}>\r\n" .
 		       "<head>\r\n" .
-		       "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\" />\r\n" .
+		       "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n" .
 			   $this->outputCombinationWordCss() .
 		       "</head>\r\n" .
 		       "<body class=\"scGridPage\">\r\n" .

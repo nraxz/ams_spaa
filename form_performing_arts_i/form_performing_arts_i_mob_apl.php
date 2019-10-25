@@ -1206,6 +1206,21 @@ class form_performing_arts_i_mob_apl
       if ($this->nmgp_opcao != "recarga" && $this->nmgp_opcao != "muda_form" && !$this->Apl_com_erro)
       {
           $_SESSION['sc_session'][$this->Ini->sc_page]['form_performing_arts_i_mob']['recarga'] = $this->nmgp_opcao;
+          if ($this->sc_evento == "update")
+          {
+              $this->NM_close_db(); 
+              $this->nmgp_redireciona(2); 
+          }
+          if ($this->sc_evento == "insert" || ($this->nmgp_opc_ant == "novo" && $this->nmgp_opcao == "novo" && $this->sc_evento == "novo"))
+          {
+              $this->NM_close_db(); 
+              $this->nmgp_redireciona(2); 
+          }
+          if ($this->sc_evento == "delete")
+          {
+              $this->NM_close_db(); 
+              $this->nmgp_redireciona(2); 
+          }
       }
       if ($this->NM_ajax_flag && 'navigate_form' == $this->NM_ajax_opcao)
       {

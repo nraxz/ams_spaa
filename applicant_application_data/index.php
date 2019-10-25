@@ -219,8 +219,8 @@ class applicant_application_data_ini
       $this->nm_dt_criacao   = "20190827"; 
       $this->nm_hr_criacao   = "164444"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -458,25 +458,6 @@ class applicant_application_data_ini
       }
       $this->sc_lig_target["C_@scinf_basic_information"] = '_self';
       $this->sc_lig_target["C_@scinf_basic_information_@scinf_applicant_information_grid"] = '_self';
-      $Tmp_apl_lig = "form_basic_information";
-      if (is_file($this->root . $this->path_link . "_lib/friendly_url/form_basic_information_ini.txt"))
-      {
-          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/form_basic_information_ini.txt");
-          if (isset($Friendly[0]) && !empty($Friendly[0]))
-          {
-              $Tmp_apl_lig = trim($Friendly[0]);
-          }
-      }
-      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/form_basic_information_ini.txt"))
-      {
-          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/form_basic_information_ini.txt");
-          if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
-          {
-              $this->sc_lig_md5["form_basic_information"] = 'S';
-          }
-      }
-      $this->sc_lig_target["B_@scinf_create_personal"] = '_self';
-      $this->sc_lig_target["B_@scinf_create_personal_@scinf_form_basic_information"] = '_self';
       $Tmp_apl_lig = "grid_academic";
       if (is_file($this->root . $this->path_link . "_lib/friendly_url/grid_academic_ini.txt"))
       {
@@ -991,17 +972,6 @@ class applicant_application_data_ini
       { 
           $_SESSION['scriptcase']['sc_num_img'] = 1;
       } 
-      $this->arr_buttons_usr = array();
-
-      $this->arr_buttons_usr['create_personal']['hint']             = "";
-      $this->arr_buttons_usr['create_personal']['type']             = "button";
-      $this->arr_buttons_usr['create_personal']['value']            = "Start your application";
-      $this->arr_buttons_usr['create_personal']['display']          = "text_fontawesomeicon";
-      $this->arr_buttons_usr['create_personal']['display_position'] = "text_right";
-      $this->arr_buttons_usr['create_personal']['style']            = "facebook";
-      $this->arr_buttons_usr['create_personal']['image']            = "";
-      $this->arr_buttons_usr['create_personal']['has_fa']            = "true";
-      $this->arr_buttons_usr['create_personal']['fontawesomeicon']            = "fas fa-pen-nib";
       $this->str_google_fonts= isset($str_google_fonts)?$str_google_fonts:'';
       $this->regionalDefault();
       $this->Str_btn_grid    = trim($str_button) . "/" . trim($str_button) . $_SESSION['scriptcase']['reg_conf']['css_dir'] . ".php";
@@ -1110,7 +1080,7 @@ class applicant_application_data_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['applicant_application_data']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['applicant_application_data']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXOZ9F7HANKV5BODMvOVIB/DWJeVEX7HQBsH9FaD1rKZMJeHgBOHEJqHEB7ZuJeDcBiDQFUHAN7HuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5FYHMFaHQNmDQB/D1veHQXGDMrwVcB/DWXCHMJeHQXGZSBOHANOHuFUHgvCHArCDWFqHIFUHQBiH9FUHIrKHQBODMrwVcB/HEF/HMJeHQNwZkFGDSNOHQBiDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHIBeV5B/HgBYHArCDuFYHIFUDcBiH9X7Z1BYVWBODMrYVcFeV5X7VEF7HQJmZkFGZ1rYHQNUHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgvsVcFCDWXCVorqD9BsZ1F7DSrYD5rqDMBYHEXeV5XCZuFaDcXOZSX7HArYV5JeHuzGVcFKDuFqDoFGDcBqH9B/HABYZMB/DEBeHEXeV5FaVoBiDcXOZSX7D1veV5FUHuBYVcFKDWXKDoJsD9XOZ1F7HIveD5BqHgBeHEFiV5B3DoF7D9XsDuFaHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGD1rKZMFaHgNOZSXeHEFqHMB/D9NmDQFGDSBYD5B/HgvOVcBUH5B3VErqDcNwH9B/HIBeHQJwDEBODkFeH5FYVoFGHQJKDQJwHAveD5JwHgrYDkBODWJeVoX7D9BsH9B/Z1NOZMJwDMzGHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOZSNiDWB3VoF7HQBqZkBiHAzGD5BqHgveDkXKDWr/HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWF/HMJsHQXOZkBiD1rwV5BqHgBeVkJ3V5FqDoJeDcBiH9BiD1BeVWJsHgrKDkB/HEBmVErqHQNwH9BOZ1BeHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NmDuBqHAN7D5NUHuzGDkB/HEF/HMraD9BsZ1FaHArKV5X7HgBOZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvOV9FeV5X/VEBiHQNwZkFGHINKD5JeHgNOHErCDuX/VoFGDcXGDQB/D1veHuJwDMrYVcFeDuB7DoXGHQXGZ1BiD1zGZMFaDMveHErsH5BmVoFGHQNwH9BiDSrwHQF7HgrwVcFeH5B7VoBqD9BsZ1F7DSrYD5rqDMrYZSJ3DurmZuJsHQBiZ9XGHANOHQBODMvOVIB/H5B7DoXGHQXGZSBOD1rwHuJsHgrKDkB/DWB3VoFGHQXODQBqHAvCVWJwDMBYVcB/H5XKDoXGHQBqZ1BOD1rKHQJeHgBeDkB/DurmDoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiHQNmH9BqDSNOHuBqDMvCHErCV5B7VoFGHQFYDQFaHANOHQrqHgrwVIB/H5B3DoXGHQBsZkFGD1zGD5XGDMveHErCV5B3VoFGDcBiH9BiHAvmVWJwDMzGVIBsH5XKVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsDWBmVoJeD9FYDQBqHIvsVWJeDMNaV9FiV5X7HIX7DcJUZ1FaD1rKHuBODMBYHEXeHEFaVoB/HQXGZSFGHAvCVWBqDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQNmH9BiHArYHQrqDMNOVcB/H5FqHMBOHQFYZkBiHAvsD5BqHgveHArCDWF/VoBiDcJUZSX7Z1BYHuFaHgvOVIB/H5XCVoBOHQBqZ1F7Z1rYV5XGHgvsHErCH5F/DorqD9XsH9FUD1BeD5NUHuvmDkB/H5XKVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1B/Z1NOZMB/DMNKZSXeDWX7DoBOD9NwDQJsHIBeD5BqHgvsDkBODWFaVENUD9JmZ1B/Z1BeV5FUDMNKZSXeH5F/DoraD9NmDQJsHAvOD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcFKDuFGVErqDcBqZSBODSrYV5B/DENOHEXeH5F/VoX7D9XsDQB/HAveVWJwDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIrqDcXGDQB/Z1rwD5BqHgrwVcFCH5FqDoX7HQNwZSFaD1rKD5BiHgrKZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['applicant_application_data']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['applicant_application_data']['initialize'])  
       { 
@@ -3556,6 +3526,48 @@ if (isset($this->rs[0][0]))
 {
     return $headshot = $this->rs[0][0];
   
+}
+$_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'off';
+}
+function pending_audition($applicant)
+{
+$_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'on';
+  
+
+$check_sql = "SELECT Count(id)"
+   . " FROM application_detail"
+   . " WHERE login = '" . $applicant . "' AND payment_status ='Pending'";
+ 
+      $nm_select = $check_sql; 
+      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
+      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
+      $this->rs = array();
+      if ($rx = $this->Db->Execute($nm_select)) 
+      { 
+          $y = 0; 
+          $nm_count = $rx->FieldCount();
+          while (!$rx->EOF)
+          { 
+                 for ($x = 0; $x < $nm_count; $x++)
+                 { 
+                        $this->rs[$y] [$x] = $rx->fields[$x];
+                 }
+                 $y++; 
+                 $rx->MoveNext();
+          } 
+          $rx->Close();
+      } 
+      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
+      { 
+          $this->rs = false;
+          $this->rs_erro = $this->Db->ErrorMsg();
+      } 
+;
+
+if (isset($this->rs[0][0]))     
+{
+   return $counter = $this->rs[0][0];
+    
 }
 $_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'off';
 }

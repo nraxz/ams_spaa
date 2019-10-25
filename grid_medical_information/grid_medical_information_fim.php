@@ -72,12 +72,7 @@
       unset($_SESSION['session_sec_aplicacao']);
       unset($_SESSION['session_sec_usuario']);
    }
-   $_SESSION['sc_session'][$script_case_init]['form_medical_information'] = array();
    $fecha_janela = false;
-   if (isset($_SESSION['sc_session'][$script_case_init]['grid_medical_information']['sc_outra_jan']) && $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['sc_outra_jan'])
-   {
-       $fecha_janela = true;
-   }
    if ((isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_medical_information']['opc_psq']) && $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['opc_psq']) || $fecha_janela)
    {
        if (isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_medical_information']['sc_modal']) && $_SESSION['sc_session'][$script_case_init]['grid_medical_information']['sc_modal'])

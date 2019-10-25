@@ -202,8 +202,8 @@ class email_verify_account_ini
       $this->nm_dt_criacao   = "20160823"; 
       $this->nm_hr_criacao   = "151542"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -838,7 +838,7 @@ class email_verify_account_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['email_verify_account']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['email_verify_account']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBiDQB/HAN7HQB/DMNOVIFCDuX7HMXGHQFYZ1B/DSNOD5NUDEBeHArCDWXCHIBqHQJKZSBiHANOV5raHgvsDkBsDWXCDoJsDcBwH9B/Z1rYHQJwHgveVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMNODkBsHEFYVEF7DcFYZ1FGDSNOZMBqHgveHErCDWXCHMBiDcJeZSX7HIrwVWJsHuBYVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcBwDQX7Z1BYV5FUHuvmVcBODuFqVoJwD9BiZSB/HArYD5XGDEBeHEXeDWXCZuXGDcXOZSX7HArYV5FGHgvsDkBOV5X7VEraD9BsZSFaD1vsV5FUDErKHEFiDuJeDoBOHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIFGD9XOZSBqDSBeHuFGDEvsHEJqDWBmDoBqD9NmH9FUHAvCV5BqDMrYVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgvsHArsHEB3ZuB/HQNwDQBqD1BeHQFaDMBYVcFiV5FYHIJsDcFYZ1X7D1zGZMB/HgvsHEFKV5FqHMJsHQXODuBqHABYHuBODMrYVcFiV5FYHINUHQXOH9BOD1rwHuFUHgBeDkBsH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEBmVoX7HQNmZSBqZ1vmD5XGHgNODkBsV5FqHMX7HQFYZSFUHArYHQJwDMrYZSrCV5X/VENUHQNwVINUHArYHuBODMvCHAFKV5B7ZuXGDcXGDQB/DSBYHuF7DMvsVcFiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEB3DoXGHQNwH9BiHIBeHQNUDMBYV9FiV5FYHIBiHQJmZSBOHAN7HQBqDMvCHEFKV5FqHIFUHQXsDuBqHANOHuBODMBYZSrCV5FYVoBiHQJmVINUHArYHuB/HgBOHAFKH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqHgNKVcFiDur/VEX7HQBqZ1BiHAvmV5JeHgvCZSJ3V5XCVoB/D9NmDQFaZ1BYV5FUHuvmDkBOH5XKVoraD9BiVINUDSvOD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HIX7HQJmZ1BOHAN7HQBiHgNOZSJ3DurmVoFGHQBiDQBqHANKV5XGDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgveHErsDWFGZuXGHQBiDuBqHANKV5BODMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgrKHArCDWFGZuFaHQXOH9BiD1BeD5XGHuBOVcXKDWJeDoXGHQBsZ1F7HIBeZMXGDMzGVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNmDuBqHANOD5B/DMBOVcB/H5XCVorqHQXGZ1rqHINKZMJeHgBeHArCV5XCDoB/D9JKDuFaDSBYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5FYHMFaHQNmDQB/D1veHQXGDMrwVcB/DWXCHMJeHQXGZSBOHANOHuFUHgvCHArCDWFqHIFUHQBiH9FUHIrKHQBODMrwVcB/HEF/HMJeHQNwZkFGDSNOHQBiDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHANOHQFaHgBOZSJGDWX7HMJsDcBwH9X7HIrKHuJeHgrKVIBsHEF/VoraHQXOZkFGHIrwZMB/DErKZSXeHEFaHIJsD9XsZ9JeD1BeD5F7DMvmVcFiV5X7DoraD9BsZ1B/HABYV5JeDEBOHENiV5FaZuBODcBwDQFGHANOD5BqHgrKVIFCHEFYVoJwDcBqZ1B/D1rwD5rqDEBOZSJGDWFqVoBiD9NmDQBOZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaHgrwDkBsV5FYDoJsHQBsZSFaHArYHuJwHgveDkXKDWXCHIBiHQXsDQFGHIrKV5raDMBYVcBOV5X7HMBiD9BsVIraD1rwV5X7HgBeHEBUDWF/VoB/DcXOZSX7HANOV5BOHuNODkBOV5F/VEBiDcJUZkFGHArKV5FUDMrYZSXeV5FqHIJsHQBiZ9XGHANKV5XGDMvsV9BUDWXKVorqHQNmVINUHArYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSBYV5X7HuNOVcFKV5FYHMFUD9BiZ1BiHArKD5NUHgveHEFiDWX7VoJwHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['email_verify_account']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['email_verify_account']['initialize'])  
       { 
@@ -1854,25 +1854,31 @@ class email_verify_account_apl
 		<div class="container">
 			<div class="bs-docs-section">
 				<div class="row">					
-						<div class="page-header mt-3">
-							<div class="jumbotron">
-								<div class="row">
-									<div class="col-4 ">
-										<img src="https://img.icons8.com/wired/128/000000/skyrim.png" style="height:100px; width:auto;" class="img-fluid" />
-									</div>
-									<div class="col-8 text-left">
-										<h3 id="typography"  class="text-danger">Sharjah Performing Arts Academy</h3>
-										<h4 id="typography" class="text-danger">Audition Management System</h4>
-									</div>
+					<div class="page-header mt-3">
+						<div class="jumbotron">
+							<div class="row">
+								<div class="col-4 ">
+									<img src="http://resources.spaa.ae/images/logo.png" style="height:100px; width:auto;" class="img-fluid" />
+								</div>
+								<div class="col-8 text-left">
+									<h3 id="typography"  class="text-danger">Sharjah Performing Arts Academy</h3>
+									<h4 id="typography" class="text-danger">Application Management System</h4>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="alert alert-success">
-					<p>You should receive an email from <strong>applications@spaa.com </strong> within a few minutes to activate your account. </p>
-					<p>Please also check in your junk mail folder, if the message does not appear in your inbox.</p>
-					<p>If you do not receive this message please email LSC to have your account activated. Please do  not create multiple logins.</p>
+					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">You should receive an email from <strong><span style="font-family:&quot;Calibri&quot;,sans-serif;">
+						<a href="mailto:Admissions@spaa.ae"><span style="font-weight:normal;">Admissions@spaa.ae</span></a>&nbsp;
+						</span></strong>within a few minutes to activate your account.</p>
+					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">Please also check in your junk mail folder, if the message does not appear in your inbox.</p>
+					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">If you do not receive this message please email 
+						<a href="mailto:Admissions@spaa.ae">Admissions@spaa.ae</a> to have your account activated. Please feel free to contact us to 
+						<a href="mailto:applications@spaa.ae">applications@spaa.ae</a> emai.
+					</p>
+					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">Thank you</p>
 				</div>
 				<div class="p-5">
 					<a href="../login/" class="btn btn-danger" role="button">Go to Audition Application</a>
@@ -1885,7 +1891,7 @@ class email_verify_account_apl
 			<footer class="page-footer  p-5">
 
 				<!-- Footer Links -->
-				<div class="container-fluid text-center text-md-left">
+				<div class="container-fluid text-md-left">
 
 					<!-- Grid row -->
 					<div class="row">
@@ -1894,74 +1900,74 @@ class email_verify_account_apl
 						<div class="col-md-6 mt-md-0 mt-3">
 
 							<!-- Content -->
-							<h5 class="text-uppercase">Audition</h5>
-							<p>Auditions for the normal September entry are held from the preceding December to April. Candidates select their own audition date on the application and will be notified via email of the details upon receipt of the completed application form and fee. <a href="https://www.spaa.com/admissions/audition" target="_blank"class="text-danger">More...</a>
+							<h5 class="text-uppercase"><strong>About Sharjah Performing Arts Academy</strong></h5>
+							<style="font-size: 15px; font-family: &quot;Calibri&quot;, sans-serif; margin: 0cm 0cm 0.0001pt; text-align: left;"><span style="font-family: Verdana,Geneva,sans-serif;">The Emirate of Sharjah is establishing the Sharjah Performing Arts Academy (SPAA) to address a growing demand in Sharjah and the region for formal quality education and professional training in the performing arts to enrich the cultural and artistic experiences of talented and inspiring students. It is envisaged that SPAA will be the leading conservatoire in the region, offering quality undergraduate and graduate degree programs in acting, musical theatre and production arts.</span> <a href="https://www.spaa.ae/courses/" target="_blank"><strong>Courses</strong></a></p> 
 
-							</p>
 
-						</div>
-						<!-- Grid column -->
 
-						<hr class="clearfix w-100 d-md-none pb-3">
+								</div>
+								<!-- Grid column -->
 
-						<!-- Grid column -->
-						<div class="col-md-3 mb-md-0 mb-3">
+								<hr class="clearfix w-100 d-md-none pb-3">
 
-							<!-- Links -->
-							<h5 class="text-uppercase">LSC Policies</h5>
+								<!-- Grid column -->
+								<div class="col-md-3 mb-md-0 mb-3">
 
-							<ul class="list-unstyled">
+								<!-- Links -->
+								<h5 class="text-uppercase">LSC Policies</h5>
+
+								<ul class="list-unstyled">
 								<li>
-									<a href="https:///www.spaa.com/terms-and-conditions" target="_blank" class="text-danger">Terms and Conditions</a>
+								<a href="https://ams.spaa.ae/terms-and-conditions" target="_blank">Terms and Conditions</a>
 								</li>
 								<li>
-									<a href="https:///www.spaa.com/privacy-policy" target="_blank" class="text-danger">Privacy Policy</a>
+								<a href="http://ams.spaa.ae/audition-guidelines/" target="_blank">Audition Guidelines</a>
 								</li>
 
 
-							</ul>
+								</ul>
 
-						</div>
-						<!-- Grid column -->
+								</div>
+								<!-- Grid column -->
 
-						<!-- Grid column -->
-						<div class="col-md-3 mb-md-0 mb-3">
+								<!-- Grid column -->
+								<div class="col-md-3 mb-md-0 mb-3">
 
-							<!-- Links -->
-							<h5 class="text-uppercase">Powered By</h5>
+								<!-- Links -->
+								<h5 class="text-uppercase">Powered By</h5>
 
-							<ul class="list-unstyled">
+								<ul class="list-unstyled">
 								<li>
-									<a href="http://www.considerthisuk.co.uk" target="_blank" class="text-danger">Consider This UK</a>
+								<a href="http://www.considerthisuk.co.uk" target="_blank" class="text-danger">Consider This UK</a>
 								</li>
 								<li>
-									<a href="http://www.performthis.com"  target="_blank" class="text-danger">Audition Management System</a>
+								<a href="http://www.performthis.com"  target="_blank" class="text-danger">Audition Management System</a>
 								</li>
 
-							</ul>
+								</ul>
 
-						</div>
-						<!-- Grid column -->
+								</div>
+								<!-- Grid column -->
 
-					</div>
-					<!-- Grid row -->
+								</div>
+								<!-- Grid row -->
 
-				</div>
-				<!-- Footer Links -->
+								</div>
+								<!-- Footer Links -->
 
-				<!-- Copyright -->
-				<div class="footer-copyright text-center py-3">© Copyright:
-					<a href="https:///www.spaa.com"  target="_blank" class="text-danger">Sharjah Performing Arts Academy</a>
-				</div>
-				<!-- Copyright -->
+								<!-- Copyright -->
+								<div class="footer-copyright text-center py-3">© Copyright:
+								<a href="https://www.spaa.ae" target="_blank">Sharjah Performing Arts Academy</a>
+								</div>
+								<!-- Copyright -->
 
-			</footer>
+								</footer>
 
-		</div>
-	</body>
-</html>
+								</div>
+								</body>
+								</html>
 
-<?
+								<?
 $_SESSION['scriptcase']['email_verify_account']['contr_erro'] = 'off'; 
 //--- 
        $this->Db->Close(); 

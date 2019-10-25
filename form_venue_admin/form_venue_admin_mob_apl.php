@@ -2007,6 +2007,21 @@ class form_venue_admin_mob_apl
         $hasError = false;
       if ($this->status == "" && $this->nmgp_opcao != "excluir")
       { 
+        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin_mob']['php_cmp_required']['status']) || $_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin_mob']['php_cmp_required']['status'] == "on")
+        { 
+          $hasError = true;
+          $Campos_Falta[] = "Status" ;
+          if (!isset($Campos_Erros['status']))
+          {
+              $Campos_Erros['status'] = array();
+          }
+          $Campos_Erros['status'][] = $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+                  if (!isset($this->NM_ajax_info['errList']['status']) || !is_array($this->NM_ajax_info['errList']['status']))
+                  {
+                      $this->NM_ajax_info['errList']['status'] = array();
+                  }
+                  $this->NM_ajax_info['errList']['status'][] = $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+        } 
       } 
         if ($hasError) {
             global $sc_seq_vert;

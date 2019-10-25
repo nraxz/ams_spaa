@@ -560,7 +560,7 @@ _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm
     <img src="http://resources.spaa.ae/images/logo.png" style="height:100px; width:auto;" alt="SPAA">
   </div>
   <h2 id="typography" class="text-primary">Sharjah Performing Arts Academy</h2>
-  <h3 id="typography" class="text-primary">Audition Management System</h3>
+  <h3 id="typography" class="text-primary">Application Management System</h3>
    
 </div> 
 <blockquote class="blockquote">
@@ -772,8 +772,8 @@ unset($NM_ult_sep);
 					<div class="col-md-6 mt-md-0 mt-3">
 
 						<!-- Content -->
-						<h5 class="text-uppercase">Audition</h5>
-						<p>Auditions for the normal September entry are held from the preceding December to April. Candidates select their own audition date on the application and will be notified via email of the details upon receipt of the completed application form and fee. <a href="https://www.spaa.com/admissions/audition" target="_blank">More...</a>
+						<h5 class="text-uppercase">Sharjah Performing Arts Academy</h5>
+						<p>The Emirate of Sharjah is establishing the Sharjah Performing Arts Academy (SPAA) to address a growing demand in Sharjah and the region for formal quality education and professional training in the performing arts to enrich the cultural and artistic experiences of talented and inspiring students. It is envisaged that SPAA will be the leading conservatoire in the region, offering quality undergraduate and graduate degree programs in acting, musical theatre and production arts. <a href="https://www.spaa.ae/courses/" target="_blank"><strong>Courses</strong></a>
 
 						</p>
 
@@ -790,15 +790,14 @@ unset($NM_ult_sep);
 
 						<ul class="list-unstyled">
 							<li>
-								<a href="https://www.spaa.com/terms-and-conditions" target="_blank">Terms and Conditions</a>
+								<a href="https://ams.spaa.ae/terms-and-conditions" target="_blank">Terms and Conditions</a>
 							</li>
 							<li>
-								<a href="https://www.spaa.com/privacy-policy" target="_blank">Privacy Policy</a>
+								<a href="http://ams.spaa.ae/audition-guidelines/" target="_blank">Audition Guidelines</a>
 							</li>
 
 
 						</ul>
-
 					</div>
 					<!-- Grid column -->
 
@@ -813,7 +812,7 @@ unset($NM_ult_sep);
 								<a href="http://www.considerthisuk.co.uk" target="_blank">Consider This UK</a>
 							</li>
 							<li>
-								<a href="http://www.performthis.com">Audition Management System</a>
+								<a href="http://www.performthis.com" target="_blank">Audition Management System</a>
 							</li>
 
 						</ul>

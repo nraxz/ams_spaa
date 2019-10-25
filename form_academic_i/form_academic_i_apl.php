@@ -2782,6 +2782,37 @@ $_SESSION['scriptcase']['form_academic_i']['contr_erro'] = 'off';
 //----------------------------------------------------
 //----------- 
 
+   function return_after_insert()
+   {
+      global $sc_where;
+      $sc_where_pos = " WHERE ((id < $this->id))";
+      if ('' != $sc_where)
+      {
+          if ('where ' == strtolower(substr(trim($sc_where), 0, 6)))
+          {
+              $sc_where = substr(trim($sc_where), 6);
+          }
+          if ('and ' == strtolower(substr(trim($sc_where), 0, 4)))
+          {
+              $sc_where = substr(trim($sc_where), 4);
+          }
+          $sc_where_pos .= ' AND (' . $sc_where . ')';
+          $sc_where = ' WHERE ' . $sc_where;
+      }
+      if ('' != $this->id)
+      {
+          $nmgp_sel_count = 'SELECT COUNT(*) AS countTest FROM ' . $this->Ini->nm_tabela . $sc_where_pos;
+          $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nmgp_sel_count;
+          $rsc = $this->Db->Execute($nmgp_sel_count);
+          if ($rsc === false && !$rsc->EOF)
+          {
+              $this->Erro->mensagem (__FILE__, __LINE__, "banco", $this->Ini->Nm_lang['lang_errm_dbas'], $this->Db->ErrorMsg());
+              exit;
+          }
+          $_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['reg_start'] = $rsc->fields[0];
+          $rsc->Close();
+      }
+   }
 
    function temRegistros($sWhere)
    {
@@ -3254,11 +3285,9 @@ $_SESSION['scriptcase']['form_academic_i']['contr_erro'] = 'off';
               $this->NM_gera_log_new();
               if ('refresh_insert' != $this->nmgp_opcao && (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['sc_redir_insert']) || $_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['sc_redir_insert'] != "S"))
               {
-              $this->nmgp_opcao = "novo"; 
-              if ($_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['run_iframe'] == "F" || $_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['run_iframe'] == "R")
-              { 
-                   $_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['return_edit'] = "new";
-              } 
+              $this->nmgp_opcao   = "igual"; 
+              $this->nmgp_opc_ant = "igual"; 
+              $this->return_after_insert();
               }
               $this->nm_flag_iframe = true;
           } 
@@ -3497,7 +3526,7 @@ $_SESSION['scriptcase']['form_academic_i']['contr_erro'] = 'off';
           }
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['run_iframe'] == "F" || $_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['run_iframe'] == "R")
           {
-              if ($this->sc_evento == "update")
+              if ($this->sc_evento == "insert" || $this->sc_evento == "update")
               {
                   $_SESSION['sc_session'][$this->Ini->sc_page]['form_academic_i']['select'] = $nmgp_select;
                   $this->nm_gera_html();

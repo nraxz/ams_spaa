@@ -63,7 +63,7 @@ class admin_view_applicant_profile_grid
    var $admin_contact_detail;
    var $admin_next_of_kin;
    var $admin_applicant_profile_academic;
-   var $admin_medical_information;
+   var $admin_training_experience;
    var $admin_view_performing_arts;
    var $admin_personal_statement;
    var $admin_additional_information;
@@ -123,21 +123,21 @@ class admin_view_applicant_profile_grid
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['embutida'] = false;
        unset($_SESSION['scriptcase']['admin_applicant_profile_academic']['protect_modal']);
    }
-   if (!is_file($this->Ini->link_admin_medical_information_cons_emb))
+   if (!is_file($this->Ini->link_admin_training_experience_cons_emb))
    {
        $this->NM_cmp_hidden['medical_information'] = "off";
    }
    else
    {
-       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida'] = true;
-       $_SESSION['scriptcase']['admin_medical_information']['protect_modal'] = $this->Ini->sc_page;
-       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['exibe_titulos'] = "N";
-       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['exibe_total'] = "N";
-       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['exibe_seq'] = "N";
-       include_once ($this->Ini->link_admin_medical_information_cons_emb);
-       $this->admin_medical_information = new admin_medical_information_apl ;
-       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida'] = false;
-       unset($_SESSION['scriptcase']['admin_medical_information']['protect_modal']);
+       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = true;
+       $_SESSION['scriptcase']['admin_training_experience']['protect_modal'] = $this->Ini->sc_page;
+       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['exibe_titulos'] = "N";
+       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['exibe_total'] = "N";
+       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['exibe_seq'] = "N";
+       include_once ($this->Ini->link_admin_training_experience_cons_emb);
+       $this->admin_training_experience = new admin_training_experience_apl ;
+       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = false;
+       unset($_SESSION['scriptcase']['admin_training_experience']['protect_modal']);
    }
    if (!is_file($this->Ini->link_admin_view_performing_arts_cons_emb))
    {
@@ -704,7 +704,7 @@ class admin_view_applicant_profile_grid
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['opcao_print'] = "print" ; 
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['opcao_print'] = "print" ; 
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['opcao_print'] = "print" ; 
-       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['opcao_print'] = "print" ; 
+       $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['opcao_print'] = "print" ; 
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_performing_arts']['opcao_print'] = "print" ; 
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_personal_statement']['opcao_print'] = "print" ; 
        $_SESSION['sc_session'][$this->Ini->sc_page]['admin_additional_information']['opcao_print'] = "print" ; 
@@ -1678,8 +1678,8 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['SC_herda_css'] = "S"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['cab_embutida'] = "N";
    $_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['SC_herda_css'] = "S"; 
-   $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['cab_embutida'] = "N";
-   $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['SC_herda_css'] = "S"; 
+   $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['cab_embutida'] = "N";
+   $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['SC_herda_css'] = "S"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_performing_arts']['cab_embutida'] = "N";
    $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_performing_arts']['SC_herda_css'] = "S"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['admin_personal_statement']['cab_embutida'] = "N";
@@ -1721,15 +1721,15 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['embutida'] = false;
            unset($_SESSION['scriptcase']['admin_applicant_profile_academic']['protect_modal']);
        }
-       if (is_file($this->Ini->link_admin_medical_information_cons_emb)) {
-           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['SC_herda_css'] = "S"; 
+       if (is_file($this->Ini->link_admin_training_experience_cons_emb)) {
+           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['SC_herda_css'] = "S"; 
            $GLOBALS["script_case_init"] = $this->Ini->sc_page;
-           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida'] = true;
-           $_SESSION['scriptcase']['admin_medical_information']['protect_modal'] = $this->Ini->sc_page;
-           include_once ($this->Ini->link_admin_medical_information_cons_emb);
-           $this->admin_medical_information = new admin_medical_information_sub_css ;
-           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida'] = false;
-           unset($_SESSION['scriptcase']['admin_medical_information']['protect_modal']);
+           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = true;
+           $_SESSION['scriptcase']['admin_training_experience']['protect_modal'] = $this->Ini->sc_page;
+           include_once ($this->Ini->link_admin_training_experience_cons_emb);
+           $this->admin_training_experience = new admin_training_experience_sub_css ;
+           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = false;
+           unset($_SESSION['scriptcase']['admin_training_experience']['protect_modal']);
        }
        if (is_file($this->Ini->link_admin_view_performing_arts_cons_emb)) {
            $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_performing_arts']['SC_herda_css'] = "S"; 
@@ -2899,54 +2899,54 @@ $nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $
           {
           $this->SC_nowrap = "";
 $nm_saida->saida("     \r\n");
-          if (!$this->Ini->Proc_print && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida_treeview'] && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['embutida_pdf'] != "pdf")
+          if (!$this->Ini->Proc_print && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida_treeview'] && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['embutida_pdf'] != "pdf")
           { 
               $link_div = "";
-              $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['ind_tree']++;
-              $this->NM_cont_body = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['ind_tree'];
-              $_SESSION['sc_session'][$this->Ini->sc_page]['NM_arr_tree']['admin_medical_information'][$this->NM_cont_body][1] = 'top';
+              $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['ind_tree']++;
+              $this->NM_cont_body = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['ind_tree'];
+              $_SESSION['sc_session'][$this->Ini->sc_page]['NM_arr_tree']['admin_training_experience'][$this->NM_cont_body][1] = 'top';
               if ('' != $this->Ini->Tree_img_col && '' != $this->Ini->Tree_img_exp)
               { 
-                  $link_div  = "<img id=\"b_open_admin_medical_information_" . $this->NM_cont_body . "\" style=\"display:''\" onclick=\"document.getElementById('b_open_admin_medical_information_" . $this->NM_cont_body . "').style.display = 'none'; document.getElementById('b_close_admin_medical_information_" . $this->NM_cont_body . "').style.display = ''; NM_liga_tbody(" . $this->NM_cont_body . ", NM_tab_admin_medical_information, 'admin_medical_information'); return false;\" src=\"" . $this->Ini->path_img_global . "/" . $this->Ini->Tree_img_exp . "\">";
-                  $link_div .= "<img id=\"b_close_admin_medical_information_" . $this->NM_cont_body . "\" style=\"display:none\" onclick=\"document.getElementById('b_close_admin_medical_information_" . $this->NM_cont_body . "').style.display = 'none'; document.getElementById('b_open_admin_medical_information_" . $this->NM_cont_body . "').style.display = ''; NM_apaga_tbody(" . $this->NM_cont_body . ", NM_tab_admin_medical_information, 'admin_medical_information'); return false;\" src=\"" . $this->Ini->path_img_global . "/" . $this->Ini->Tree_img_col . "\">";
+                  $link_div  = "<img id=\"b_open_admin_training_experience_" . $this->NM_cont_body . "\" style=\"display:''\" onclick=\"document.getElementById('b_open_admin_training_experience_" . $this->NM_cont_body . "').style.display = 'none'; document.getElementById('b_close_admin_training_experience_" . $this->NM_cont_body . "').style.display = ''; NM_liga_tbody(" . $this->NM_cont_body . ", NM_tab_admin_training_experience, 'admin_training_experience'); return false;\" src=\"" . $this->Ini->path_img_global . "/" . $this->Ini->Tree_img_exp . "\">";
+                  $link_div .= "<img id=\"b_close_admin_training_experience_" . $this->NM_cont_body . "\" style=\"display:none\" onclick=\"document.getElementById('b_close_admin_training_experience_" . $this->NM_cont_body . "').style.display = 'none'; document.getElementById('b_open_admin_training_experience_" . $this->NM_cont_body . "').style.display = ''; NM_apaga_tbody(" . $this->NM_cont_body . ", NM_tab_admin_training_experience, 'admin_training_experience'); return false;\" src=\"" . $this->Ini->path_img_global . "/" . $this->Ini->Tree_img_col . "\">";
               }
               $nm_saida->saida("<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">");
               $nm_saida->saida("<TR> <TD align=\"left\">");
-              $nm_saida->saida("<DIV id=\"tbody_admin_medical_information_" . $this->NM_cont_body . "_top\" style=\"display:''\">");
+              $nm_saida->saida("<DIV id=\"tbody_admin_training_experience_" . $this->NM_cont_body . "_top\" style=\"display:''\">");
               $nm_saida->saida($link_div . "</DIV></TD></TR>");
-              $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['ind_tree']++;
-              $this->NM_cont_body = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['ind_tree'];
-              $_SESSION['sc_session'][$this->Ini->sc_page]['NM_arr_tree']['admin_medical_information'][$this->NM_cont_body][1] = 'bot';
+              $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['ind_tree']++;
+              $this->NM_cont_body = $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['ind_tree'];
+              $_SESSION['sc_session'][$this->Ini->sc_page]['NM_arr_tree']['admin_training_experience'][$this->NM_cont_body][1] = 'bot';
               $nm_saida->saida("<tr><td>");
               if ('' != $this->Ini->Tree_img_col && '' != $this->Ini->Tree_img_exp)
               { 
-                  $nm_saida->saida("<DIV id=\"tbody_admin_medical_information_" . $this->NM_cont_body . "_bot\" style=\"display:none\">");
+                  $nm_saida->saida("<DIV id=\"tbody_admin_training_experience_" . $this->NM_cont_body . "_bot\" style=\"display:none\">");
               }
               else
               { 
-                  $nm_saida->saida("<DIV id=\"tbody_admin_medical_information_" . $this->NM_cont_body . "_bot\" style=\"display:''\">");
+                  $nm_saida->saida("<DIV id=\"tbody_admin_training_experience_" . $this->NM_cont_body . "_bot\" style=\"display:''\">");
               }
           }
           $GLOBALS["script_case_init"] = $this->Ini->sc_page;
           $GLOBALS["nmgp_parms"] = "nmgp_lig_edit_lapis?#?S?@?glo_login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida'] = true;
-          if (method_exists($this->admin_medical_information, "controle"))
+          $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = true;
+          if (method_exists($this->admin_training_experience, "controle"))
           {
-              $this->admin_medical_information->controle();
+              $this->admin_training_experience->controle();
           }
-          $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida'] = false;
-          if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['emb_lig_aba']))
+          $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = false;
+          if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['emb_lig_aba']))
           { 
               if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['embutida'])
               { 
-                 $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['emb_lig_aba'] = array_merge($this->Ini->Init_apl_lig, $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['emb_lig_aba']);
+                 $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['emb_lig_aba'] = array_merge($this->Ini->Init_apl_lig, $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['emb_lig_aba']);
               }
               else 
               { 
-                 $this->Ini->Init_apl_lig = array_merge($this->Ini->Init_apl_lig, $_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['emb_lig_aba']);
+                 $this->Ini->Init_apl_lig = array_merge($this->Ini->Init_apl_lig, $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['emb_lig_aba']);
               }
           }
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_medical_information']['embutida_treeview'] && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['embutida_pdf'] != "pdf")
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida_treeview'] && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_applicant_profile']['embutida_pdf'] != "pdf")
           { 
               $nm_saida->saida("</DIV></td></tr>");
               $nm_saida->saida("</table>");
@@ -3302,9 +3302,9 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    {
        $this->admin_applicant_profile_academic->close_emb();
    }
-   if (method_exists($this->admin_medical_information, "close_emb")) 
+   if (method_exists($this->admin_training_experience, "close_emb")) 
    {
-       $this->admin_medical_information->close_emb();
+       $this->admin_training_experience->close_emb();
    }
    if (method_exists($this->admin_view_performing_arts, "close_emb")) 
    {

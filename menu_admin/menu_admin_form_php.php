@@ -347,6 +347,10 @@ if (!isset($_SESSION['scriptcase']['menu_admin']['session_timeout']['redir']) &&
          }
       }
       {
+      if ($_SESSION['scriptcase']['sc_item_menu'] == "item_30")
+      {
+          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("dashboard") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
+      }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_5")
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_venue_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
@@ -375,21 +379,13 @@ if (!isset($_SESSION['scriptcase']['menu_admin']['session_timeout']['redir']) &&
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_assign_panel_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
       }
-      if ($_SESSION['scriptcase']['sc_item_menu'] == "item_28")
-      {
-          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_set_status_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
-      }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_29")
       {
-          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_set_status_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
+          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_manage_outcome_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
       }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_21")
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_programs_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
-      }
-      if ($_SESSION['scriptcase']['sc_item_menu'] == "item_22")
-      {
-          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_specialist_pathway_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
       }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_23")
       {

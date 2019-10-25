@@ -56,7 +56,6 @@ class grid_application_detail_grid
    var $verify_notification;
    var $venue_id;
    var $audition_id;
-   var $free_audition;
    var $program;
    var $payment_status;
    var $id;
@@ -724,15 +723,15 @@ $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'off';
 //----- 
    if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
    { 
-       $nmgp_select = "SELECT venue_id, audition_id, free_audition, program, payment_status, id, login from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT venue_id, audition_id, program, payment_status, id, login from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
    { 
-       $nmgp_select = "SELECT venue_id, audition_id, free_audition, program, payment_status, id, login from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT venue_id, audition_id, program, payment_status, id, login from " . $this->Ini->nm_tabela; 
    } 
    else 
    { 
-       $nmgp_select = "SELECT venue_id, audition_id, free_audition, program, payment_status, id, login from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT venue_id, audition_id, program, payment_status, id, login from " . $this->Ini->nm_tabela; 
    } 
    $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['where_pesq']; 
    $nmgp_order_by = ""; 
@@ -813,15 +812,14 @@ $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'off';
        $this->venue_id = (string)$this->venue_id;
        $this->audition_id = $this->rs_grid->fields[1] ;  
        $this->audition_id = (string)$this->audition_id;
-       $this->free_audition = $this->rs_grid->fields[2] ;  
-       $this->program = $this->rs_grid->fields[3] ;  
-       $this->payment_status = $this->rs_grid->fields[4] ;  
-       $this->id = $this->rs_grid->fields[5] ;  
+       $this->program = $this->rs_grid->fields[2] ;  
+       $this->payment_status = $this->rs_grid->fields[3] ;  
+       $this->id = $this->rs_grid->fields[4] ;  
        $this->id = (string)$this->id;
-       $this->login = $this->rs_grid->fields[6] ;  
+       $this->login = $this->rs_grid->fields[5] ;  
        $GLOBALS["audition_id"] = $this->rs_grid->fields[1] ;  
        $GLOBALS["audition_id"] = (string)$GLOBALS["audition_id"] ;
-       $GLOBALS["program"] = $this->rs_grid->fields[3] ;  
+       $GLOBALS["program"] = $this->rs_grid->fields[2] ;  
        $this->SC_seq_register = $this->nmgp_reg_start ; 
        $this->SC_seq_page = 0;
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['final'] = $this->nmgp_reg_start ; 
@@ -832,11 +830,10 @@ $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'off';
            $this->rs_grid->MoveNext(); 
            $this->venue_id = $this->rs_grid->fields[0] ;  
            $this->audition_id = $this->rs_grid->fields[1] ;  
-           $this->free_audition = $this->rs_grid->fields[2] ;  
-           $this->program = $this->rs_grid->fields[3] ;  
-           $this->payment_status = $this->rs_grid->fields[4] ;  
-           $this->id = $this->rs_grid->fields[5] ;  
-           $this->login = $this->rs_grid->fields[6] ;  
+           $this->program = $this->rs_grid->fields[2] ;  
+           $this->payment_status = $this->rs_grid->fields[3] ;  
+           $this->id = $this->rs_grid->fields[4] ;  
+           $this->login = $this->rs_grid->fields[5] ;  
        } 
    } 
    $this->nmgp_reg_inicial = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['final'] + 1;
@@ -1792,8 +1789,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $this->css_venue_id_grid_line = $compl_css_emb . "css_venue_id_grid_line";
    $this->css_audition_id_label = $compl_css_emb . "css_audition_id_label";
    $this->css_audition_id_grid_line = $compl_css_emb . "css_audition_id_grid_line";
-   $this->css_free_audition_label = $compl_css_emb . "css_free_audition_label";
-   $this->css_free_audition_grid_line = $compl_css_emb . "css_free_audition_grid_line";
    $this->css_program_label = $compl_css_emb . "css_program_label";
    $this->css_program_grid_line = $compl_css_emb . "css_program_grid_line";
    $this->css_payment_status_label = $compl_css_emb . "css_payment_status_label";
@@ -2010,7 +2005,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
                $nm_saida->saida("<table id=\"apl_grid_application_detail#?#$nm_seq_execucoes\" width=\"100%\" style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\">\r\n");
                $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridTabelaTd . " " . "\" style=\"font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:12px;\"><table style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\" width=\"100%\">\r\n");
                $nm_id_aplicacao = "";
-               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridFieldOdd . "\"  style=\"padding: 0px; font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:12px;\" colspan = \"9\" align=\"center\">\r\n");
+               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridFieldOdd . "\"  style=\"padding: 0px; font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:12px;\" colspan = \"8\" align=\"center\">\r\n");
                $nm_saida->saida("     " . $this->nm_grid_sem_reg . "\r\n");
                $nm_saida->saida("  </td></tr>\r\n");
                $nm_saida->saida("  </table></td></tr></table>\r\n");
@@ -2219,38 +2214,115 @@ if (($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['pr
           $this->venue_id = (string)$this->venue_id;
           $this->audition_id = $this->rs_grid->fields[1] ;  
           $this->audition_id = (string)$this->audition_id;
-          $this->free_audition = $this->rs_grid->fields[2] ;  
-          $this->program = $this->rs_grid->fields[3] ;  
-          $this->payment_status = $this->rs_grid->fields[4] ;  
-          $this->id = $this->rs_grid->fields[5] ;  
+          $this->program = $this->rs_grid->fields[2] ;  
+          $this->payment_status = $this->rs_grid->fields[3] ;  
+          $this->id = $this->rs_grid->fields[4] ;  
           $this->id = (string)$this->id;
-          $this->login = $this->rs_grid->fields[6] ;  
+          $this->login = $this->rs_grid->fields[5] ;  
           $GLOBALS["audition_id"] = $this->rs_grid->fields[1] ;  
           $GLOBALS["audition_id"] = (string)$GLOBALS["audition_id"];
-          $GLOBALS["program"] = $this->rs_grid->fields[3] ;  
+          $GLOBALS["program"] = $this->rs_grid->fields[2] ;  
           $this->SC_seq_page++; 
           $this->SC_seq_register = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['final'] + 1; 
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['rows_emb']++;
           $this->sc_proc_grid = true;
           $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'on';
-  $this->payment  = '<i class="fas fa-credit-card"></i> | Paynow';
-$this->verify_notification  = 'Waiting for admin to verify your booking confirmation <i class="fas fa-hourglass-start"></i>';
+  $this->payment  = '<div class="" style="text-align:centjavascript:void(0);er;"><i class="fas fa-credit-card"></i> | Paynow</div>';
+$this->verify_notification  = '<p>If you are paying offline please email your receipt to admissions@spaa.ae</p>
+<p>You will get a confirmation from SHARJAH ACADEMY OF THE ARTS team</p></i>
+<p><strong>Bank Details:</p>
+<table cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td width="167" valign="top">
+                <p>
+                    Account name
+                </p>
+            </td>
+            <td width="396" valign="top">
+                <p>
+                    SHARJAH ACADEMY OF THE ARTS
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="167" valign="top">
+                <p>
+                    Account number
+                </p>
+            </td>
+            <td width="396" valign="top">
+                <p>
+                    0012061859001
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="167" valign="top">
+                <p>
+                    IBAN
+                </p>
+            </td>
+            <td width="396" valign="top">
+                <p>
+                    AE680410000012061859001
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="167" valign="top">
+                <p>
+                    Bank name
+                </p>
+            </td>
+            <td width="396" valign="top">
+                <p>
+                    Sharjah Islamic Bank
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="167" valign="top">
+                <p>
+                    Branch
+                </p>
+            </td>
+            <td width="396" valign="top">
+                <p>
+                    Main Branch
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td width="167" valign="top">
+                <p>
+                    Swift
+                </p>
+            </td>
+            <td width="396" valign="top">
+                <p>
+                    NBSHAEAS
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table cellspacing="0" cellpadding="0" border="0" align="left">
+    <tbody>
+        <tr>
+            <td nowrap="">
+            </td>
+            <td nowrap="">
+            </td>
+            <td nowrap="">
+            </td>
+        </tr>
+    </tbody>
+</table>';
 $this->audition_fees  =  $this->GetAuditionFees($this->audition_id);
 if($this->audition_fees  > 0)
 {
-	if ($this->free_audition  == 'Yes')     
-	{
-		$this->Ini->nm_hidden_blocos[3] = "off";
 		
-		if($this->payment_status  == 'Complete'){
-			$this->Ini->nm_hidden_blocos[4] = "off";
-		}
-		if($this->payment_status  == 'Pending'){
-			$this->Ini->nm_hidden_blocos[4] = "on";			
-		}
-	}
-	if($this->free_audition  == 'No')      
-	{
 		if($this->payment_status  == 'Complete'){
 			$this->Ini->nm_hidden_blocos[3] = "off";
 			$this->Ini->nm_hidden_blocos[4] = "off";		
@@ -2260,7 +2332,7 @@ if($this->audition_fees  > 0)
 			$this->Ini->nm_hidden_blocos[3] = "on";
 			$this->Ini->nm_hidden_blocos[4] = "yes";		
 		}
-	}
+	
 }
 else
 {
@@ -2366,7 +2438,7 @@ $nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $
    }
    else
    {
-       $SC_Label = (isset($this->New_label['audition_fees'])) ? $this->New_label['audition_fees'] : "Audition Fee £"; 
+       $SC_Label = (isset($this->New_label['audition_fees'])) ? $this->New_label['audition_fees'] : "Audition Fee (USD)"; 
    }
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['exibe_titulos'] != "S")
    { 
@@ -2474,43 +2546,6 @@ $nm_saida->saida("     <span style=\"vertical-align:middle; font-weight:bold;\">
               $this->SC_nowrap = "NOWRAP";
           }
 $nm_saida->saida("     <span id=\"id_sc_field_audition_id_" . $this->SC_seq_page . "\"><span  style=\"vertical-align: top;text-align: left;\" >" . $conteudo . "</span></span>\r\n");
-$nm_saida->saida("    </TD>\r\n");
-$nm_saida->saida("   </tr><tr>\r\n");
-$nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $this->css_free_audition_label . "\"   align=\"\" valign=\"top\"   HEIGHT=\"0px\">\r\n");
-   if (isset($this->NM_cmp_hidden['free_audition']) && $this->NM_cmp_hidden['free_audition'] == "off")
-   {
-       $SC_Label = "&nbsp;"; 
-   }
-   else
-   {
-       $SC_Label = (isset($this->New_label['free_audition'])) ? $this->New_label['free_audition'] : "Are you elegible for free audition?"; 
-   }
-   if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['exibe_titulos'] != "S")
-   { 
-   } 
-   else 
-   { 
-$nm_saida->saida("     <span style=\"vertical-align:middle; font-weight:bold;\">" . nl2br($SC_Label) . "</span><br />\r\n");
-   } 
-          $conteudo = sc_strip_script($this->free_audition); 
-          if ($conteudo === "") 
-          { 
-              $conteudo = "&nbsp;" ;  
-              $graf = "" ;  
-          } 
-          if (isset($this->NM_cmp_hidden['free_audition']) && $this->NM_cmp_hidden['free_audition'] == "off")
-          {
-              $conteudo = "&nbsp;";
-          }
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['proc_pdf'])
-          {
-              $this->SC_nowrap = "";
-          }
-          else
-          {
-              $this->SC_nowrap = "";
-          }
-$nm_saida->saida("     <span id=\"id_sc_field_free_audition_" . $this->SC_seq_page . "\"><span  style=\"vertical-align: top;text-align: left;\" >" . $conteudo . "</span></span>\r\n");
 $nm_saida->saida("    </TD>\r\n");
 $nm_saida->saida("   </tr></table></td>\r\n");
 $nm_saida->saida("   </tr></table>\r\n");
@@ -3096,12 +3131,25 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       }
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['new_record'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_application_detail"]) && $this->Ini->sc_lig_md5["form_application_detail"] == "S") {
+               $Parms_Lig  = "SC_glo_par_id*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinN*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scoutnmgp_opcao*scinedit_novo*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_application_detail@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_id*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinN*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scoutnmgp_opcao*scinedit_novo*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "new_record", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_application_detail')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_application_detail');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_application_detail')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_application_detail');;", "sc_new_record_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
       $nm_saida->saida("         </td> \r\n");
       $nm_saida->saida("        </tr> \r\n");
       $nm_saida->saida("       </table> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['ajax_nav'] && $this->force_toolbar)
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['ajax_nav'])
       { 
           $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_toobar_top', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -3115,7 +3163,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("     </tr> \r\n");
       if (!$NM_btn && isset($NM_ult_sep))
       {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['ajax_nav'] && $this->force_toolbar)
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['ajax_nav'])
           { 
               $this->Ini->Arr_result['setDisplay'][] = array('field' => $NM_ult_sep, 'value' => 'none');
           } 

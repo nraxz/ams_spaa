@@ -4141,24 +4141,11 @@ foreach ($Arr_format as $Part_date)
            }
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'] = $this->comando;
        }
-       if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'])) 
-       {
-           if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'])) 
-           {
-               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'] .= " and (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'] . ")";
-           }
-           else 
-           {
-               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq'] = " where (" . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'] . ")";
-           }
-       }
    }
    function finaliza_resultado()
    {
       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['dyn_search']      = array();
       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['cond_dyn_search'] = "";
-      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_pesq_fast'] = "";
-      unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['fast_search']);
       if ("" == $this->comando_filtro)
       {
           $this->comando = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_upload_files']['where_orig'];

@@ -133,11 +133,6 @@ class applicant_application_data_grid
        {
            $this->grid();
        }
-       if ($nmgrp_apl_opcao != "pdf")
-       { 
-           $this->nmgp_embbed_placeholder_bot();
-           $this->nmgp_barra_bot();
-       } 
        $nm_saida->saida("   </table>\r\n");
        $nm_saida->saida("  </TD>\r\n");
        $nm_saida->saida(" </TR>\r\n");
@@ -332,7 +327,6 @@ class applicant_application_data_grid
    $this->nmgp_botoes['forward'] = "off";
    $this->nmgp_botoes['last'] = "off";
    $this->nmgp_botoes['pdf'] = "on";
-   $this->nmgp_botoes['create_personal'] = "on";
    $this->Cmps_ord_def['email'] = " asc";
    $this->Cmps_ord_def['active'] = " asc";
    $this->Cmps_ord_def['login'] = " asc";
@@ -1295,12 +1289,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $nm_saida->saida("  }\r\n");
            $nm_saida->saida("  function SC_init_jquery(isScrollNav){ \r\n");
            $nm_saida->saida("   \$(function(){ \r\n");
-           $nm_saida->saida("     $('#id_F0_bot').keyup(function(e) {\r\n");
-           $nm_saida->saida("       var keyPressed = e.charCode || e.keyCode || e.which;\r\n");
-           $nm_saida->saida("       if (13 == keyPressed) {\r\n");
-           $nm_saida->saida("          return false; \r\n");
-           $nm_saida->saida("       }\r\n");
-           $nm_saida->saida("     });\r\n");
            $nm_saida->saida("   }); \r\n");
            $nm_saida->saida("  }\r\n");
            $nm_saida->saida("  SC_init_jquery(false);\r\n");
@@ -1657,7 +1645,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
    if (!$_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['embutida'])
    {
-       $this->arr_buttons = array_merge($this->arr_buttons, $this->Ini->arr_buttons_usr);
        $this->NM_css_val_embed = "sznmxizkjnvl";
        $this->NM_css_ajx_embed = "Ajax_res";
    }
@@ -2198,11 +2185,12 @@ if (($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data'][
           $this->sc_proc_grid = true;
           $_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'on';
   $info = $this->getCountInfo('basic_information', $this->login );
-if($info > 0){
-	
+if($info > 0){	
 	$this->Ini->nm_hidden_blocos[5] = "on";
-	$this->basic_information  = '<i class="fas fa-check-double"></i> | Manage';
-	$this->nmgp_botoes["create_personal"] = "off";;
+	
+	
+	
+	
 	$academics = $this->getCountInfo('academic', $this->login );
 	$this->performing_art_trainings = $this->getCountInfo('pa_experience', $this->login );
 	$this->image_upload = $this->getCountInfo('image_upload', $this->login );
@@ -2211,8 +2199,23 @@ if($info > 0){
 	$this->personal_statement = $this->getCountInfo('personal_statement', $this->login );
 	$this->audition_detail = $this->getCountInfo('application_detail', $this->login );
 	$this->medical_information = $this->getCountInfo('medical_information', $this->login );
-	if($academics > 0){
-		$this->academics_qualifications  = '<i class="fas fa-check-double"></i> | Manage';
+	$contact_detail = $this->getCountInfo('contact_detail', $this->login );
+	$nok = $this->getCountInfo('next_of_kin', $this->login );
+	
+	$payment_status =  $this->pending_audition( $this->login );
+	
+	if($contact_detail > 0 AND $nok > 0){
+			$this->basic_information  = '<i class="fas fa-check-double"></i> | Manage';
+		
+		}
+	else{
+			$this->basic_information  = '<i class="far fa-times-circle"></i> | Pending';
+		}
+	
+	if($academics > 0 ){
+		
+			$this->academics_qualifications  = '<i class="fas fa-check-double"></i> | Manage';
+			
 	}
 	else{
 		$this->academics_qualifications  = '<i class="far fa-times-circle"></i> | Pending';
@@ -2253,9 +2256,17 @@ if($info > 0){
 		$this->funding_information  = '<i class="far fa-times-circle"></i> | Pending';
 	}
 	if($this->audition_detail > 0){
-		$this->audition_detail  = '<i class="fas fa-check-double"></i> | Manage';
-	}
-	else{
+		
+			if($payment_status > 0){
+					$this->audition_detail  = '<i class="fas fa-check-double"></i> | Manage ('. $payment_status.' Pending)';
+			}
+			else{
+				$this->audition_detail  = '<i class="fas fa-check-double"></i> | Manage';
+			}
+		}
+		
+ 	else{
+		
 		$this->audition_detail  = '<i class="far fa-times-circle"></i> | Select';
 	}
 	if($this->confirmation_declaration > 0){
@@ -3420,99 +3431,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
        nm_conv_form_data($dt_out, $form_in, $form_out);
        return $dt_out;
    }
-   function nmgp_barra_bot_normal()
-   {
-      global 
-             $nm_saida, $nm_url_saida, $nm_apl_dependente;
-      $NM_btn  = false;
-      $NM_Gbtn = false;
-      $nm_saida->saida("      <tr style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td>\r\n");
-      $nm_saida->saida("      <form id=\"id_F0_bot\" name=\"F0_bot\" method=\"post\" action=\"./\" target=\"_self\"> \r\n");
-      $nm_saida->saida("      <input type=\"text\" id=\"id_sc_truta_f0_bot\" name=\"sc_truta_f0_bot\" value=\"\"/> \r\n");
-      $nm_saida->saida("      <input type=\"hidden\" id=\"script_init_f0_bot\" name=\"script_case_init\" value=\"" . NM_encode_input($this->Ini->sc_page) . "\"/> \r\n");
-      $nm_saida->saida("      <input type=hidden id=\"script_session_f0_bot\" name=\"script_case_session\" value=\"" . NM_encode_input(session_id()) . "\"/>\r\n");
-      $nm_saida->saida("      <input type=\"hidden\" id=\"opcao_f0_bot\" name=\"nmgp_opcao\" value=\"muda_qt_linhas\"/> \r\n");
-      $nm_saida->saida("      </td></tr><tr>\r\n");
-      $nm_saida->saida("       <td id=\"sc_grid_toobar_bot\"  colspan=3 class=\"" . $this->css_scGridTabelaTd . "\" valign=\"top\"> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['ajax_nav'])
-      { 
-          $_SESSION['scriptcase']['saida_html'] = "";
-      } 
-      $nm_saida->saida("        <table class=\"" . $this->css_scGridToolbar . "\" style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\" width=\"100%\" valign=\"top\">\r\n");
-      $nm_saida->saida("         <tr> \r\n");
-      $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"left\" width=\"33%\"> \r\n");
-          $nm_saida->saida("         </td> \r\n");
-          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
-      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['create_personal'] == "on" && !$this->grid_emb_form) 
-      { 
-           if (isset($this->Ini->sc_lig_md5["form_basic_information"]) && $this->Ini->sc_lig_md5["form_basic_information"] == "S") {
-               $Parms_Lig  = "SC_glo_par_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
-               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_application_data@SC_par@" . md5($Parms_Lig);
-               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
-           } else {
-               $Md5_Lig  = "SC_glo_par_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
-           }
-          $Cod_Btn = nmButtonOutput($this->arr_buttons, "create_personal", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_basic_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_basic_information');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_basic_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_basic_information');;", "sc_create_personal_bot", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-          $nm_saida->saida("          $Cod_Btn \r\n");
-          $NM_btn = true;
-      } 
-          $nm_saida->saida("         </td> \r\n");
-          $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
-        if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['SC_Ind_Groupby'] != "sc_free_total")
-        {
-          if ($this->nmgp_botoes['summary'] == "on" && !$_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['opc_psq'] && empty($this->nm_grid_sem_reg) && !$this->grid_emb_form)
-          {
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bresumo", "nm_gp_move('resumo', '0');", "nm_gp_move('resumo', '0');", "res_bot", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-              $nm_saida->saida("           $Cod_Btn \r\n");
-                  $NM_btn = true;
-          }
-        }
-          if (is_file("applicant_application_data_help.txt") && !$this->grid_emb_form)
-          {
-             $Arq_WebHelp = file("applicant_application_data_help.txt"); 
-             if (isset($Arq_WebHelp[0]) && !empty($Arq_WebHelp[0]))
-             {
-                 $Arq_WebHelp[0] = str_replace("\r\n" , "", trim($Arq_WebHelp[0]));
-                 $Tmp = explode(";", $Arq_WebHelp[0]); 
-                 foreach ($Tmp as $Cada_help)
-                 {
-                     $Tmp1 = explode(":", $Cada_help); 
-                     if (!empty($Tmp1[0]) && isset($Tmp1[1]) && !empty($Tmp1[1]) && $Tmp1[0] == "cons" && is_file($this->Ini->root . $this->Ini->path_help . $Tmp1[1]))
-                     {
-                        $Cod_Btn = nmButtonOutput($this->arr_buttons, "bhelp", "nm_open_popup('" . $this->Ini->path_help . $Tmp1[1] . "');", "nm_open_popup('" . $this->Ini->path_help . $Tmp1[1] . "');", "help_bot", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-                        $nm_saida->saida("           $Cod_Btn \r\n");
-                        $NM_btn = true;
-                     }
-                 }
-             }
-          }
-      $nm_saida->saida("         </td> \r\n");
-      $nm_saida->saida("        </tr> \r\n");
-      $nm_saida->saida("       </table> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['ajax_nav'])
-      { 
-          $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_toobar_bot', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
-          $_SESSION['scriptcase']['saida_html'] = "";
-      } 
-      $nm_saida->saida("      </td> \r\n");
-      $nm_saida->saida("     </tr> \r\n");
-      $nm_saida->saida("      <tr style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td> \r\n");
-      $nm_saida->saida("     </form> \r\n");
-      $nm_saida->saida("      </td> \r\n");
-      $nm_saida->saida("     </tr> \r\n");
-      if (!$NM_btn && isset($NM_ult_sep))
-      {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['ajax_nav'])
-          { 
-              $this->Ini->Arr_result['setDisplay'][] = array('field' => $NM_ult_sep, 'value' => 'none');
-          } 
-          $nm_saida->saida("     <script language=\"javascript\">\r\n");
-          $nm_saida->saida("        document.getElementById('" . $NM_ult_sep . "').style.display='none';\r\n");
-          $nm_saida->saida("     </script>\r\n");
-      }
-   }
    function nmgp_barra_top_mobile()
    {
       global 
@@ -3649,19 +3567,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"left\" width=\"33%\"> \r\n");
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
-      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['create_personal'] == "on" && !$this->grid_emb_form) 
-      { 
-           if (isset($this->Ini->sc_lig_md5["form_basic_information"]) && $this->Ini->sc_lig_md5["form_basic_information"] == "S") {
-               $Parms_Lig  = "SC_glo_par_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
-               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@applicant_application_data@SC_par@" . md5($Parms_Lig);
-               $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
-           } else {
-               $Md5_Lig  = "SC_glo_par_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scout";
-           }
-          $Cod_Btn = nmButtonOutput($this->arr_buttons, "create_personal", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_basic_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_basic_information');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_basic_information')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_basic_information');;", "sc_create_personal_bot", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
-          $nm_saida->saida("          $Cod_Btn \r\n");
-          $NM_btn = true;
-      } 
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
         if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_application_data']['SC_Ind_Groupby'] != "sc_free_total")
@@ -3731,34 +3636,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
        {
            $this->nmgp_barra_bot_mobile();
        }
-       else
-       {
-           $this->nmgp_barra_bot_normal();
-       }
-   }
-   function nmgp_embbed_placeholder_bot()
-   {
-      global $nm_saida;
-      $nm_saida->saida("     <tr id=\"sc_id_save_grid_placeholder_bot\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
-      $nm_saida->saida("      </td>\r\n");
-      $nm_saida->saida("     </tr>\r\n");
-      $nm_saida->saida("     <tr id=\"sc_id_groupby_placeholder_bot\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
-      $nm_saida->saida("      </td>\r\n");
-      $nm_saida->saida("     </tr>\r\n");
-      $nm_saida->saida("     <tr id=\"sc_id_sel_campos_placeholder_bot\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
-      $nm_saida->saida("      </td>\r\n");
-      $nm_saida->saida("     </tr>\r\n");
-      $nm_saida->saida("     <tr id=\"sc_id_export_email_placeholder_bot\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
-      $nm_saida->saida("      </td>\r\n");
-      $nm_saida->saida("     </tr>\r\n");
-      $nm_saida->saida("     <tr id=\"sc_id_order_campos_placeholder_bot\" style=\"display: none\">\r\n");
-      $nm_saida->saida("      <td colspan=3>\r\n");
-      $nm_saida->saida("      </td>\r\n");
-      $nm_saida->saida("     </tr>\r\n");
    }
    function nm_gera_mask(&$nm_campo, $nm_mask)
    { 
@@ -4181,10 +4058,6 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("       css_tr        = class_obj;\r\n");
    $nm_saida->saida("       obj.className = '" . $this->css_scGridFieldClick . "';\r\n");
    $nm_saida->saida("   }\r\n");
-   $nm_saida->saida("   function create_personal() \r\n");
-   $nm_saida->saida("   { \r\n");
-   $nm_saida->saida("       \r\n");
-   $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   var tem_hint;\r\n");
    $nm_saida->saida("   function nm_mostra_hint(nm_obj, nm_evt, nm_mens)\r\n");
    $nm_saida->saida("   {\r\n");
@@ -4850,6 +4723,48 @@ if (isset($this->rs[0][0]))
 {
     return $headshot = $this->rs[0][0];
   
+}
+$_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'off';
+}
+function pending_audition($applicant)
+{
+$_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'on';
+  
+
+$check_sql = "SELECT Count(id)"
+   . " FROM application_detail"
+   . " WHERE login = '" . $applicant . "' AND payment_status ='Pending'";
+ 
+      $nm_select = $check_sql; 
+      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
+      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
+      $this->rs = array();
+      if ($rx = $this->Db->Execute($nm_select)) 
+      { 
+          $y = 0; 
+          $nm_count = $rx->FieldCount();
+          while (!$rx->EOF)
+          { 
+                 for ($x = 0; $x < $nm_count; $x++)
+                 { 
+                        $this->rs[$y] [$x] = $rx->fields[$x];
+                 }
+                 $y++; 
+                 $rx->MoveNext();
+          } 
+          $rx->Close();
+      } 
+      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
+      { 
+          $this->rs = false;
+          $this->rs_erro = $this->Db->ErrorMsg();
+      } 
+;
+
+if (isset($this->rs[0][0]))     
+{
+   return $counter = $this->rs[0][0];
+    
 }
 $_SESSION['scriptcase']['applicant_application_data']['contr_erro'] = 'off';
 }

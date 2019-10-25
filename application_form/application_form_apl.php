@@ -1952,10 +1952,7 @@ if ($error_test > 0)
   $this->NM_ajax_info['errList'][$sErrorIndex][] = $error_message;
  }
 ;
-	 if (!isset($this->Campos_Mens_erro) || empty($this->Campos_Mens_erro))
- {
-$this->nmgp_redireciona_form($this->Ini->path_link . "" . SC_dir_app_name('app_login') . "/", $this->nm_location, "", "_self", "ret_self", 440, 630);
- };
+	
 }
 if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
 {
@@ -4269,7 +4266,7 @@ if (!isset($this->sc_temp_vid)) {$this->sc_temp_vid = (isset($_SESSION['vid'])) 
   $this->venue_id  = $this->sc_temp_vid;
 $this->audition_id  = $this->sc_temp_auid;
 $sc_tmp_field_name = 'accept_tnc';
-$this->NM_ajax_info['fieldLabel'][$sc_tmp_field_name] = $this->nm_new_label[$sc_tmp_field_name] = 'By choosing to complete your application, you are confirming that you the applicant:  <ul><li>meet the SPAA <a href="#">Entry Requirements</a></li> <li>have read and agree to the SPAA <a href="#">Terms &amp; Conditions</a></li></ul> Prior to proceeding, please ensure that you have also read the SPAA <a href="#">Audition Guidelines</a>.<p></p>';
+$this->NM_ajax_info['fieldLabel'][$sc_tmp_field_name] = $this->nm_new_label[$sc_tmp_field_name] = 'By choosing to complete your application, you are confirming that you the applicant:  <ul><li>meet the SPAA <a href="http://ams.spaa.ae/audition-guidelines/" target="_blank">Entry Requirements</a></li> <li>have read and agree to the SPAA <a href="https://ams.spaa.ae/terms-and-conditions/" target="_blank">Terms &amp; Conditions</a></li></ul> Prior to proceeding, please ensure that you have also read the SPAA <a href="http://ams.spaa.ae/audition-guidelines/" target="_blank">Audition Guidelines</a>.<p></p>';
 if (isset($this->sc_temp_vid)) { $_SESSION['vid'] = $this->sc_temp_vid;}
 if (isset($this->sc_temp_auid)) { $_SESSION['auid'] = $this->sc_temp_auid;}
 if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
@@ -5524,8 +5521,7 @@ $insert_fields = array(
      'venue_id' => "'$venue'",
 	 'audition_id' => "'$audition'",
      'program' => "'$program'",	
-	 'payment_status' => "'Pending'",
-     'free_audition' => "'No'",
+	 'payment_status' => "'Pending'",    
 	 'note' => "''",
      'register' => "'No'",
 	 'stage' => "'0'",
@@ -5597,9 +5593,9 @@ $insert_table  = 'sec_users';
 $insert_fields = array(   
      'login' => "'$sid'",
      'pswd' => "'$this->password'",
-	'firstname' => "'$this->firstname'",
+	 'firstname' => "'$this->firstname'",
      'lastname' => "'$this->lastname'",
-	'email' => "'$this->email'",
+	 'email' => "'$this->email'",
      'active' => "'N'",
 	 'activation_code' => "'$act_code'",
 	 'priv_admin' => "''",
@@ -5708,23 +5704,14 @@ $update_sql = 'UPDATE sec_users'
          $rf->Close();
       ;
 
-$message = "Dear ".$this->firstname .' '.$this->lastname .", <p>Thank you for registering with Sharjah Performning Arts Academy. Please follow the link below to activate your account. </p>";
+$message = "Dear ".$this->firstname .' '.$this->lastname .", <p>Thank you for registering with Sharjah Performing Arts Academy!</p> <p>Please follow the link below to activate your account and complete the necessary forms.</p>";
 $link = " <a href='http://". $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']. "?a=" . $act_code ."'> http://".$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']. "?a=" . $act_code ." </a><br/><br/>";
-$email_footer = "
-<p>Kind regards,<br/>
- <span style='font-size: small; font-family: arial,helvetica,sans-serif;'><span style='font-size: Medium;'>Sharjah Performning Arts Academy</span></p>
-<table border='0'>
-    <tbody>
-    <tr>
-        <td><img title='LSC' src='https://www.spaa.ae/wp-content/uploads/2019/02/Untitled.png' alt='LSC logo' width='150px' height='60px' /></td>
-        <td>
-           
-           Next to Sharjah Transport Authority</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'>- Sharjah - United Arab Emirates</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'>Sharjah</span></p>
-            <p><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Tel:</em> +971 6 577 0979</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Enquiries:</em> application@spaa.ae</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Website:</em>Website: www.spaa.ae</span></p>
-        </td>
-    </tr>
-    </tbody>
-</table>";
+$email_footer = "<p>Kind regards</p>
+<p>SPAA team</p>
+<p>E: <a href='mailto:admissions@spaa.ae'>admissions@spaa.ae</a></p>
+<p>
+                <img src='http://resources.spaa.ae/images/SPAA_Email_Signature_BIG.png' alt='SPAA Email Signature BIG' style='vertical-align: bottom;' /><br style='clear: both;' /></p>
+";
 
 $mail_smtp_server 	= $this->get_smtp($smtp);       
 $mail_smtp_user 	= $this->get_smtp($smtp_user);                   

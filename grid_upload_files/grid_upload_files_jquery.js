@@ -47,14 +47,10 @@
 var json_err_crtl    = 1;
 var Id_Btn_selected  = new Array();
 var Css_Btn_selected = new Array();
-Id_Btn_selected[0] = "selcmp_top";
-Id_Btn_selected[1] = "ordcmp_top";
-Id_Btn_selected[2] = "sel_groupby_top";
-Id_Btn_selected[3] = "dynamic_search_top";
 function ajax_navigate(opc, parm)
 {
     var scrollNavigateReload = false, extraParams = "", iEvt, iStart = 0;
-    for (ibtn = 0; ibtn < 4; ibtn++) {
+    for (ibtn = 0; ibtn < 0; ibtn++) {
         Css_Btn_selected[ibtn] = $("#" + Id_Btn_selected[ibtn]).attr('class');
     }
     nmAjaxProcOn();
@@ -202,21 +198,13 @@ function ajax_navigate(opc, parm)
         }
         if (!SC_Link_View)
         {
-            if (Qsearch_ok)
-            {
-                scQSInitVal = $("#SC_fast_search_top").val();
-                scQSInit = true;
-                scQuickSearchInit(false, '');
-                scQuickSearchKeyUp('top', null);
-                scQSInit = false;
-            }
             if (parm == "save_grid") {
                 Dyn_Ini = true;
             }
             SC_init_jquery(false);
             tb_init('a.thickbox, area.thickbox, input.thickbox');
         }
-        for (ibtn = 0; ibtn < 4; ibtn++) {
+        for (ibtn = 0; ibtn < 0; ibtn++) {
              $("#" + Id_Btn_selected[ibtn]).attr('class', Css_Btn_selected[ibtn]);
         }
         nmAjaxProcOff();

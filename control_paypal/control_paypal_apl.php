@@ -1329,7 +1329,7 @@ $_SESSION['scriptcase']['control_paypal']['contr_erro'] = 'off';
                 }
                 $this_script .= $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
                 
-                $p->add_field('business', 'payments@londonstudiocentre.org');
+                $p->add_field('business', 'develop-facilitator@considerthisuk.com');
                 $p->add_field('invoice', '$this->application_ref');
                 $p->add_field('custom', '' . $_SESSION['usr_login'] . '');
                 $p->add_field('return', $this_script.'?paypal_request=true&action=success');
@@ -1337,7 +1337,7 @@ $_SESSION['scriptcase']['control_paypal']['contr_erro'] = 'off';
                 $p->add_field('notify_url', $this_script.'?paypal_request=true&action=ipn');
                 $p->add_field('item_name', '' . $_SESSION['application_description'] . '');
                 $p->add_field('amount', '' . $_SESSION['payment_fee'] . '');
-                $p->add_field('currency_code', 'GBP');
+                $p->add_field('currency_code', 'USD');
                 $p->submit_paypal_post();
             }
             elseif(isset($_GET['paypal_request']))
@@ -3176,7 +3176,7 @@ $update_sql = "Update application_detail SET payment_status='".$payment_status."
          $rf->Close();
       ;
 
-$path = "https://audition.londonstudiocentre.org/grid_audition_detail/?sid=".$this->sc_temp_usr_login."&rfn=".$this->sc_temp_item_id;
+$path = "https://ams.spaa.ae/grid_audition_detail/?sid=".$this->sc_temp_usr_login."&rfn=".$this->sc_temp_item_id;
 
 $this->send_applicant_email($app_name, $to_email, $path);
 
@@ -3423,23 +3423,17 @@ function send_applicant_email($app_name, $to_email, $audition_detail)
 {
 $_SESSION['scriptcase']['control_paypal']['contr_erro'] = 'on';
   
-$mail_message = "Dear ". $app_name . "<br/>You have successfully paid your application fee. <br/>
-Your audition has been confirmed With London Studio Centre. Please click on the link below to find your audition <br> <a href='".$audition_detail."' target='_blank'>".$audition_detail."</a><br> If you have any queries about your application or audition please email sarah@londonstudiocentre.org.<br/><br/>";
-$email_footer = "
-<p>Kind regards,<br/>
- <span style='font-size: small; font-family: arial,helvetica,sans-serif;'><span style='font-size: Medium;'>London Studio Centre</span></p>
-<table border='0'>
-    <tbody>
-    <tr>
-        <td><img title='LSC' src='http://londonstudiocentre.org/images/logo/logo.jpg' alt='LSC logo' width='88' height='160' /></td>
-        <td>
-           
-           artsdepot, 5 Nether Street</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'>Tally Ho Corner, North Finchley, N12 0GA</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'>United Kingdom</span></p>
-            <p><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Tel:</em> +44 20 7837 7741</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Fax:</em> +44 20 7837 3248</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Enquiries:</em> info@londonstudiocentre.org</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Website:</em> www.londonstudiocentre.org </span></p>
-        </td>
-    </tr>
-    </tbody>
-</table>";
+$mail_message = "<p>Dear ". $app_name . "</p>
+<p>You have successfully paid your application fee and your audition with Sharjah Performing Arts Academy has been confirmed.</p>
+<p>To find out the details of your audition, please follow the link below. If you have not completed your applicant information form, please supply all the information needed. If you do not fill in your details, your place may be given to someone else.</p>
+<p><a href='".$audition_detail."' target='_blank'>".$audition_detail."</a></p>
+<p>If you have any queries about your application or audition, please contact application@spaa.ae </p>
+<p>Kind regards</p>
+<p>SPAA team</p>
+<p>E: <a href='mailto:admissions@spaa.ae'>admissions@spaa.ae</a></p>
+<p>
+                <img src='http://resources.spaa.ae/images/SPAA_Email_Signature_BIG.png' alt='SPAA Email Signature BIG' style='vertical-align: bottom;' /><br style='clear: both;' /></p>
+";
 
 $mail_smtp_server 	= $this->get_smtp('smtp');       
 $mail_smtp_user 	= $this->get_smtp('smtp_user');                   
@@ -3451,7 +3445,7 @@ $mail_security 	  	= $this->get_smtp('security');
 $mail_to          = $to_email;         
 
 
-$mail_subject     = "Audition booking confirmation";
+$mail_subject     = "Application Fee payment confirmation";
                  
     include_once($this->Ini->path_third . "/swift/swift_required.php");
     $sc_mail_port     = "$mail_port";
@@ -3836,7 +3830,7 @@ if (!isset($this->sc_temp_usr_login)) {$this->sc_temp_usr_login = (isset($_SESSI
   
 $this->login  = $this->sc_temp_usr_login;
 $paypal_settings = $this->getLocalSettings();
-$this->form_title  =  "Application Fee for London Studio Centre";
+$this->form_title  =  "Application fee Sharjah Performing Arts Academy";
 $this->description  =  "Application Fee";
 
 $this->application_fee  = $this->sc_temp_payment_fee;

@@ -2806,12 +2806,25 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       }
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"center\" width=\"33%\"> \r\n");
+      if (!$this->Ini->SC_Link_View && $this->nmgp_botoes['new_record'] == "on" && !$this->grid_emb_form) 
+      { 
+           if (isset($this->Ini->sc_lig_md5["form_additional_information_i"]) && $this->Ini->sc_lig_md5["form_additional_information_i"] == "S") {
+               $Parms_Lig  = "SC_glo_par_login*scinusr_login*scoutSC_glo_par_usr_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinN*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scoutnmgp_opcao*scinedit_novo*scout";
+               $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_additional_information@SC_par@" . md5($Parms_Lig);
+               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_additional_information']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           } else {
+               $Md5_Lig  = "SC_glo_par_login*scinusr_login*scoutSC_glo_par_usr_login*scinusr_login*scoutscript_case_init*scin" . NM_encode_input($this->Ini->sc_page) . "*scoutscript_case_session*scin" .  session_id() . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinN*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scoutnmgp_opcao*scinedit_novo*scout";
+           }
+          $Cod_Btn = nmButtonOutput($this->arr_buttons, "new_record", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_additional_information_i')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_additional_information_i');;", "nm_gp_submit5('" .  $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link  . "" .  SC_dir_app_name('form_additional_information_i')  . "/index.php', '$this->nm_location', '" .  $Md5_Lig  . "', '_self', '', '', '', '', 'form_additional_information_i');;", "sc_new_record_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+          $nm_saida->saida("          $Cod_Btn \r\n");
+          $NM_btn = true;
+      } 
           $nm_saida->saida("         </td> \r\n");
           $nm_saida->saida("          <td class=\"" . $this->css_scGridToolbarPadd . "\" nowrap valign=\"middle\" align=\"right\" width=\"33%\"> \r\n");
       $nm_saida->saida("         </td> \r\n");
       $nm_saida->saida("        </tr> \r\n");
       $nm_saida->saida("       </table> \r\n");
-      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_additional_information']['ajax_nav'] && $this->force_toolbar)
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_additional_information']['ajax_nav'])
       { 
           $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_grid_toobar_top', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
           $_SESSION['scriptcase']['saida_html'] = "";
@@ -2825,7 +2838,7 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
       $nm_saida->saida("     </tr> \r\n");
       if (!$NM_btn && isset($NM_ult_sep))
       {
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_additional_information']['ajax_nav'] && $this->force_toolbar)
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_additional_information']['ajax_nav'])
           { 
               $this->Ini->Arr_result['setDisplay'][] = array('field' => $NM_ult_sep, 'value' => 'none');
           } 

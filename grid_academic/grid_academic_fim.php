@@ -73,10 +73,6 @@
       unset($_SESSION['session_sec_usuario']);
    }
    $fecha_janela = false;
-   if (isset($_SESSION['sc_session'][$script_case_init]['grid_academic']['sc_outra_jan']) && $_SESSION['sc_session'][$script_case_init]['grid_academic']['sc_outra_jan'])
-   {
-       $fecha_janela = true;
-   }
    if ((isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_academic']['opc_psq']) && $_SESSION['sc_session'][$script_case_init]['grid_academic']['opc_psq']) || $fecha_janela)
    {
        if (isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_academic']['sc_modal']) && $_SESSION['sc_session'][$script_case_init]['grid_academic']['sc_modal'])

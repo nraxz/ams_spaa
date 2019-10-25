@@ -74,10 +74,6 @@
    }
    $_SESSION['sc_session'][$script_case_init]['form_upload_image'] = array();
    $fecha_janela = false;
-   if (isset($_SESSION['sc_session'][$script_case_init]['grid_image_upload']['sc_outra_jan']) && $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['sc_outra_jan'])
-   {
-       $fecha_janela = true;
-   }
    if ((isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_image_upload']['opc_psq']) && $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['opc_psq']) || $fecha_janela)
    {
        if (isset($script_case_init) && isset($_SESSION['sc_session'][$script_case_init]['grid_image_upload']['sc_modal']) && $_SESSION['sc_session'][$script_case_init]['grid_image_upload']['sc_modal'])

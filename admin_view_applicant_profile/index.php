@@ -100,7 +100,7 @@ class admin_view_applicant_profile_ini
    var $link_admin_contact_detail_cons_emb;
    var $link_admin_next_of_kin_cons_emb;
    var $link_admin_applicant_profile_academic_cons_emb;
-   var $link_admin_medical_information_cons_emb;
+   var $link_admin_training_experience_cons_emb;
    var $link_admin_view_performing_arts_cons_emb;
    var $link_admin_personal_statement_cons_emb;
    var $link_admin_additional_information_cons_emb;
@@ -217,8 +217,8 @@ class admin_view_applicant_profile_ini
       $this->nm_dt_criacao   = "20190822"; 
       $this->nm_hr_criacao   = "103947"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125805"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -494,25 +494,25 @@ class admin_view_applicant_profile_ini
       }
       $this->sc_lig_target["C_@scinf_academic"] = '';
       $this->sc_lig_target["C_@scinf_academic_@scinf_admin_applicant_profile_academic"] = '';
-      $Tmp_apl_lig = "admin_medical_information";
-      if (is_file($this->root . $this->path_link . "_lib/friendly_url/admin_medical_information_ini.txt"))
+      $Tmp_apl_lig = "admin_training_experience";
+      if (is_file($this->root . $this->path_link . "_lib/friendly_url/admin_training_experience_ini.txt"))
       {
-          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/admin_medical_information_ini.txt");
+          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/admin_training_experience_ini.txt");
           if (isset($Friendly[0]) && !empty($Friendly[0]))
           {
               $Tmp_apl_lig = trim($Friendly[0]);
           }
       }
-      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/admin_medical_information_ini.txt"))
+      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/admin_training_experience_ini.txt"))
       {
-          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/admin_medical_information_ini.txt");
+          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/admin_training_experience_ini.txt");
           if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
           {
-              $this->sc_lig_md5["admin_medical_information"] = 'S';
+              $this->sc_lig_md5["admin_training_experience"] = 'S';
           }
       }
       $this->sc_lig_target["C_@scinf_medical_information"] = '';
-      $this->sc_lig_target["C_@scinf_medical_information_@scinf_admin_medical_information"] = '';
+      $this->sc_lig_target["C_@scinf_medical_information_@scinf_admin_training_experience"] = '';
       $Tmp_apl_lig = "admin_view_performing_arts";
       if (is_file($this->root . $this->path_link . "_lib/friendly_url/admin_view_performing_arts_ini.txt"))
       {
@@ -587,7 +587,7 @@ class admin_view_applicant_profile_ini
       $this->link_admin_contact_detail_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_contact_detail') . "/index.php" ; 
       $this->link_admin_next_of_kin_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_next_of_kin') . "/index.php" ; 
       $this->link_admin_applicant_profile_academic_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_applicant_profile_academic') . "/index.php" ; 
-      $this->link_admin_medical_information_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_medical_information') . "/index.php" ; 
+      $this->link_admin_training_experience_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_training_experience') . "/index.php" ; 
       $this->link_admin_view_performing_arts_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_view_performing_arts') . "/index.php" ; 
       $this->link_admin_personal_statement_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_personal_statement') . "/index.php" ; 
       $this->link_admin_additional_information_cons_emb =  $this->root . $this->path_link  . "" . SC_dir_app_name('admin_additional_information') . "/index.php" ; 
@@ -1013,7 +1013,7 @@ class admin_view_applicant_profile_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['admin_view_applicant_profile']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['admin_view_applicant_profile']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9FYDQFGHAN7V5BqHgrKVcXKDWXCVEF7HQFYZkFUZ1vOZMB/DEBeHEJqHEXCVoJwHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQJmZ1F7Z1vmD5rqDEBOHArCDWF/ZuJeDcBiDQJwD1veHuXGHgrwVIB/DWB3VoX7DcFYH9FaHANOD5JeHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JeHgrKVcB/V5X7VoBOD9XOZSB/Z1BeV5FUDENOVkXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFiV5X7VoB/DcJUZ1F7Z1rYV5JeDEBOVkJqV5FaZuBOD9JKDQX7HABYVWXGHgrYDkBODWFaVorqD9XOZ1F7HIrwV5JeDMBYZSXeDWX7VoBiD9NmDQB/Z1rwV5JeHuzGVIBOV5X7DorqD9JmZ1B/HIrwV5FaHgvCVkJGDWF/VoJeD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiHQXOH9BqHABYV5FUDMBYDkFeV5FqHMB/HQXOZSX7DSzGVWJwHuNOVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgvsHArsHEB3ZuB/HQNwDQBqD1BeHQFaDMBYVcFiV5FYHIJsDcFYZ1X7D1zGZMB/HgvsHEFKV5FqHMJsHQXODuBqHABYHuBODMrYVcFiV5FYHINUHQXOH9BOD1rwHuFUHgBeDkBsH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEBmVoX7HQNmZSBqZ1vmD5XGHgNODkBsV5FqHMX7HQFYZSFUHArYHQJwDMrYZSrCV5X/VENUHQNwVINUHArYHuBODMvCHAFKV5B7ZuXGDcXGDQB/DSBYHuF7DMvsVcFiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEB3DoXGHQNwH9BiHIBeHQNUDMBYV9FiV5FYHIBiHQJmZSBOHAN7HQBqDMvCHEFKV5FqHIFUHQXsDuBqHANOHuBODMBYZSrCV5FYVoBiHQJmVINUHArYHuB/HgBOHAFKH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqHgNKVcFiDur/VEX7HQBqZ1BiHAvmV5JeHgvCZSJ3V5XCVoB/D9NmDQFaZ1BYV5FUHuvmDkBOH5XKVoraD9BiVINUDSvOD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HIX7HQJmZ1BOHAN7HQBiHgNOZSJ3DurmVoFGHQBiDQBqHANKV5XGDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgveHErsDWFGZuXGHQBiDuBqHANKV5BODMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDMveHErCV5XCZuBOHQBiZSBiHINaV5XGHgrwVcB/HEF/HIJsHQXOZkFGHArKV5FUDMrYZSXeV5FqHIJsHQNmH9X7HArYV5BOHgrKVcFCH5FqDoX7DcBwZ1X7D1rwV5XGDMBYHEXeDuJeVoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VEFGHQFYVINUHAvsZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBiDQB/D1veHuJeHgvOVcBOV5F/HMF7D9JmZ1FGZ1BOZMFaDEBeHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOV9FeV5X/VEBiHQNwZkFGHINKD5JeHgNOHErCDuX/VoFGDcXGDQB/D1veHuJwDMrYVcFeDuB7DoXGHQXGZ1BiD1zGZMFaDMveHErsH5BmVoFGHQNwH9BiDSrwHQF7HgrwVcFeH5B7VoBqD9BsZ1F7DSrYD5rqDMrYZSJ3DurmZuJsHQBiZ9XGHANOHQBODMvOVIB/H5B7DoXGHQXGZSBOD1rwHuJsHgrKDkB/DWB3VoFGHQXODQBqHAvCVWJwDMBYVcB/H5XKDoXGHQBqZ1BOD1rKHQJeHgBeDkB/DurmDoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiHQNmH9BqDSNOHuBqDMvCHErCV5B7VoFGHQFYDQFaHANOHQrqHgrwVIB/H5B3DoXGHQBsZkFGD1zGD5XGDMveHErCV5B3VoFGDcBiH9BiHAvmVWJwDMzGVIBsH5XKVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsDWBmVoJeD9FYDQBqHIvsVWJeDMNaV9FiV5X7HIX7DcJUZ1FaD1rKHuBODMBYHEXeHEFaVoB/HQXGZSFGHAvCVWBqDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQNmH9BiHArYHQrqDMNOVcB/H5FqHMBOHQFYZkBiHAvsD5BqHgveHArCDWF/VoBiDcJUZSX7Z1BYHuFaHuvmVcB/Dur/HINUD9XOZ1BiD1rwHQNUHgvsHENiH5FGZuB/HQBiDQB/HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1FUZ1BeD5NUDMzGHEFiV5FqVoXGD9XsH9FUZ1rwVWJeHuvmVcBODWFYVEF7DcNwH9B/HABYD5BqDErKHEFiDuFYVoXGDcJeZSX7HArYD5NUHuBYVcXKV5X7VorqD9XOZSB/Z1BeV5BqDEBeHEXeDuFYVoB/HQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBeHEFiV5B3DoF7D9XsDuFaHANKVWXGDMNOVcXKDWrmVEraD9BiZSBqHINKD5BOHgBOVkJ3HEFqHMXGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVorqDcJUZ1BOZ1BeD5F7DErKVkXeV5FaVoBiD9FYH9X7HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHAvCD5BqHgveHArsHEB7DoBqHQBiDQBqHAvmVWJwDMvmVcFKV5BmVoBqD9BsZkFGHArKHQrqDMzGHENiH5X/ZuBOHQXGDQX7DSBYVWJsHuzGZSNiH5FqHMXGHQBiZSB/HINaD5BODErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['admin_view_applicant_profile']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['admin_view_applicant_profile']['initialize'])  
       { 
@@ -1053,7 +1053,7 @@ $_SESSION['scriptcase']['admin_view_applicant_profile']['contr_erro'] = 'off';
       $_SESSION['sc_session'][$script_case_init]['admin_contact_detail']['ind_tree'] = 0;
       $_SESSION['sc_session'][$script_case_init]['admin_next_of_kin']['ind_tree'] = 0;
       $_SESSION['sc_session'][$script_case_init]['admin_applicant_profile_academic']['ind_tree'] = 0;
-      $_SESSION['sc_session'][$script_case_init]['admin_medical_information']['ind_tree'] = 0;
+      $_SESSION['sc_session'][$script_case_init]['admin_training_experience']['ind_tree'] = 0;
       $_SESSION['sc_session'][$script_case_init]['admin_view_performing_arts']['ind_tree'] = 0;
       $_SESSION['sc_session'][$script_case_init]['admin_personal_statement']['ind_tree'] = 0;
       $_SESSION['sc_session'][$script_case_init]['admin_additional_information']['ind_tree'] = 0;
@@ -1925,11 +1925,11 @@ class admin_view_applicant_profile_sub_css
       include_once ($this->Ini->link_admin_applicant_profile_academic_cons_emb);
       $this->admin_applicant_profile_academic = new admin_applicant_profile_academic_sub_css ;
       $_SESSION['sc_session'][$script_case_init]['admin_applicant_profile_academic']['embutida'] = false;
-      $_SESSION['sc_session'][$script_case_init]['admin_medical_information']['SC_herda_css'] = "S"; 
-      $_SESSION['sc_session'][$script_case_init]['admin_medical_information']['embutida'] = true;
-      include_once ($this->Ini->link_admin_medical_information_cons_emb);
-      $this->admin_medical_information = new admin_medical_information_sub_css ;
-      $_SESSION['sc_session'][$script_case_init]['admin_medical_information']['embutida'] = false;
+      $_SESSION['sc_session'][$script_case_init]['admin_training_experience']['SC_herda_css'] = "S"; 
+      $_SESSION['sc_session'][$script_case_init]['admin_training_experience']['embutida'] = true;
+      include_once ($this->Ini->link_admin_training_experience_cons_emb);
+      $this->admin_training_experience = new admin_training_experience_sub_css ;
+      $_SESSION['sc_session'][$script_case_init]['admin_training_experience']['embutida'] = false;
       $_SESSION['sc_session'][$script_case_init]['admin_view_performing_arts']['SC_herda_css'] = "S"; 
       $_SESSION['sc_session'][$script_case_init]['admin_view_performing_arts']['embutida'] = true;
       include_once ($this->Ini->link_admin_view_performing_arts_cons_emb);

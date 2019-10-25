@@ -212,8 +212,8 @@ class applicant_information_grid_ini
       $this->nm_dt_criacao   = "20190822"; 
       $this->nm_hr_criacao   = "103947"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -489,6 +489,44 @@ class applicant_information_grid_ini
       }
       $this->sc_lig_target["C_@scinf_nok"] = '_self';
       $this->sc_lig_target["C_@scinf_nok_@scinf_grid_next_of_kin"] = '_self';
+      $Tmp_apl_lig = "form_contact_detail";
+      if (is_file($this->root . $this->path_link . "_lib/friendly_url/form_contact_detail_ini.txt"))
+      {
+          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/form_contact_detail_ini.txt");
+          if (isset($Friendly[0]) && !empty($Friendly[0]))
+          {
+              $Tmp_apl_lig = trim($Friendly[0]);
+          }
+      }
+      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/form_contact_detail_ini.txt"))
+      {
+          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/form_contact_detail_ini.txt");
+          if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
+          {
+              $this->sc_lig_md5["form_contact_detail"] = 'S';
+          }
+      }
+      $this->sc_lig_target["B_@scinf_contact_detail"] = '_self';
+      $this->sc_lig_target["B_@scinf_contact_detail_@scinf_form_contact_detail"] = '_self';
+      $Tmp_apl_lig = "form_next_of_kin";
+      if (is_file($this->root . $this->path_link . "_lib/friendly_url/form_next_of_kin_ini.txt"))
+      {
+          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/form_next_of_kin_ini.txt");
+          if (isset($Friendly[0]) && !empty($Friendly[0]))
+          {
+              $Tmp_apl_lig = trim($Friendly[0]);
+          }
+      }
+      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/form_next_of_kin_ini.txt"))
+      {
+          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/form_next_of_kin_ini.txt");
+          if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
+          {
+              $this->sc_lig_md5["form_next_of_kin"] = 'S';
+          }
+      }
+      $this->sc_lig_target["B_@scinf_nok"] = '_self';
+      $this->sc_lig_target["B_@scinf_nok_@scinf_form_next_of_kin"] = '_self';
       if ($_SESSION['sc_session'][$this->sc_page]['applicant_information_grid']['dashboard_info']['under_dashboard'])
       {
           $sTmpDashboardApp = $_SESSION['sc_session'][$this->sc_page]['applicant_information_grid']['dashboard_info']['dashboard_app'];
@@ -819,6 +857,26 @@ class applicant_information_grid_ini
       $this->arr_buttons_usr['Edit']['image']            = "";
       $this->arr_buttons_usr['Edit']['has_fa']            = "true";
       $this->arr_buttons_usr['Edit']['fontawesomeicon']            = "fas fa-pen-square";
+
+      $this->arr_buttons_usr['contact_detail']['hint']             = "";
+      $this->arr_buttons_usr['contact_detail']['type']             = "button";
+      $this->arr_buttons_usr['contact_detail']['value']            = "Contact detail";
+      $this->arr_buttons_usr['contact_detail']['display']          = "text_fontawesomeicon";
+      $this->arr_buttons_usr['contact_detail']['display_position'] = "text_right";
+      $this->arr_buttons_usr['contact_detail']['style']            = "check";
+      $this->arr_buttons_usr['contact_detail']['image']            = "";
+      $this->arr_buttons_usr['contact_detail']['has_fa']            = "true";
+      $this->arr_buttons_usr['contact_detail']['fontawesomeicon']            = "fas fa-address-card";
+
+      $this->arr_buttons_usr['nok']['hint']             = "";
+      $this->arr_buttons_usr['nok']['type']             = "button";
+      $this->arr_buttons_usr['nok']['value']            = "Next of kin";
+      $this->arr_buttons_usr['nok']['display']          = "text_fontawesomeicon";
+      $this->arr_buttons_usr['nok']['display_position'] = "text_right";
+      $this->arr_buttons_usr['nok']['style']            = "check";
+      $this->arr_buttons_usr['nok']['image']            = "";
+      $this->arr_buttons_usr['nok']['has_fa']            = "true";
+      $this->arr_buttons_usr['nok']['fontawesomeicon']            = "";
       $this->str_google_fonts= isset($str_google_fonts)?$str_google_fonts:'';
       $this->regionalDefault();
       $this->Str_btn_grid    = trim($str_button) . "/" . trim($str_button) . $_SESSION['scriptcase']['reg_conf']['css_dir'] . ".php";
@@ -927,7 +985,7 @@ class applicant_information_grid_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['applicant_information_grid']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['applicant_information_grid']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NmDQJsD1BeHuF7HuzGVcFKDuFqDoFUHQNwVINUHAN7HQXGDMBYVkJqH5FYHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcXKHEF/HIJsD9JmZkFGHArYHQF7DEvsVkJ3DuJeHMB/DcJeH9X7HIBeHuX7DMvOVcFKDWJeVoBOHQBiZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HArYV5JeHuzGVcFKDuFqDoFGDcBqH9B/HABYV5FUDEvsHENiV5FaVoXGD9XsH9X7HAN7V5JwHuzGVIBOV5FYVoB/D9BiZ1F7DSrYD5FaDEBOVkJqV5FaVoBqD9NwH9X7DSBYD5JsDMrwVIFCDWXCDoX7D9XOZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHMB/D9XGZkBiHIBeZMFaDMBYZSXeV5XKDoBOHQNwZ9F7HAveHQBqDMBYVcFKV5F/HINUHQXOH9BqHArKV5FUDMrYZSXeV5FqHIJsD9NwDQJsHABYV5raHgvsVIFCDWJeVoraD9BsZSFaDSNOV5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BODMvOVcBUDWXKVEFGHQNmZkBiHAvsD5XGHgveVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvmVIFCH5B7VoF7HQXGH9FaHANOD5BiHgBeZSJGDWXCHIraHQFYDQB/HIrwV5X7HgvsVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvsVkXeDWX7DoJeDcBwDQFGD1BeD5BOHgNKVcXKH5FqDoX7DcBqZ1B/HIveV5JeHgBeHEFiV5B3DoF7D9XsDuFaHANKVWBqDMrwZSNiDWB3VEB/";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXGDuFaHIBeHQXGHgvsVcB/HEFYVEraHQNwZkFGHAN7HuJwDEBOHEXeDuFYHMJwD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZSBqHArKV5FUDMrYZSXeV5FqHIJsDcBwH9FGHANKVWJsDMrYVIBODWJeVoB/HQBsZ1F7HArYHQFUDMBYHArCHEB3DoXGD9JKZSX7DSzGVWXGHuBYVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1B/Z1NOZMB/DMNKZSXeHEFqVoBiDcBwH9X7Z1rwV5BOHuNOVcBODWFaVENUD9JmZ1B/Z1BeV5FUDMNKZSXeDuFaDoJeD9JKDQX7D1NKD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/ZuJeDcBiH9FGHIrwHQJsDMBOVIBOHEF/HMB/D9JmH9BqHABYV5JsDEvsZSJqDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFeV5X/VEBiHQNwZkFGHINKD5JeHgNOHErCDuX/VoFGDcXGDQB/D1veHuJwDMrYVcFeDuB7DoXGHQXGZ1BiD1zGZMFaDMveHErsH5BmVoFGHQNwH9BiDSrwHQF7HgrwVcFeH5B7VoBqD9BsZ1F7DSrYD5rqDMrYZSJ3DurmZuJsHQBiZ9XGHANOHQBODMvOVIB/H5B7DoXGHQXGZSBOD1rwHuJsHgrKDkB/DWB3VoFGHQXODQBqHAvCVWJwDMBYVcB/H5XKDoXGHQBqZ1BOD1rKHQJeHgBeDkB/DurmDoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiHQNmH9BqDSNOHuBqDMvCHErCV5B7VoFGHQFYDQFaHANOHQrqHgrwVIB/H5B3DoXGHQBsZkFGD1zGD5XGDMveHErCV5B3VoFGDcBiH9BiHAvmVWJwDMzGVIBsH5XKVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsDWBmVoJeD9FYDQBqHIvsVWJeDMNaV9FiV5X7HIX7DcJUZ1FaD1rKHuBODMBYHEXeHEFaVoB/HQXGZSFGHAvCVWBqDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQNmH9BiHArYHQrqDMNOVcB/H5FqHMBOHQFYZkBiHAvsD5BqHgveHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOZSNiDWB3VoF7HQBqZkBiHAzGD5BqHgveDkXKDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHINUHQXGZ1BiHIBeHQFaDMvCDkXKDuJeDoB/DcXGZSFGHAN7VWBqDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['applicant_information_grid']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['applicant_information_grid']['initialize'])  
       { 

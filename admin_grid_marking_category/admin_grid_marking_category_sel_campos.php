@@ -161,7 +161,6 @@ function Sel_cmp_process()
 
             $tab_ger_campos['category'] = "on";
       $tab_ger_campos['short'] = "on";
-      $tab_ger_campos['type_of_audition'] = "on";
       $tab_ger_campos['active'] = "on";
       $tab_ger_campos['id'] = "on";
 

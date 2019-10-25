@@ -212,8 +212,8 @@ class applicant_upcomming_auditions_ini
       $this->nm_dt_criacao   = "20190916"; 
       $this->nm_hr_criacao   = "165850"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191021"; 
-      $this->nm_hr_ult_alt   = "164451"; 
+      $this->nm_dt_ult_alt   = "20191025"; 
+      $this->nm_hr_ult_alt   = "125122"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -890,7 +890,7 @@ class applicant_upcomming_auditions_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXOH9X7DSN7D5JwHgrKDkB/HEF/VErqDcNmZ1FUZ1rYV5B/DEvsZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDMvCZSJqDWXCHMBOD9NwDQJsHIrKHuBOHuzGVcFKDuFqVoX7HQBqZkFGD1rwHuFUHgrKZSJqHEXCHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HABYD5BqDErKHEFiDuFYVoXGDcJeZSX7HArYD5NUHuBYVcXKV5X7VEraD9XOZ1F7D1rwD5FaDEBOHEXeV5FqVoXGD9XsH9X7HIrwV5raHgvsVcFCDWFYDoNUD9JmZ1FaD1rKV5JeDEBOZSXeV5XCDoXGHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBOHENiH5F/ZuBqHQBiDQJsHIrwHQFaHgrwVcFeH5FqHMFUHQNwZ1B/HIBeHuFGDMveHEFiDWrGZuJeHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmZkBiDSvOD5BOHgveHErsDWrGDoJeHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVoBiHQJmVIJsHANOV5X7HgBOVkJqHEXCVoXGHQFYZSX7D1vOVWBqDMBYVcBUDWJeHIFUD9JmH9BqDSBeHQrqHgBeHEFiV5B3DoF7D9XsDuFaHAveHQBOHgvsVcFCDWJeDoraD9XOH9B/HINKD5raHgNOZSXeDuJeDoraD9JKDQJsDSBYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiDSvOV5FUHgveHEBOV5JeZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXOZSX7HArYV5BODMBOVIB/HEFYHMJeHQXGZkFGD1NaD5BODErKZSJGDWr/ZuB/DcXGH9BiZ1BYHuBqHgvsV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMzGDkBsDWJeDoF7D9XGZ1F7DSBeV5B/DErKZSJqDWFqHIF7HQFYZSFGDSzGV5BqDMvsVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1B/Z1NOZMB/DMNKZSJGDWFqDoBODcJeZSX7Z1rwD5F7HuNOVcBOHEFYDoJsDcJUH9BOZ1BeD5NUDEvsHEXeH5F/VoXGD9NmDQJsDSBYV5JwHuNOVIFCH5B7DoJsD9XOZ1F7HIveD5BqHgBeHEFiV5B3DoF7D9XsDuFaHAveVWBOHuBYVcFKHEFYVErqDcJUH9B/D1NaZMB/DMzGDkB/H5F/HIB/DcXGDQB/HArYVWXGDMvsVcXKDWFYHMFUHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMBqHQJeZ9XGHABYHuX7DMvODkB/DWXCHIrqHQFYZ1BOD1rKHuFUDMvCHArsH5F/HMBOHQXGDQFUHANKVWJwDMrYVcB/DurGVENUHQFYZkFGDSNOHuFaHgNOZSJqH5F/HIFGDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBOHQBqVINUHAvCD5XGHgvsDkXKDWr/HMFGHQXGDQFUHANOHQF7DMBOV9FeHEFGVErqHQFYZkBiD1vsZMBqHgNKHArCV5FqHIB/HQXGDuBqDSBYHQNUHgvOV9FeH5B7VEX7DcBwH9B/HIrwV5JeDMBYDkBsH5FYHIF7HQJeZ9XGD1BeHQJsDMBYVcXKH5XCHIF7HQFYZ1BOHArKHQFGHgNOVkJqDWXCHMBiHQXGDuFaHABYHuraDMvOVIB/Dur/HIX7HQFYZ1BODSNOHQFGHgNKHArCHEXCHIFUDcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeD5BqDMBYHEJGH5F/VoJeDcXOZSBiD1BOVWFaDMrwDkB/DWXCVoX7D9BsH9B/HIBeD5XGDMBYHEXeV5B7DoNUHQXsH9X7DSBYD5rqHgrKVcFCH5B7VoFaHQNGZ1rqHINKZMXGHgNKDkFeHEB7DoB/HQNmH9X7HABYVWJsDMBYVcBODWFaDoFUDcJUZkFUZ1BeZMBqHgBYHAFKV5FaZuBqD9NmZSFGHIrwV5BOHuNODkBOV5X7VENUHQFYH9FaD1rwD5rqDErKVkXeHEFqDoBOD9NmDQJsD1BeV5FUHuzGDkBOH5XKVoraDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwD5BOHuNODkFCH5FqVENUDcNwH9BqZ1NOHQJsHgNOVkJ3DWFqHMFGHQNwDQBOZ1zGV5JeDMvOVcBUDWFaHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/VoXGHQXODQFaHAvOVWJeDMBOVIBsHEF/DorqD9XOH9B/DSNOHuJwDEvsVkXeDuFYDoXGD9FYDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBiZSB/HABYD5XGDMzGHEJGH5FYVoJeDcJUDQB/D1BeD5BOHgvsVcBODur/DoFGHQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuXGHQXGZ9XGHANKVWFU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['initialize'])  
       { 
@@ -1897,7 +1897,7 @@ class applicant_upcomming_auditions_apl
           if (!$_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['embutida'] && $this->Ini->sc_page == $this->sc_init_menu && !isset($_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['applicant_upcomming_auditions']))
           {
                $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['applicant_upcomming_auditions']['link'] = $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link . "" . SC_dir_app_name('applicant_upcomming_auditions') . "/";
-               $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['applicant_upcomming_auditions']['label'] = "" . $this->Ini->Nm_lang['lang_othr_grid_title'] . " ";
+               $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['applicant_upcomming_auditions']['label'] = "SPAA upcoming auditions";
                $this->Change_Menu = true;
           }
           elseif ($this->Ini->sc_page == $this->sc_init_menu)
@@ -3768,7 +3768,7 @@ else
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?>  :: Doc</TITLE>
+ <TITLE>SPAA upcoming auditions :: Doc</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
 <?php
 if ($_SESSION['scriptcase']['proc_mobile'])

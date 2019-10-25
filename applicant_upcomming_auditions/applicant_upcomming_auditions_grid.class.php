@@ -684,7 +684,7 @@ class applicant_upcomming_auditions_grid
 ?>
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?>  :: PDF</TITLE>
+ <TITLE>SPAA upcoming auditions :: PDF</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT">
  <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?>" GMT">
@@ -755,7 +755,7 @@ $nm_saida->saida("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN
 $nm_saida->saida("            \"http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd\">\r\n");
        $nm_saida->saida("  <HTML" . $_SESSION['scriptcase']['reg_conf']['html_dir'] . ">\r\n");
        $nm_saida->saida("  <HEAD>\r\n");
-       $nm_saida->saida("   <TITLE>" . $this->Ini->Nm_lang['lang_othr_grid_title'] . " </TITLE>\r\n");
+       $nm_saida->saida("   <TITLE>SPAA upcoming auditions</TITLE>\r\n");
        $nm_saida->saida(" <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\" />\r\n");
        if ($_SESSION['scriptcase']['proc_mobile'])
        {
@@ -1529,7 +1529,7 @@ $nm_saida->saida("            \"http://www.w3.org/TR/1999/REC-html401-19991224/l
    $nm_saida->saida("    <img src=\"http://resources.spaa.ae/images/logo.png\" style=\"height:100px; width:auto;\" alt=\"SPAA\">\r\n");
    $nm_saida->saida("  </div>\r\n");
    $nm_saida->saida("  <h2 id=\"typography\" class=\"text-primary\">Sharjah Performing Arts Academy</h2>\r\n");
-   $nm_saida->saida("  <h3 id=\"typography\" class=\"text-primary\">Audition Management System</h3>\r\n");
+   $nm_saida->saida("  <h3 id=\"typography\" class=\"text-primary\">Application Management System</h3>\r\n");
    $nm_saida->saida("   \r\n");
    $nm_saida->saida("</div> \r\n");
    $nm_saida->saida("<blockquote class=\"blockquote\">\r\n");
@@ -1906,7 +1906,7 @@ $_SESSION['scriptcase']['applicant_upcomming_auditions']['contr_erro'] = 'off';
      $nm_saida->saida("      <ul class=\"list-group list-group-flush\">\r\n");
      $nm_saida->saida("      \r\n");
      $nm_saida->saida("        <li class=\"list-group-item\">Available: " . $this->audition_student_no[$reg] . "</li>\r\n");
-     $nm_saida->saida("        <li class=\"list-group-item\">Application fee: <strong>$" . $this->audition_audition_fee[$reg] . "</strong></li>\r\n");
+     $nm_saida->saida("        <li class=\"list-group-item\">Application fee: <strong>US$" . $this->audition_audition_fee[$reg] . "</strong></li>\r\n");
      $nm_saida->saida("        <li class=\"list-group-item\">" . $this->map[$reg] . "</li>\r\n");
      $nm_saida->saida("      </ul>\r\n");
      $nm_saida->saida("    <div class=\"card-body\">\r\n");
