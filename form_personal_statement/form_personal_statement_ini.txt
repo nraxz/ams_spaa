@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_personal_statement
-SIM
-form
-form_personal_statement
-LigMd5

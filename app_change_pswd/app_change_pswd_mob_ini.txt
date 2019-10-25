@@ -1,7 +1,0 @@
-app_change_pswd_mob.php
-SPAA_AMS
-app_change_pswd_mob
-SIM
-contr
-app_change_pswd
-LigMd5

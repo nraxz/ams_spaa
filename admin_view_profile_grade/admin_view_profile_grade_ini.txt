@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_view_profile_grade
-SIM
-cons
-admin_view_profile_grade
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_academic
-SIM
-cons
-grid_academic
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-auditionee_set_outcome_admin
-NAO
-cons
-auditionee_set_outcome_admin
-LigMd5

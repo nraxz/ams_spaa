@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_upload_image
-SIM
-form
-form_upload_image
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_manage_outcome_admin
-SIM
-cons
-grid_manage_outcome_admin
-LigMd5

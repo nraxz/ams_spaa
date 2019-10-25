@@ -1,4 +1,0 @@
-scriptcase__NM__ico__NM__users_32.png
-scriptcase__NM__img__NM__ct_other_gauge.png
-sys__NM__bg__NM__icon-tick.png
-sys__NM__img__NM__nm_scriptcase3_red_bajaxclose.gif

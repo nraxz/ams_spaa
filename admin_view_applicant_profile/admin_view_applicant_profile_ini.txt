@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_view_applicant_profile
-SIM
-cons
-admin_view_applicant_profile
-LigMd5

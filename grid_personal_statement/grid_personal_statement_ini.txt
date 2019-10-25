@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_personal_statement
-SIM
-cons
-grid_personal_statement
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_email_setup
-SIM
-form
-form_email_setup
-LigMd5

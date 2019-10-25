@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_academic_i
-SIM
-form
-form_academic_i
-LigMd5

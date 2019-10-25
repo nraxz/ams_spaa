@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-control_paypal
-SIM
-contr
-control_paypal
-LigMd5

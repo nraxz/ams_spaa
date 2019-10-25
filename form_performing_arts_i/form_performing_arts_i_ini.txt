@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_performing_arts_i
-NAO
-form
-form_performing_arts_i
-LigMd5

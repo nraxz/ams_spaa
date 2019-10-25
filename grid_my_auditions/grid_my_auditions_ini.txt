@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_my_auditions
-SIM
-cons
-grid_my_auditions
-LigMd5

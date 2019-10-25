@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_subjects_grades
-SIM
-cons
-grid_subjects_grades
-LigMd5

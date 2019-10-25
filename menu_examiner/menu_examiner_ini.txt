@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-menu_examiner
-NAO
-
-menu_examiner
-LigMd5

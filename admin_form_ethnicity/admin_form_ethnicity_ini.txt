@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_form_ethnicity
-NAO
-form
-admin_form_ethnicity
-LigMd5

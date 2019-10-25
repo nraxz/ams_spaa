@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-app_form_sec_groups
-SIM
-form
-app_form_sec_groups
-LigMd5

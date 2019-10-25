@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_view_performing_arts
-SIM
-cons
-admin_view_performing_arts
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_applicant_profile_academic
-SIM
-cons
-admin_applicant_profile_academic
-LigMd5

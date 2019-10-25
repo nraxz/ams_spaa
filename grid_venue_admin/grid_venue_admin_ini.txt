@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_venue_admin
-SIM
-cons
-grid_venue_admin
-LigMd5

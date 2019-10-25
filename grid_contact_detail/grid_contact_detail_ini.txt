@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_contact_detail
-NAO
-cons
-grid_contact_detail
-LigMd5

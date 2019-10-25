@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-applicant_upcomming_auditions
-NAO
-cons
-applicant_upcomming_auditions
-LigMd5

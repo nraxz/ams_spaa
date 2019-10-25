@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_applicant_grades
-SIM
-form
-form_applicant_grades
-LigMd5

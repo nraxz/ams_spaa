@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-email_verify_account
-NAO
-blank
-email_verify_account
-LigMd5

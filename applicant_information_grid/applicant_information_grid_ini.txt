@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-applicant_information_grid
-SIM
-cons
-applicant_information_grid
-LigMd5

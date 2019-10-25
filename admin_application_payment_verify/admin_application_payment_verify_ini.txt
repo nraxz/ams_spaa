@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_application_payment_verify
-SIM
-form
-admin_application_payment_verify
-LigMd5

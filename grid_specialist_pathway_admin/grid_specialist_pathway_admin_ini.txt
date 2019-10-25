@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_specialist_pathway_admin
-SIM
-cons
-grid_specialist_pathway_admin
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-free_audition_notice
-SIM
-blank
-free_audition_notice
-LigMd5

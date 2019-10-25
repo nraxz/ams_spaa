@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-elavon_payment
-NAO
-blank
-elavon_payment
-LigMd5

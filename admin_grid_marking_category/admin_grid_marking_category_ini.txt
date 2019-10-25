@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-admin_grid_marking_category
-NAO
-cons
-admin_grid_marking_category
-LigMd5

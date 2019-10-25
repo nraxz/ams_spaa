@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-grid_upload_files
-SIM
-cons
-grid_upload_files
-LigMd5

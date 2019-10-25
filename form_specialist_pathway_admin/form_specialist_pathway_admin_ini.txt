@@ -1,7 +1,0 @@
-index.php
-SPAA_AMS
-form_specialist_pathway_admin
-SIM
-form
-form_specialist_pathway_admin
-LigMd5
