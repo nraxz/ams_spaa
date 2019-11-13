@@ -167,8 +167,6 @@ class form_audition_admin_mob_ini
    var $path_atual;
    var $Gd_missing;
    var $sc_site_ssl;
-   var $link_form_venue_admin_edit;
-   var $link_form_audition_contact_admin_edit;
    var $nm_cont_lin;
    var $nm_limite_lin;
    var $nm_limite_lin_prt;
@@ -279,8 +277,8 @@ class form_audition_admin_mob_ini
       $this->nm_dt_criacao   = "20190904"; 
       $this->nm_hr_criacao   = "140738"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "122511"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -619,40 +617,6 @@ class form_audition_admin_mob_ini
           echo "</html>";
           exit;
       }
-      $Tmp_apl_lig = "form_audition_contact_admin";
-      if (is_file($this->root . $this->path_link . "_lib/friendly_url/form_audition_contact_admin_ini.txt"))
-      {
-          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/form_audition_contact_admin_ini.txt");
-          if (isset($Friendly[0]) && !empty($Friendly[0]))
-          {
-              $Tmp_apl_lig = trim($Friendly[0]);
-          }
-      }
-      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/form_audition_contact_admin_ini.txt"))
-      {
-          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/form_audition_contact_admin_ini.txt");
-          if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
-          {
-              $this->sc_lig_md5["form_audition_contact_admin"] = 'S';
-          }
-      }
-      $Tmp_apl_lig = "form_venue_admin";
-      if (is_file($this->root . $this->path_link . "_lib/friendly_url/form_venue_admin_ini.txt"))
-      {
-          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/form_venue_admin_ini.txt");
-          if (isset($Friendly[0]) && !empty($Friendly[0]))
-          {
-              $Tmp_apl_lig = trim($Friendly[0]);
-          }
-      }
-      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/form_venue_admin_ini.txt"))
-      {
-          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/form_venue_admin_ini.txt");
-          if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
-          {
-              $this->sc_lig_md5["form_venue_admin"] = 'S';
-          }
-      }
       $PHP_ver = str_replace(".", "", phpversion()); 
       if (substr($PHP_ver, 0, 3) < 434)
       {
@@ -890,8 +854,6 @@ class form_audition_admin_mob_ini
       {
           $_SESSION['sc_session'][$this->sc_page]['form_audition_admin_mob']['dashboard_info']['maximized'] = 1 == $_GET['maximized'];
       }
-      $this->link_form_venue_admin_edit = $this->sc_protocolo . $this->server . $this->path_link . "" . SC_dir_app_name('form_venue_admin') . "/";
-      $this->link_form_audition_contact_admin_edit = $this->sc_protocolo . $this->server . $this->path_link . "" . SC_dir_app_name('form_audition_contact_admin') . "/";
       if ($_SESSION['sc_session'][$this->sc_page]['form_audition_admin_mob']['dashboard_info']['under_dashboard'])
       {
           $sTmpDashboardApp = $_SESSION['sc_session'][$this->sc_page]['form_audition_admin_mob']['dashboard_info']['dashboard_app'];
@@ -940,6 +902,8 @@ class form_audition_admin_mob_ini
       { 
           $_SESSION['scriptcase']['sc_num_img'] = 1; 
       } 
+      $this->Export_img_zip = false;;
+      $this->Img_export_zip  = array();
       $this->regionalDefault();
       $this->sc_tem_trans_banco = false;
       $this->nm_bases_access     = array("access", "ado_access");
@@ -952,7 +916,7 @@ class form_audition_admin_mob_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXODQB/D1BeD5BODMzGVIBsDuX7DoFGD9XOZ1FGZ1BeHQX7HgrKHENiH5FYHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeHMBiD9BsVIraD1rwV5X7HgBeHErCDWFqZuB/HQXODQFaDSBYD5XGDMBYVIB/DWFaVoF7D9BsZkFGZ1vmZMFaHgBYHEFiDuJeVoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVorqDcJUZ1BOZ1BeD5F7DErKVkXeV5FaVoBiD9FYH9X7HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1FUZ1BeV5BqDEBOZSJGDWr/VoFGDcXOZSX7HArYVWJwHgrKVcFKHEFYVENUD9JmZ1B/Z1BeV5FUDMNKZSXeDWX7VoFaD9XsDQX7DSBYD5NUHgrYDkBOV5FYVoraDcBqVIraZ1NOD5BqDEBeHEBUDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcFKV5F/HMFGHQNwH9FaHANOV5FGHgvsVkJGDWr/HMJsHQBiDQBqHArYD5JeHuBYVcBOH5B3VoX7HQJmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQNmDuBqDSvCVWJwDMzGVcBUH5FqHIBiHQBiZ1FUZ1rYHuFUDMvCHENiH5FGZuFaHQNmDQBOZ1BYHQFaDMrYV9BUDWFYHMX7HQNwZ1FUZ1rYHuB/HgrKZSJqH5FYHMBiHQJKZ9rqD1BeD5rqHuvmVcBOH5B7VoBqHQXOZ1BiDSvmD5XGHgveVkJ3V5B3DoJeHQFYZ9rqZ1BYHQrqDMBODkB/DWFaHIraHQNwVIraZ1vOZMB/HgNKDkXKDWFqHMBqDcXGDuBOZ1zGVWBqHgrwVcXKHEFYHMXGHQBqZ1FUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDuBqDSvCV5BqDMzGVIBsDuFqHIJsHQBiZkFUZ1rYHuJwHgBeVkJqDWr/HIBODcXGDQBOZ1BYHuraDMNOV9BUDWJeHMX7HQBiVIraZ1rYD5JwHgBeDkXKDWFqHMFaHQXsDuBOD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDErKHEFiDWX7ZuFaD9JKDQB/Z1rwHuF7DMvsZSrCV5X7HIBiD9XOZSB/Z1BeV5BODErKVkXeDWX7VoFGDcJUDQFaHAN7D5BqHuNOVcFKDWFYVoFGDcBwZ1FUHIveZMXGHgBYHErsDWB3VoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7DoB/D9NmZSFGHIrwVWXGHuzGVIBOV5X7VoraD9BiZ1FUZ1BeD5JeDMBYZSJGDWr/VoXGD9NwDQJwD1veV5FGHgvsVcFCH5FqDoraHQFYVIJwD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuvmVcFKV5X7VoFGD9BiZ1X7Z1BeHuXGHgBeHEJqDWr/HIFUHQFYZSBiHIvsD5F7DMvOVcBUDWB3VoF7HQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWB3VoX7HQNwZkFGHArKV5FUDMrYZSXeV5FqHIJsDcBwDQFUHIvsVWJsHgrwVIB/H5FqVorqHQBiZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXOH9X7HABYHQXGDMNODkFCDWFYHMraHQXGZSFaHINKZMBODMvCHArCV5FaHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcFKV5X7HMFGHQBsZ1BOHArYV5BqDMvCHEJGDuFaZuJsD9NmH9BiZ1rwVWJsDMvsV9FeHEF/HMBiD9BsVIraD1rwV5X7HgBeHEFKV5FaVoBOD9XsZSFGHANOD5F7HgrYDkBODWFaVEraDcJUZ1F7DSrYZMB/DEBeHEXeV5FaVoBiDcXOZSX7HArYD5JsHuNOVcBOHEFYDoJsDcNwH9B/Z1rYD5FaDMBYDkFeV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQNwDuFaHArYV5FGHuBYZSJqDuX7HMraD9XOH9B/HArYHQNUHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JeHgrKVcB/V5X7VoBOD9XOZSB/Z1BeV5FUDENOVkXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmZkBiDSvOD5BOHgveHArsDWFGDoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIBiHQNwVINUHABYD5JeHgBOVkJqH5BmZuFaD9XsDQJwHArYD5BqHuzGDkB/DuFGVErqDcFYZ1rqDSNOD5BqHgBeHEFiV5B3DoF7D9XsDuFaHAveHQBOHgvsVcFCDWJeDoraD9XOH9B/HINKD5raHgNOZSXeDuJeDoraD9JKDQJsDSBYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiDSvOV5FUHgveHEBOV5JeZura";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_audition_admin_mob']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_audition_admin_mob']['initialize'])  
       { 
@@ -1729,18 +1693,6 @@ ob_start();
             $status = NM_utf8_urldecode($_POST['rsargs'][0]);
             $script_case_init = NM_utf8_urldecode($_POST['rsargs'][1]);
         }
-        if ('ajax_form_audition_admin_mob_lkpedt_refresh_venue_id' == $_POST['rs'])
-        {
-            $venue_id = NM_utf8_urldecode($_POST['rsargs'][0]);
-            $nmgp_refresh_fields = NM_utf8_urldecode($_POST['rsargs'][1]);
-            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][2]);
-        }
-        if ('ajax_form_audition_admin_mob_lkpedt_refresh_contact_person' == $_POST['rs'])
-        {
-            $contact_person = NM_utf8_urldecode($_POST['rsargs'][0]);
-            $nmgp_refresh_fields = NM_utf8_urldecode($_POST['rsargs'][1]);
-            $script_case_init = NM_utf8_urldecode($_POST['rsargs'][2]);
-        }
         if ('ajax_form_audition_admin_mob_submit_form' == $_POST['rs'])
         {
             $audition_title = NM_utf8_urldecode($_POST['rsargs'][0]);
@@ -2365,8 +2317,6 @@ ob_start();
     sajax_export("ajax_form_audition_admin_mob_validate_contact_person");
     sajax_export("ajax_form_audition_admin_mob_validate_student_no");
     sajax_export("ajax_form_audition_admin_mob_validate_status");
-    sajax_export("ajax_form_audition_admin_mob_lkpedt_refresh_venue_id");
-    sajax_export("ajax_form_audition_admin_mob_lkpedt_refresh_contact_person");
     sajax_export("ajax_form_audition_admin_mob_submit_form");
     sajax_export("ajax_form_audition_admin_mob_navigate_form");
     sajax_handle_client_request();
@@ -2582,46 +2532,6 @@ ob_start();
         $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->controle();
         exit;
     } // ajax_validate_status
-
-    function ajax_form_audition_admin_mob_lkpedt_refresh_venue_id($venue_id, $nmgp_refresh_fields, $script_case_init)
-    {
-        global $inicial_form_audition_admin_mob;
-        //register_shutdown_function("form_audition_admin_mob_pack_ajax_response");
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_flag          = true;
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_opcao         = 'lkpedt_refresh_venue_id';
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_info['param'] = array(
-                  'venue_id' => NM_utf8_urldecode($venue_id),
-                  'nmgp_refresh_fields' => NM_utf8_urldecode($nmgp_refresh_fields),
-                  'script_case_init' => NM_utf8_urldecode($script_case_init),
-                  'buffer_output' => true,
-                 );
-        if ($inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_info['param']['buffer_output'])
-        {
-            ob_start();
-        }
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->controle();
-        exit;
-    } // ajax_lkpedt_refresh_venue_id
-
-    function ajax_form_audition_admin_mob_lkpedt_refresh_contact_person($contact_person, $nmgp_refresh_fields, $script_case_init)
-    {
-        global $inicial_form_audition_admin_mob;
-        //register_shutdown_function("form_audition_admin_mob_pack_ajax_response");
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_flag          = true;
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_opcao         = 'lkpedt_refresh_contact_person';
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_info['param'] = array(
-                  'contact_person' => NM_utf8_urldecode($contact_person),
-                  'nmgp_refresh_fields' => NM_utf8_urldecode($nmgp_refresh_fields),
-                  'script_case_init' => NM_utf8_urldecode($script_case_init),
-                  'buffer_output' => true,
-                 );
-        if ($inicial_form_audition_admin_mob->contr_form_audition_admin_mob->NM_ajax_info['param']['buffer_output'])
-        {
-            ob_start();
-        }
-        $inicial_form_audition_admin_mob->contr_form_audition_admin_mob->controle();
-        exit;
-    } // ajax_lkpedt_refresh_contact_person
 
     function ajax_form_audition_admin_mob_submit_form($audition_title, $venue_id, $audition_date, $audition_fee, $audition_details, $type, $location_type, $contact_person, $student_no, $status, $id, $nm_form_submit, $nmgp_url_saida, $nmgp_opcao, $nmgp_ancora, $nmgp_num_form, $nmgp_parms, $script_case_init, $csrf_token)
     {

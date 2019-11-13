@@ -217,8 +217,8 @@ class grid_assign_panel_admin_ini
       $this->nm_dt_criacao   = "20190905"; 
       $this->nm_hr_criacao   = "104939"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -299,6 +299,7 @@ class grid_assign_panel_admin_ini
       $this->path_secure     = $this->root . $this->path_prod . "/secure";
       $this->path_adodb      = $this->root . $this->path_prod . "/third/adodb";
       $_SESSION['scriptcase']['dir_temp'] = $this->root . $this->path_imag_temp;
+      $this->Cmp_Sql_Time     = array('submitted_on');
       if (isset($_SESSION['scriptcase']['grid_assign_panel_admin']['session_timeout']['lang'])) {
           $this->str_lang = $_SESSION['scriptcase']['grid_assign_panel_admin']['session_timeout']['lang'];
       }
@@ -332,6 +333,8 @@ class grid_assign_panel_admin_ini
               $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['SC_Link_View'] = true;
           }
       }
+    if (!$_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['embutida'])
+    {
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_add_grid_search")
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['grid_search_add']['cmp'] = $_POST['parm'];
@@ -345,6 +348,7 @@ class grid_assign_panel_admin_ini
           $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['opcao'] = $_GET['origem'];
           $nmgp_opcao = $_GET['origem'];
       }
+    }
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_save_ancor")
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['ancor_save'] = $_POST['ancor_save'];
@@ -974,7 +978,7 @@ class grid_assign_panel_admin_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXOZSX7HABYHQBqHgvsVIB/HEF/HIFGDcJUZ1FaHANOV5BqHgrKHEFiH5FYZuXGHQNwDQFGHAN7HuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5FYHMFaHQNmDQB/D1veHQXGDMrwVcB/DWXCHMJeHQXGZSBOHANOHuFUHgvCHArCDWFqHIFUHQBiH9FUHIrKHQBODMrwVcB/HEF/HMJeHQNwZkFGDSNOHQBiDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHIBeV5BOHgBeZSJqV5FaVoFGDcBiDuFaD1veVWJeHuBOV9BUDWFaVoBiD9BiZkFGZ1NOHuBqDEBeZSJ3HEFaHIJsD9XsZ9JeD1BeD5F7DMvmVcFiV5X7DoF7D9XOZSB/DSrYV5B/DMNKZSXeDWX7DoXGD9NwZSX7DSBYD5XGHuNOVIB/V5X7VorqDcBqZ1B/Z1NOV5FaDEBOHENiV5FaDoraDcBwDQJsZ1BYD5BqHuNOZSrCV5F/VorqD9JmZ1rqHArKHQJwDEBODkFeH5FYVoFGHQJKDQFaHAveD5NUHgNKDkBOV5FYHMBiHQJmZSFaHAN7V5BqHgBeZSJGDuFaHMJsHQXsH9FUDSvCVWXGDMvmVIBsDuFqVENUHQXOH9B/HAN7HQJsHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JeHgrKVcB/V5X7VoBOD9XOZSB/Z1BeV5FUDENOVkXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmZkBiDSvOD5BOHgveHErsDWrGZuB/HQJKDQJsZ1vCV5FGHuNOV9FeDWB3VEF7DcJUH9B/HIBeV5JeDMBYHArCV5XCDoB/D9NwH9FGD1NKVWJeDMvmZSNiH5FqHMBiD9BsVIraD1rwV5X7HgBeHErCV5XCDoraD9NwH9X7HABYV5BqHuvmVcFiDWXCHIXGD9JmZ1F7HABYV5XGDEBeHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvsV9FiV5BmVorq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9FYDQFGHANOHQJsHgrKVcB/DWXCVoBOD9XGZ1FaHArKHQF7HgvCHEJqHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcFKV5FYVEX7D9JmZSBqD1rKZMFaHgveHENiDWX7VoX7D9NmDuFaHAvOV5BOHgrwV9FeV5F/HIFUHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcBwZSFGHANOD5BqHgrKVcXKV5X7VoB/D9XOH9FaD1rwV5JeDMzGZSXeV5XCDoFUD9NwDQJsHArYD5NUHgrKVcBODuFqVoJwDcBqZ1B/D1rKV5X7DEBeHEXeV5B3VoBiD9NwDQJsHIrKV5JeDMvmVcFKV5BmVoBqD9BsZkFGHArKHQJwDEBODkFeH5FYVoFGHQJKDQFaHIrwV5raHgvOVcrsDuFGVEX7D9XOZSFaHArKHQXGDENOHErCHEXCHMBqHQFYH9FUHIrKHuBOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWXKVoF7HQNmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQFYDQBqHAN7HQJeHuNOZSJqDuX7VEraHQXGZ1FaHArYZMFaDErKVkJ3V5B7ZuB/HQXODQFaHAveD5NUHgNKDkBOV5FYHMBiHQBiZSB/HABYD5XGDMzGHEJGH5FYVoJeDcJUDQB/D1BeD5BOHgvsVcBODur/DoFGHQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuXGHQXGZ9XGHANKVWFU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_assign_panel_admin']['initialize'])  
       { 

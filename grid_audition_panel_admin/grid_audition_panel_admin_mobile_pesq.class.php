@@ -2846,10 +2846,14 @@ function nm_open_popup(parms)
        document.F1.NM_filters.selectedIndex = -1;
    }
    document.getElementById('Salvar_filters_bot').style.display = 'none';
+   document.F1.id_cond.value = 'gt';
    nm_campos_between(document.getElementById('id_vis_id'), document.F1.id_cond, 'id');
    document.F1.id.value = "";
+   document.F1.panel_cond.value = 'qp';
    nm_campos_between(document.getElementById('id_vis_panel'), document.F1.panel_cond, 'panel');
    document.F1.panel.value = "";
+   document.F1.panel_autocomp.value = "";
+   document.F1.audition_id_cond.value = 'gt';
    nm_campos_between(document.getElementById('id_vis_audition_id'), document.F1.audition_id_cond, 'audition_id');
    document.F1.audition_id.value = "";
  }

@@ -2977,9 +2977,9 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicants_auditioning_examine
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?glo_login?#?" . str_replace("'", "@aspass@", $this->sec_users_login) . "?@?";
        }
-   $nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_admin_view_applicant_profile_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', 'inicio', '0', '0', '', 'admin_view_applicant_profile', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_view_grid_line . "\" style=\"" . $this->Css_Cmp['css_view_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+   $nm_saida->saida("<a id=\"id_sc_field_view_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_admin_view_applicant_profile_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', 'inicio', '0', '0', '', 'admin_view_applicant_profile', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_view_grid_line . "\" style=\"" . $this->Css_Cmp['css_view_grid_line'] . "\">" . $conteudo . "</a>\r\n");
 } else {
-   $nm_saida->saida(" $conteudo \r\n");
+   $nm_saida->saida(" <span id=\"id_sc_field_view_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
    $nm_saida->saida("</TD>\r\n");
       }
@@ -3039,9 +3039,9 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicants_auditioning_examine
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?glo_auid?#?" . str_replace("'", "@aspass@", $this->application_detail_audition_id) . "?@?glo_applicant?#?" . str_replace("'", "@aspass@", $this->application_detail_login) . "?@?NM_btn_insert?#?S?@?NM_btn_update?#?N?@?NM_btn_delete?#?N?@?NM_btn_navega?#?N?@?";
        }
-   $nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_marks_examiner_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_marks_examiner', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_mark_grid_line . "\" style=\"" . $this->Css_Cmp['css_mark_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+   $nm_saida->saida("<a  id=\"id_sc_field_mark_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_marks_examiner_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_marks_examiner', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_mark_grid_line . "\" style=\"" . $this->Css_Cmp['css_mark_grid_line'] . "\">" . $conteudo . "</a>\r\n");
 } else {
-   $nm_saida->saida(" $conteudo \r\n");
+   $nm_saida->saida(" <span id=\"id_sc_field_mark_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
    $nm_saida->saida("</TD>\r\n");
       }
@@ -4432,6 +4432,10 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['applicants_auditioning_examine
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

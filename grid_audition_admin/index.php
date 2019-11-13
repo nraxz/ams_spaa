@@ -215,8 +215,8 @@ class grid_audition_admin_ini
       $this->nm_dt_criacao   = "20190905"; 
       $this->nm_hr_criacao   = "104939"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -297,6 +297,7 @@ class grid_audition_admin_ini
       $this->path_secure     = $this->root . $this->path_prod . "/secure";
       $this->path_adodb      = $this->root . $this->path_prod . "/third/adodb";
       $_SESSION['scriptcase']['dir_temp'] = $this->root . $this->path_imag_temp;
+      $this->Cmp_Sql_Time     = array('submitted_on');
       if (isset($_SESSION['scriptcase']['grid_audition_admin']['session_timeout']['lang'])) {
           $this->str_lang = $_SESSION['scriptcase']['grid_audition_admin']['session_timeout']['lang'];
       }
@@ -330,6 +331,8 @@ class grid_audition_admin_ini
               $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['SC_Link_View'] = true;
           }
       }
+    if (!$_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['embutida'])
+    {
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_add_grid_search")
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['grid_search_add']['cmp'] = $_POST['parm'];
@@ -343,6 +346,7 @@ class grid_audition_admin_ini
           $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['opcao'] = $_GET['origem'];
           $nmgp_opcao = $_GET['origem'];
       }
+    }
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_save_ancor")
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['ancor_save'] = $_POST['ancor_save'];
@@ -932,7 +936,7 @@ class grid_audition_admin_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXOZ9F7HABYHuNUDMBYV9FeDur/HMFUDcJUZ1FaHAN7D5NUDMzGZSJ3DuJeHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeHMBiD9BsVIraD1rwV5X7HgBeHErsDuJeZuB/HQXOZSBiHAN7V5JeHgrwDkBOV5F/HMFUHQXGVIJsHArKHuBODEvsVkJGDWr/VoJeHQJKZSFUHIrKHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHArKV5FaDMNKZSXeDWr/DoJeD9XsZSX7Z1N7VWFaHgrKV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDuFaDoJeD9JKDQX7D1veV5raHgvsVcFCDWFYDoNUD9JmZ1FaD1rKV5JeDEBOZSXeV5XCDoFUDcJeDQX7D1veD5F7HuvmVcBOV5BmDoJsD9XOZ1F7HIveD5BqHgBeHEFiV5B3DoF7D9XsDuFaHAveHuraDMBOVcFCH5FqHMJwHQBiZ1BOHArKHuBqDErKHEJqDWFqHMJwHQXsH9X7HAN7D5BOHgrwVcFCDuX7HMFGHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMBqHQJeZ9XGHABYHuX7DMvODkB/DWXCHIrqHQFYZ1BOD1rKHuFUDMvCHArsH5F/HMBOHQXGDQFUHANKVWJwDMrYVcB/DurGVENUHQFYZkFGDSNOHuFaHgNOZSJqH5F/HIFGDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBOHQBqVINUHAvCD5XGHgvsDkXKDWr/HMFGHQXGDQFUHANOHQF7DMBOV9FeHEFGVErqHQFYZkBiD1vsZMBqHgNKHArCV5FqHIB/HQXGDuBqDSBYHQNUHgvOV9FeH5B7VEX7DcBwH9B/HIrwV5JeDMBYDkBsH5FYHIF7HQJeZ9XGD1BeHQJsDMBYVcXKH5XCHIF7HQFYZ1BOHArKHQFGHgNOVkJqDWXCHMBiHQXGDuFaHABYHuraDMvOVIB/Dur/HIX7HQFYZ1BODSNOHQFGHgNKHArCHEXCHIFUDcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeD5BqDMBYHEJGH5F/VoJeDcXOZSBiD1BOVWFaDMrwDkB/DWXCVoX7D9BsH9B/HIBeD5XGDMBYHEXeV5B7DoNUHQXsH9X7DSBYD5rqHgrKVcFCH5B7VoFaHQNGZ1rqHINKZMXGHgNKDkFeHEB7DoB/HQNmH9X7HABYVWJsDMBYVcBODWFaDoFUDcJUZkFUZ1BeZMBqHgBYHAFKV5FaZuBqD9NmZSFGHIrwV5BOHuNODkBOV5X7VENUHQFYH9FaD1rwD5rqDErKVkXeHEFqDoBOD9NmDQJsD1BeV5FUHuzGDkBOH5XKVoraDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwD5BOHuNODkFCH5FqVENUDcNwH9BqZ1NOHQJsHgNOVkJ3DWFqHMFGHQNwDQBOZ1zGV5JeDMvOVcBUDWFaHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIFGDcXGDQJsZ1rwV5X7DMzGDkBODWF/HMFUHQNwZSFaHIBeHQJeDErKZSJGDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcFeV5F/VoB/D9XOZSB/HArYD5JeDEBeHEFKDWF/HMFGD9JKDQJsHArYD5BOHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBYHAFKV5B3DoBO";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NwZ9F7HAveHuraHgrwVcBODWrmVENUHQBsZSB/HANOHuJeHgrKHEJGDWXCDorqHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuBOD9NwDuFaHIrwV5JeHuNOVcBUDWB3VoX7D9JmZSFaHABYZMXGHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JeHgrKVcB/V5X7VoBOD9XOZSB/Z1BeV5FUDENOVkXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFiV5X7DoF7D9XOZSB/DSrYV5B/DMNKZSXeDWX7ZuB/DcBwDQJsDSBYVWJsHuvmVcBOV5X7DoJsDcNwH9B/HABYV5B/DEBOHEXeHEFqVoBiHQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgNKDkXKDWXCDoFUD9XsZSFUD1veD5rqDMvmVIBsDuB7VEF7HQXOZ1rqHABYHQNUHgBeHEFiV5B3DoF7D9XsDuFaHAveHQXGDMvsZSNiDWFYHMBOHQNmH9BOHArKHuBqHgvCHEJqH5F/HMBiDcXGDuBqD1veHQJeDMrwVcB/DWB3VEraHQNwZ1BOHINKZMB/HgvCHArCHEXCHMB/HQFYZSFUD1veHuF7HgNKDkBODuFqDoFGDcBqVIJwD1rwHQF7HgBYDkXKDWrGDoJeHQNmZ9XGHANOHQF7DMrwVcB/DWJeHIXGHQXGZkFGDSBOZMBqHgvCHArsH5BmZuBOHQXODuFaZ1BYHuJwDMrwV9BUHEFYHIJsDcNmZkFGD1NaZMXGDMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuFGDMvsZSNiH5FqHINUHQBiZ1X7D1rKHuBOHgvCHEJqDWF/HIX7HQFYH9FUHAN7HQNUDMrwV9FeDWFYHMJwHQNmZSBOHIveHuXGHgvCHEJqHEXCHIX7HQXODuFaDSN7HuraHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaDoBODcJeDQFGD1veD5BOHgrYDkBsH5B7VEBiHQFYH9BOHArKD5XGDEBOZSXeDuFaDoJeDcJeDQX7Z1zGV5BiDMNOVIBOHEFYDoJeDcJUZ1FaD1NaD5raHgN7HEBUDurmZuJeHQXOZ9JeDSzGV5JwDMBYVIBODWFYVENUHQBiZ1B/HABYV5JsDMzGHAFKV5FaZuBOHQJeDuBOZ1rwVWXGHuBYDkFCDuX7VoX7D9BsH9B/Z1BeZMB/HgvCZSJGH5FYDoF7D9NwH9X7DSBYV5JeHuBYVcFKH5FqVoB/D9XOH9B/D1zGD5FaDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7DoX7D9BsH9FaD1rwZMB/DMNKZSJ3V5XCHIJwHQFYH9BiHABYHQF7DMzGVcFiV5X/VorqHQNmZ1BiHABYHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOV9BUHEX/VoF7HQNmZkBiHAzGD5JeHgBeHEFiV5B3DoF7D9XsDuFaHAveHQB/DMzGDkBsHEFYHMBqHQFYZ1FaD1rwHQJeHgNKZSJqDWXCHMBOHQJeDQBqHArYVWXGDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_audition_admin']['initialize'])  
       { 

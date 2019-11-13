@@ -2135,9 +2135,9 @@ $nm_saida->saida("     \r\n");
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?id?#?" . str_replace("'", "@aspass@", $this->id) . "?@?usr_login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?NM_btn_insert?#?N?@?NM_btn_update?#?S?@?NM_btn_delete?#?N?@?NM_btn_navega?#?N?@?";
        }
-$nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_academic_i_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_academic_i', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_level_grid_line . "\">" . $conteudo . "</a>\r\n");
+$nm_saida->saida("<a  id=\"id_sc_field_level_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_academic_i_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_academic_i', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_level_grid_line . "\">" . $conteudo . "</a>\r\n");
 } else {
-$nm_saida->saida(" $conteudo \r\n");
+$nm_saida->saida(" <span id=\"id_sc_field_level_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
 $nm_saida->saida("    </TD>\r\n");
 $nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $this->css_dates_grid_line . "\"  style=\"" . $this->Css_Cmp['css_dates_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"  >\r\n");
@@ -2262,6 +2262,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->grid_subjects_grades->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_subjects_grades']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_subjects_grades']['emb_lig_aba']))
           { 
@@ -2319,9 +2325,9 @@ $nm_saida->saida("     \r\n");
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?usr_login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?academic_uid?#?" . str_replace("'", "@aspass@", $this->id) . "?@?this_level?#?" . str_replace("'", "@aspass@", $this->level) . "?@?NM_btn_insert?#?S?@?NM_btn_update?#?N?@?NM_btn_delete?#?N?@?NM_btn_navega?#?N?@?";
        }
-$nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_subjects_grades_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_subjects_grades', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_add_subject_grid_line . "\">" . $conteudo . "</a>\r\n");
+$nm_saida->saida("<a  id=\"id_sc_field_add_subject_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_subjects_grades_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_subjects_grades', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_add_subject_grid_line . "\">" . $conteudo . "</a>\r\n");
 } else {
-$nm_saida->saida(" $conteudo \r\n");
+$nm_saida->saida(" <span id=\"id_sc_field_add_subject_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
 $nm_saida->saida("    </TD>\r\n");
 $nm_saida->saida("   </tr></table></td>\r\n");
@@ -3582,6 +3588,10 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

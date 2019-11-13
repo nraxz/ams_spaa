@@ -2490,6 +2490,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->grid_contact_detail->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_contact_detail']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_contact_detail']['emb_lig_aba']))
           { 
@@ -2582,6 +2588,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->grid_next_of_kin, "controle"))
           {
               $this->grid_next_of_kin->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_next_of_kin']['emb_lig_aba']))
@@ -3941,6 +3953,10 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

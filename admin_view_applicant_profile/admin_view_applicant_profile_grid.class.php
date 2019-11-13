@@ -2650,6 +2650,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->admin_contact_detail->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_contact_detail']['emb_lig_aba']))
           { 
@@ -2743,6 +2749,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->admin_next_of_kin->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['emb_lig_aba']))
           { 
@@ -2835,6 +2847,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->admin_applicant_profile_academic, "controle"))
           {
               $this->admin_applicant_profile_academic->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_applicant_profile_academic']['emb_lig_aba']))
@@ -2934,6 +2952,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->admin_training_experience->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_training_experience']['emb_lig_aba']))
           { 
@@ -3032,6 +3056,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->admin_view_performing_arts->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_performing_arts']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_performing_arts']['emb_lig_aba']))
           { 
@@ -3129,6 +3159,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->admin_personal_statement, "controle"))
           {
               $this->admin_personal_statement->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_personal_statement']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_personal_statement']['emb_lig_aba']))
@@ -3245,6 +3281,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->admin_additional_information, "controle"))
           {
               $this->admin_additional_information->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['admin_additional_information']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['admin_additional_information']['emb_lig_aba']))
@@ -4607,6 +4649,10 @@ $nm_saida->saida(" }\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

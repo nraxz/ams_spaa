@@ -8,6 +8,7 @@
   var sc_pathToTB = '<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/';
   var sc_tbLangClose = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_close"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
   var sc_tbLangEsc = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_esc"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
+  var sc_userSweetAlertDisplayed = false;
  </SCRIPT>
         <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_prod; ?>/third/jquery/js/jquery.js"></SCRIPT>
  <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_prod; ?>/third/jquery/js/jquery-ui.js"></SCRIPT>
@@ -133,7 +134,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 					<div class="col-lg-7">
 						<div class="bs-component">
 							<h4 class="text-primary">New User</h4>                  
-							<p class="mt-5 mb-5">If this is your first time here please click Register to create an account with us and submit your Audition Application. You can log in and update your information at any time. <a href="http://ams.spaa.ae/audition-guidelines/" targer="_blank">Audition guidelines</a></p>
+							<p class="mt-5 mb-5">If this is your first time here please click Register to create an account with us and submit your Application. You can log in and update your information at any time. <br><a href="http://ams.spaa.ae/audition-guidelines/" targer="_blank">Audition/Interview guidelines </a></p>
 							
 							<p class="lead mt-5">
 								<a class="btn btn-primary btn-lg mt-2" href="../applicant_upcomming_auditions/" role="button">Register</a>
@@ -164,11 +165,11 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 								
 								<div class="control">
 									<label class="label" for="user_email">email</label>
-									<input class="input  sc-js-input "  name="user_email" id="id_sc_field_user_email" value="<?php echo $this->form_encode_input($user_email) ?>"  alt="{datatype: 'text', maxLength: 50, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}"  type="text" placeholder="Email" name="user_email">
+									<input class="input  sc-js-input "  name="user_email" id="id_sc_field_user_email" value="<?php echo $this->form_encode_input($user_email) ?>"  alt="{datatype: 'text', maxLength: 50, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: true, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}"  type="text" placeholder="Email" name="user_email">
 								</div>
 								<div class="control">
 									<label class="label" for="pswd">Password</label>
-									<input class="input  sc-js-input "  name="pswd" id="id_sc_field_pswd" value="<?php echo $this->form_encode_input($pswd) ?>"  alt="{datatype: 'text', maxLength: 40, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}"  type="password" placeholder="Password" name="pswd">
+									<input class="input  sc-js-input "  name="pswd" id="id_sc_field_pswd" value="<?php echo $this->form_encode_input($pswd) ?>"  alt="{datatype: 'text', maxLength: 40, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: true, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}"  type="password" placeholder="Password" name="pswd">
 								</div>
 								<!--SC_REQUIRED_MSG-->
 								<!--SC_CAPTCHA-->
@@ -200,8 +201,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 
 						<!-- Content -->
 						<h5 class="text-uppercase">SPAA</h5>
-						<p>The Emirate of Sharjah is establishing the Sharjah Performing Arts Academy (SPAA) to address a growing demand in Sharjah and the region for formal quality education and professional training in the performing arts to enrich the cultural and artistic experiences of talented and inspiring students. It is envisaged that SPAA will be the leading conservatoire in the region, offering quality undergraduate and graduate degree programs in acting, musical theatre and production arts. <a href="https://www.spaa.ae/courses/" target="_blank"><strong>Courses</strong></a>
-
+					<p>The emirate of Sharjah has established Sharjah Performing Arts Academy (SPAA) to address a growing demand in Sharjah and the region for formal quality education and professional training in the performing arts, to enrich the cultural and artistic experiences of talented and inspiring students. SPAA will be the leading conservatoire in the region, offering quality undergraduate and graduate degree programmes in Acting, Musical Theatre, and Production Arts.
 						</p>
 
 					</div>
@@ -216,13 +216,9 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 						<h5 class="text-uppercase">SPAA Policies</h5>
 
 						<ul class="list-unstyled">
-							<li>
-								<a href="https://ams.spaa.ae/terms-and-conditions" target="_blank">Terms and Conditions</a>
-							</li>
-							<li>
-								<a href="http://ams.spaa.ae/audition-guidelines/" target="_blank">Audition Guidelines</a>
-							</li>
-
+								<li><a href="https://ams.spaa.ae/terms-and-conditions" target="_blank">Terms and Conditions</a></li>
+	<li><a href="http://ams.spaa.ae/audition-guidelines/" target="_blank">Audition / Interview guidelines</a></li>
+	<li><a href="https://ams.spaa.ae/entry-requirements/" target="_blank">Admission Requirements</a></li>
 
 						</ul>
 
@@ -239,9 +235,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 							<li>
 								<a href="http://www.considerthisuk.co.uk" target="_blank">Consider This UK</a>
 							</li>
-							<li>
-								<a href="http://www.performthis.com" target="_blank">Audition Management System</a>
-							</li>
+							
 
 						</ul>
 

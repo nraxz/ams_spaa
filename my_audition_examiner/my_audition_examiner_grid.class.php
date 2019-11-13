@@ -1824,9 +1824,17 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $nm_saida->saida("       </TD>\r\n");
            $nm_saida->saida("     </TR>\r\n");
            $nm_saida->saida("   </TABLE>\r\n");
+           $nm_saida->saida("  <script type=\"text/javascript\" src=\"" . $this->Ini->path_prod . "/third/jquery/js/jquery.js\"></script>\r\n");
            $nm_saida->saida("  <script type=\"text/javascript\">\r\n");
+           $nm_saida->saida("     $(\"#Bprint_print\").addClass(\"disabled\").prop(\"disabled\", true);\r\n");
+           $nm_saida->saida("     $(function() {\r\n");
+           $nm_saida->saida("         $(\"#Bprint_print\").removeClass(\"disabled\").prop(\"disabled\", false);\r\n");
+           $nm_saida->saida("     });\r\n");
            $nm_saida->saida("     function prit_web_page()\r\n");
            $nm_saida->saida("     {\r\n");
+           $nm_saida->saida("        if ($(\"#Bprint_print\").prop(\"disabled\")) {\r\n");
+           $nm_saida->saida("            return;\r\n");
+           $nm_saida->saida("        }\r\n");
            $nm_saida->saida("        document.getElementById('sc_table_print').style.display = 'none';\r\n");
            $nm_saida->saida("        var is_safari = navigator.userAgent.indexOf(\"Safari\") > -1;\r\n");
            $nm_saida->saida("        var is_chrome = navigator.userAgent.indexOf('Chrome') > -1\r\n");
@@ -2716,9 +2724,9 @@ $nm_saida->saida("     \r\n");
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?glo_auid?#?" . str_replace("'", "@aspass@", $this->audition_id) . "?@?";
        }
-$nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_applicants_auditioning_examiner_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', 'inicio', '0', '0', '', 'applicants_auditioning_examiner', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_auditionees_grid_line . "\">" . $conteudo . "</a>\r\n");
+$nm_saida->saida("<a id=\"id_sc_field_auditionees_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_applicants_auditioning_examiner_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', 'inicio', '0', '0', '', 'applicants_auditioning_examiner', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_auditionees_grid_line . "\">" . $conteudo . "</a>\r\n");
 } else {
-$nm_saida->saida(" $conteudo \r\n");
+$nm_saida->saida(" <span id=\"id_sc_field_auditionees_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
 $nm_saida->saida("    </TD>\r\n");
 $nm_saida->saida("   </tr></table></td>\r\n");
@@ -5060,6 +5068,10 @@ $nm_saida->saida(" }\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

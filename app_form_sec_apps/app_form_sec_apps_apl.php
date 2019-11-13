@@ -1200,6 +1200,150 @@ class app_form_sec_apps_apl
           }
       }
    }
+  function html_export_print($nm_arquivo_html, $nmgp_password)
+  {
+      $Html_password = "";
+          $Arq_base  = $this->Ini->root . $this->Ini->path_imag_temp . $nm_arquivo_html;
+          $Parm_pass = ($Html_password != "") ? " -p" : "";
+          $Zip_name = "sc_prt_" . date("YmdHis") . "_" . rand(0, 1000) . "app_form_sec_apps.zip";
+          $Arq_htm = $this->Ini->path_imag_temp . "/" . $Zip_name;
+          $Arq_zip = $this->Ini->root . $Arq_htm;
+          $Zip_f     = (FALSE !== strpos($Arq_zip, ' ')) ? " \"" . $Arq_zip . "\"" :  $Arq_zip;
+          $Arq_input = (FALSE !== strpos($Arq_base, ' ')) ? " \"" . $Arq_base . "\"" :  $Arq_base;
+           if (is_file($Arq_zip)) {
+               unlink($Arq_zip);
+           }
+           $str_zip = "";
+           if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+           {
+               chdir($this->Ini->path_third . "/zip/windows");
+               $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j " . $Html_password . " " . $Zip_f . " " . $Arq_input;
+           }
+           elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+           {
+                if (FALSE !== strpos(strtolower(php_uname()), 'i686')) 
+                {
+                    chdir($this->Ini->path_third . "/zip/linux-i386/bin");
+                }
+                else
+                {
+                    chdir($this->Ini->path_third . "/zip/linux-amd64/bin");
+                }
+               $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $Arq_input;
+           }
+           elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+           {
+               chdir($this->Ini->path_third . "/zip/mac/bin");
+               $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $Arq_input;
+           }
+           if (!empty($str_zip)) {
+               exec($str_zip);
+           }
+           // ----- ZIP log
+           $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
+           if ($fp)
+           {
+               @fwrite($fp, $str_zip . "\r\n\r\n");
+               @fclose($fp);
+           }
+           foreach ($this->Ini->Img_export_zip as $cada_img_zip)
+           {
+               $str_zip      = "";
+              $cada_img_zip = '"' . $cada_img_zip . '"';
+               if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+               {
+                   $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j -u " . $Html_password . " " . $Zip_f . " " . $cada_img_zip;
+               }
+               elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+               {
+                   $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $cada_img_zip;
+               }
+               elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+               {
+                   $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $cada_img_zip;
+               }
+               if (!empty($str_zip)) {
+                   exec($str_zip);
+               }
+               // ----- ZIP log
+               $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
+               if ($fp)
+               {
+                   @fwrite($fp, $str_zip . "\r\n\r\n");
+                   @fclose($fp);
+               }
+           }
+           if (is_file($Arq_zip)) {
+               unlink($Arq_base);
+           } 
+          $path_doc_md5 = md5($Arq_htm);
+          $_SESSION['sc_session'][$this->Ini->sc_page]['app_form_sec_apps'][$path_doc_md5][0] = $Arq_htm;
+          $_SESSION['sc_session'][$this->Ini->sc_page]['app_form_sec_apps'][$path_doc_md5][1] = $Zip_name;
+?>
+<HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
+<HEAD>
+ <TITLE><?php echo strip_tags("" . $this->Ini->Nm_lang['lang_othr_frmu_titl'] . " - " . $this->Ini->Nm_lang['lang_othr_msec_capp'] . "") ?></TITLE>
+ <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
+<?php
+
+if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['device_mobile'] && $_SESSION['scriptcase']['display_mobile'])
+{
+?>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<?php
+}
+
+?>
+ <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
+ <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>
+ <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
+ <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
+ <META http-equiv="Pragma" content="no-cache"/>
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export.css" /> 
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" /> 
+  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_form . '/' . $this->Ini->Str_btn_form ?>.css" /> 
+  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_prod; ?>/third/font-awesome/css/all.min.css" /> 
+  <link rel="shortcut icon" href="../_lib/img/grp__NM__ico__NM__logo.png">
+</HEAD>
+<BODY class="scExportPage">
+<table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: top">
+ <table class="scExportTable" align="center">
+  <tr>
+   <td class="scExportTitle" style="height: 25px">PRINT</td>
+  </tr>
+  <tr>
+   <td class="scExportLine" style="width: 100%">
+    <table style="border-collapse: collapse; border-width: 0; width: 100%"><tr><td class="scExportLineFont" style="padding: 3px 0 0 0" id="idMessage">
+    <?php echo $this->Ini->Nm_lang['lang_othr_file_msge'] ?>
+    </td><td class="scExportLineFont" style="text-align:right; padding: 3px 0 0 0">
+   <?php echo nmButtonOutput($this->arr_buttons, "bexportview", "document.Fview.submit()", "document.Fview.submit()", "idBtnView", "", "", "", "absmiddle", "", "0", $this->Ini->path_botoes, "", "", "", "", "");?>
+
+   <?php echo nmButtonOutput($this->arr_buttons, "bdownload", "document.Fdown.submit()", "document.Fdown.submit()", "idBtnDown", "", "", "", "absmiddle", "", "0", $this->Ini->path_botoes, "", "", "", "", "");?>
+
+   <?php echo nmButtonOutput($this->arr_buttons, "bvoltar", "document.F0.submit()", "document.F0.submit()", "idBtnBack", "", "", "", "absmiddle", "", "0", $this->Ini->path_botoes, "", "", "", "", "");?>
+
+    </td></tr></table>
+   </td>
+  </tr>
+ </table>
+</td></tr></table>
+<form name="Fview" method="get" action="<?php echo  $this->form_encode_input($Arq_htm) ?>" target="_self" style="display: none"> 
+</form>
+<form name="Fdown" method="get" action="app_form_sec_apps_download.php" target="_self" style="display: none"> 
+<input type="hidden" name="script_case_init" value="<?php echo $this->form_encode_input($this->Ini->sc_page); ?>"> 
+<input type="hidden" name="nm_tit_doc" value="app_form_sec_apps"> 
+<input type="hidden" name="nm_name_doc" value="<?php echo $path_doc_md5 ?>"> 
+</form>
+<form name="F0" method=post action="./" target="_self" style="display: none"> 
+<input type="hidden" name="script_case_init" value="<?php echo $this->form_encode_input($this->Ini->sc_page); ?>"> 
+<input type="hidden" name="script_case_session" value="<?php echo $this->form_encode_input(session_id()); ?>"> 
+<input type="hidden" name="nmgp_opcao" value="<?php echo $this->nmgp_opcao ?>"> 
+</form> 
+         </BODY>
+         </HTML>
+<?php
+          exit;
+  }
 //
 //--------------------------------------------------------------------------------------
    function NM_has_trans()
@@ -2857,7 +3001,7 @@ $_SESSION['scriptcase']['app_form_sec_apps']['contr_erro'] = 'off';
       $this->NM_commit_db(); 
       if ($this->sc_evento != "insert" && $this->sc_evento != "update" && $this->sc_evento != "delete")
       { 
-          $this->app_name = substr($this->Db->qstr($this->app_name), 1, -1); 
+          $this->app_name = null === $this->app_name ? null : substr($this->Db->qstr($this->app_name), 1, -1); 
       } 
       if (isset($this->NM_where_filter))
       {

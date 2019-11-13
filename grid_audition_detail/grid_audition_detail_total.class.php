@@ -51,7 +51,7 @@ class grid_audition_detail_total
    //---- 
    function quebra_geral_sc_free_total($res_limit=false)
    {
-      global $nada, $nm_lang , $venue_id, $audition_id, $program, $specialise_area;
+      global $nada, $nm_lang , $venue_id, $audition_id, $program;
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['contr_total_geral'] == "OK") 
       { 
           return; 

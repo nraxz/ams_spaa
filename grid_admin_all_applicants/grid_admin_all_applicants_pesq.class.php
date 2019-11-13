@@ -2619,6 +2619,7 @@ foreach ($Arr_format as $Part_date)
  function limpa_form()
  {
    document.F1.reset();
+   document.F1.audition_audition_date_cond.value = 'bw';
    nm_campos_between(document.getElementById('id_vis_audition_audition_date'), document.F1.audition_audition_date_cond, 'audition_audition_date');
    document.F1.audition_audition_date_dia.value = "";
    document.F1.audition_audition_date_mes.value = "";
@@ -2626,8 +2627,10 @@ foreach ($Arr_format as $Part_date)
    document.F1.audition_audition_date_input_2_dia.value = "";
    document.F1.audition_audition_date_input_2_mes.value = "";
    document.F1.audition_audition_date_input_2_ano.value = "";
+   document.F1.application_detail_venue_id_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_application_detail_venue_id'), document.F1.application_detail_venue_id_cond, 'application_detail_venue_id');
    document.F1.application_detail_venue_id.value = "";
+   document.F1.audition_status_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_audition_status'), document.F1.audition_status_cond, 'audition_status');
    document.F1.audition_status.value = "";
  }

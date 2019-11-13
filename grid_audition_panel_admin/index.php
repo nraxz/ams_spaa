@@ -212,8 +212,8 @@ class grid_audition_panel_admin_ini
       $this->nm_dt_criacao   = "20191018"; 
       $this->nm_hr_criacao   = "143547"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -296,6 +296,7 @@ class grid_audition_panel_admin_ini
       $this->path_secure     = $this->root . $this->path_prod . "/secure";
       $this->path_adodb      = $this->root . $this->path_prod . "/third/adodb";
       $_SESSION['scriptcase']['dir_temp'] = $this->root . $this->path_imag_temp;
+      $this->Cmp_Sql_Time     = array();
       if (isset($_SESSION['scriptcase']['grid_audition_panel_admin']['session_timeout']['lang'])) {
           $this->str_lang = $_SESSION['scriptcase']['grid_audition_panel_admin']['session_timeout']['lang'];
       }
@@ -329,6 +330,8 @@ class grid_audition_panel_admin_ini
               $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['SC_Link_View'] = true;
           }
       }
+    if (!$_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['embutida'])
+    {
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_add_grid_search")
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['grid_search_add']['cmp'] = $_POST['parm'];
@@ -342,6 +345,7 @@ class grid_audition_panel_admin_ini
           $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['opcao'] = $_GET['origem'];
           $nmgp_opcao = $_GET['origem'];
       }
+    }
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_save_ancor")
       {
           $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['ancor_save'] = $_POST['ancor_save'];
@@ -800,7 +804,7 @@ class grid_audition_panel_admin_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNmZ9XGHArYV5BOHuzGV9FeDWFYHIX7HQXGZ1B/Z1BeHQF7HgBOVkXeDuFaHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcXKDWJeHIBiDcJUZ1X7D1rKHuFaDEBeHEXeV5FaDoB/DcBwDQB/HAvCV5JeDMBOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDuFaDoJeD9JKDQX7D1veV5raHgvsVcFCDWFYDoNUD9JmZ1FaD1rKV5JeDEBOZSXeV5XCDoFUD9NwDQJsHArYD5NUHgrKVcBODuFqVoJwDcBqZ1B/D1rKV5X7DEBeHEXeV5B3VoBiD9NwDQJsHIrKV5JeDMvmVcFKV5BmVoBqD9BsZkFGHArKHQJwDEBODkFeH5FYVoFGHQJKDQFaDSBYV5FUHgrwVcXKDWF/VoB/HQBsH9B/DSrYHuFaDMBYZSXeV5FqHMFaHQFYDuFaHIvsVWJwDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuBqDcXGZSBiD1veHuF7DMBYVcFCH5FqDoraHQNwZ1BOHABYV5B/HgNOVkJqH5FYHIBqHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNwDQFaZ1N7HQB/HgrwVcrsHEFYHMBODcFYVINUD1rKHuJwHgNKVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMvOV9FeV5X/VEBiHQNwZkFGHINKD5JeHgNOHErCDuX/VoFGDcXGDQB/D1veHuJwDMrYVcFeDuB7DoXGHQXGZ1BiD1zGZMFaDMveHErsH5BmVoFGHQNwH9BiDSrwHQF7HgrwVcFeH5B7VoBqD9BsZ1F7DSrYD5rqDMrYZSJ3DurmZuJsHQBiZ9XGHANOHQBODMvOVIB/H5B7DoXGHQXGZSBOD1rwHuJsHgrKDkB/DWB3VoFGHQXODQBqHAvCVWJwDMBYVcB/H5XKDoXGHQBqZ1BOD1rKHQJeHgBeDkB/DurmDoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiHQNmH9BqDSNOHuBqDMvCHErCV5B7VoFGHQFYDQFaHANOHQrqHgrwVIB/H5B3DoXGHQBsZkFGD1zGD5XGDMveHErCV5B3VoFGDcBiH9BiHAvmVWJwDMzGVIBsH5XKVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsDWBmVoJeD9FYDQBqHIvsVWJeDMNaV9FiV5X7HIX7DcJUZ1FaD1rKHuBODMBYHEXeHEFaVoB/HQXGZSFGHAvCVWBqDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQNmH9BiHArYHQrqDMNOVcB/H5FqHMBOHQFYZkBiHAvsD5BqHgveHArCDWF/VoBiDcJUZSX7Z1BYHuFaHuBYVIBsV5F/VoFGHQBsZ1rqHANOV5XGDEBeZSXeHEFaZuBqDcXGDuBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1FUZ1BeV5BODErKVkXeHEFqVoFaDcXOZSX7HArYVWJwHgrKVcFKHEFYVENUD9JmZ1B/Z1BeV5FUDMNKZSJGDWF/DoraD9XsH9X7HABYD5rqHgrYDkBODWFaDoNUD9BsZ1B/DSrYV5FUHgvCVkJGDWF/VoJeD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiHQJmZ1F7Z1vmD5rqDEBOHArCDWF/ZuFaHQFYDuFaZ1N7VWJeDMvOVIFCDWXCHIFUD9XOZ1F7HIBeHuXGHgBOZSXeDuFYHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBqHQBiDuBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1F7HAN7HuB/HgBOHENiH5F/HMJwHQXsDQFGHIrKHQBODMNOVcFKHEX7HMrqHQNmZkBiHAN7D5F7HgrKVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_audition_panel_admin']['initialize'])  
       { 

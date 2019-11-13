@@ -2974,19 +2974,26 @@ foreach ($Arr_format as $Part_date)
  function limpa_form()
  {
    document.F1.reset();
+   document.F1.venue_id_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_venue_id'), document.F1.venue_id_cond, 'venue_id');
    document.F1.venue_id.value = "";
+   document.F1.audition_date_cond.value = 'bw';
    nm_campos_between(document.getElementById('id_vis_audition_date'), document.F1.audition_date_cond, 'audition_date');
    document.F1.audition_date_mes.value = "";
    document.F1.audition_date_ano.value = "";
    document.F1.audition_date_input_2_mes.value = "";
    document.F1.audition_date_input_2_ano.value = "";
+   document.F1.audition_title_cond.value = 'qp';
    nm_campos_between(document.getElementById('id_vis_audition_title'), document.F1.audition_title_cond, 'audition_title');
    document.F1.audition_title.value = "";
+   document.F1.audition_title_autocomp.value = "";
+   document.F1.status_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_status'), document.F1.status_cond, 'status');
    document.F1.status.value = "";
+   document.F1.type_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_type'), document.F1.type_cond, 'type');
    document.F1.type.value = "";
+   document.F1.type_autocomp.value = "";
    Sc_carga_select2('all');
  }
  function Sc_carga_select2(Field)

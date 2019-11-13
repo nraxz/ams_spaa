@@ -1847,6 +1847,7 @@ function nm_open_popup(parms)
  function limpa_form()
  {
    document.F1.reset();
+   document.F1.group_id_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_group_id'), document.F1.group_id_cond, 'group_id');
    document.F1.group_id.value = "";
  }

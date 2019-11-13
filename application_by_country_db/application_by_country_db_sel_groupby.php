@@ -158,6 +158,7 @@ function Sel_processa_out($sel_groupby)
        unset($_SESSION['sc_session'][$sc_init]['application_by_country_db']['pivot_order_col']);
        unset($_SESSION['sc_session'][$sc_init]['application_by_country_db']['pivot_order_level']);
        unset($_SESSION['sc_session'][$sc_init]['application_by_country_db']['pivot_order_sort']);
+       unset($_SESSION['sc_session'][$sc_init]['application_by_country_db']['pivot_order_start']);
        unset($_SESSION['sc_session'][$sc_init]['application_by_country_db']['pivot_tabular']);
            $tab_arr_groubby_cmp = array();
            $tab_arr_groubby_sql = array();

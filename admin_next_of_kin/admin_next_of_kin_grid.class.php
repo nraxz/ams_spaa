@@ -1815,9 +1815,17 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
            $nm_saida->saida("       </TD>\r\n");
            $nm_saida->saida("     </TR>\r\n");
            $nm_saida->saida("   </TABLE>\r\n");
+           $nm_saida->saida("  <script type=\"text/javascript\" src=\"" . $this->Ini->path_prod . "/third/jquery/js/jquery.js\"></script>\r\n");
            $nm_saida->saida("  <script type=\"text/javascript\">\r\n");
+           $nm_saida->saida("     $(\"#Bprint_print\").addClass(\"disabled\").prop(\"disabled\", true);\r\n");
+           $nm_saida->saida("     $(function() {\r\n");
+           $nm_saida->saida("         $(\"#Bprint_print\").removeClass(\"disabled\").prop(\"disabled\", false);\r\n");
+           $nm_saida->saida("     });\r\n");
            $nm_saida->saida("     function prit_web_page()\r\n");
            $nm_saida->saida("     {\r\n");
+           $nm_saida->saida("        if ($(\"#Bprint_print\").prop(\"disabled\")) {\r\n");
+           $nm_saida->saida("            return;\r\n");
+           $nm_saida->saida("        }\r\n");
            $nm_saida->saida("        document.getElementById('sc_table_print').style.display = 'none';\r\n");
            $nm_saida->saida("        var is_safari = navigator.userAgent.indexOf(\"Safari\") > -1;\r\n");
            $nm_saida->saida("        var is_chrome = navigator.userAgent.indexOf('Chrome') > -1\r\n");
@@ -4732,6 +4740,10 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_next_of_kin']['proc_pdf'
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

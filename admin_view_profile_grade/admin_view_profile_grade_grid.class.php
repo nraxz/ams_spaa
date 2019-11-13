@@ -3325,6 +3325,10 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['admin_view_profile_grade']['pr
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
    $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
+   $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");
    $nm_saida->saida("      if (t_parent == 'S' && typeof parent.tb_show == 'function')\r\n");

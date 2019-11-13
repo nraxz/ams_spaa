@@ -2411,9 +2411,9 @@ $nm_saida->saida("     \r\n");
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?usr_login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?NM_btn_insert?#?N?@?NM_btn_update?#?S?@?NM_btn_delete?#?N?@?NM_btn_navega?#?N?@?";
        }
-$nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_contact_detail_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_contact_detail', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_full_address_grid_line . "\" style=\"vertical-align: top;text-align: left;\" >" . $conteudo . "</a>\r\n");
+$nm_saida->saida("<a  id=\"id_sc_field_full_address_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_contact_detail_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_contact_detail', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_full_address_grid_line . "\" style=\"vertical-align: top;text-align: left;\" >" . $conteudo . "</a>\r\n");
 } else {
-$nm_saida->saida(" $conteudo \r\n");
+$nm_saida->saida(" <span id=\"id_sc_field_full_address_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
 $nm_saida->saida("    </TD>\r\n");
 $nm_saida->saida("   </tr><tr>\r\n");
@@ -3545,6 +3545,10 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

@@ -210,8 +210,8 @@ class application_by_program_db_ini
       $this->nm_dt_criacao   = "20191022"; 
       $this->nm_hr_criacao   = "112839"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -292,6 +292,7 @@ class application_by_program_db_ini
       $this->path_secure     = $this->root . $this->path_prod . "/secure";
       $this->path_adodb      = $this->root . $this->path_prod . "/third/adodb";
       $_SESSION['scriptcase']['dir_temp'] = $this->root . $this->path_imag_temp;
+      $this->Cmp_Sql_Time     = array('submitted');
       if (isset($_SESSION['scriptcase']['application_by_program_db']['session_timeout']['lang'])) {
           $this->str_lang = $_SESSION['scriptcase']['application_by_program_db']['session_timeout']['lang'];
       }
@@ -325,6 +326,8 @@ class application_by_program_db_ini
               $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['SC_Link_View'] = true;
           }
       }
+    if (!$_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['embutida'])
+    {
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_add_grid_search")
       {
           $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['grid_search_add']['cmp'] = $_POST['parm'];
@@ -332,6 +335,7 @@ class application_by_program_db_ini
           $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['opcao'] = $_POST['origem'];
           $nmgp_opcao = $_POST['origem'];
       }
+    }
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_save_ancor")
       {
           $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['ancor_save'] = $_POST['ancor_save'];
@@ -882,7 +886,7 @@ class application_by_program_db_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKZSX7HIrKHQXGHgvOZSNiDWJeVEX7D9BiZ1FGHANOZMB/DMNKZSJ3HEFqVoFaD9JKZSBiHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBiH9BOHArKD5FaDMvCZSJGH5X/DoXGHQNwDQFGHABYHuFGHuNOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDWX7DoBOD9NwDQJsHIBeD5BqHgvsDkBODWFaVENUD9JmZ1B/Z1BeV5FUDMNKZSXeDWr/ZuXGDcXOZSFGHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1rYD5BiDMzGHEFiDWrGVoBiD9NwDQJsHIrKV5JeDMvmVcFKV5BmVoBqD9BsZkFGHArKHQJwDEBODkFeH5FYVoFGHQJKDQJsHANOD5XGHgvsVIBsDWFaDoFUHQJmH9BOHArKV5B/DErKHEJqHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBOHQBiZ9XGHABYHuFaHuNOZSrCH5FqDoXGHQJmZ1F7Z1NOZMBOHgvsHArsDWX7VoJsD9NmDQFUHANOHQJwHuNOVcFKHEFYHMB/HQXOH9B/DSrYHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNmDQFUDSN7HQJwDMrYVcBUH5FqVorqHQXGH9B/HANOHQBiDErKHENiDWF/HIrqD9XsDQFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiHQXGZSFaD1rKHQBqHgNOHEJGDWB3DoXGD9NwDQJwHIrKHuBqDMBOV9FeHEF/VoBOD9XOH9BqHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HArYV5JeHuzGVcFKDuFqDoFGDcBqH9B/HABYZMB/DEBeHEXeV5FaVoBiDcXOZSX7HANOVWBqHgrYDkFCDWXCVoX7D9BsH9B/HIBeD5XGDMBYHEXeV5FqDoFUDcBwDQJsHAvmD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeVoF7HQXOVIJsHIBOZMJeHgrKHArCDuFaHIB/DcBiH9BiHABYHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHArKV5FaDMNKZSXeDWr/DoJeD9XsZSX7Z1N7VWFaHgrKV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoBqHQJeDuBqHAvOV5XGDMvOV9BUH5FqHMBiD9BsVIraD1rwV5X7HgBeHErsDWXCHIFUHQBiZSBiD1veD5BOHuvmZSNiH5B3VoF7HQXOZ1rqD1rKHuFGDErKZSJ3DuXKZuXGDcJeDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBiZSB/HABYD5XGDMzGHEJGH5FYVoJeDcJUDQB/D1BeD5BOHgvsVcBODur/DoFGHQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuXGHQXGZ9XGHANKVWFU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['application_by_program_db']['initialize'])  
       { 

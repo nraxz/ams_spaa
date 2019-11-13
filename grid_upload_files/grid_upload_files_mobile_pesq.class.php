@@ -3294,12 +3294,18 @@ foreach ($Arr_format as $Part_date)
        document.F1.NM_filters.selectedIndex = -1;
    }
    document.getElementById('Salvar_filters_bot').style.display = 'none';
+   document.F1.fileid_cond.value = 'gt';
    nm_campos_between(document.getElementById('id_vis_fileid'), document.F1.fileid_cond, 'fileid');
    document.F1.fileid.value = "";
+   document.F1.login_cond.value = 'qp';
    nm_campos_between(document.getElementById('id_vis_login'), document.F1.login_cond, 'login');
    document.F1.login.value = "";
+   document.F1.login_autocomp.value = "";
+   document.F1.filename_cond.value = 'qp';
    nm_campos_between(document.getElementById('id_vis_filename'), document.F1.filename_cond, 'filename');
    document.F1.filename.value = "";
+   document.F1.filename_autocomp.value = "";
+   document.F1.uploaded_cond.value = 'eq';
    nm_campos_between(document.getElementById('id_vis_uploaded'), document.F1.uploaded_cond, 'uploaded');
    document.F1.uploaded_dia.value = "";
    document.F1.uploaded_mes.value = "";

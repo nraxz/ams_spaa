@@ -4,7 +4,6 @@ scriptcase__NM__btn__NM__scriptcase9_Rhino__NM__nm_scriptcase9_Rhino_error.png
 img_calendar.gif
 img_move_left.gif
 img_move_right.gif
-nm_edite.gif
 nm_help.gif
 nm_te.gif
 nm_top.gif

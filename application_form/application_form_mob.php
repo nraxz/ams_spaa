@@ -277,8 +277,8 @@ class application_form_mob_ini
       $this->nm_dt_criacao   = "20151218"; 
       $this->nm_hr_criacao   = "154737"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -907,6 +907,8 @@ class application_form_mob_ini
       { 
           $_SESSION['scriptcase']['sc_num_img'] = 1; 
       } 
+      $this->Export_img_zip = false;;
+      $this->Img_export_zip  = array();
       $this->regionalDefault();
       $this->sc_tem_trans_banco = false;
       $this->nm_bases_access     = array("access", "ado_access");
@@ -919,24 +921,11 @@ class application_form_mob_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKDQJsHIrKD5rqHgvOVIBsV5FYHIXGHQBiZkFGHIrwHuFGDEBeDkB/H5F/HMBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiDcFYZkFGHIveHQX7DErKHEJGDWX7ZuJsDcBiH9FUHIrKD5NUDMrYZSNiHEFYVoBiD9XGZ1F7HANOHQJwDEBODkFeH5FYVoFGHQJKDQBOZ1rwV5FUHuzGVcrsDWXCDoJeD9JmZ1B/D1rwD5NUDEvsHEFiHEFqDoB/D9XsH9FUZ1rwD5JeHuNODkFCDWJeDoXGDcNwH9B/Z1rYD5FaDMBYDkFeV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQJKH9X7D1veHuXGHuBYVIB/DuX7HIX7HQXOVIJsHANOHQFGHgNKDkXKHEFqHIXGD9NmH9BiHAveD5NUHgNKDkBOV5FYHMBiD9XOZ1F7HArYD5BiDMBYVkJGDWr/DoB/D9XsH9FGDSN7D5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgveHErsDWFGZuXGHQBiDuBqHANKV5BODMrYV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBOVkJ3HEXCHMFGD9FYZ9XGHAN7V5JwDMBYVIB/DWBmVEFGD9JmZkFGD1rwHuBqHgvsVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBwDuBqHIrKHQB/DMBOZSNiHEFYHIXGHQBiZkFGZ1rYHQJwDEBODkFeH5FYVoFGHQJKDQBqHANOHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHAN7ZMBODEBeZSJqDWF/ZuB/DcJeZSFUHAN7HuJwHgrwVIBOV5X7HIX7D9XGZ1FaD1rKHuXGHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JeHgrKVcB/V5X7VoBOD9XOZSB/Z1BeV5FUDENOVkXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFiV5X7VoB/D9XOZ1rqHArKV5FGDEBeHEXeH5FYDoraD9NmDQJsDSBYV5JwHuNOVIB/V5X7DorqD9BsH9FaHAN7V5X7DMNKZSXeV5FqDoB/DcJeZ9JeZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHENiDWF/HMJwHQJeDQFUHABYHQXGDMvmDkB/DuX7DoNUHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMBqHQJeZ9XGHABYHuX7DMvODkB/DWXCHIrqHQFYZ1BOD1rKHuFUDMvCHArsH5F/HMBOHQXGDQFUHANKVWJwDMrYVcB/DurGVENUHQFYZkFGDSNOHuFaHgNOZSJqH5F/HIFGDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBOHQBqVINUHAvCD5XGHgvsDkXKDWr/HMFGHQXGDQFUHANOHQF7DMBOV9FeHEFGVErqHQFYZkBiD1vsZMBqHgNKHArCV5FqHIB/HQXGDuBqDSBYHQNUHgvOV9FeH5B7VEX7DcBwH9B/HIrwV5JeDMBYDkBsH5FYHIF7HQJeZ9XGD1BeHQJsDMBYVcXKH5XCHIF7HQFYZ1BOHArKHQFGHgNOVkJqDWXCHMBiHQXGDuFaHABYHuraDMvOVIB/Dur/HIX7HQFYZ1BODSNOHQFGHgNKHArCHEXCHIFUDcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeD5BqDMBYHEJGH5F/VoJeDcXOZSBiD1BOVWFaDMrwDkB/DWXCVoX7D9BsH9B/HIBeD5XGDMBYHEXeV5B7DoNUHQXsH9X7DSBYD5rqHgrKVcFCH5B7VoFaHQNGZ1rqHINKZMXGHgNKDkFeHEB7DoB/HQNmH9X7HABYVWJsDMBYVcBODWFaDoFUDcJUZkFUZ1BeZMBqHgBYHAFKV5FaZuBqD9NmZSFGHIrwV5BOHuNODkBOV5X7VENUHQFYH9FaD1rwD5rqDErKVkXeHEFqDoBOD9NmDQJsD1BeV5FUHuzGDkBOH5XKVoraDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwD5BOHuNODkFCH5FqVENUDcNwH9BqZ1NOHQJsHgNOVkJ3DWFqHMFGHQNwDQBOZ1zGV5JeDMvOVcBUDWFaHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOV9BUDWXKVoFGHQJmZ1F7Z1vmD5rqDEBOHArCDWBmZuBqDcBwZSX7D1veHQrqDMzGV9FeHEX7DoFGDcBqZSFaHABYHuJwHgveHEFiDuFaHMXGD9NwDQFaHIrKHuFaHuNOZSrCH5FqDoXGHQJmZ1FGZ1NOD5NUDErKVkXeDWFqDoXGD9JKDQBOHAveHQF7HuvmVcFKDWFaDoX7D9JmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQJeDuBOZ1vCV5Je";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['application_form_mob']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['application_form_mob']['initialize'])  
       { 
-          $this->conectDB();
           $_SESSION['sc_session'][$this->sc_page]['application_form_mob']['Gera_log_access'] = true;
-          $dir_raiz          = strrpos($_SERVER['PHP_SELF'],"/") ;  
-          $dir_raiz          = substr($_SERVER['PHP_SELF'], 0, $dir_raiz + 1) ;  
-          $this->nm_location = $this->sc_protocolo . $this->server . $dir_raiz; 
-      }
-   }
-
-   function init2()
-   {
-      if (isset($_SESSION['sc_session'][$this->sc_page]['application_form_mob']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['application_form_mob']['initialize'])  
-      {
-          $_SESSION['sc_session'][$this->Ini->sc_page]['application_form_mob']['initialize'] = false;
-          $this->Db->Close(); 
       } 
       $this->conectDB();
       if (!in_array(strtolower($this->nm_tpbanco), $this->nm_bases_all))
@@ -1301,186 +1290,6 @@ class application_form_mob_ini
           $_SESSION['scriptcase']['reg_conf']['unid_mont_group_digit'] = '1';
       }
    }
-function nmgp_redireciona_form($nm_apl_dest, $nm_apl_retorno, $nm_apl_parms, $nm_target="", $opc="", $alt_modal=430, $larg_modal=630)
-{
-   if (isset($this->NM_is_redirected) && $this->NM_is_redirected)
-   {
-       return;
-   }
-   if (is_array($nm_apl_parms))
-   {
-       $tmp_parms = "";
-       foreach ($nm_apl_parms as $par => $val)
-       {
-           $par = trim($par);
-           $val = trim($val);
-           $tmp_parms .= str_replace(".", "_", $par) . "?#?";
-           if (substr($val, 0, 1) == "$")
-           {
-               $tmp_parms .= $$val;
-           }
-           elseif (substr($val, 0, 1) == "{")
-           {
-               $val        = substr($val, 1, -1);
-               $tmp_parms .= $this->$val;
-           }
-           elseif (substr($val, 0, 1) == "[")
-           {
-               $tmp_parms .= $_SESSION['sc_session'][$this->sc_page]['application_form_mob'][substr($val, 1, -1)];
-           }
-           else
-           {
-               $tmp_parms .= $val;
-           }
-           $tmp_parms .= "?@?";
-       }
-       $nm_apl_parms = $tmp_parms;
-   }
-   if (empty($opc))
-   {
-       $_SESSION['sc_session'][$this->sc_page]['application_form_mob']['opcao'] = "";
-       $_SESSION['sc_session'][$this->sc_page]['application_form_mob']['retorno_edit'] = "";
-   }
-   $nm_target_form = (empty($nm_target)) ? "_self" : $nm_target;
-   if (strtolower(substr($nm_apl_dest, -4)) != ".php" && (strtolower(substr($nm_apl_dest, 0, 7)) == "http://" || strtolower(substr($nm_apl_dest, 0, 8)) == "https://" || strtolower(substr($nm_apl_dest, 0, 3)) == "../"))
-   {
-       echo "<SCRIPT language=\"javascript\">";
-       if (strtolower($nm_target) == "_blank")
-       {
-           echo "window.open ('" . $nm_apl_dest . "');";
-           echo "</SCRIPT>";
-           return;
-       }
-       else
-       {
-           echo "window.location='" . $nm_apl_dest . "';";
-           echo "</SCRIPT>";
-           $this->NM_close_db();
-           exit;
-       }
-   }
-   $dir = explode("/", $nm_apl_dest);
-   if (count($dir) == 1)
-   {
-       $nm_apl_dest = str_replace(".php", "", $nm_apl_dest);
-       $nm_apl_dest = $this->path_link . SC_dir_app_name($nm_apl_dest) . "/" . $nm_apl_dest . ".php";
-   }
-   if ($nm_target == "modal")
-   {
-       if (!empty($nm_apl_parms))
-       {
-           $nm_apl_parms = str_replace("?#?", "*scin", $nm_apl_parms);
-           $nm_apl_parms = str_replace("?@?", "*scout", $nm_apl_parms);
-           $nm_apl_parms = "nmgp_parms=" . $nm_apl_parms . "&";
-       }
-       $par_modal = "?script_case_init=" . $this->sc_page . "&script_case_session=" . session_id() . "&nmgp_outra_jan=true&nmgp_url_saida=modal&NMSC_modal=ok&";
-       $this->redir_modal = "$(function() { tb_show('', '" . $nm_apl_dest . $par_modal . $nm_apl_parms . "TB_iframe=true&modal=true&height=" . $alt_modal . "&width=" . $larg_modal . "', '') })";
-       $this->NM_is_redirected = true;
-       return;
-   }
-   if ($nm_target == "_blank")
-   {
-?>
-<form name="Fredir" method="post" target="_blank" action="<?php echo $nm_apl_dest; ?>">
-  <input type="hidden" name="nmgp_parms" value="<?php echo $this->form_encode_input($nm_apl_parms); ?>"/>
-</form>
-<script type="text/javascript">
-setTimeout(function() { document.Fredir.submit(); }, 250);
-</script>
-<?php
-    return;
-   }
-?>
-<?php
-   if ($nm_target_form != "_blank" && $nm_target_form != "modal")
-   {
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
-
-   <HTML>
-   <HEAD>
-    <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
-<?php
-
-   if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['device_mobile'] && $_SESSION['scriptcase']['display_mobile'])
-   {
-?>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<?php
-   }
-
-?>
-    <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
-    <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>
-    <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
-    <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
-    <META http-equiv="Pragma" content="no-cache"/>
-    <link rel="shortcut icon" href="../_lib/img/grp__NM__ico__NM__logo.png">
-    <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_prod; ?>/third/jquery/js/jquery.js"></SCRIPT>
-   </HEAD>
-   <BODY>
-<?php
-   }
-?>
-<form name="Fredir" method="post" 
-                  target="_self"> 
-  <input type="hidden" name="nmgp_parms" value="<?php echo $this->form_encode_input($nm_apl_parms); ?>"/>
-<?php
-   if ($nm_target_form == "_blank")
-   {
-?>
-  <input type="hidden" name="nmgp_outra_jan" value="true"/> 
-<?php
-   }
-   else
-   {
-?>
-  <input type="hidden" name="nmgp_url_saida" value="<?php echo $this->form_encode_input($nm_apl_retorno) ?>">
-  <input type="hidden" name="script_case_init" value="<?php echo $this->form_encode_input($this->sc_page); ?>"/> 
-  <input type="hidden" name="script_case_session" value="<?php echo $this->form_encode_input(session_id()); ?>"> 
-<?php
-   }
-?>
-</form> 
-   <SCRIPT type="text/javascript">
-<?php
-   if ($nm_target_form == "modal")
-   {
-?>
-       $(document).ready(function(){
-           tb_show('', '<?php echo $nm_apl_dest ?>?script_case_init=<?php echo $this->sc_page; ?>&script_case_session=<?php echo session_id() ?> &nmgp_url_saida=modal&nmgp_parms=<?php echo $this->form_encode_input($nm_apl_parms); ?>&nmgp_outra_jan=true&TB_iframe=true&height=<?php echo $alt_modal; ?>&width=<?php echo $larg_modal; ?>&modal=true', '');
-       });
-<?php
-   }
-   else
-   {
-?>
-    $(function() {
-       document.Fredir.target = "<?php echo $nm_target_form ?>"; 
-       document.Fredir.action = "<?php echo $nm_apl_dest ?>";
-       document.Fredir.submit();
-    });
-<?php
-   }
-?>
-   </SCRIPT>
-<?php
-   if ($nm_target_form != "_blank" && $nm_target_form != "modal")
-   {
-?>
-   </BODY>
-   </HTML>
-<?php
-   }
-?>
-<?php
-   if ($nm_target_form != "_blank" && $nm_target_form != "modal")
-   {
-       $this->NM_close_db();
-       exit;
-   }
-}
    function sc_Include($path, $tp, $name)
    {
        if ((empty($tp) && empty($name)) || ($tp == "F" && !function_exists($name)) || ($tp == "C" && !class_exists($name)))

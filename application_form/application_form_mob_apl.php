@@ -483,35 +483,6 @@ class application_form_mob_apl
           $this->Ini->init();
           $this->nm_data = new nm_data("en_us");
           $this->app_is_initializing = $_SESSION['sc_session'][$this->Ini->sc_page]['application_form_mob']['initialize'];
-          $this->Db = $this->Ini->Db; 
-          if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['application_form_mob']['initialize']) && $_SESSION['sc_session'][$this->Ini->sc_page]['application_form_mob']['initialize'])
-          {
-              $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'on';
-  if(isset($_GET['a']) && substr($_GET['a'],0,4) == 'new_')
-{
-	
-     $nm_select ="UPDATE sec_users SET active = 'Y', activation_code ='' WHERE activation_code = ". $this->Db->qstr($_GET['a']); 
-         $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select;
-      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
-         $rf = $this->Db->Execute($nm_select);
-         if ($rf === false)
-         {
-             $this->Erro->mensagem (__FILE__, __LINE__, "banco", $this->Ini->Nm_lang['lang_errm_dber'], $this->Db->ErrorMsg());
-             $this->NM_rollback_db(); 
-             if ($this->NM_ajax_flag)
-             {
-                application_form_mob_pack_ajax_response();
-             }
-             exit;
-         }
-         $rf->Close();
-      ;
-	 if (!isset($this->Campos_Mens_erro) || empty($this->Campos_Mens_erro))
- {
-$this->nmgp_redireciona_form($this->Ini->path_link . "" . SC_dir_app_name('app_Login') . "/", $this->nm_location, "", "_self", "ret_self", 440, 630);
- };
-}
-$_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'off';
           if (isset($_SESSION['scriptcase']['sc_apl_conf']['application_form']))
           {
               foreach ($_SESSION['scriptcase']['sc_apl_conf']['application_form'] as $I_conf => $Conf_opt)
@@ -519,8 +490,6 @@ $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'off';
                   $_SESSION['scriptcase']['sc_apl_conf']['application_form_mob'][$I_conf]  = $Conf_opt;
               }
           }
-          }
-          $this->Ini->init2();
       } 
       else 
       { 
@@ -1472,6 +1441,150 @@ $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'off';
           }
       }
    }
+  function html_export_print($nm_arquivo_html, $nmgp_password)
+  {
+      $Html_password = "";
+          $Arq_base  = $this->Ini->root . $this->Ini->path_imag_temp . $nm_arquivo_html;
+          $Parm_pass = ($Html_password != "") ? " -p" : "";
+          $Zip_name = "sc_prt_" . date("YmdHis") . "_" . rand(0, 1000) . "application_form_mob.zip";
+          $Arq_htm = $this->Ini->path_imag_temp . "/" . $Zip_name;
+          $Arq_zip = $this->Ini->root . $Arq_htm;
+          $Zip_f     = (FALSE !== strpos($Arq_zip, ' ')) ? " \"" . $Arq_zip . "\"" :  $Arq_zip;
+          $Arq_input = (FALSE !== strpos($Arq_base, ' ')) ? " \"" . $Arq_base . "\"" :  $Arq_base;
+           if (is_file($Arq_zip)) {
+               unlink($Arq_zip);
+           }
+           $str_zip = "";
+           if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+           {
+               chdir($this->Ini->path_third . "/zip/windows");
+               $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j " . $Html_password . " " . $Zip_f . " " . $Arq_input;
+           }
+           elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+           {
+                if (FALSE !== strpos(strtolower(php_uname()), 'i686')) 
+                {
+                    chdir($this->Ini->path_third . "/zip/linux-i386/bin");
+                }
+                else
+                {
+                    chdir($this->Ini->path_third . "/zip/linux-amd64/bin");
+                }
+               $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $Arq_input;
+           }
+           elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+           {
+               chdir($this->Ini->path_third . "/zip/mac/bin");
+               $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $Arq_input;
+           }
+           if (!empty($str_zip)) {
+               exec($str_zip);
+           }
+           // ----- ZIP log
+           $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
+           if ($fp)
+           {
+               @fwrite($fp, $str_zip . "\r\n\r\n");
+               @fclose($fp);
+           }
+           foreach ($this->Ini->Img_export_zip as $cada_img_zip)
+           {
+               $str_zip      = "";
+              $cada_img_zip = '"' . $cada_img_zip . '"';
+               if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+               {
+                   $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j -u " . $Html_password . " " . $Zip_f . " " . $cada_img_zip;
+               }
+               elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+               {
+                   $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $cada_img_zip;
+               }
+               elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+               {
+                   $str_zip = "./7za " . $Parm_pass . $Html_password . " a " . $Zip_f . " " . $cada_img_zip;
+               }
+               if (!empty($str_zip)) {
+                   exec($str_zip);
+               }
+               // ----- ZIP log
+               $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
+               if ($fp)
+               {
+                   @fwrite($fp, $str_zip . "\r\n\r\n");
+                   @fclose($fp);
+               }
+           }
+           if (is_file($Arq_zip)) {
+               unlink($Arq_base);
+           } 
+          $path_doc_md5 = md5($Arq_htm);
+          $_SESSION['sc_session'][$this->Ini->sc_page]['application_form_mob'][$path_doc_md5][0] = $Arq_htm;
+          $_SESSION['sc_session'][$this->Ini->sc_page]['application_form_mob'][$path_doc_md5][1] = $Zip_name;
+?>
+<HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
+<HEAD>
+ <TITLE><?php echo strip_tags("Basic Information") ?></TITLE>
+ <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
+<?php
+
+if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['device_mobile'] && $_SESSION['scriptcase']['display_mobile'])
+{
+?>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<?php
+}
+
+?>
+ <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
+ <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>
+ <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
+ <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
+ <META http-equiv="Pragma" content="no-cache"/>
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export.css" /> 
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" /> 
+  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_form . '/' . $this->Ini->Str_btn_form ?>.css" /> 
+  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_prod; ?>/third/font-awesome/css/all.min.css" /> 
+  <link rel="shortcut icon" href="../_lib/img/grp__NM__ico__NM__logo.png">
+</HEAD>
+<BODY class="scExportPage">
+<table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: top">
+ <table class="scExportTable" align="center">
+  <tr>
+   <td class="scExportTitle" style="height: 25px">PRINT</td>
+  </tr>
+  <tr>
+   <td class="scExportLine" style="width: 100%">
+    <table style="border-collapse: collapse; border-width: 0; width: 100%"><tr><td class="scExportLineFont" style="padding: 3px 0 0 0" id="idMessage">
+    <?php echo $this->Ini->Nm_lang['lang_othr_file_msge'] ?>
+    </td><td class="scExportLineFont" style="text-align:right; padding: 3px 0 0 0">
+   <?php echo nmButtonOutput($this->arr_buttons, "bexportview", "document.Fview.submit()", "document.Fview.submit()", "idBtnView", "", "", "", "absmiddle", "", "0", $this->Ini->path_botoes, "", "", "", "", "");?>
+
+   <?php echo nmButtonOutput($this->arr_buttons, "bdownload", "document.Fdown.submit()", "document.Fdown.submit()", "idBtnDown", "", "", "", "absmiddle", "", "0", $this->Ini->path_botoes, "", "", "", "", "");?>
+
+   <?php echo nmButtonOutput($this->arr_buttons, "bvoltar", "document.F0.submit()", "document.F0.submit()", "idBtnBack", "", "", "", "absmiddle", "", "0", $this->Ini->path_botoes, "", "", "", "", "");?>
+
+    </td></tr></table>
+   </td>
+  </tr>
+ </table>
+</td></tr></table>
+<form name="Fview" method="get" action="<?php echo  $this->form_encode_input($Arq_htm) ?>" target="_self" style="display: none"> 
+</form>
+<form name="Fdown" method="get" action="application_form_mob_download.php" target="_self" style="display: none"> 
+<input type="hidden" name="script_case_init" value="<?php echo $this->form_encode_input($this->Ini->sc_page); ?>"> 
+<input type="hidden" name="nm_tit_doc" value="application_form_mob"> 
+<input type="hidden" name="nm_name_doc" value="<?php echo $path_doc_md5 ?>"> 
+</form>
+<form name="F0" method=post action="application_form_mob.php" target="_self" style="display: none"> 
+<input type="hidden" name="script_case_init" value="<?php echo $this->form_encode_input($this->Ini->sc_page); ?>"> 
+<input type="hidden" name="script_case_session" value="<?php echo $this->form_encode_input(session_id()); ?>"> 
+<input type="hidden" name="nmgp_opcao" value="<?php echo $this->nmgp_opcao ?>"> 
+</form> 
+         </BODY>
+         </HTML>
+<?php
+          exit;
+  }
 //
 //--------------------------------------------------------------------------------------
    function NM_has_trans()
@@ -4520,17 +4633,17 @@ $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'off';
       $NM_val_form['status'] = $this->status;
       $NM_val_form['submitted'] = $this->submitted;
       $NM_val_form['email1'] = $this->email1;
-      if ($this->nationality === "")  
+      if ($this->nationality === "" || is_null($this->nationality))  
       { 
           $this->nationality = 0;
           $this->sc_force_zero[] = 'nationality';
       } 
-      if ($this->resident === "")  
+      if ($this->resident === "" || is_null($this->resident))  
       { 
           $this->resident = 0;
           $this->sc_force_zero[] = 'resident';
       } 
-      if ($this->status === "")  
+      if ($this->status === "" || is_null($this->status))  
       { 
           $this->status = 0;
           $this->sc_force_zero[] = 'status';
@@ -4584,6 +4697,11 @@ $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'off';
           if ($this->nmgp_opcao == "alterar") 
           {
               if ($this->submitted == "")  
+              { 
+                  $this->submitted = "null"; 
+                  $NM_val_null[] = "submitted";
+              } 
+              if ($this->submitted == "" && in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))  
               { 
                   $this->submitted = "null"; 
                   $NM_val_null[] = "submitted";
@@ -5060,7 +5178,7 @@ if ($this->Ini->sc_tem_trans_banco)
 
  if (!isset($this->Campos_Mens_erro) || empty($this->Campos_Mens_erro))
  {
-$this->nmgp_redireciona_form($this->Ini->path_link . "" . SC_dir_app_name('email_verify_account') . "/", $this->nm_location, "", "_self", "ret_self", 440, 630);
+$this->nmgp_redireciona_form($this->Ini->path_link . "" . SC_dir_app_name('user_activation') . "/", $this->nm_location, "", "_self", "ret_self", 440, 630);
  };
 if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
 {
@@ -5125,7 +5243,7 @@ $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'off';
       $this->NM_commit_db(); 
       if ($this->sc_evento != "insert" && $this->sc_evento != "update" && $this->sc_evento != "delete")
       { 
-          $this->login = substr($this->Db->qstr($this->login), 1, -1); 
+          $this->login = null === $this->login ? null : substr($this->Db->qstr($this->login), 1, -1); 
       } 
       if ($this->nmgp_opcao != "nada") 
       {
@@ -5523,12 +5641,11 @@ function act_code()
 {
 $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'on';
   
-$chars = 'abcdefghijklmnopqrstuvxywz';
+$chars = '123456789';
 $chars .= 'ABCDEFGHIJKLMNOPQRSTUVXYWZ';
-$chars .= '0123456789!@$*.,;:';
 $max = strlen($chars)-1;
-$act_code = "new_";
-for($i=0; $i < 28; $i++)
+$act_code = "";
+for($i=0; $i < 6; $i++)
 {
 	$act_code .= $chars{mt_rand(0, $max)};
 }
@@ -5544,6 +5661,7 @@ $_SESSION['scriptcase']['application_form_mob']['contr_erro'] = 'on';
 $insert_table  = 'application_detail';      
 $insert_fields = array(   
      'login' => "'$this->login'",
+	 'number' => "'0'",
      'venue_id' => "'$venue'",
 	 'audition_id' => "'$audition'",
      'program' => "'$program'",	
@@ -5708,7 +5826,9 @@ $smtp_email = 'smtp_email';
 $format = 'format';
 $port = 'port';
 $security = 'security';
-$act_code = $this->act_code();
+$activation_code = $this->act_code();
+$act_code = "new_".$activation_code;
+
 $update_sql = 'UPDATE sec_users'
     . ' SET activation_code = ' . $this->Db->qstr($act_code)
     . ' WHERE login = '. $this->Db->qstr($this->login );
@@ -5730,14 +5850,17 @@ $update_sql = 'UPDATE sec_users'
          $rf->Close();
       ;
 
-$message = "Dear ".$this->firstname .' '.$this->lastname .", <p>Thank you for registering with Sharjah Performing Arts Academy!</p> <p>Please follow the link below to activate your account and complete the necessary forms.</p>";
-$link = " <a href='http://". $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']. "?a=" . $act_code ."'> http://".$_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']. "?a=" . $act_code ." </a><br/><br/>";
+$message = "Dear ".$this->firstname .' '.$this->lastname .", <p>Thank you for registering with Sharjah Performing Arts Academy!</p> <p>Please follow the link below to activate your account and complete the necessary forms.</p>
+<p>Activation Code:</p><p><h4>".$activation_code."</h4></p>";
+
+$link = " <p>Copy the code above and paste into textbox on the link <a href='http://". $_SERVER['HTTP_HOST'] ."/user_activation '><strong>here</strong></a></p>";
 $email_footer = "<p>Kind regards</p>
 <p>SPAA team</p>
 <p>E: <a href='mailto:admissions@spaa.ae'>admissions@spaa.ae</a></p>
 <p>
                 <img src='http://resources.spaa.ae/images/SPAA_Email_Signature_BIG.png' alt='SPAA Email Signature BIG' style='vertical-align: bottom;' /><br style='clear: both;' /></p>
 ";
+
 
 $mail_smtp_server 	= $this->get_smtp($smtp);       
 $mail_smtp_user 	= $this->get_smtp($smtp_user);                   

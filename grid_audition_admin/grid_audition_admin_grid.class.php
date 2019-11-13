@@ -2419,7 +2419,7 @@ if (!isset($this->sc_temp_audition_title)) {$this->sc_temp_audition_title = (iss
    
   </div>
   <div class="card-body">
-    <h4 class="card-title"> Fees: '.$this->audition_fee .'GBP</h4>
+    <h4 class="card-title"> Fees: '.$this->audition_fee .' $USD</h4>
     <p class="card-text">'.$this->audition_details .'</p>
    
   </div>
@@ -2637,6 +2637,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->grid_audition_contact_nested->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['emb_lig_aba']))
           { 
@@ -2735,6 +2741,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->grid_venue_audition_nested, "controle"))
           {
               $this->grid_venue_audition_nested->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_venue_audition_nested']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_venue_audition_nested']['emb_lig_aba']))
@@ -5609,6 +5621,10 @@ $nm_saida->saida("    </td></tr></table></td>\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

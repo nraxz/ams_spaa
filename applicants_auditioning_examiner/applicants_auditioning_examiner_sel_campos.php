@@ -303,8 +303,14 @@ if ($this->embbed)
        restore_sel();
        return;
    }
-
-   return new Promise(function(resolve, reject) {$.ajax({
+<?php
+if ($_SESSION['scriptcase']['proc_mobile']) {
+?>
+   return new Promise(function(resolve, reject) {
+<?php
+}
+?>
+   $.ajax({
     type: "POST",
     url: "applicants_auditioning_examiner_sel_campos.php",
     data: {
@@ -323,7 +329,14 @@ if ($this->embbed)
     $("#sc_id_sel_campos_placeholder_" + sPos).find("td").html("");
     var execString = data.toString().replace(/(\<.*?\>)/g, '');
     eval(execString).then(function(){resolve()});
-   });});
+   });
+<?php
+if ($_SESSION['scriptcase']['proc_mobile']) {
+?>
+   });
+<?php
+}
+?>
   }
 <?php
 }
@@ -334,7 +347,14 @@ if(!isset($bol_sel_campos_include) || !$bol_sel_campos_include)
 function scSubmitSelCamposAjaxExport(sPos) {
    scPackSelected();
 
-   return new Promise(function(resolve, reject) {$.ajax({
+<?php
+if ($_SESSION['scriptcase']['proc_mobile']) {
+?>
+   return new Promise(function(resolve, reject) {
+<?php
+}
+?>
+   $.ajax({
     type: "POST",
     url: "applicants_auditioning_examiner_sel_campos.php",
     async: false,
@@ -351,7 +371,14 @@ function scSubmitSelCamposAjaxExport(sPos) {
     }
    }).done(function(data) {
     scSubmitSelCamposAjaxExportDone();
-   });});
+   });
+<?php
+if ($_SESSION['scriptcase']['proc_mobile']) {
+?>
+   });
+<?php
+}
+?>
   }
   <?php
 }

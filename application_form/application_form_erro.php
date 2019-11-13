@@ -32,13 +32,6 @@ function application_form_scriptcase_error_handler($err_no, $err_msg, $err_file,
             $tmp_desc = $_SESSION['scriptcase']['sc_sql_ult_conexao'];
         }
         $msg .= ("" != $tmp_desc) ? trim($tmp_desc) : trim($err_msg);
-        if (FALSE !== strpos($err_msg, "Invoke() failed") && "" != $_SESSION['scriptcase']['sc_sql_ult_comando'])
-        {
-            $msg .= "<BR>";
-            $msg .= "<BR>";
-            $msg .= "<B>SQL</B>: ";
-            $msg .= $_SESSION['scriptcase']['sc_sql_ult_comando'];
-        }
         // Application Roles
         if (FALSE !== strpos($err_msg, "The application role "))
         {

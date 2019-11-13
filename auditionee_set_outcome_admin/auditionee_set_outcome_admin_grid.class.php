@@ -3271,6 +3271,12 @@ $_SESSION['scriptcase']['auditionee_set_outcome_admin']['contr_erro'] = 'off';
           {
               $this->grid_audition_marks_admin->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_marks_admin']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_marks_admin']['emb_lig_aba']))
           { 
@@ -3342,9 +3348,9 @@ $_SESSION['scriptcase']['auditionee_set_outcome_admin']['contr_erro'] = 'off';
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis*scinS*scoutnmgp_opcao*scinigual*scoutglo_login*scin" . str_replace("'", "@aspass@", $this->basic_information_login) . "*scoutglo_auid*scin" . str_replace("'", "@aspass@", $this->application_detail_audition_id) . "*scoutglo_program*scin" . str_replace("'", "@aspass@", $this->application_detail_program) . "*scoutNM_btn_insert*scinS*scoutNM_btn_update*scinS*scoutNM_btn_delete*scinN*scoutNM_btn_navega*scinN*scoutsc_redir_atualiz*scinok*scoutsc_redir_insert*scinok*scoutNMSC_modal*scinok*scout";
        }
-   $nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_applicant_outcome_admin_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : 'modal') . "', '', '440', '630', '', 'form_applicant_outcome_admin', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_outcome_grid_line . "\" style=\"" . $this->Css_Cmp['css_outcome_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+   $nm_saida->saida("<a  id=\"id_sc_field_outcome_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_applicant_outcome_admin_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : 'modal') . "', '', '440', '630', '', 'form_applicant_outcome_admin', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_outcome_grid_line . "\" style=\"" . $this->Css_Cmp['css_outcome_grid_line'] . "\">" . $conteudo . "</a>\r\n");
 } else {
-   $nm_saida->saida(" $conteudo \r\n");
+   $nm_saida->saida(" <span id=\"id_sc_field_outcome_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
    $nm_saida->saida("</TD>\r\n");
       }
@@ -4881,6 +4887,10 @@ $_SESSION['scriptcase']['auditionee_set_outcome_admin']['contr_erro'] = 'off';
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

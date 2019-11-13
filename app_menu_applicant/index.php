@@ -818,7 +818,7 @@ $this->nm_bases_vfp       = array("vfp");
 $this->nm_bases_odbc      = array("odbc");
 $this->nm_bases_progress  = array("progress", "pdo_progress_odbc");
 $_SESSION['scriptcase']['sc_num_page'] = 1;
-$_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNwZSBiHANOHuBOHgvOZSNiDWF/VEFGD9XOH9FaD1rKV5BODEBOHAFKV5FqHIJeHQJKDuFaHANOD5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgBODkXKDWFGDoBqHQBiDuFaHIvsV5XGDMvOV9BUDWFaHMX7HQNmZkBiHAzGZMFaHgNODkB/HEFqHMFGHQFYDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNwZ1BiHANOHQBiDMBYVkJ3DuFYHIBqD9XsDuBqD1vOD5F7DMzGVcFeDWFYHMBiD9BsVIraD1rwV5X7HgBeHEBUDWF/VoB/DcXOZSX7HANOV5BOHuNODkBOV5F/VEBiDcJUZkFGHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HArYV5JeHuzGVcXKV5X7DoXGDcJUZ1B/Z1NOZMFaDMNKZSXeDWX7DoBOD9NwDQJsHIBeD5BqHgvsDkBODWFaDoJsD9BiZ1FUZ1NOD5BqDEBeHEBUDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDuFGVoX7HQXGZ1FaHArYD5F7HgveDkB/DWX7HIFGHQFYH9FUDSN7D5rqDMzGVIBOV5F/HIX7D9BiZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQNmDuBqDSvCVWJwDMzGVcBUH5FqHIBiHQBiZ1FUZ1rYHuFUDMvCHENiH5FGZuFaHQNmDQBOZ1BYHQFaDMrYV9BUDWFYHMX7HQNwZ1FUZ1rYHuB/HgrKZSJqH5FYHMBiHQJKZ9rqD1BeD5rqHuvmVcBOH5B7VoBqHQXOZ1BiDSvmD5XGHgveVkJ3V5B3DoJeHQFYZ9rqZ1BYHQrqDMBODkB/DWFaHIraHQNwVIraZ1vOZMB/HgNKDkXKDWFqHMBqDcXGDuBOZ1zGVWBqHgrwVcXKHEFYHMXGHQBqZ1FUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDuBqDSvCV5BqDMzGVIBsDuFqHIJsHQBiZkFUZ1rYHuJwHgBeVkJqDWr/HIBODcXGDQBOZ1BYHuraDMNOV9BUDWJeHMX7HQBiVIraZ1rYD5JwHgBeDkXKDWFqHMFaHQXsDuBOD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDErKHEFiDWX7ZuFaD9JKDQB/Z1rwHuF7DMvsZSrCV5X7HIBiD9XOZSB/Z1BeV5BODErKVkXeDWX7VoFGDcJUDQFaHAN7D5BqHuNOVcFKDWFYVoFGDcBwZ1FUHIveZMXGHgBYHErsDWB3VoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7DoB/D9NmZSFGHIrwVWXGHuzGVIBOV5X7VoraD9BiZ1FUZ1BeD5JeDMBYZSJGDWr/VoXGD9NwDQJwD1veV5FGHgvsVcFCH5FqDoraHQFYVIJwD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuvmVcFKV5X7VoFGD9BiZ1X7Z1BeHuXGHgBeHEJqDWr/HIFUHQFYZSBiHIvsD5F7DMvOVcBUDWB3VoF7HQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWB3VoX7HQNwZkFGHArKV5FUDMrYZSXeV5FqHIJsHQJKZSFGHABYHuF7DMvsV9BUH5FqHMF7HQBiVINUHIveZMBODMvCZSJqDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFeV5F/VoB/D9XOZSB/HArYD5JeDEBeHEFKDWF/HMFGD9JKDQJsHArYD5BOHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBYHAFKV5B3DoBO";
+$_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBiDuFaHAN7HuBiHgvsVIBsH5FqHMFaHQXOH9BqHAvmV5X7HgNOHArCV5FaHMB/D9NmDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiDcBqZ1BOHAzGZMFaDMveVkXeV5FqHMX7HQXsH9X7D1veHuBiDMvOVIFCH5XCDoF7D9XOZ1BiDSrYV5BOHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgvsVcFCDWXCVorqDcNwH9B/Z1rYV5FaDEBOVkJGDWFqDoFUDcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1B/Z1NOZMB/HgvCVkJGDWF/VoJeD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBsVINUHAzGD5BOHgveHArCDurmDoBqHQBiDuBqHArYHuBODMvOV9BUDWXKVEraHQXGVIJsDSrYHuX7HgNOHArCDWF/VoBiDcJUZSX7Z1BYHuFaHgrwVIB/DWF/DoXGD9XOZSBqZ1BeZMXGDErKZSJqDuJeHIB/DcXOZSFGD1BeHuBODMBYVcFCDWFaDoF7HQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoBODcBwDQFUZ1rwV5X7HuzGVIBOV5X7DoJsD9XGZSB/HArYHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOV9BUHEX/VoF7HQNmZkBiHAzGD5JeHgBeHEFiV5B3DoF7D9XsDuFaHAveHuJeDMBOVIB/V5X7HIBiHQXGH9BOHIBeHQBiDEBeHEJGH5FGDoBODcBwZ9F7D1BeHuJeDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
  $glo_senha_protect = (isset($_SESSION['scriptcase']['glo_senha_protect'])) ? $_SESSION['scriptcase']['glo_senha_protect'] : "S";
 if (isset($_SESSION['scriptcase']['nm_sc_retorno']) && !empty($_SESSION['scriptcase']['nm_sc_retorno']) && isset($_SESSION['scriptcase']['app_menu_applicant']['glo_nm_conexao']) && !empty($_SESSION['scriptcase']['app_menu_applicant']['glo_nm_conexao']))
 { 
@@ -1071,7 +1071,7 @@ if (isset($_SESSION['scriptcase']['sc_apl_seg']['app_Login']) && strtolower($_SE
     $app_menu_applicant_menuData['data'] .= "item_8|..|" . $nm_var_lab[6] . "|app_menu_applicant_form_php.php?sc_item_menu=item_8&sc_apl_menu=app_Login&sc_apl_link=" . urlencode($app_menu_applicant_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['app_menu_applicant']['glo_nm_usa_grupo'] . "|" . $this->Nm_lang['lang_exit'] . "||" . $this->app_menu_applicant_target('_parent') . "|" . "\n";
 }
 
-$app_menu_applicant_menuData['data'] .= "item_10|.|" . $nm_var_lab[7] . "|app_menu_applicant_form_php.php?sc_item_menu=item_10&sc_apl_menu=http://www.londonstudiocentre.org&sc_apl_link=" . urlencode($app_menu_applicant_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['app_menu_applicant']['glo_nm_usa_grupo'] . "|" . $nm_var_hint[7] . "||" . $this->app_menu_applicant_target('_blank') . "|" . "\n";
+$app_menu_applicant_menuData['data'] .= "item_10|.|" . $nm_var_lab[7] . "|app_menu_applicant_form_php.php?sc_item_menu=item_10&sc_apl_menu=http://ams.spaa.ae&sc_apl_link=" . urlencode($app_menu_applicant_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['app_menu_applicant']['glo_nm_usa_grupo'] . "|" . $nm_var_hint[7] . "||" . $this->app_menu_applicant_target('_blank') . "|" . "\n";
 
 $app_menu_applicant_menuData['data'] = array();
 $str_disabled = "N";
@@ -1333,7 +1333,7 @@ if (!isset($_SESSION['scriptcase']['sc_apl_seg']['app_Login']) || strtolower($_S
         'icon_color_disabled'     => "",
     );
 $str_disabled = "N";
-$str_link = "app_menu_applicant_form_php.php?sc_item_menu=item_10&sc_apl_menu=http://www.londonstudiocentre.org&sc_apl_link=" . urlencode($app_menu_applicant_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['app_menu_applicant']['glo_nm_usa_grupo'] . "";
+$str_link = "app_menu_applicant_form_php.php?sc_item_menu=item_10&sc_apl_menu=http://ams.spaa.ae&sc_apl_link=" . urlencode($app_menu_applicant_menuData['url']['link']) . "&sc_usa_grupo=" . $_SESSION['scriptcase']['app_menu_applicant']['glo_nm_usa_grupo'] . "";
 $str_icon = "";
 $icon_aba = "";
 $icon_aba_inactive = "";
@@ -2088,10 +2088,7 @@ function app_menu_applicant_escreveMenu($arr_menu, $path_imag_cab = '', $strAlig
         $aMenuItemList[] = $resto;
     }
 ?>
-        <td class='sc-layer-1' style='width:6.13%;text-align:left;'>
-                        <span class='sc-layer-1-0' style='font-size: 16px;background-color: #b50606;font-family: ;color: #000000;'>   <img src="<?php echo $path_imag_cab ?>/grp__NM__ico__NM__Logo 67x67.png" border="0"/></span><br/>
-
-        </td><td <?php echo $strAlign; ?>>
+<td <?php echo $strAlign; ?>>
   <div class='mainmenu menu--horizontal'>
       <div class='menu__toggle'>
           <span></span>
@@ -2147,11 +2144,7 @@ function app_menu_applicant_escreveMenu($arr_menu, $path_imag_cab = '', $strAlig
                 if ($hasChildrens) {
                     $str_item .= "<span>";
                 }
-                if($aMenuItemList[$i]['display'] == 'only_text')
-                {
-                    $str_item .= $aMenuItemList[$i]['label'];
-                }
-                elseif($aMenuItemList[$i]['display'] == 'only_img' && $iconHtml != '')
+                if($aMenuItemList[$i]['display'] == 'only_img' && $iconHtml != '')
                 {
                     $str_item .= '<img src=' . $iconHtml . ' border="0" />';
                 }
@@ -2187,6 +2180,10 @@ function app_menu_applicant_escreveMenu($arr_menu, $path_imag_cab = '', $strAlig
                     {
                         $str_item .= $aMenuItemList[$i]['label'] ." <i class='icon_fa ". $aMenuItemList[$i]['icon_fa'] ."'></i>";
                     }
+                }
+                else
+                {
+                    $str_item .= $aMenuItemList[$i]['label'];
                 }
                 if ($hasChildrens) {
                     $str_item .= "</span>";

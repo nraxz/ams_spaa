@@ -3783,7 +3783,7 @@ $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this
            $nm_saida->saida("       $(\"#sc_id_order_campos_placeholder_\" + sPos).find(\"td\").html(\"\");\r\n");
            $nm_saida->saida("     }\r\n");
            $nm_saida->saida("   </script>\r\n");
-      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['ajax_nav'] && !$this->Ini->sc_export_ajax && !$_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['doc_word'])
+      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['ajax_nav'] && !$this->Ini->sc_export_ajax && !$this->Ini->Export_html_zip && !$_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['doc_word'])
       {
            $nm_saida->saida("   <script type=\"text/javascript\"> \r\n");
            $nm_saida->saida("   var Dyn_Ini   = true;\r\n");
@@ -4841,7 +4841,7 @@ $nm_saida->saida("       scJs_alert('" . $mensagem . "', $jsonParams);\r\n");
       {
           $this->grafico_pdf_flash();
       }
-      elseif ($_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['opcao'] == "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['graf_pdf'] == "S")
+      elseif ($this->Ini->Export_html_zip || ($_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['opcao'] == "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['graf_pdf'] == "S"))
       {
           $this->grafico_pdf();
       }
@@ -5018,19 +5018,19 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['
           $nm_saida->saida("       {\r\n");
           $nm_saida->saida("           document.Fprint.tp_print.value = tp;\r\n");
           $nm_saida->saida("           document.Fprint.cor_print.value = cor;\r\n");
-   $nm_saida->saida("           document.Fprint.nmgp_tipo_print.value = tp;\r\n");
-   $nm_saida->saida("           document.Fprint.nmgp_cor_print.value = cor;\r\n");
+          $nm_saida->saida("           document.Fprint.nmgp_tipo_print.value = tp;\r\n");
+          $nm_saida->saida("           document.Fprint.nmgp_cor_print.value = cor;\r\n");
           $nm_saida->saida("           document.Fprint.SC_module_export.value = SC_module_export;\r\n");
           $nm_saida->saida("           document.Fprint.nmgp_password.value = password;\r\n");
-   $nm_saida->saida("           if (password != \"\")\r\n");
-   $nm_saida->saida("           {\r\n");
-   $nm_saida->saida("               document.Fprint.target = '_self';\r\n");
-   $nm_saida->saida("               document.Fprint.action = \"application_by_program_db_export_ctrl.php\";\r\n");
-   $nm_saida->saida("           }\r\n");
-   $nm_saida->saida("           else\r\n");
-   $nm_saida->saida("           {\r\n");
+          $nm_saida->saida("           if (password != \"\")\r\n");
+          $nm_saida->saida("           {\r\n");
+          $nm_saida->saida("               document.Fprint.target = '_self';\r\n");
+          $nm_saida->saida("               document.Fprint.action = \"application_by_program_db_export_ctrl.php\";\r\n");
+          $nm_saida->saida("           }\r\n");
+          $nm_saida->saida("           else\r\n");
+          $nm_saida->saida("           {\r\n");
           $nm_saida->saida("               window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
-   $nm_saida->saida("           }\r\n");
+          $nm_saida->saida("           }\r\n");
           $nm_saida->saida("           document.Fprint.submit() ;\r\n");
           $nm_saida->saida("       }\r\n");
           $nm_saida->saida("   }\r\n");
@@ -5726,8 +5726,10 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['application_by_program_db']['
           $Cmp_format = "quebra_" . $Name_orig;
           $Format_tst = $this->Ini->Get_Gb_date_format('sc_free_group_by', $cmp_gb);
           $Prefix_dat = $this->Ini->Get_Gb_prefix_date_format('sc_free_group_by', $cmp_gb);
-          $Cmp_arg    = $this->Ini->Get_arg_groupby($$Cmp_temp, $Format_tst);
-          $Cmp_formt  = $this->Ini->GB_date_format($$Cmp_format, $Format_tst, $Prefix_dat);
+           $TP_Time    = (in_array($Cmp_temp, $this->Ini->Cmp_Sql_Time)) ? "0000-00-00 " : "";
+          $Cmp_arg    = $this->Ini->Get_arg_groupby($TP_Time . $$Cmp_temp, $Format_tst);
+          $TP_Time    = (in_array($cmp_gb, $this->Ini->Cmp_Sql_Time)) ? "0000-00-00 " : "";
+          $Cmp_formt  = $this->Ini->GB_date_format($TP_Time . $$Cmp_format, $Format_tst, $Prefix_dat);
           $contr_arr .= "['" . $Cmp_arg . "']";
           $arr_name   = "array_total_" . $cmp_gb . $contr_arr;
           $cmp_look   = "Cmp_formt";

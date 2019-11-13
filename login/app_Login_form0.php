@@ -28,6 +28,7 @@ header("X-XSS-Protection: 1; mode=block");
   var sc_pathToTB = '<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/';
   var sc_tbLangClose = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_close"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
   var sc_tbLangEsc = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_esc"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
+  var sc_userSweetAlertDisplayed = false;
  </SCRIPT>
  <SCRIPT type="text/javascript">
   var sc_blockCol = '<?php echo $this->Ini->Block_img_col; ?>';
@@ -495,7 +496,10 @@ if ($this->record_insert_ok)
 {
 ?>
 <script type="text/javascript">
-_scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmi']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+if (typeof sc_userSweetAlertDisplayed === "undefined" || !sc_userSweetAlertDisplayed) {
+    _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmi']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+}
+sc_userSweetAlertDisplayed = false;
 </script>
 <?php
 }
@@ -503,7 +507,10 @@ if ($this->record_delete_ok)
 {
 ?>
 <script type="text/javascript">
-_scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmd']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+if (typeof sc_userSweetAlertDisplayed === "undefined" || !sc_userSweetAlertDisplayed) {
+    _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmd']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+}
+sc_userSweetAlertDisplayed = false;
 </script>
 <?php
 }
@@ -601,7 +608,7 @@ _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm
 <?php } else { ?>
 <span id="id_read_on_pswd" class="sc-ui-readonly-pswd css_pswd_line" style="<?php echo $sStyleReadLab_pswd; ?>"><?php echo $this->form_encode_input($this->pswd); ?></span><span id="id_read_off_pswd" class="css_read_off_pswd" style="white-space: nowrap;<?php echo $sStyleReadInp_pswd; ?>">
  <input class="sc-js-input scFormObjectOdd css_pswd_obj" style="" id="id_sc_field_pswd" type=text name="pswd" value="<?php echo $this->form_encode_input($pswd) ?>"
- size=10 maxlength=40 alt="{datatype: 'text', maxLength: 40, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
+ size=10 maxlength=40 alt="{datatype: 'text', maxLength: 40, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: true, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none; position: absolute" id="id_error_display_pswd_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_pswd_text"></span></td></tr></table></td></tr></table></TD>
    <?php }?>
 
@@ -655,7 +662,7 @@ _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm
 <?php } else { ?>
 <span id="id_read_on_user_email" class="sc-ui-readonly-user_email css_user_email_line" style="<?php echo $sStyleReadLab_user_email; ?>"><?php echo $this->form_encode_input($this->user_email); ?></span><span id="id_read_off_user_email" class="css_read_off_user_email" style="white-space: nowrap;<?php echo $sStyleReadInp_user_email; ?>">
  <input class="sc-js-input scFormObjectOdd css_user_email_obj" style="" id="id_sc_field_user_email" type=text name="user_email" value="<?php echo $this->form_encode_input($user_email) ?>"
- size=10 maxlength=50 alt="{datatype: 'text', maxLength: 50, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
+ size=10 maxlength=50 alt="{datatype: 'text', maxLength: 50, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: true, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none; position: absolute" id="id_error_display_user_email_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_user_email_text"></span></td></tr></table></td></tr></table></TD>
    <?php }?>
 

@@ -35,6 +35,7 @@ header("X-XSS-Protection: 1; mode=block");
   var sc_pathToTB = '<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/';
   var sc_tbLangClose = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_close"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
   var sc_tbLangEsc = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_esc"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
+  var sc_userSweetAlertDisplayed = false;
  </SCRIPT>
  <SCRIPT type="text/javascript">
   var sc_blockCol = '<?php echo $this->Ini->Block_img_col; ?>';
@@ -866,7 +867,10 @@ if ($this->record_insert_ok)
 {
 ?>
 <script type="text/javascript">
-_scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmi']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+if (typeof sc_userSweetAlertDisplayed === "undefined" || !sc_userSweetAlertDisplayed) {
+    _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmi']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+}
+sc_userSweetAlertDisplayed = false;
 </script>
 <?php
 }
@@ -874,7 +878,10 @@ if ($this->record_delete_ok)
 {
 ?>
 <script type="text/javascript">
-_scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmd']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+if (typeof sc_userSweetAlertDisplayed === "undefined" || !sc_userSweetAlertDisplayed) {
+    _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmd']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+}
+sc_userSweetAlertDisplayed = false;
 </script>
 <?php
 }
@@ -1501,6 +1508,7 @@ $register__look = "";
               $in_profile_ = $this->Ini->root  . $this->Ini->path_imag_cab . "/sys__NM__bg__NM__GRID-128.png"; 
               $img_time = filemtime($this->Ini->root . $this->Ini->path_imag_cab . "/sys__NM__bg__NM__GRID-128.png"); 
               $out_profile_ = str_replace("/", "_", $this->Ini->path_imag_cab); 
+              $prt_profile_ = "sc_" . $out_profile_ . "_profile__2828_" . $img_time . "_sys__NM__bg__NM__GRID-128.png";
               $out_profile_ = $this->Ini->path_imag_temp . "/sc_" . $out_profile_ . "_profile__2828_" . $img_time . "_sys__NM__bg__NM__GRID-128.png";
               if (!is_file($this->Ini->root . $out_profile_)) 
               {  
@@ -1510,7 +1518,13 @@ $register__look = "";
                   $sc_obj_img->setManterAspecto(true);
                   $sc_obj_img->createImg($this->Ini->root . $out_profile_);
               } 
-              $profile_ = "<img  border=\"0\" src=\"" . $out_profile_ . "\"/>" ; 
+              if ($this->Ini->Export_img_zip) {
+                  $this->Ini->Img_export_zip[] = $this->Ini->root . $out_profile_;
+                  $profile_ = "<img  border=\"0\" src=\"" . $prt_profile_ . "\"/>" ; 
+              }
+              else {
+                  $profile_ = "<img  border=\"0\" src=\"" . $out_profile_ . "\"/>" ; 
+              }
           } 
 ?>
 <span id="id_imghtml_profile_<?php echo $sc_seq_vert; ?>"><a href="javascript:nm_gp_submit('<?php echo $this->Ini->link_admin_view_applicant_profile_cons . "', '$this->nm_location', 'glo_login*scin" . $_SESSION['sc_session'][$this->Ini->sc_page]['form_application_register_admin']['dados_form'][$sc_seq_vert]['login_'] . "*scoutNMSC_inicial*scininicio*scout', 'inicio', '_blank', '0', '0', 'admin_view_applicant_profile')\"><font color=\"" . $this->Ini->cor_link_dados . "\">" . $profile_ ; ?></font></a></span>

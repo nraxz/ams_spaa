@@ -526,6 +526,54 @@ elseif ('' != $miniCalendarButton[0]) {
   });
 } // scJQCalendarAdd
 
+function scJQPopupAdd(iSeqRow) {
+  $('.scFormPopupBubble' + iSeqRow).each(function() {
+    var distance = 10;
+    var time = 250;
+    var hideDelay = 500;
+    var hideDelayTimer = null;
+    var beingShown = false;
+    var shown = false;
+    var trigger = $('.scFormPopupTrigger', this);
+    var info = $('.scFormPopup', this).css('opacity', 0);
+    $([trigger.get(0), info.get(0)]).mouseover(function() {
+      if (hideDelayTimer) clearTimeout(hideDelayTimer);
+      if (beingShown || shown) {
+        // don't trigger the animation again
+        return;
+      } else {
+        // reset position of info box
+        beingShown = true;
+        info.css({
+          top: trigger.position().top - (info.height() - trigger.height()),
+          left: trigger.position().left - ((info.width() - trigger.width()) / 2),
+          display: 'block'
+        }).animate({
+          top: '-=' + distance + 'px',
+          opacity: 1
+        }, time, 'swing', function() {
+          beingShown = false;
+          shown = true;
+        });
+      }
+      return false;
+      }).mouseout(function() {
+      if (hideDelayTimer) clearTimeout(hideDelayTimer);
+      hideDelayTimer = setTimeout(function() {
+        hideDelayTimer = null;
+        info.animate({
+          top: '-=' + distance + 'px',
+          opacity: 0
+        }, time, 'swing', function() {
+          shown = false;
+          info.css('display', 'none');
+        });
+      }, hideDelay);
+      return false;
+    });
+  });
+} // scJQPopupAdd
+
 function scJQUploadAdd(iSeqRow) {
 } // scJQUploadAdd
 
@@ -680,6 +728,7 @@ function scJQElementsAdd(iLine) {
   scJQEventsAdd(iLine);
   scEventControl_init(iLine);
   scJQCalendarAdd(iLine);
+  scJQPopupAdd(iLine);
   scJQUploadAdd(iLine);
   scJQSlideAdd(iLine);
   scJQSelect2Add(iLine);

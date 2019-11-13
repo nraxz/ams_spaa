@@ -344,8 +344,8 @@ class dashboard_ini {
         $this->nm_dt_criacao   = "20191022";
         $this->nm_hr_criacao   = "110648";
         $this->nm_autor_alt    = "admin";
-        $this->nm_dt_ult_alt   = "20191025";
-        $this->nm_hr_ult_alt   = "153312";
+        $this->nm_dt_ult_alt   = "20191113";
+        $this->nm_hr_ult_alt   = "121452";
         list($NM_usec, $NM_sec) = explode(" ", microtime());
         $this->nm_timestamp  = (float) $NM_sec;
 

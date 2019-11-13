@@ -46,6 +46,7 @@
           $alertParams = isset($this->nm_params_alert[$i_alert]) ? $this->sc_ajax_alert_params($this->nm_params_alert[$i_alert]) : array();
           $jsonParams  = json_encode($alertParams);
           echo "scJs_alert('" . html_entity_decode($mensagem, ENT_COMPAT, $_SESSION['scriptcase']['charset']) . "', null, $jsonParams);";
+          echo "sc_userSweetAlertDisplayed = true;";
       }
   }
 ?> 

@@ -3224,7 +3224,7 @@ $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this
            $nm_saida->saida("       $(\"#sc_id_order_campos_placeholder_\" + sPos).find(\"td\").html(\"\");\r\n");
            $nm_saida->saida("     }\r\n");
            $nm_saida->saida("   </script>\r\n");
-      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ajax_nav'] && !$this->Ini->sc_export_ajax && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['doc_word'])
+      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ajax_nav'] && !$this->Ini->sc_export_ajax && !$this->Ini->Export_html_zip && !$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['doc_word'])
       {
            $nm_saida->saida("   <script type=\"text/javascript\"> \r\n");
            $nm_saida->saida("   var Dyn_Ini   = true;\r\n");
@@ -4038,19 +4038,19 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['
       $nm_saida->saida("       {\r\n");
       $nm_saida->saida("           document.Fprint.tp_print.value = tp;\r\n");
       $nm_saida->saida("           document.Fprint.cor_print.value = cor;\r\n");
-   $nm_saida->saida("           document.Fprint.nmgp_tipo_print.value = tp;\r\n");
-   $nm_saida->saida("           document.Fprint.nmgp_cor_print.value = cor;\r\n");
+      $nm_saida->saida("           document.Fprint.nmgp_tipo_print.value = tp;\r\n");
+      $nm_saida->saida("           document.Fprint.nmgp_cor_print.value = cor;\r\n");
       $nm_saida->saida("           document.Fprint.SC_module_export.value = SC_module_export;\r\n");
       $nm_saida->saida("           document.Fprint.nmgp_password.value = password;\r\n");
-   $nm_saida->saida("           if (password != \"\")\r\n");
-   $nm_saida->saida("           {\r\n");
-   $nm_saida->saida("               document.Fprint.target = '_self';\r\n");
-   $nm_saida->saida("               document.Fprint.action = \"grid_admin_all_applicants_export_ctrl.php\";\r\n");
-   $nm_saida->saida("           }\r\n");
-   $nm_saida->saida("           else\r\n");
-   $nm_saida->saida("           {\r\n");
+      $nm_saida->saida("           if (password != \"\")\r\n");
+      $nm_saida->saida("           {\r\n");
+      $nm_saida->saida("               document.Fprint.target = '_self';\r\n");
+      $nm_saida->saida("               document.Fprint.action = \"grid_admin_all_applicants_export_ctrl.php\";\r\n");
+      $nm_saida->saida("           }\r\n");
+      $nm_saida->saida("           else\r\n");
+      $nm_saida->saida("           {\r\n");
       $nm_saida->saida("               window.open('','jan_print','location=no,menubar=no,resizable,scrollbars,status=no,toolbar=no');\r\n");
-   $nm_saida->saida("           }\r\n");
+      $nm_saida->saida("           }\r\n");
       $nm_saida->saida("           document.Fprint.submit() ;\r\n");
       $nm_saida->saida("       }\r\n");
       $nm_saida->saida("   }\r\n");

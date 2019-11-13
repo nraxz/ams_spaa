@@ -38,6 +38,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
   var sc_pathToTB = '<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/';
   var sc_tbLangClose = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_close"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
   var sc_tbLangEsc = "<?php echo html_entity_decode($this->Ini->Nm_lang["lang_tb_esc"], ENT_COMPAT, $_SESSION["scriptcase"]["charset"]) ?>";
+  var sc_userSweetAlertDisplayed = false;
  </SCRIPT>
  <SCRIPT type="text/javascript">
   var sc_blockCol = '<?php echo $this->Ini->Block_img_col; ?>';
@@ -826,7 +827,10 @@ if ($this->record_insert_ok)
 {
 ?>
 <script type="text/javascript">
-_scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmi']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+if (typeof sc_userSweetAlertDisplayed === "undefined" || !sc_userSweetAlertDisplayed) {
+    _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmi']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+}
+sc_userSweetAlertDisplayed = false;
 </script>
 <?php
 }
@@ -834,7 +838,10 @@ if ($this->record_delete_ok)
 {
 ?>
 <script type="text/javascript">
-_scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmd']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+if (typeof sc_userSweetAlertDisplayed === "undefined" || !sc_userSweetAlertDisplayed) {
+    _scAjaxShowMessage({message: "<?php echo $this->form_encode_input($this->Ini->Nm_lang['lang_othr_ajax_frmd']) ?>", title: "", isModal: false, timeout: sc_ajaxMsgTime, showButton: false, buttonLabel: "Ok", topPos: 0, leftPos: 0, width: 0, height: 0, redirUrl: "", redirTarget: "", redirParam: "", showClose: false, showBodyIcon: true, isToast: true, type: "success"});
+}
+sc_userSweetAlertDisplayed = false;
 </script>
 <?php
 }
@@ -1188,18 +1195,20 @@ else
    }  ; 
    echo " </select></span>" ; 
    echo "\r" ; 
-   if (isset($this->Ini->sc_lig_md5["form_venue_admin"]) && $this->Ini->sc_lig_md5["form_venue_admin"] == "S") {
-       $Parms_Lig  = "nm_evt_ret_edit*scindo_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id*scoutnmgp_url_saida*scinmodal*scoutnmgp_outra_jan*scintrue*scoutsc_redir_atualiz*scinok*scout";
-       $Md5_Lig    = "@SC_par@" . $this->form_encode_input($this->Ini->sc_page) . "@SC_par@form_audition_admin_mob@SC_par@" . md5($Parms_Lig);
-       $_SESSION['sc_session'][$this->Ini->sc_page]['form_audition_admin_mob']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
-   } else {
-       $Md5_Lig  = "nm_evt_ret_edit*scindo_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id*scoutnmgp_url_saida*scinmodal*scoutnmgp_outra_jan*scintrue*scoutsc_redir_atualiz*scinok*scout";
-   }
- ?><?php echo nmButtonOutput($this->arr_buttons, "bform_lookuplink", "", "", "fldedt_venue_id", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->link_form_venue_admin_edit . "?script_case_init=" . $this->Ini->sc_page . "&script_case_session=" . session_id() . "&nmgp_parms=" . $Md5_Lig . "&SC_lig_apl_orig=form_audition_admin_mob&KeepThis=true&TB_iframe=true&height=700&width=700&modal=true", "");?>
-<?php    echo "</span>";
+   echo "</span>";
 ?> 
 <?php  }?>
-</td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_venue_id_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_venue_id_text"></span></td></tr></table></td></tr></table> </TD>
+<span class="scFormPopupBubble" style="display: inline-block"><span class="scFormPopupTrigger"><?php echo nmButtonOutput($this->arr_buttons, "bfieldhelp", "return false;", "return false;", "", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "");?>
+</span><table class="scFormPopup"><tbody><?php
+if (isset($_SESSION['scriptcase']['reg_conf']['html_dir']) && $_SESSION['scriptcase']['reg_conf']['html_dir'] == " DIR='RTL'") {
+?>
+<tr><td class="scFormPopupTopRight scFormPopupCorner"></td><td class="scFormPopupTop"></td><td class="scFormPopupTopLeft scFormPopupCorner"></td></tr><tr><td class="scFormPopupRight"></td><td class="scFormPopupContent"><p>If you do not see venue on the list then please create new venue details from main menu Venue & Dates/Venue.</p></td><td class="scFormPopupLeft"></td></tr><tr><td class="scFormPopupBottomRight scFormPopupCorner"></td><td class="scFormPopupBottom"><img src="<?php echo $this->Ini->path_icones . '/' . $this->Ini->Bubble_tail; ?>" /></td><td class="scFormPopupBottomLeft scFormPopupCorner"></td></tr><?php
+} else {
+?>
+<tr><td class="scFormPopupTopLeft scFormPopupCorner"></td><td class="scFormPopupTop"></td><td class="scFormPopupTopRight scFormPopupCorner"></td></tr><tr><td class="scFormPopupLeft"></td><td class="scFormPopupContent"><p>If you do not see venue on the list then please create new venue details from main menu Venue & Dates/Venue.</p></td><td class="scFormPopupRight"></td></tr><tr><td class="scFormPopupBottomLeft scFormPopupCorner"></td><td class="scFormPopupBottom"><img src="<?php echo $this->Ini->path_icones . '/' . $this->Ini->Bubble_tail; ?>" /></td><td class="scFormPopupBottomRight scFormPopupCorner"></td></tr><?php
+}
+?>
+</tbody></table></span></td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_venue_id_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_venue_id_text"></span></td></tr></table></td></tr></table> </TD>
    <?php }?>
 
 
@@ -1349,7 +1358,7 @@ $tmp_form_data = str_replace(';'   , ' '                                       ,
 <div id="sc-ui-slide-audition_fee"></div>
 </div>
 </span><?php } ?>
-<span class="css_audition_fee_label scFormDataHelpOdd">&nbsp;GBP
+<span class="css_audition_fee_label scFormDataHelpOdd">&nbsp;$USD
 </span></td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_audition_fee_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_audition_fee_text"></span></td></tr></table></td></tr></table> </TD>
    <?php }?>
 
@@ -1795,18 +1804,20 @@ else
    }  ; 
    echo " </select></span>" ; 
    echo "\r" ; 
-   if (isset($this->Ini->sc_lig_md5["form_audition_contact_admin"]) && $this->Ini->sc_lig_md5["form_audition_contact_admin"] == "S") {
-       $Parms_Lig  = "nm_evt_ret_edit*scindo_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person*scoutnmgp_url_saida*scinmodal*scoutnmgp_outra_jan*scintrue*scoutsc_redir_atualiz*scinok*scout";
-       $Md5_Lig    = "@SC_par@" . $this->form_encode_input($this->Ini->sc_page) . "@SC_par@form_audition_admin_mob@SC_par@" . md5($Parms_Lig);
-       $_SESSION['sc_session'][$this->Ini->sc_page]['form_audition_admin_mob']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
-   } else {
-       $Md5_Lig  = "nm_evt_ret_edit*scindo_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person*scoutnmgp_url_saida*scinmodal*scoutnmgp_outra_jan*scintrue*scoutsc_redir_atualiz*scinok*scout";
-   }
- ?><?php echo nmButtonOutput($this->arr_buttons, "bform_lookuplink", "", "", "fldedt_contact_person", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->link_form_audition_contact_admin_edit . "?script_case_init=" . $this->Ini->sc_page . "&script_case_session=" . session_id() . "&nmgp_parms=" . $Md5_Lig . "&SC_lig_apl_orig=form_audition_admin_mob&KeepThis=true&TB_iframe=true&height=600&width=600&modal=true", "");?>
-<?php    echo "</span>";
+   echo "</span>";
 ?> 
 <?php  }?>
-</td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_contact_person_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_contact_person_text"></span></td></tr></table></td></tr></table> </TD>
+<span class="scFormPopupBubble" style="display: inline-block"><span class="scFormPopupTrigger"><?php echo nmButtonOutput($this->arr_buttons, "bfieldhelp", "return false;", "return false;", "", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "");?>
+</span><table class="scFormPopup"><tbody><?php
+if (isset($_SESSION['scriptcase']['reg_conf']['html_dir']) && $_SESSION['scriptcase']['reg_conf']['html_dir'] == " DIR='RTL'") {
+?>
+<tr><td class="scFormPopupTopRight scFormPopupCorner"></td><td class="scFormPopupTop"></td><td class="scFormPopupTopLeft scFormPopupCorner"></td></tr><tr><td class="scFormPopupRight"></td><td class="scFormPopupContent"><p>Please create new contact from main menu Venue & Dates/Contact if the contact is not available on the list.</p></td><td class="scFormPopupLeft"></td></tr><tr><td class="scFormPopupBottomRight scFormPopupCorner"></td><td class="scFormPopupBottom"><img src="<?php echo $this->Ini->path_icones . '/' . $this->Ini->Bubble_tail; ?>" /></td><td class="scFormPopupBottomLeft scFormPopupCorner"></td></tr><?php
+} else {
+?>
+<tr><td class="scFormPopupTopLeft scFormPopupCorner"></td><td class="scFormPopupTop"></td><td class="scFormPopupTopRight scFormPopupCorner"></td></tr><tr><td class="scFormPopupLeft"></td><td class="scFormPopupContent"><p>Please create new contact from main menu Venue & Dates/Contact if the contact is not available on the list.</p></td><td class="scFormPopupRight"></td></tr><tr><td class="scFormPopupBottomLeft scFormPopupCorner"></td><td class="scFormPopupBottom"><img src="<?php echo $this->Ini->path_icones . '/' . $this->Ini->Bubble_tail; ?>" /></td><td class="scFormPopupBottomRight scFormPopupCorner"></td></tr><?php
+}
+?>
+</tbody></table></span></td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_contact_person_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_contact_person_text"></span></td></tr></table></td></tr></table> </TD>
    <?php }?>
 
 

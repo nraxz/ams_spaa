@@ -104,11 +104,7 @@
 					$aMenuItemList[$i]['link']   = '#';
 				}
 
-				if($aMenuItemList[$i]['display'] == 'only_text')
-				{
-				    $str_item = $aMenuItemList[$i]['label'];
-				}
-				elseif($aMenuItemList[$i]['display'] == 'only_img' && $iconHtml != '')
+				if($aMenuItemList[$i]['display'] == 'only_img' && $iconHtml != '')
 				{
 				    $str_item = $iconHtml;
 				}
@@ -137,6 +133,10 @@
 				    {
 				        $str_item = $aMenuItemList[$i]['label'] ." <i class='icon_fa ". $aMenuItemList[$i]['icon_fa'] ."'></i>";
 				    }
+				}
+				else
+				{
+				    $str_item = $aMenuItemList[$i]['label'];
 				}
 
 				if (isset($aMenuItemList[$i + 1]) && $aMenuItemList[$i]['level'] < $aMenuItemList[$i + 1]['level'])

@@ -355,13 +355,13 @@ if (!isset($_SESSION['scriptcase']['menu_admin']['session_timeout']['redir']) &&
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_venue_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
       }
-      if ($_SESSION['scriptcase']['sc_item_menu'] == "item_6")
-      {
-          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_audition_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
-      }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_7")
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_audition_contact") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
+      }
+      if ($_SESSION['scriptcase']['sc_item_menu'] == "item_6")
+      {
+          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("grid_audition_admin") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
       }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_2")
       {

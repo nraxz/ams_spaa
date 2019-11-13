@@ -2662,9 +2662,9 @@ $nm_saida->saida("     \r\n");
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?glo_auid?#?" . str_replace("'", "@aspass@", $this->id) . "?@?NM_btn_insert?#?S?@?NM_btn_update?#?S?@?NM_btn_delete?#?S?@?NM_btn_navega?#?N?@?";
        }
-$nm_saida->saida("<a href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_examiner_panel_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_examiner_panel', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_assign_panel_grid_line . "\">" . $conteudo . "</a>\r\n");
+$nm_saida->saida("<a  id=\"id_sc_field_assign_panel_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_form_examiner_panel_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', '', '0', '0', '', 'form_examiner_panel', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_assign_panel_grid_line . "\">" . $conteudo . "</a>\r\n");
 } else {
-$nm_saida->saida(" $conteudo \r\n");
+$nm_saida->saida(" <span id=\"id_sc_field_assign_panel_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
 $nm_saida->saida("    </TD>\r\n");
 $nm_saida->saida("   </tr><tr>\r\n");
@@ -2717,6 +2717,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->grid_audition_panel_admin, "controle"))
           {
               $this->grid_audition_panel_admin->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_panel_admin']['emb_lig_aba']))
@@ -2820,6 +2826,12 @@ $nm_saida->saida("     \r\n");
           {
               $this->grid_audition_contact_nested->controle();
           }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
+          }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_contact_nested']['emb_lig_aba']))
           { 
@@ -2921,6 +2933,12 @@ $nm_saida->saida("     \r\n");
           if (method_exists($this->grid_venue_audition_nested, "controle"))
           {
               $this->grid_venue_audition_nested->controle();
+          }
+          if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+          {
+              $this->Ini->conectDB();
+              $this->Db = $this->Ini->Db;
+              $this->Tot->Db = $this->Db;
           }
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_venue_audition_nested']['embutida'] = false;
           if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_venue_audition_nested']['emb_lig_aba']))
@@ -5833,6 +5851,10 @@ $nm_saida->saida(" }\r\n");
    $nm_saida->saida("      } else {\r\n");
    $nm_saida->saida("          document.F3.submit() ;\r\n");
    $nm_saida->saida("      } \r\n");
+   $nm_saida->saida("   } \r\n");
+   $nm_saida->saida("   function nm_open_export(arq_export) \r\n");
+   $nm_saida->saida("   { \r\n");
+   $nm_saida->saida("      window.location = arq_export;\r\n");
    $nm_saida->saida("   } \r\n");
    $nm_saida->saida("   function nm_submit_modal(parms, t_parent) \r\n");
    $nm_saida->saida("   { \r\n");

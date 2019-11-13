@@ -370,45 +370,6 @@ function nm_link_url(Sc_url)
     }
     return Sc_url;
 }
-function nm_display_youtube(Sc_url, Sc_mode, Sc_width, Sc_height)
-{
-    Sc_url = sc_trim(Sc_url);
-    if ('' == Sc_url)
-    {
-        return;
-    }
-    else if ('http://www.youtube.com' == Sc_url.substr(0, 22))
-    {
-        Sc_url = Sc_url.substr(22);
-    }
-    else if ('www.youtube.com' == Sc_url.substr(0, 15))
-    {
-        Sc_url = Sc_url.substr(15);
-    }
-    if ('/v/' == Sc_url.substr(0, 3))
-    {
-        Sc_url = Sc_url.substr(3);
-    }
-    else if ('/watch?v=' == Sc_url.substr(0, 9))
-    {
-        Sc_url = Sc_url.substr(9);
-    }
-    if (null != Sc_mode && 'modal' == Sc_mode)
-    {
-        if (null == Sc_width || 0 >= Sc_width)
-        {
-            Sc_width = 480;
-        }
-        if (null == Sc_height || 0 >= Sc_height)
-        {
-            Sc_height = 385;
-        }
-        $('#id_youtube_window').html("<object width=\"" + Sc_width + "\" height=\"" + Sc_height + "\"><param name=\"movie\" value=\"http://www.youtube.com/v/" + Sc_url + "\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/" + Sc_url + "\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\""  + Sc_width +  "\" height=\""  + Sc_height +  "\"></embed></object>");
-        tb_show('', '#TB_inline?height=' + (Sc_height + 10) + '&width=' + (Sc_width + 10) + '&inlineId=id_youtube_window', '');
-        return;
-    }
-    window.open('http://www.youtube.com/watch?v=' + Sc_url);
-}
 function sc_trim(str, chars) {
         return sc_ltrim(sc_rtrim(str, chars), chars);
 }

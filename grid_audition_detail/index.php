@@ -210,8 +210,8 @@ class grid_audition_detail_ini
       $this->nm_dt_criacao   = "20190904"; 
       $this->nm_hr_criacao   = "162622"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -291,6 +291,7 @@ class grid_audition_detail_ini
       $this->path_secure     = $this->root . $this->path_prod . "/secure";
       $this->path_adodb      = $this->root . $this->path_prod . "/third/adodb";
       $_SESSION['scriptcase']['dir_temp'] = $this->root . $this->path_imag_temp;
+      $this->Cmp_Sql_Time     = array('submitted');
       if (isset($_SESSION['scriptcase']['grid_audition_detail']['session_timeout']['lang'])) {
           $this->str_lang = $_SESSION['scriptcase']['grid_audition_detail']['session_timeout']['lang'];
       }
@@ -853,7 +854,7 @@ class grid_audition_detail_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_audition_detail']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_audition_detail']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9FYDuBqHABYVWXGDMrYZSJ3V5FYVorqDcFYZSBqHIrwHQFUHgBeVkXeDWFqHIFUDcXGDQX7D1BeV5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5BOHgvsHArsHEB3ZuB/HQNwDQBqD1BeHQFaDMBYVcFiV5FYHIJsDcFYZ1X7D1zGZMB/HgvsHEFKV5FqHMJsHQXODuBqHABYHuBODMrYVcFiV5FYHINUHQXOH9BOD1rwHuFUHgBeDkBsH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEBmVoX7HQNmZSBqZ1vmD5XGHgNODkBsV5FqHMX7HQFYZSFUHArYHQJwDMrYZSrCV5X/VENUHQNwVINUHArYHuBODMvCHAFKV5B7ZuXGDcXGDQB/DSBYHuF7DMvsVcFiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEB3DoXGHQNwH9BiHIBeHQNUDMBYV9FiV5FYHIBiHQJmZSBOHAN7HQBqDMvCHEFKV5FqHIFUHQXsDuBqHANOHuBODMBYZSrCV5FYVoBiHQJmVINUHArYHuB/HgBOHAFKH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqHgNKVcFiDur/VEX7HQBqZ1BiHAvmV5JeHgvCZSJ3V5XCVoB/D9NmDQFaZ1BYV5FUHuvmDkBOH5XKVoraD9BiVINUDSvOD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HIX7HQJmZ1BOHAN7HQBiHgNOZSJ3DurmVoFGHQBiDQBqHANKV5XGDMvmVcFKV5BmVoBqD9BsZkFGHArKD5NUHgvsZSJ3HEFaHMJsD9JKDQFGHANOHuBOHgvOV9BUHEX/VEF7HQNmZSB/HIBeHQBOHgNKHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMrwDkBODuX7VoX7D9JmZ1B/D1rKD5BiDMBYHEJGDWFqVoFaD9JKDQFGD1veD5BqHuNODkBOV5F/VoJwDcJUZ1F7HArYZMB/DMBYHEXeHEFqVoX7HQXGH9FGHAveD5BOHuzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBeHEFiV5B3DoF7D9XsDuFaHAveV5FaDMNOVcFeV5F/HIJeHQNmZ1BiDSvOZMXGDEBeHEFiV5FaHIJwHQNmH9X7HAvmVWJsDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiDuBqDSzGV5XGDMvOVcBUDWrmVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoXGHQXsZSX7D1veHuJwHgrwDkB/HEFYVoFGD9BiZkBiHArKHuB/HgNKZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMBYVIBODWFaVoX7DcJUZ1FaD1rwV5XGDMrYHENiH5FYVoJeDcJeDQX7HIrKD5BqDMvmVcFKV5BmVoBqD9BsZkFGHAvsZMJeHgvCDkXKDWBmZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9XsZSFUHANOHuX7HuzGVIB/HEFYDoX7D9XGZ1FGDSBeHuJsDEBOHArCV5B3ZuBODcBwH9BiHAveD5NUHgNKDkBOV5FYHMBiHQNmZSBqHArKV5FUDMrYZSXeV5FqHIJsD9JKDQJwHANKV5BOHgvOVIBsH5XCVoF7HQBsZ1rqHArYHQFaHgBOHEXeV5FaHINUHQJKH9X7HAvOV5BOHuBOVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcBwZSFGHANOD5BqHgrKVcXKV5X7VoB/D9BiZ1B/D1rKV5JeDEvsHEFiHEFqDoB/D9XsH9FUZ1rwD5JsHgrKVcFCH5XCVoB/D9JmZ1B/HINaV5FUDErKHEFiDuJeDoBOHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoFGD9XGZ1BOHANOHuFUDMBYHArsDWFqVoJwD9NwZSFGHIrKD5rqDMvsVcXKDWFYDoX7HQNwH9BqHArKV5FUDMrYZSXeV5FqHIJsHQNmDuBqDSvCVWJwDMzGVcBUH5FqHIBiHQBiZ1FUZ1rYHuFUDMvCHENiH5FGZuFaHQNmDQBOZ1BYHQFaDMrYV9BUDWFYHMX7HQNwZ1FUZ1rYHuB/HgrKZSJqH5FYHMBiHQJKZ9rqD1BeD5rqHuvmVcBOH5B7VoBqHQXOZ1BiDSvmD5XGHgveVkJ3V5B3DoJeHQFYZ9rqZ1BYHQrqDMBODkB/DWFaHIraHQNwVIraZ1vOZMB/HgNKDkXKDWFqHMBqDcXGDuBOZ1zGVWBqHgrwVcXKHEFYHMXGHQBqZ1FUD1rwV5FGDEBeHEXeH5X/DoF7HQNwDuBqDSvCV5BqDMzGVIBsDuFqHIJsHQBiZkFUZ1rYHuJwHgBeVkJqDWr/HIBODcXGDQBOZ1BYHuraDMNOV9BUDWJeHMX7HQBiVIraZ1rYD5JwHgBeDkXKDWFqHMFaHQXsDuBOD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDErKHEFiDWX7ZuFaD9JKDQB/Z1rwHuF7DMvsZSrCV5X7HIBiD9XOZSB/Z1BeV5BODErKVkXeDWX7VoFGDcJUDQFaHAN7D5BqHuNOVcFKDWFYVoFGDcBwZ1FUHIveZMXGHgBYHErsDWB3VoXGHQXGZSBiZ1N7D5JwHuBYVcFeV5FYVoB/D9JmH9B/D1zGD5FaDEvsDkXKHEB7DoB/D9NmZSFGHIrwVWXGHuzGVIBOV5X7VoraD9BiZ1FUZ1BeD5JeDMBYZSJGDWr/VoXGD9NwDQJwD1veV5FGHgvsVcFCH5FqDoraHQFYVIJwD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuvmVcFKV5X7VoFGD9BiZ1X7Z1BeHuXGHgBeHEJqDWr/HIFUHQFYZSBiHIvsD5F7DMvOVcBUDWB3VoF7HQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWXKVoF7HQNmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQNmH9X7HANOD5JsHgrKVIBsV5BmVEFGHQNwZ1BiHABYV5BOHgvsHErsDuXKZuBOHQFYDQFGHIrKD5XGDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_audition_detail']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_audition_detail']['initialize'])  
       { 
@@ -2290,9 +2291,7 @@ class grid_audition_detail_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "audition_fees";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "venue_id";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "audition_id";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "free_audition";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "program";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "specialise_area";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "payment_status";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "payment";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_audition_detail']['field_order'][] = "verify_notification";

@@ -290,12 +290,17 @@ class UploadHandler
             }
             if ('I' == $this->options['upload_file_type'])
             {
-                @copy($file_path, $this->options['upload_dir'] . sc_upload_unprotect_chars($file->sc_random));
+                $copyFile = $this->options['upload_dir'] . sc_upload_unprotect_chars($file->sc_random);
+                @copy($file_path, $copyFile);
+                $this->correctImageOrientation($copyFile);
             }
             $file_size = filesize($file_path);
             if ($file_size === $file->size) {
                 if ($this->options['orient_image']) {
                     $this->orient_image($file_path);
+                }
+                else {
+                    $this->correctImageOrientation($file_path);
                 }
                 // scriptcase
                 //$file->url = $this->options['upload_url'].rawurlencode($file->name);
@@ -449,6 +454,67 @@ class UploadHandler
         $base = basename($path);
         $base = str_replace($separator, "", $base);
         return $base;
+    }
+
+    private function correctImageOrientation($filename)
+    {
+        if (function_exists('exif_read_data')) {
+            $imageType = exif_imagetype($filename);
+            if (!in_array($imageType, [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP])) {
+                return;
+            }
+            switch ($imageType) {
+                case IMAGETYPE_GIF:
+                    $img = imagecreatefromgif($filename);
+                    break;
+                case IMAGETYPE_JPEG:
+                    $img = imagecreatefromjpeg($filename);
+                    break;
+                case IMAGETYPE_PNG:
+                    $img = imagecreatefrompng($filename);
+                    break;
+                case IMAGETYPE_BMP:
+                    $img = imagecreatefrombmp($filename);
+                    break;
+            }
+            $exif = exif_read_data($filename);
+            if ($img && $exif && isset($exif['Orientation'])) {
+                $ort = $exif['Orientation'];
+                $changed = false;
+                if ($ort == 6 || $ort == 5) {
+                    $img = imagerotate($img, 270, null);
+                    $changed = true;
+                }
+                if ($ort == 3 || $ort == 4) {
+                    $img = imagerotate($img, 180, null);
+                    $changed = true;
+                }
+                if ($ort == 8 || $ort == 7) {
+                    $img = imagerotate($img, 90, null);
+                    $changed = true;
+                }
+                if ($ort == 5 || $ort == 4 || $ort == 7) {
+                    imageflip($img, IMG_FLIP_HORIZONTAL);
+                    $changed = true;
+                }
+                if ($changed) {
+                    switch ($imageType) {
+                        case IMAGETYPE_GIF:
+                            imagegif($img, $filename);
+                            break;
+                        case IMAGETYPE_JPEG:
+                            imagejpeg($img, $filename);
+                            break;
+                        case IMAGETYPE_PNG:
+                            imagepng($img, $filename);
+                            break;
+                        case IMAGETYPE_BMP:
+                            imagebmp($img, $filename);
+                            break;
+                    }
+                }
+            }
+        }
     }
     // ----------
 

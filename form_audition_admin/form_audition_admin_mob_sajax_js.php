@@ -3585,38 +3585,6 @@ if ($this->Embutida_form)
   } // sc_hide_form_audition_admin_mob_form
 
 
-  function do_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id()
-  {
-    var var_venue_id = scAjaxGetFieldSelect("venue_id");
-    var var_script_case_init = document.F1.script_case_init.value;
-    var nmgp_refresh_fields = "venue_id";
-    x_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id(var_venue_id, nmgp_refresh_fields, var_script_case_init, do_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id_cb);
-  } // do_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id
-
-  function do_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id_cb(sResp)
-  {
-    oResp = scAjaxResponse(sResp);
-    scAjaxRedir();
-    scAjaxSetFields(false);
-    scAjaxSetVariables();
-  } // do_ajax_form_audition_admin_mob_lkpedt_refresh_venue_id_cb
-
-  function do_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person()
-  {
-    var var_contact_person = scAjaxGetFieldSelect("contact_person");
-    var var_script_case_init = document.F1.script_case_init.value;
-    var nmgp_refresh_fields = "contact_person";
-    x_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person(var_contact_person, nmgp_refresh_fields, var_script_case_init, do_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person_cb);
-  } // do_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person
-
-  function do_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person_cb(sResp)
-  {
-    oResp = scAjaxResponse(sResp);
-    scAjaxRedir();
-    scAjaxSetFields(false);
-    scAjaxSetVariables();
-  } // do_ajax_form_audition_admin_mob_lkpedt_refresh_contact_person_cb
-
   function scAjaxDetailProc()
   {
     return true;

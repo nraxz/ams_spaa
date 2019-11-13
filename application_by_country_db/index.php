@@ -210,8 +210,8 @@ class application_by_country_db_ini
       $this->nm_dt_criacao   = "20191022"; 
       $this->nm_hr_criacao   = "115128"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191025"; 
-      $this->nm_hr_ult_alt   = "153312"; 
+      $this->nm_dt_ult_alt   = "20191113"; 
+      $this->nm_hr_ult_alt   = "121452"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -292,6 +292,7 @@ class application_by_country_db_ini
       $this->path_secure     = $this->root . $this->path_prod . "/secure";
       $this->path_adodb      = $this->root . $this->path_prod . "/third/adodb";
       $_SESSION['scriptcase']['dir_temp'] = $this->root . $this->path_imag_temp;
+      $this->Cmp_Sql_Time     = array();
       if (isset($_SESSION['scriptcase']['application_by_country_db']['session_timeout']['lang'])) {
           $this->str_lang = $_SESSION['scriptcase']['application_by_country_db']['session_timeout']['lang'];
       }
@@ -325,6 +326,8 @@ class application_by_country_db_ini
               $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['SC_Link_View'] = true;
           }
       }
+    if (!$_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['embutida'])
+    {
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_add_grid_search")
       {
           $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['grid_search_add']['cmp'] = $_POST['parm'];
@@ -332,6 +335,7 @@ class application_by_country_db_ini
           $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['opcao'] = $_POST['origem'];
           $nmgp_opcao = $_POST['origem'];
       }
+    }
       if (isset($_POST['nmgp_opcao']) && $_POST['nmgp_opcao'] == "ajax_save_ancor")
       {
           $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['ancor_save'] = $_POST['ancor_save'];
@@ -882,7 +886,7 @@ class application_by_country_db_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBwZ9XGD1BeD5JwHgrKVIFCDWF/HIF7DcBqZ1FaHAN7HuJeDMBYVkJGDWFqZuBqHQFYDQB/HABYHQF7DMzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgveVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMNOV9BUDWFYHIFUDcBqZ1BODSNOD5XGDEBeHEXeDuFaVoJsHQBiZSBiHANOHQFaDMBYV9FeDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1FaD1rKV5JeDEBOZSXeV5XCDoFUDcJeH9FGDSBYV5raHgvsDkBOV5X7VEraD9BsZSFaD1rKD5XGDENOHEJqV5FaVoFaDcJeZ9JeZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWr/VoJwDcBiDQFaHIBeHuXGHgvOV9FeH5B7VoFGHQNwZ1BOHIBeHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1zGVWFaDMrYV9FeDurGVoFGHQXGZ1FGHINaV5X7DMvCHENiH5F/HIB/HQXODQFaHIBOD5F7DMBOVcBUH5XKVEraDcNmZ1BiD1vsV5X7HgrKVkJ3HEFaHMFGDcXGDQFaD1BOV5FGHuNOVcFKHEFYVoBqDcBwH9BqHINKZMJwHgveDkXKDWr/HMJeHQBiH9FUD1BOD5F7DMBOVIB/H5FqHIFUHQXOVIJsHAvmV5X7HgNKHErsDWB3ZuB/HQNmDQFUD1vOD5F7DMvsVcB/H5XCHMFGHQJmVIJsHINKD5rqDEBOHEFiHEFqDoF7DcJUZSBiDSzGVWFaDMvODkBsHEF/HIrqDcFYZ1FGZ1vOV5X7HgNOHErCDWr/HMX7DcXGH9FUD1NKD5F7DMNOV9FeH5XKVoX7DcNmZ1FGZ1vmV5X7DMveVkJ3DWrGZuB/HQNwH9BiD1vOV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSJGDWF/DoraD9NmDQJsHIrKV5raDMvmZSJqHEBmVoraHQXGZ1rqHAN7D5FaDMzGZSJGDWr/DoraD9XsDuBOHAveHuBiHuvmVcBODuFqDoraD9XOVIJwHAvsV5XGDENOHErsDurmZuBOHQJwDuBOZ1rwHQBOHgrKVcFCH5XCHIF7DcBqZ1B/DSBeV5FaHgvCZSJGDWB3ZuXGHQXGZSFGHIrwVWXGHuBYDkFCDWJeVoraD9BsH9FaD1vsD5FaDErKZSXeH5FYDoJeD9JKDQFGHAveVWJsHgvsDkBODWFaVoFGDcJUZkFUZ1BOD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkBODur/VoraD9XOH9FaD1rKD5BiHgvsVkJ3DWX7HMX7HQXsDQFUD1BeHuX7DMrwV9BUDWB3VorqHQNmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQBiZ9XGHANKV5XGDMvsV9BUDWXKVorqHQNmVINUHArYHQJwDEBODkFeH5FYVoFGHQJKDQB/Z1rwHQBODMBODkFCDWFYDoBiD9JmZ1FaHABYHuBOHgveHArCDWX7HIXGHQNmZSFUHAvOV5JeDMNOVIFCDWFYHMBiD9BsVIraD1rwV5X7HgBeHErCV5XCDoraD9NwH9X7HABYV5BqHuvmVcFiDWXCHIXGD9JmZ1F7HABYV5XGDEBeHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvsV9FiV5BmVorq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQBiZSFUZ1rwHuBqHuvmVIFCDWFYVoBOD9JmZ1BiD1NaD5XGHgNOHENiHEXCHMBiHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoF7HQBiZkBiDSvmZMFaHgrKHErsH5FYHMJsHQNmDQBOZ1BYHQNUHgrwVcXKH5XKVENUHQBiZ1FUZ1rYHuJwHgNKHArsDWFqHIJeHQXODQBOZ1BYHQJsDMzGDkB/H5FqHIJsHQJmVIJwD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSvCV5BODMvOVIBsV5BmVoX7HQXGVIJwZ1rYHuFGHgNOZSJqDWX7HMB/HQXOZ9JeZ1zGVWJsDMrYZSNiDWFYHIF7DcFYZkFUZ1vOZMJeDMvCHENiHEFqHIFGHQJeDQBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSvmD5JeHgrKVkJ3DuFYHMBiHQNmDuBOZ1BYHQFaDMvmVIB/DWJeHMrqDcFYZ1FUZ1rYHQBiHgBOHArsDWr/HIJeHQNmZ9JeZ1BYV5FaDMvmZSNiDWFYHINUHQBsZkFUD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQX7HgBYDkFeV5FaHMJsD9NwH9X7Z1rwD5XGHuzGVIBODWFaDoXGDcBwZ1FGHANOV5JeDEBOHEFiDWFqDoXGDcJUDQBOHIrKVWBODMvsVcBUDWBmDoFGHQFYH9BqZ1NOV5FaDEvsHErCV5FqDoraD9JKZSX7D1vOV5JwHuBYZSNiHEX/VoraD9BiH9FaHIBeZMBODErKVkXeV5FaDoB/D9NmDQBOZ1rwV5BqHgvsDkFCDWJeDoFGD9XOZ1rqD1rKD5rqDMBYHEJGH5FYVoB/HQXGZ9rqD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDEBeHEFiV5FaDoXGD9NmDQB/Z1rwHQBODMvmVcB/DWJeHMJwHQXGH9BqHINKV5X7HgveHErsDWBmDoBqHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHMF7D9XGZkBiHIveD5BqHgvsVkJ3DWr/HIFUHQBiDQJwHABYHuB/HuvmVcB/HEF/DoBiD9JmZ1FaD1rwHuX7HgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgvsVcFCDWXCVorqD9BsZ1F7DSrYD5rqDMBYHEJGH5F/VoXGD9XsZSX7Z1N7V5raHgvsVIFCHEFYVoJwDcBqH9B/Z1BeZMFaDEBOVkJGH5F/DoJeD9FYDQFUZ1rwD5JsHgvsZSrCV5F/VorqD9JmZ1rqHArKHQJwDEBODkFeH5FYVoFGHQJKDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBsVIJsHIveV5BqDMvCHEFiDWFqVoBqDcBiDuBqHIrKHuXGHuzGVcFKH5XCDoJsHQBsZSB/HABYHQFGHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JeHgrKVcB/V5X7VoBOD9XOZSB/Z1BeV5FUDENOVkXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmZkBiDSvOD5BOHgveHArsDWFGDoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCDoJeHQJmH9BqZ1BeHuFGHgNKZSJ3HEXCHIFGHQJeDQJwHIrwHuJwHuBYVcFeDWFYDoFUHQNmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQNmH9X7HArYV5BOHgrKVcFCH5FqDoX7DcBwZ1X7D1rwV5XGDMBYHEXeDuJeVoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VEFGHQFYVINUHAvsZMNU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['application_by_country_db']['initialize'])  
       { 
