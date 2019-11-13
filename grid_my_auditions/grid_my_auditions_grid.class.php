@@ -2333,7 +2333,7 @@ $nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $
    }
    else
    {
-       $SC_Label = (isset($this->New_label['audition_fees'])) ? $this->New_label['audition_fees'] : "Audition Fee $USD"; 
+       $SC_Label = (isset($this->New_label['audition_fees'])) ? $this->New_label['audition_fees'] : "Audition Fee USD$"; 
    }
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_my_auditions']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_my_auditions']['exibe_titulos'] != "S")
    { 

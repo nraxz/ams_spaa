@@ -2289,7 +2289,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
                return "System ID";
                break;
            case 'application_fee':
-               return "Application Fee $USD";
+               return "Application Fee USD$";
                break;
            case 'booking_id':
                return "Reference";
@@ -2444,7 +2444,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
               if (strlen($this->application_fee) > $iTestSize)  
               { 
                   $hasError = true;
-                  $Campos_Crit .= "Application Fee $USD: " . $this->Ini->Nm_lang['lang_errm_size']; 
+                  $Campos_Crit .= "Application Fee USD$: " . $this->Ini->Nm_lang['lang_errm_size']; 
                   if (!isset($Campos_Erros['application_fee']))
                   {
                       $Campos_Erros['application_fee'] = array();
@@ -2459,7 +2459,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
               if ($teste_validade->Valor($this->application_fee, 18, 2, 0, 0, "N") == false)  
               { 
                   $hasError = true;
-                  $Campos_Crit .= "Application Fee $USD; " ; 
+                  $Campos_Crit .= "Application Fee USD$; " ; 
                   if (!isset($Campos_Erros['application_fee']))
                   {
                       $Campos_Erros['application_fee'] = array();
@@ -3969,7 +3969,7 @@ if (!isset($this->sc_temp_usr_login)) {$this->sc_temp_usr_login = (isset($_SESSI
 $this->login  = $this->sc_temp_usr_login;
 $paypal_settings = $this->getLocalSettings();
 $this->form_title  =  "Application fee Sharjah Performing Arts Academy";
-$this->description  =  "Application Fee";
+$this->description  =  "Application Fee Payment";
 
 $this->application_fee  = $this->sc_temp_payment_fee;
 
