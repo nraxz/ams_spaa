@@ -756,7 +756,7 @@ unset($NM_ult_sep);
    <?php
     if (!isset($this->nm_new_label['application_fee']))
     {
-        $this->nm_new_label['application_fee'] = "Application Fee";
+        $this->nm_new_label['application_fee'] = "Application Fee $USD";
     }
 ?>
 <?php

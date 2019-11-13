@@ -1454,12 +1454,11 @@ $_SESSION['scriptcase']['control_paypal_mob']['contr_erro'] = 'off';
       $this->field_config = array();
       //-- application_fee
       $this->field_config['application_fee']               = array();
-      $this->field_config['application_fee']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_val'];
-      $this->field_config['application_fee']['symbol_fmt'] = $_SESSION['scriptcase']['reg_conf']['unid_mont_group_digit'];
-      $this->field_config['application_fee']['symbol_dec'] = $_SESSION['scriptcase']['reg_conf']['dec_val'];
-      $this->field_config['application_fee']['symbol_mon'] = $_SESSION['scriptcase']['reg_conf']['monet_simb'];
-      $this->field_config['application_fee']['format_pos'] = $_SESSION['scriptcase']['reg_conf']['monet_f_pos'];
-      $this->field_config['application_fee']['format_neg'] = $_SESSION['scriptcase']['reg_conf']['monet_f_neg'];
+      $this->field_config['application_fee']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
+      $this->field_config['application_fee']['symbol_fmt'] = $_SESSION['scriptcase']['reg_conf']['num_group_digit'];
+      $this->field_config['application_fee']['symbol_dec'] = $_SESSION['scriptcase']['reg_conf']['dec_num'];
+      $this->field_config['application_fee']['symbol_neg'] = $_SESSION['scriptcase']['reg_conf']['simb_neg'];
+      $this->field_config['application_fee']['format_neg'] = $_SESSION['scriptcase']['reg_conf']['neg_num'];
       //-- booking_id
       $this->field_config['booking_id']               = array();
       $this->field_config['booking_id']['symbol_grp'] = $_SESSION['scriptcase']['reg_conf']['grup_num'];
@@ -2297,7 +2296,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
                return "System ID";
                break;
            case 'application_fee':
-               return "Application Fee";
+               return "Application Fee $USD";
                break;
            case 'booking_id':
                return "Reference";
@@ -2431,7 +2430,6 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
       } 
       if (!empty($this->field_config['application_fee']['symbol_dec']))
       {
-          $this->sc_remove_currency($this->application_fee, $this->field_config['application_fee']['symbol_dec'], $this->field_config['application_fee']['symbol_grp'], $this->field_config['application_fee']['symbol_mon']); 
           nm_limpa_valor($this->application_fee, $this->field_config['application_fee']['symbol_dec'], $this->field_config['application_fee']['symbol_grp']) ; 
           if ('.' == substr($this->application_fee, 0, 1))
           {
@@ -2453,7 +2451,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
               if (strlen($this->application_fee) > $iTestSize)  
               { 
                   $hasError = true;
-                  $Campos_Crit .= "Application Fee: " . $this->Ini->Nm_lang['lang_errm_size']; 
+                  $Campos_Crit .= "Application Fee $USD: " . $this->Ini->Nm_lang['lang_errm_size']; 
                   if (!isset($Campos_Erros['application_fee']))
                   {
                       $Campos_Erros['application_fee'] = array();
@@ -2468,7 +2466,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
               if ($teste_validade->Valor($this->application_fee, 18, 2, -0, 1.0E+20, "N") == false)  
               { 
                   $hasError = true;
-                  $Campos_Crit .= "Application Fee; " ; 
+                  $Campos_Crit .= "Application Fee $USD; " ; 
                   if (!isset($Campos_Erros['application_fee']))
                   {
                       $Campos_Erros['application_fee'] = array();
@@ -2595,7 +2593,6 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
       $this->Before_unformat['application_fee'] = $this->application_fee;
       if (!empty($this->field_config['application_fee']['symbol_dec']))
       {
-         $this->sc_remove_currency($this->application_fee, $this->field_config['application_fee']['symbol_dec'], $this->field_config['application_fee']['symbol_grp'], $this->field_config['application_fee']['symbol_mon']);
          nm_limpa_valor($this->application_fee, $this->field_config['application_fee']['symbol_dec'], $this->field_config['application_fee']['symbol_grp']);
       }
       $this->Before_unformat['booking_id'] = $this->booking_id;
@@ -2651,7 +2648,6 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
       {
           if (!empty($this->field_config['application_fee']['symbol_dec']))
           {
-             $this->sc_remove_currency($this->application_fee, $this->field_config['application_fee']['symbol_dec'], $this->field_config['application_fee']['symbol_grp'], $this->field_config['application_fee']['symbol_mon']);
              nm_limpa_valor($this->application_fee, $this->field_config['application_fee']['symbol_dec'], $this->field_config['application_fee']['symbol_grp']);
           }
       }
@@ -2679,8 +2675,6 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
       if ('' !== $this->application_fee || (!empty($format_fields) && isset($format_fields['application_fee'])))
       {
           nmgp_Form_Num_Val($this->application_fee, $this->field_config['application_fee']['symbol_grp'], $this->field_config['application_fee']['symbol_dec'], "2", "S", $this->field_config['application_fee']['format_neg'], "", "", "-", $this->field_config['application_fee']['symbol_fmt']) ; 
-          $sMonSymb = $this->field_config['application_fee']['symbol_mon'];
-          $this->sc_add_currency($this->application_fee, $sMonSymb, $this->field_config['application_fee']['format_pos']); 
       }
       if ('' !== $this->booking_id || (!empty($format_fields) && isset($format_fields['booking_id'])))
       {
