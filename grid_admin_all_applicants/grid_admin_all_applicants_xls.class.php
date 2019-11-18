@@ -1045,8 +1045,8 @@ class grid_admin_all_applicants_xls
              $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
          }
          $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
-         $nm_local_img = $this->Ini->path_imagens . "/" . $this->login . "/"; 
-         $md5_image_upload_image_headshot  = md5("/" . $this->login . $this->image_upload_image_headshot);
+         $nm_local_img = $this->Ini->path_imagens . "/" . $this->application_detail_login . "/" . "/"; 
+         $md5_image_upload_image_headshot  = md5("/" . $this->application_detail_login . "/" . $this->image_upload_image_headshot);
          $in_image_upload_image_headshot = $this->Ini->root . $nm_local_img . $this->image_upload_image_headshot;
          if (is_file($in_image_upload_image_headshot) && !$this->Ini->Gd_missing)
          { 
@@ -1403,8 +1403,8 @@ class grid_admin_all_applicants_xls
    //----- image_upload_image_headshot
    function NM_sub_cons_image_upload_image_headshot()
    {
-         $nm_local_img = $this->Ini->path_imagens . "/" . $this->login . "/"; 
-         $md5_image_upload_image_headshot  = md5("/" . $this->login . $this->image_upload_image_headshot);
+         $nm_local_img = $this->Ini->path_imagens . "/" . $this->application_detail_login . "/" . "/"; 
+         $md5_image_upload_image_headshot  = md5("/" . $this->application_detail_login . "/" . $this->image_upload_image_headshot);
          $in_image_upload_image_headshot = $this->Ini->root . $nm_local_img . $this->image_upload_image_headshot;
          if (is_file($in_image_upload_image_headshot) && !$this->Ini->Gd_missing)
          { 

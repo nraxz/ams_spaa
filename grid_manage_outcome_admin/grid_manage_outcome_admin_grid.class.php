@@ -2290,7 +2290,7 @@ if (!isset($this->sc_temp_audition_title)) {$this->sc_temp_audition_title = (iss
    
   </div>
   <div class="card-body">
-    <h4 class="card-title"> Fees: '.$this->audition_fee .'GBP</h4>
+    <h4 class="card-title"> Fees: USD$'.$this->audition_fee .'</h4>
     <p class="card-text">'.$this->audition_details .'</p>
    
   </div>

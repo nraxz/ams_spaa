@@ -3184,8 +3184,8 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
           } 
           else 
           { 
-              $nm_local_img = $this->Ini->path_imagens . "/" . $this->login . "/"; 
-              $md5_image_upload_image_headshot  = md5("/" . $this->login . $conteudo);
+              $nm_local_img = $this->Ini->path_imagens . "/" . $this->application_detail_login . "/" . "/"; 
+              $md5_image_upload_image_headshot  = md5("/" . $this->application_detail_login . "/" . $conteudo);
               $in_image_upload_image_headshot = $this->Ini->root . $nm_local_img . $conteudo;
               $nm_tmp_ver_bk = strpos($conteudo, " "); 
               if ($nm_tmp_ver_bk === false)
