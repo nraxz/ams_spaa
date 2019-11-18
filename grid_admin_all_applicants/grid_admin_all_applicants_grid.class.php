@@ -941,6 +941,7 @@ class grid_admin_all_applicants_grid
        $this->sec_users_login = $this->rs_grid->fields[14] ;  
        if (!isset($this->application_detail_venue_id)) { $this->application_detail_venue_id = ""; }
        if (!isset($this->application_detail_audition_id)) { $this->application_detail_audition_id = ""; }
+       $GLOBALS["basic_information_gender"] = $this->rs_grid->fields[4] ;  
        $this->arg_sum_application_detail_venue_id = ($this->application_detail_venue_id == "") ? " is null " : " = " . $this->application_detail_venue_id;
        $this->arg_sum_application_detail_audition_id = ($this->application_detail_audition_id == "") ? " is null " : " = " . $this->application_detail_audition_id;
        $this->SC_seq_register = $this->nmgp_reg_start ; 
@@ -2957,6 +2958,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
           $this->sec_users_login = $this->rs_grid->fields[14] ;  
           if (!isset($this->application_detail_venue_id)) { $this->application_detail_venue_id = ""; }
           if (!isset($this->application_detail_audition_id)) { $this->application_detail_audition_id = ""; }
+          $GLOBALS["basic_information_gender"] = $this->rs_grid->fields[4] ;  
           $this->arg_sum_application_detail_venue_id = ($this->application_detail_venue_id == "") ? " is null " : " = " . $this->application_detail_venue_id;
           $this->arg_sum_application_detail_audition_id = ($this->application_detail_audition_id == "") ? " is null " : " = " . $this->application_detail_audition_id;
           $this->SC_seq_page++; 
@@ -3361,6 +3363,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
               $conteudo = "&nbsp;" ;  
               $graf = "" ;  
           } 
+          $this->Lookup->lookup_basic_information_gender($conteudo , $this->basic_information_gender) ; 
           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['proc_pdf'])
           {
               $this->SC_nowrap = "";

@@ -398,6 +398,10 @@ class grid_admin_all_applicants_rtf
          $this->audition_audition_title = $rs->fields[12] ;  
          $this->application_detail_login = $rs->fields[13] ;  
          $this->sec_users_login = $rs->fields[14] ;  
+         //----- lookup - basic_information_gender
+         $this->look_basic_information_gender = $this->basic_information_gender; 
+         $this->Lookup->lookup_basic_information_gender($this->look_basic_information_gender, $this->basic_information_gender) ; 
+         $this->look_basic_information_gender = ($this->look_basic_information_gender == "&nbsp;") ? "" : $this->look_basic_information_gender; 
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
          { 
@@ -481,15 +485,15 @@ class grid_admin_all_applicants_rtf
    //----- basic_information_gender
    function NM_export_basic_information_gender()
    {
-         $this->basic_information_gender = html_entity_decode($this->basic_information_gender, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
-         $this->basic_information_gender = strip_tags($this->basic_information_gender);
-         if (!NM_is_utf8($this->basic_information_gender))
+         $this->look_basic_information_gender = html_entity_decode($this->look_basic_information_gender, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->look_basic_information_gender = strip_tags($this->look_basic_information_gender);
+         if (!NM_is_utf8($this->look_basic_information_gender))
          {
-             $this->basic_information_gender = sc_convert_encoding($this->basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
+             $this->look_basic_information_gender = sc_convert_encoding($this->look_basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
-         $this->basic_information_gender = str_replace('<', '&lt;', $this->basic_information_gender);
-         $this->basic_information_gender = str_replace('>', '&gt;', $this->basic_information_gender);
-         $this->Texto_tag .= "<td>" . $this->basic_information_gender . "</td>\r\n";
+         $this->look_basic_information_gender = str_replace('<', '&lt;', $this->look_basic_information_gender);
+         $this->look_basic_information_gender = str_replace('>', '&gt;', $this->look_basic_information_gender);
+         $this->Texto_tag .= "<td>" . $this->look_basic_information_gender . "</td>\r\n";
    }
    //----- sec_users_email
    function NM_export_sec_users_email()

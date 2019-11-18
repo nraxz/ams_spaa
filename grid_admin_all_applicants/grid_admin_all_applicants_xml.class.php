@@ -320,6 +320,10 @@ class grid_admin_all_applicants_xml
          $this->audition_audition_title = $rs->fields[12] ;  
          $this->application_detail_login = $rs->fields[13] ;  
          $this->sec_users_login = $rs->fields[14] ;  
+         //----- lookup - basic_information_gender
+         $this->look_basic_information_gender = $this->basic_information_gender; 
+         $this->Lookup->lookup_basic_information_gender($this->look_basic_information_gender, $this->basic_information_gender) ; 
+         $this->look_basic_information_gender = ($this->look_basic_information_gender == "&nbsp;") ? "" : $this->look_basic_information_gender; 
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
          { 
@@ -673,9 +677,9 @@ class grid_admin_all_applicants_xml
    //----- basic_information_gender
    function NM_export_basic_information_gender()
    {
-         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->basic_information_gender))
+         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->look_basic_information_gender))
          {
-             $this->basic_information_gender = sc_convert_encoding($this->basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
+             $this->look_basic_information_gender = sc_convert_encoding($this->look_basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
           if ($this->Xml_tag_label)
           {
@@ -688,11 +692,11 @@ class grid_admin_all_applicants_xml
           $this->clear_tag($SC_Label); 
          if ($this->New_Format)
          {
-             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->basic_information_gender) . "</" . $SC_Label . ">\r\n";
+             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->look_basic_information_gender) . "</" . $SC_Label . ">\r\n";
          }
          else
          {
-             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->basic_information_gender) . "\"";
+             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->look_basic_information_gender) . "\"";
          }
    }
    //----- sec_users_email

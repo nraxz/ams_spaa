@@ -408,6 +408,10 @@ class grid_admin_all_applicants_csv
          $this->audition_audition_title = $rs->fields[12] ;  
          $this->application_detail_login = $rs->fields[13] ;  
          $this->sec_users_login = $rs->fields[14] ;  
+         //----- lookup - basic_information_gender
+         $this->look_basic_information_gender = $this->basic_information_gender; 
+         $this->Lookup->lookup_basic_information_gender($this->look_basic_information_gender, $this->basic_information_gender) ; 
+         $this->look_basic_information_gender = ($this->look_basic_information_gender == "&nbsp;") ? "" : $this->look_basic_information_gender; 
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
          { 
@@ -580,7 +584,7 @@ class grid_admin_all_applicants_csv
    function NM_export_basic_information_gender()
    {
       $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
-      $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $this->basic_information_gender);
+      $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $this->look_basic_information_gender);
       $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
       $this->NM_prim_col++;
    }

@@ -441,6 +441,10 @@ class grid_admin_all_applicants_xls
      }
      $prim_gb = false;
      $nm_houve_quebra = "N";
+         //----- lookup - basic_information_gender
+         $this->look_basic_information_gender = $this->basic_information_gender; 
+         $this->Lookup->lookup_basic_information_gender($this->look_basic_information_gender, $this->basic_information_gender) ; 
+         $this->look_basic_information_gender = ($this->look_basic_information_gender == "&nbsp;") ? "" : $this->look_basic_information_gender; 
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
          { 
@@ -1177,17 +1181,17 @@ class grid_admin_all_applicants_xls
              $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
          }
          $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
-         $this->basic_information_gender = html_entity_decode($this->basic_information_gender, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
-         $this->basic_information_gender = strip_tags($this->basic_information_gender);
-         if (!NM_is_utf8($this->basic_information_gender))
+         $this->look_basic_information_gender = html_entity_decode($this->look_basic_information_gender, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->look_basic_information_gender = strip_tags($this->look_basic_information_gender);
+         if (!NM_is_utf8($this->look_basic_information_gender))
          {
-             $this->basic_information_gender = sc_convert_encoding($this->basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
+             $this->look_basic_information_gender = sc_convert_encoding($this->look_basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
          if ($this->Use_phpspreadsheet) {
-             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->basic_information_gender, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->look_basic_information_gender, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
          }
          else {
-             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->basic_information_gender, PHPExcel_Cell_DataType::TYPE_STRING);
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->look_basic_information_gender, PHPExcel_Cell_DataType::TYPE_STRING);
          }
          $this->Xls_col++;
    }
@@ -1482,14 +1486,14 @@ class grid_admin_all_applicants_xls
    //----- basic_information_gender
    function NM_sub_cons_basic_information_gender()
    {
-         $this->basic_information_gender = html_entity_decode($this->basic_information_gender, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
-         $this->basic_information_gender = strip_tags($this->basic_information_gender);
-         if (!NM_is_utf8($this->basic_information_gender))
+         $this->look_basic_information_gender = html_entity_decode($this->look_basic_information_gender, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->look_basic_information_gender = strip_tags($this->look_basic_information_gender);
+         if (!NM_is_utf8($this->look_basic_information_gender))
          {
-             $this->basic_information_gender = sc_convert_encoding($this->basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
+             $this->look_basic_information_gender = sc_convert_encoding($this->look_basic_information_gender, "UTF-8", $_SESSION['scriptcase']['charset']);
          }
-         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->basic_information_gender;
-         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "left";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->look_basic_information_gender;
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
          $this->Xls_col++;
