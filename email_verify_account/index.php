@@ -202,8 +202,8 @@ class email_verify_account_ini
       $this->nm_dt_criacao   = "20160823"; 
       $this->nm_hr_criacao   = "151542"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20191125"; 
+      $this->nm_hr_ult_alt   = "102554"; 
       $this->Apl_paginacao   = "PARCIAL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -839,7 +839,7 @@ class email_verify_account_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['email_verify_account']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['email_verify_account']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQJeDQX7HIrwV5XGDMBYZSJqDuX7VoJwDcJUZSFaHABYHQBqHgBYHEFiDWr/HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcFeDur/HIFUD9BiZ1F7Z1BeHuBqDEBeHEJGDWFqHMX7D9JKZSX7HAvmVWJeHuNOVIB/DWFaHMBiD9BsVIraD1rwV5X7HgBeHEFKV5FaVoB/D9XsDQX7HArYD5BqHuNOVcXKV5X7VErqDcJUZ1FaHAN7V5JeDMzGVkJGHEFqDoFUDcJeDQX7D1BeV5FGHuNODkFCDWFYDoJsD9BiZ1FUZ1NOD5BqDEBeHEBUDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDMBYVkJGDWXCHIFGHQXsDQB/DSN7HQJeHuvmV9BUDWFYVoX7HQXOVINUD1rKHQJwDEBODkFeH5FYVoFGHQJKDQJwHAveD5JwHgrYDkBODWJeVoX7D9BsH9B/Z1NOZMJwDMzGHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOZSNiDWB3VoF7HQBqZkBiHAzGD5BOHgveHArsH5FYHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCHMBOHQBqZkFGDSrYHQraHgBeHArsDurmVoFGHQJKZSBiZ1rwHuNUDMBOVIBsDWJeHMJeHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMJeDcJeDQFGHANOD5JwHuzGDkBODurGVoFaHQXGH9B/HIveD5NUDEBeHEFiHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUHEX/DoJsHQNmZ1XGZ1veZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQNmDQFUHIrwD5BqHgrKVIFCHEFYDoJsHQBiZ1BOHAvCV5X7DMvCZSXeDuFaHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rKHQBqDMvCHErsDuJeHIrqHQXGDQFUHArYHuBiDMrYVcXKDuX7HMJwHQFYZ1BOHAN7HuX7HgBOHErCDWB3DoJeHQXGDuBqD1BeHQJwDMrYVcBUDuX7HMFGDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWXCDorqDcJUZ1X7HAN7HuJsHgvCHEXeHEB7DoBqDcXOZSBiHAN7D5rqHgvsDkFCDuX7HINUD9XOZSFaHABYHQJwDEBODkFeH5FYVoFGHQJKDQBOZ1rwD5JwHuNOVcBODWFaDoFGD9BsZ1X7Z1BeZMBqDMzGHEJGDWr/VoXGDcBwH9FGDSBYV5raHgvsVcBOH5FqVoBqD9BsH9FaHArYV5FUDEvsHEFKV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQNwDQFaHIrKD5JsHgvOV9BUDWXCHIX7D9BiZ1X7D1rKV5FUDEBeVkJ3DWF/VoBiDcJUZSX7Z1BYHuFaHuzGVcFKDWFYVoJwDcBqZSFaHAN7D5FaDEBOVkJGHEXCVoB/HQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQNmZ1BiHAzGZMJeHgveHArsDWFGDoJeHQXODuFaHAveD5NUHgNKDkBOV5FYHMBiDcJUZ1BiHAvmZMFaHgNKVkJ3V5B3DoBODcBiDQX7HIBOVWJwHgrwVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvsVkXeDWX7DoJeDcBwDQFGD1BeD5BOHgNKVcXKH5FqDoX7DcBqZ1B/HIveV5JeHgBeHEFiV5B3DoF7D9XsDuFaHANKVWBqDMrwZSNiDWB3VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['email_verify_account']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['email_verify_account']['initialize'])  
       { 
@@ -1873,7 +1873,7 @@ class email_verify_account_apl
 				<div class="alert alert-success">
 					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">You should receive an email from <strong><span style="font-family:&quot;Calibri&quot;,sans-serif;">
 						<a href="mailto:Admissions@spaa.ae"><span style="font-weight:normal;">Admissions@spaa.ae</span></a>&nbsp;
-						</span></strong>within a few minutes to activate your account.</p>
+						</span></strong>within a few minutes with a code to activate your account.</p>
 					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">Please also check in your junk mail folder, if the message does not appear in your inbox.</p>
 					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">If you do not receive this message please email 
 						<a href="mailto:Admissions@spaa.ae">Admissions@spaa.ae</a> to have your account activated. Please feel free to contact us to 
@@ -1882,7 +1882,7 @@ class email_verify_account_apl
 					<p style="margin-right:0cm;margin-left:0cm;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;margin:0cm;margin-bottom:.0001pt;">Thank you</p>
 				</div>
 				<div class="p-5">
-					<a href="../login/" class="btn btn-danger" role="button">Go to Audition Application</a>
+					<a href="../user_activation/" class="btn btn-danger" role="button">Verify your activation code</a>
 				</div>
 			</div>
 
