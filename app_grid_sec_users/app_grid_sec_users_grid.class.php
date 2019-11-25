@@ -49,6 +49,8 @@ class app_grid_sec_users_grid
    var $progress_graf;
    var $count_ger;
    var $changepassword;
+   var $firstname;
+   var $lastname;
    var $email;
    var $login;
    var $active;
@@ -728,15 +730,15 @@ class app_grid_sec_users_grid
 //----- 
    if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
    { 
-       $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
    { 
-       $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
    } 
    else 
    { 
-       $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
    } 
    $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['where_pesq']; 
    $nmgp_order_by = ""; 
@@ -813,9 +815,11 @@ class app_grid_sec_users_grid
    }  
    else 
    { 
-       $this->email = $this->rs_grid->fields[0] ;  
-       $this->login = $this->rs_grid->fields[1] ;  
-       $this->active = $this->rs_grid->fields[2] ;  
+       $this->firstname = $this->rs_grid->fields[0] ;  
+       $this->lastname = $this->rs_grid->fields[1] ;  
+       $this->email = $this->rs_grid->fields[2] ;  
+       $this->login = $this->rs_grid->fields[3] ;  
+       $this->active = $this->rs_grid->fields[4] ;  
        $this->look_active = $this->active; 
        $this->Lookup->lookup_active($this->look_active); 
        $this->SC_seq_register = $this->nmgp_reg_start ; 
@@ -826,9 +830,11 @@ class app_grid_sec_users_grid
            $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['final']++ ; 
            $this->SC_seq_register = $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['final']; 
            $this->rs_grid->MoveNext(); 
-           $this->email = $this->rs_grid->fields[0] ;  
-           $this->login = $this->rs_grid->fields[1] ;  
-           $this->active = $this->rs_grid->fields[2] ;  
+           $this->firstname = $this->rs_grid->fields[0] ;  
+           $this->lastname = $this->rs_grid->fields[1] ;  
+           $this->email = $this->rs_grid->fields[2] ;  
+           $this->login = $this->rs_grid->fields[3] ;  
+           $this->active = $this->rs_grid->fields[4] ;  
        } 
    } 
    $this->nmgp_reg_inicial = $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['final'] + 1;
@@ -1707,6 +1713,10 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
 
    $compl_css_emb = ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['embutida']) ? "app_grid_sec_users_" : "";
    $this->css_sep = " ";
+   $this->css_firstname_label = $compl_css_emb . "css_firstname_label";
+   $this->css_firstname_grid_line = $compl_css_emb . "css_firstname_grid_line";
+   $this->css_lastname_label = $compl_css_emb . "css_lastname_label";
+   $this->css_lastname_grid_line = $compl_css_emb . "css_lastname_grid_line";
    $this->css_email_label = $compl_css_emb . "css_email_label";
    $this->css_email_grid_line = $compl_css_emb . "css_email_grid_line";
    $this->css_login_label = $compl_css_emb . "css_login_label";
@@ -1971,6 +1981,22 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
              } 
          } 
      } 
+   } 
+ }
+ function NM_label_firstname()
+ {
+   global $nm_saida;
+   $SC_Label = (isset($this->New_label['firstname'])) ? $this->New_label['firstname'] : "Firstname"; 
+   if (!isset($this->NM_cmp_hidden['firstname']) || $this->NM_cmp_hidden['firstname'] != "off") { 
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_firstname_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_firstname_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
+   } 
+ }
+ function NM_label_lastname()
+ {
+   global $nm_saida;
+   $SC_Label = (isset($this->New_label['lastname'])) ? $this->New_label['lastname'] : "Lastname"; 
+   if (!isset($this->NM_cmp_hidden['lastname']) || $this->NM_cmp_hidden['lastname'] != "off") { 
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_lastname_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_lastname_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
    } 
  }
  function NM_label_email()
@@ -2446,9 +2472,11 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['proc_pdf
               }
           }
           $this->Lin_impressas++;
-          $this->email = $this->rs_grid->fields[0] ;  
-          $this->login = $this->rs_grid->fields[1] ;  
-          $this->active = $this->rs_grid->fields[2] ;  
+          $this->firstname = $this->rs_grid->fields[0] ;  
+          $this->lastname = $this->rs_grid->fields[1] ;  
+          $this->email = $this->rs_grid->fields[2] ;  
+          $this->login = $this->rs_grid->fields[3] ;  
+          $this->active = $this->rs_grid->fields[4] ;  
           $this->look_active = $this->active; 
           $this->Lookup->lookup_active($this->look_active); 
           $this->SC_seq_page++; 
@@ -2637,6 +2665,48 @@ $_SESSION['scriptcase']['app_grid_sec_users']['contr_erro'] = 'off';
        $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['opcao']       = "igual" ; 
    } 
  }
+ function NM_grid_firstname()
+ {
+      global $nm_saida;
+      if (!isset($this->NM_cmp_hidden['firstname']) || $this->NM_cmp_hidden['firstname'] != "off") { 
+          $conteudo = sc_strip_script($this->firstname); 
+          if ($conteudo === "") 
+          { 
+              $conteudo = "&nbsp;" ;  
+              $graf = "" ;  
+          } 
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['proc_pdf'])
+          {
+              $this->SC_nowrap = "";
+          }
+          else
+          {
+              $this->SC_nowrap = "";
+          }
+   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_firstname_grid_line . "\"  style=\"" . $this->Css_Cmp['css_firstname_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_firstname_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
+      }
+ }
+ function NM_grid_lastname()
+ {
+      global $nm_saida;
+      if (!isset($this->NM_cmp_hidden['lastname']) || $this->NM_cmp_hidden['lastname'] != "off") { 
+          $conteudo = sc_strip_script($this->lastname); 
+          if ($conteudo === "") 
+          { 
+              $conteudo = "&nbsp;" ;  
+              $graf = "" ;  
+          } 
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['proc_pdf'])
+          {
+              $this->SC_nowrap = "";
+          }
+          else
+          {
+              $this->SC_nowrap = "";
+          }
+   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_lastname_grid_line . "\"  style=\"" . $this->Css_Cmp['css_lastname_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_lastname_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
+      }
+ }
  function NM_grid_email()
  {
       global $nm_saida;
@@ -2745,7 +2815,7 @@ $_SESSION['scriptcase']['app_grid_sec_users']['contr_erro'] = 'off';
  }
  function NM_calc_span()
  {
-   $this->NM_colspan  = 5;
+   $this->NM_colspan  = 7;
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['opc_psq'])
    {
        $this->NM_colspan++;

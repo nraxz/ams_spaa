@@ -159,7 +159,11 @@ function Sel_cmp_process()
       $tab_ger_campos = array();
       $tab_blk_campos = array();
 
-            $tab_ger_campos['email'] = "on";
+            $tab_ger_campos['firstname'] = "on";
+      $tab_blk_campos[] = "firstname";
+      $tab_ger_campos['lastname'] = "on";
+      $tab_blk_campos[] = "lastname";
+      $tab_ger_campos['email'] = "on";
       $tab_ger_campos['login'] = "on";
       $tab_ger_campos['active'] = "on";
       $tab_ger_campos['changepassword'] = "on";

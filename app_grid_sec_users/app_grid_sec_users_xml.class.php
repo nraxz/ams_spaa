@@ -233,15 +233,15 @@ class app_grid_sec_users_xml
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
       { 
-          $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
       { 
-          $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
       } 
       else 
       { 
-          $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
       } 
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['where_pesq'];
@@ -289,9 +289,11 @@ class app_grid_sec_users_xml
          {
              $this->xml_registro = "<app_grid_sec_users";
          }
-         $this->email = $rs->fields[0] ;  
-         $this->login = $rs->fields[1] ;  
-         $this->active = $rs->fields[2] ;  
+         $this->firstname = $rs->fields[0] ;  
+         $this->lastname = $rs->fields[1] ;  
+         $this->email = $rs->fields[2] ;  
+         $this->login = $rs->fields[3] ;  
+         $this->active = $rs->fields[4] ;  
          //----- lookup - active
          $this->look_active = $this->active; 
          $this->Lookup->lookup_active($this->look_active); 
@@ -541,6 +543,56 @@ $_SESSION['scriptcase']['app_grid_sec_users']['contr_erro'] = 'off';
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['export_sel_columns']['usr_cmp_sel']);
       }
       $rs->Close();
+   }
+   //----- firstname
+   function NM_export_firstname()
+   {
+         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->firstname))
+         {
+             $this->firstname = sc_convert_encoding($this->firstname, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+          if ($this->Xml_tag_label)
+          {
+              $SC_Label = (isset($this->New_label['firstname'])) ? $this->New_label['firstname'] : "Firstname"; 
+          }
+          else
+          {
+              $SC_Label = "firstname"; 
+          }
+          $this->clear_tag($SC_Label); 
+         if ($this->New_Format)
+         {
+             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->firstname) . "</" . $SC_Label . ">\r\n";
+         }
+         else
+         {
+             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->firstname) . "\"";
+         }
+   }
+   //----- lastname
+   function NM_export_lastname()
+   {
+         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->lastname))
+         {
+             $this->lastname = sc_convert_encoding($this->lastname, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+          if ($this->Xml_tag_label)
+          {
+              $SC_Label = (isset($this->New_label['lastname'])) ? $this->New_label['lastname'] : "Lastname"; 
+          }
+          else
+          {
+              $SC_Label = "lastname"; 
+          }
+          $this->clear_tag($SC_Label); 
+         if ($this->New_Format)
+         {
+             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->lastname) . "</" . $SC_Label . ">\r\n";
+         }
+         else
+         {
+             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->lastname) . "\"";
+         }
    }
    //----- email
    function NM_export_email()

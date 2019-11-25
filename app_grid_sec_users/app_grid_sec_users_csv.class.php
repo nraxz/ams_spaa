@@ -215,6 +215,22 @@ class app_grid_sec_users_csv
           $this->csv_registro = "";
           foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['field_order'] as $Cada_col)
           { 
+              $SC_Label = (isset($this->New_label['firstname'])) ? $this->New_label['firstname'] : "Firstname"; 
+              if ($Cada_col == "firstname" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+              {
+                  $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
+                  $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $SC_Label);
+                  $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
+                  $this->NM_prim_col++;
+              }
+              $SC_Label = (isset($this->New_label['lastname'])) ? $this->New_label['lastname'] : "Lastname"; 
+              if ($Cada_col == "lastname" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+              {
+                  $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
+                  $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $SC_Label);
+                  $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
+                  $this->NM_prim_col++;
+              }
               $SC_Label = (isset($this->New_label['email'])) ? $this->New_label['email'] : ""; 
               if ($Cada_col == "email" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
               {
@@ -256,15 +272,15 @@ class app_grid_sec_users_csv
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
       { 
-          $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
       { 
-          $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
       } 
       else 
       { 
-          $nmgp_select = "SELECT email, login, active from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT firstname, lastname, email, login, active from " . $this->Ini->nm_tabela; 
       } 
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['where_pesq'];
@@ -301,9 +317,11 @@ class app_grid_sec_users_csv
          }
          $this->csv_registro = "";
          $this->NM_prim_col  = 0;
-         $this->email = $rs->fields[0] ;  
-         $this->login = $rs->fields[1] ;  
-         $this->active = $rs->fields[2] ;  
+         $this->firstname = $rs->fields[0] ;  
+         $this->lastname = $rs->fields[1] ;  
+         $this->email = $rs->fields[2] ;  
+         $this->login = $rs->fields[3] ;  
+         $this->active = $rs->fields[4] ;  
          //----- lookup - active
          $this->look_active = $this->active; 
          $this->Lookup->lookup_active($this->look_active); 
@@ -439,6 +457,22 @@ $_SESSION['scriptcase']['app_grid_sec_users']['contr_erro'] = 'off';
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['app_grid_sec_users']['export_sel_columns']['usr_cmp_sel']);
       }
       $rs->Close();
+   }
+   //----- firstname
+   function NM_export_firstname()
+   {
+      $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
+      $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $this->firstname);
+      $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
+      $this->NM_prim_col++;
+   }
+   //----- lastname
+   function NM_export_lastname()
+   {
+      $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
+      $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $this->lastname);
+      $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
+      $this->NM_prim_col++;
    }
    //----- email
    function NM_export_email()

@@ -1,3 +1,7 @@
+.css_firstname_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_firstname_grid_line {vertical-align: top;text-align: left;}
+.css_lastname_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_lastname_grid_line {vertical-align: top;text-align: left;}
 .css_email_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_email_grid_line {vertical-align: top;text-align: left;}
 .css_login_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
