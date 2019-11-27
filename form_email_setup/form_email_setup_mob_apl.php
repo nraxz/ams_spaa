@@ -461,7 +461,8 @@ class form_email_setup_mob_apl
           include_once($this->Ini->path_lib_php . "nm_gp_config_btn.php");
       }
       include("../_lib/css/" . $this->Ini->str_schema_all . "_form.php");
-      $this->Ini->Str_btn_form    = trim($str_button);
+      $this->Ini->Str_btn_form = (isset($_SESSION['scriptcase']['str_button_all'])) ? $_SESSION['scriptcase']['str_button_all'] : "scriptcase9_SweetAmour";
+      $_SESSION['scriptcase']['str_button_all'] = $this->Ini->Str_btn_form;
       include($this->Ini->path_btn . $this->Ini->Str_btn_form . '/' . $this->Ini->Str_btn_form . $_SESSION['scriptcase']['reg_conf']['css_dir'] . '.php');
       $this->Db = $this->Ini->Db; 
       $this->Ini->str_google_fonts = isset($str_google_fonts)?$str_google_fonts:'';

@@ -1171,9 +1171,6 @@ if (isset($_SESSION['scriptcase']['reg_conf']['html_dir']) && $_SESSION['scriptc
    </td></tr></table>
    </tr>
 </TABLE></div><!-- bloco_f -->
-</td></tr>
-<tr id="sc-id-required-row"><td class="scFormPageText">
-<span class="scFormRequiredOddColor">* <?php echo $this->Ini->Nm_lang['lang_othr_reqr']; ?></span>
 </td></tr> 
 <tr><td>
 <?php

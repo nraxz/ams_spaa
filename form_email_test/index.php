@@ -278,8 +278,8 @@ class form_email_test_ini
       $this->nm_dt_criacao   = "20160621"; 
       $this->nm_hr_criacao   = "095432"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20191127"; 
+      $this->nm_hr_ult_alt   = "161624"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -512,8 +512,7 @@ class form_email_test_ini
           }
       }
       if (isset($_SESSION['scriptcase']['form_email_test']['session_timeout']['redir'])) {
-          $SS_cod_html  = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">';
+          $SS_cod_html  = '';
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
@@ -923,7 +922,7 @@ class form_email_test_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXsZSX7Z1N7HuraDMrYVIBOH5FqVoFGHQXGZ1X7HANOHuFaDEBeHEXeDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqVINUD1rwHuB/HgvsHENiH5F/HMBqHQXGDQFUHAveHurqDMBOVIB/DWF/HIJsHQFYZkFGHArYHQBiHgveVkJqDuJeHMJeHQXGDQFUDSN7HurqDMrYV9FeHEF/HMJwDcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcrsHEBmVoFGHQNwZSB/HIveZMJeDMvCDkXKDuJeHIF7HQBiDQFUD1BeHQrqDMNODkFCDuX7DoNUHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcBwH9X7Z1rwV5BOHuNOVcB/V5X7DoraD9BsZ1B/HABYV5JeDEBOHENiV5FaZuFaDcBwDQFGD1BeVWJsDMrwVIFCDWXCDoX7D9XOZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoF7D9BsZSBqDSNOZMBODENOVkJqHEB3DoBqDcBwZSX7DSrwVWJeHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoJeHQBiDQBqHAvOVWBqDMvOV9BUDWXKVoF7HQNmH9BqHArKV5FUDMrYZSXeV5FqHIJsHQXsH9X7D1BeHuF7HgrKVIBsV5BmVEX7HQXOZSFaHAN7D5BODENOHEJqHEXCHMJeHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKDQX7HAN7HurqHuvmVcBUDWXKVEFGHQBiVIJsHArKD5rqDENOHEJGHEXCHIBqHQNwDQFaD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHABYHuBOHgBYDkXKDWFqHIrqHQBiZSFUHAveHQJeDMrwVcB/H5XCHIJsDcFYZkBiD1rKHuBqHgvCHEJqDWBmZuB/HQXODQFUHIvsVWJsDMrwV9FeHEF/HIraHQXGH9BOD1rKHQX7DMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuX7DMvsZSNiDWrmVoX7HQBiVINUHAN7HuX7HgvCHEJqDWr/HMFGHQFYDuFaDSNaVWJeDMrwV9BUH5B3VErqHQNwZkFGZ1rYHQFaHgvCHArsHEFqHMBiDcBiDuFaD1BOVWBOHgNKDkBODuFqDoFGDcBqVIJwD1rwHQrqHgBYDkXKH5F/HIBODcXGDQBqHIrKHuX7DMrwVcB/DWFaHMFaHQNwZ1X7HIBeHQBiHgvCHEJqDWr/HMFGHQXsDQFaHAvCV5BODMrwV9BUH5FqHIraHQNwZ1BiHIBeHQJeDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7VorqDcBqZ1FaD1rKV5XGDMNKZSJ3H5X/ZuJsHQXGZSFUHAveV5BOHuNODkBODuX7VoX7DcBqZ1B/Z1vOD5raHgBOVkXeHEFqVoX7DcBwDQFGD1BOV5BiDMNaVcrsDurGVEX7HQNwVIraDSvOD5FaHgvsVkXeDWFqZuFaHQNmDQX7HArYD5B/HgrKV9FiV5X7VErqHQBqZkFUZ1BeZMBODEvsZSJGDuFaDoJeD9XsZSX7Z1rwVWJsDMrwDkFCH5FqVoBqD9XOZSB/DSrYD5BqDEvsHEFiH5FYDoraD9NwZSX7D1vOV5JwHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaVoJeD9XsZSFGD1BeVWJsHgrYDkBsV5F/HMFUHQXGZSBqHArYHuX7HgrKHEFKV5B7DoBOHQBiDQBqHArYHuFaHuNOZSrCH5FqDoXGHQJmZ1F7HIBeHuJsHgBeZSJqDuFaHIBiDcBwDQJsDSNaVWJwHuzGVIB/H5FqVoX7HQXOH9FaDSNOHQBqHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgrKVIBOV5X7VoX7D9BsZ1BOZ1BeV5FaDEBOHEXeDWX7VoXGD9XsDQB/Z1rwVWJsHgrKVcFCH5FqVENUHQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMvmVcFKV5BmVoBqD9BsZkFGHArKV5JeHgrKZSJGDuJeZuJsHQFYDQJsZ1BYHuF7DMvmDkBODur/DoXGHQXOZ1FGHArKV5FUDMrYZSXeV5FqHIJsD9NwDQJsHABYV5raHgvsVIFCDWJeVoraD9BsZSFaDSNOV5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BODMvOVcBUDWXKVEFGHQNmZkBiHAzGD5XGHgNKZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaDMzGVcrsDWFaDoF7DcFYH9B/DSNOHQrqHgveHEJqHEXCHMBiHQXODuBqHIrKV5X7HuzGZSNiH5XCHIJeDcFYZSBqHArKV5FUDMrYZSXeV5FqHIJsHQNmH9X7HArYV5BOHgrKVcFCH5FqDoX7DcBwZ1X7D1rwV5XGDMBYHEXeDuJeVoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VEFGHQFYVINUHAvsZMNU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_email_test']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_email_test']['initialize'])  
       { 
@@ -2204,7 +2203,8 @@ ob_start();
             }
         }
       $str_schema_app = (isset($_SESSION['scriptcase']['str_schema_all']) && !empty($_SESSION['scriptcase']['str_schema_all'])) ? $_SESSION['scriptcase']['str_schema_all'] : "Sc9_SweetAmour/Sc9_SweetAmour";
-       $str_button_app = trim($str_button);
+       $str_button_app = (isset($_SESSION['scriptcase']['str_button_all'])) ? $_SESSION['scriptcase']['str_button_all'] : "scriptcase9_SweetAmour";
+       $_SESSION['scriptcase']['str_button_all'] = $str_button_app;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">

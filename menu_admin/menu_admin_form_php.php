@@ -403,6 +403,10 @@ if (!isset($_SESSION['scriptcase']['menu_admin']['session_timeout']['redir']) &&
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("admin_grid_outcomes") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
       }
+      if ($_SESSION['scriptcase']['sc_item_menu'] == "item_31")
+      {
+          $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("form_email_setup") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";
+      }
       if ($_SESSION['scriptcase']['sc_item_menu'] == "item_12")
       {
           $apl_run = $_SESSION['scriptcase']['sc_apl_menu_link'] . $this->tab_grupo[0] . SC_dir_app_name("app_grid_sec_users") . "/?nm_run_menu=1&nm_apl_menu=menu_admin&script_case_init=" . $this->Gera_sc_init($this->sc_menu_item) . "&script_case_session=" . session_id() . "";

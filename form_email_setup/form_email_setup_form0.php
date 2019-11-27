@@ -601,14 +601,6 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
      </td> 
      <td nowrap align="right" valign="middle" width="33%" class="scFormToolbarPadding"> 
 <?php 
-    if ($opcao_botoes != "novo") {
-        $sCondStyle = ($this->nmgp_botoes['sc_btn_0'] == "on") ? '' : 'display: none;';
-?>
-       <?php echo nmButtonOutput($this->arr_buttons, "sc_btn_0", "scBtnFn_sc_btn_0()", "scBtnFn_sc_btn_0()", "sc_sc_btn_0_top", "", "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "");?>
- 
-<?php
-        $NM_btn = true;
-    }
 }
 if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $this->Embutida_multi || ($this->Embutida_call && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_setup']['embutida_liga_form_btn_nav'])) && $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_setup']['run_iframe'] != "F" && $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_setup']['run_iframe'] != "R")
 {
@@ -1192,9 +1184,6 @@ if (isset($_SESSION['scriptcase']['reg_conf']['html_dir']) && $_SESSION['scriptc
    </td></tr></table>
    </tr>
 </TABLE></div><!-- bloco_f -->
-</td></tr>
-<tr id="sc-id-required-row"><td class="scFormPageText">
-<span class="scFormRequiredOddColor">* <?php echo $this->Ini->Nm_lang['lang_othr_reqr']; ?></span>
 </td></tr> 
 <tr><td>
 <?php
@@ -1210,6 +1199,14 @@ if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $t
 if (($this->Embutida_form || !$this->Embutida_call || $this->Grid_editavel || $this->Embutida_multi || ($this->Embutida_call && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_setup']['embutida_liga_form_btn_nav'])) && $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_setup']['run_iframe'] != "F" && $_SESSION['sc_session'][$this->Ini->sc_page]['form_email_setup']['run_iframe'] != "R")
 {
     $NM_btn = false;
+    if ($opcao_botoes != "novo") {
+        $sCondStyle = ($this->nmgp_botoes['sc_btn_0'] == "on") ? '' : 'display: none;';
+?>
+       <?php echo nmButtonOutput($this->arr_buttons, "sc_btn_0", "scBtnFn_sc_btn_0()", "scBtnFn_sc_btn_0()", "sc_sc_btn_0_bot", "", "", "" . $sCondStyle . "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "");?>
+ 
+<?php
+        $NM_btn = true;
+    }
 ?> 
      </td> 
      <td nowrap align="center" valign="middle" width="33%" class="scFormToolbarPadding"> 
@@ -1449,7 +1446,7 @@ scAjax_displayEmptyForm();
 		}
 	}
 	function scBtnFn_sc_btn_0() {
-		if ($("#sc_sc_btn_0_top").length && $("#sc_sc_btn_0_top").is(":visible")) {
+		if ($("#sc_sc_btn_0_bot").length && $("#sc_sc_btn_0_bot").is(":visible")) {
 			sc_btn_sc_btn_0()
 			 return;
 		}
