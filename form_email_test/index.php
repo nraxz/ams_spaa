@@ -279,7 +279,7 @@ class form_email_test_ini
       $this->nm_hr_criacao   = "095432"; 
       $this->nm_autor_alt    = "admin"; 
       $this->nm_dt_ult_alt   = "20191128"; 
-      $this->nm_hr_ult_alt   = "093518"; 
+      $this->nm_hr_ult_alt   = "093535"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -922,7 +922,7 @@ class form_email_test_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9XsDQFUHIrwHQB/DMrYVcB/DWFYDorqD9BiZSB/DSNOD5JeDMvCVkXeDWr/HIX7HQJeDQFaHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgNKHENiDWXCHMBiHQJeDQFaHIvsD5F7DMBOV9FeDWBmVENUDcFYH9BqD1zGV5X7HgNOVkJqH5FYHIBiHQXsZ9XGHAvmD5F7DMvODkBsHEFGVENUHQNwH9BODSvOD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiD9XOZSB/HABYHQNUHgNOZSXeDWr/HMBqHQFYDuFaHINaVWBOHuBOVIBsDWF/VoB/D9JmH9FaHANOV5FGHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHgrKVIBOV5X7VoX7D9BsZ1BOZ1BeV5FaDEBOHEXeDWX7VoXGD9XsDQB/Z1rwVWJsHgrKVcFCH5FqVENUHQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMvmVcFKV5BmVoBqD9BsZkFGHArKD5BOHgvsHENiHEFqHMJwDcXGDuFaHABYVWBqHgvsDkB/HEF/VoB/D9BiZSBqHArKV5FUDMrYZSXeV5FqHIJsD9NwDQJsHABYV5raHgvsVIFCDWJeVoraD9BsZSFaDSNOV5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BODMvOVcBUDWXKVEFGHQNmZkBiHAzGD5XGHgBYHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMrYV9BUDWJeHMFUHQNwZkFGD1rwHQJsDMzGHEJqH5F/HIJsD9XsZ9JeD1BeD5F7DMvmVcFeV5F/VoB/D9XOZSB/HArYD5JeDEBeHEFKDWF/HMFGD9JKDQJsHArYD5BOHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBYHAFKV5B3DoBO";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXsH9X7DSN7HuF7DMBYVIBOV5F/DoX7DcNmZSBqZ1BeV5JwHgNKHErCV5FaHIJwHQFYDQFaD1BeHQrqDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgBeHEFiV5B3DoF7D9XsDuFaHAveV5JwHuvmVcrsH5XCDoraD9XGZSBOHAN7HuFUHgNOHArCHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HANOD5FaDErKVkXeV5FqDoFUDcBwDQX7Z1BYV5FUHuvmVcBODuFqVoJwD9BiZ1F7HArYD5JeDEvsHEFKV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1F7HArYHQBqDEvsVkJ3V5FqHMBiDcXGDQJwD1veHQBOHgvOVcFeH5FqHMBiD9BsVIraD1rwV5X7HgBeHErCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQXODQB/HAN7HQNUDMvsVcFeDurGDoXGHQXGZkFGHAvmZMB/DMvCZSJ3H5FGVoFGHQFYH9FUD1BeHuNUDMNOZSNiDWrmDoXGHQNmH9BqDSBOZMB/HgNKZSJqHEB7DoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoBqHQJeDuBqHAvOV5XGDMvOZSNiDur/HMBiD9BsVIraD1rwV5X7HgBeHErsDWF/VoBiHQFYH9X7HIrwV5FGHgrwVIB/DuX7HMB/HQXOVIJsDSrYHQraHgveZSJqDWF/HIFUHQNwZSX7DSN7HuFaHuNOZSrCH5FqDoXGHQJmZ1FGZ1NOD5NUDErKVkXeDWFqDoXGD9JKDQBOHAveHQF7HuvmVcFKDWFaDoX7D9JmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQJeDuBOZ1vCV5Je";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_email_test']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_email_test']['initialize'])  
       { 
@@ -1375,7 +1375,6 @@ class form_email_test_ini
           $this->Db->Execute("set dateformat ymd");
           $this->Db->Execute("set quoted_identifier ON");
       } 
-      $this->Db->debug = true;
   }
 
   function setConnectionHash() {
@@ -2730,20 +2729,7 @@ ob_start();
             $aResp['eventField'] = '__SC_NO_FIELD';
          }
          $aResp['htmOutput'] = '';
-    
-         if (isset($inicial_form_email_test->contr_form_email_test->NM_ajax_info['param']['buffer_output']) && $inicial_form_email_test->contr_form_email_test->NM_ajax_info['param']['buffer_output'])
-         {
-            $aResp['htmOutput'] = ob_get_contents();
-            if (false === $aResp['htmOutput'])
-            {
-               $aResp['htmOutput'] = '';
-            }
-            else
-            {
-               $aResp['htmOutput'] = form_email_test_pack_protect_string(NM_charset_to_utf8($aResp['htmOutput']));
-               ob_end_clean();
-            }
-         }
+                   ob_end_clean();
       }
       if (is_array($aResp))
       {

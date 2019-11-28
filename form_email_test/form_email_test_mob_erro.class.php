@@ -45,7 +45,6 @@ class form_email_test_mob_erro
       if ("banco" == $this->tipo)
       {
          $mensagem .= "<BR>" . $this->complemento;
-         $mensagem .= "<BR>{SC_DB_ERROR_INI}View SQL{SC_DB_ERROR_MID}" . $_SESSION['scriptcase']['sc_sql_ult_comando'] . "{SC_DB_ERROR_CLS}Close{SC_DB_ERROR_END}";
       }
       $this->msg_final = $mensagem;
    }
