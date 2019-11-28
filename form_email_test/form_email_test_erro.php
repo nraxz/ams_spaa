@@ -32,9 +32,12 @@ function form_email_test_scriptcase_error_handler($err_no, $err_msg, $err_file, 
             $tmp_desc = $_SESSION['scriptcase']['sc_sql_ult_conexao'];
         }
         $msg .= ("" != $tmp_desc) ? trim($tmp_desc) : trim($err_msg);
+        $msg .= "<BR>";
+        $msg .= "<BR>";
+        $msg .= "<B>Script</B>: ";
+        $msg .= $err_file . " ($err_line)";
         if (FALSE !== strpos($err_msg, "Invoke() failed") && "" != $_SESSION['scriptcase']['sc_sql_ult_comando'])
         {
-            $msg .= "<BR>";
             $msg .= "<BR>";
             $msg .= "<B>SQL</B>: ";
             $msg .= $_SESSION['scriptcase']['sc_sql_ult_comando'];
