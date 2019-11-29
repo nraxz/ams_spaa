@@ -210,6 +210,14 @@ class grid_admin_all_applicants_csv
           $this->csv_registro = "";
           foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
           { 
+              $SC_Label = (isset($this->New_label['checklist'])) ? $this->New_label['checklist'] : "Check List"; 
+              if ($Cada_col == "checklist" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+              {
+                  $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
+                  $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $SC_Label);
+                  $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
+                  $this->NM_prim_col++;
+              }
               $SC_Label = (isset($this->New_label['image_upload_image_headshot'])) ? $this->New_label['image_upload_image_headshot'] : "Image"; 
               if ($Cada_col == "image_upload_image_headshot" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
               {
@@ -540,6 +548,14 @@ class grid_admin_all_applicants_csv
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['export_sel_columns']['usr_cmp_sel']);
       }
       $rs->Close();
+   }
+   //----- checklist
+   function NM_export_checklist()
+   {
+      $col_sep = ($this->NM_prim_col > 0) ? $this->Delim_col : "";
+      $conteudo = str_replace($this->Delim_dados, $this->Delim_dados . $this->Delim_dados, $this->checklist);
+      $this->csv_registro .= $col_sep . $this->Delim_dados . $conteudo . $this->Delim_dados;
+      $this->NM_prim_col++;
    }
    //----- image_upload_image_headshot
    function NM_export_image_upload_image_headshot()

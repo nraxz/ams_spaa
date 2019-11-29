@@ -58,6 +58,7 @@ class grid_admin_all_applicants_grid
    var $Label_application_detail_audition_id;
    var $sc_proc_quebra_application_detail_audition_id;
    var $count_application_detail_audition_id;
+   var $checklist;
    var $view;
    var $image_upload_image_headshot;
    var $basic_information_firstname;
@@ -2167,6 +2168,8 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
 
    $compl_css_emb = ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida']) ? "grid_admin_all_applicants_" : "";
    $this->css_sep = " ";
+   $this->css_checklist_label = $compl_css_emb . "css_checklist_label";
+   $this->css_checklist_grid_line = $compl_css_emb . "css_checklist_grid_line";
    $this->css_image_upload_image_headshot_label = $compl_css_emb . "css_image_upload_image_headshot_label";
    $this->css_image_upload_image_headshot_grid_line = $compl_css_emb . "css_image_upload_image_headshot_grid_line";
    $this->css_basic_information_firstname_label = $compl_css_emb . "css_basic_information_firstname_label";
@@ -2438,6 +2441,14 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
      } 
    } 
  }
+ function NM_label_checklist()
+ {
+   global $nm_saida;
+   $SC_Label = (isset($this->New_label['checklist'])) ? $this->New_label['checklist'] : "Check List"; 
+   if (!isset($this->NM_cmp_hidden['checklist']) || $this->NM_cmp_hidden['checklist'] != "off") { 
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_checklist_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_checklist_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
+   } 
+ }
  function NM_label_image_upload_image_headshot()
  {
    global $nm_saida;
@@ -2640,6 +2651,8 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $this->sc_where_atual   = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq'];
    $this->sc_where_filtro  = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq_filtro'];
 // 
+   $SC_Label = (isset($this->New_label['checklist'])) ? $this->New_label['checklist'] : "Check List"; 
+   $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['checklist'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['image_upload_image_headshot'])) ? $this->New_label['image_upload_image_headshot'] : "Image"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['image_upload_image_headshot'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['basic_information_firstname'])) ? $this->New_label['basic_information_firstname'] : "Firstname"; 
@@ -3170,6 +3183,85 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao']       = "igual" ; 
    } 
  }
+ function NM_grid_checklist()
+ {
+      global $nm_saida;
+      if (!isset($this->NM_cmp_hidden['checklist']) || $this->NM_cmp_hidden['checklist'] != "off") { 
+          $conteudo = $this->checklist; 
+          if (!is_file($this->Ini->root  . $this->Ini->path_imag_cab . "/sys__NM__bg__NM__exp.png"))
+          { 
+              $conteudo = "&nbsp;" ;  
+          } 
+          elseif ($this->Ini->Gd_missing)
+          { 
+              $conteudo = "<span class=\"scErrorLine\">" . $this->Ini->Nm_lang['lang_errm_gd'] . "</span>";
+          } 
+          else 
+          { 
+              $in_checklist = $this->Ini->root  . $this->Ini->path_imag_cab . "/sys__NM__bg__NM__exp.png"; 
+              $img_time = filemtime($this->Ini->root . $this->Ini->path_imag_cab . "/sys__NM__bg__NM__exp.png"); 
+              $out_checklist = str_replace("/", "_", $this->Ini->path_imag_cab); 
+              $out_checklist = $this->Ini->path_imag_temp . "/sc_" . $out_checklist . "_checklist_2828_" . $img_time . "_sys__NM__bg__NM__exp.png";
+              if (!is_file($this->Ini->root . $out_checklist)) 
+              {  
+                  $sc_obj_img = new nm_trata_img($in_checklist);
+                  $sc_obj_img->setWidth(28);
+                  $sc_obj_img->setHeight(28);
+                  $sc_obj_img->setManterAspecto(true);
+                  $sc_obj_img->createImg($this->Ini->root . $out_checklist);
+              } 
+              if ($this->Ini->Export_img_zip)
+              {
+                  $this->Ini->Img_export_zip[] = $this->Ini->root . "/" . $out_checklist;
+                  $Clear_path_img = str_replace($this->Ini->path_imag_temp . "/", "", $out_checklist);
+                  $conteudo = "<img border=\"\" src=\"" . $Clear_path_img . "\"/>"; 
+              }
+              elseif ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['doc_word'] || $this->Img_embbed || $this->Ini->sc_export_ajax_img) 
+              { 
+                  $loc_img_word = $this->Ini->root . $this->Ini->path_imag_cab . "/sys__NM__bg__NM__exp.png";
+                  $tmp_checklist = fopen($loc_img_word, "rb"); 
+                  $reg_checklist = fread($tmp_checklist, filesize($loc_img_word)); 
+                  fclose($tmp_checklist);  
+                  $conteudo = "<img border=\"0\" src=\"data:image/jpeg;base64," . base64_encode($reg_checklist) . "\"/>" ; 
+              } 
+              else 
+              { 
+                  $conteudo = "<img border=\"0\" src=\"" . $this->NM_raiz_img . $out_checklist . "\"/>" ; 
+              } 
+          } 
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['proc_pdf'])
+          {
+              $this->SC_nowrap = "NOWRAP";
+          }
+          else
+          {
+              $this->SC_nowrap = "NOWRAP";
+          }
+   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_checklist_grid_line . "\"  style=\"" . $this->Css_Cmp['css_checklist_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\">\r\n");
+ if (!$this->Ini->Proc_print && !$this->Ini->SC_Link_View && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao'] != "pdf" && $_SESSION['scriptcase']['contr_link_emb'] != "pdf" && $conteudo != "&nbsp;"){ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['Ind_lig_mult']++;
+       $linkTarget = isset($this->Ini->sc_lig_target['C_@scinf_checklist_@scinf_admin_application_checklist']) ? $this->Ini->sc_lig_target['C_@scinf_checklist_@scinf_admin_application_checklist'] : (isset($this->Ini->sc_lig_target['C_@scinf_checklist']) ? $this->Ini->sc_lig_target['C_@scinf_checklist'] : null);
+       if (isset($this->Ini->sc_lig_md5["admin_application_checklist"]) && $this->Ini->sc_lig_md5["admin_application_checklist"] == "S") {
+           $Parms_Lig = "nmgp_lig_edit_lapis?#?S?@?glo_login?#?" . str_replace("'", "@aspass@", $this->application_detail_login) . "?@?";
+           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['dashboard_info']['under_dashboard'] && isset($linkTarget))
+           {
+               if ('' != $Parms_Lig)
+               {
+                   $Parms_Lig .= '*scout';
+               }
+               $Parms_Lig .= 'under_dashboard*scin1*scoutdashboard_app*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['dashboard_info']['dashboard_app'] . '*scoutown_widget*scin' . $linkTarget . '*scoutparent_widget*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['dashboard_info']['own_widget'] . '*scoutcompact_mode*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['dashboard_info']['compact_mode'] ? '1' : '0') . '*scoutremove_margin*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['dashboard_info']['remove_margin'] ? '1' : '0');
+           }
+           $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_admin_all_applicants@SC_par@" . md5($Parms_Lig);
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+       } else {
+           $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?glo_login?#?" . str_replace("'", "@aspass@", $this->application_detail_login) . "?@?";
+       }
+   $nm_saida->saida("<a id=\"id_sc_field_checklist_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_admin_application_checklist_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_self') . "', 'inicio', '0', '0', '', 'admin_application_checklist', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_checklist_grid_line . "\" style=\"" . $this->Css_Cmp['css_checklist_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+} else {
+   $nm_saida->saida(" <span id=\"id_sc_field_checklist_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
+       } 
+   $nm_saida->saida("</TD>\r\n");
+      }
+ }
  function NM_grid_image_upload_image_headshot()
  {
       global $nm_saida;
@@ -3663,7 +3755,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
  }
  function NM_calc_span()
  {
-   $this->NM_colspan  = 14;
+   $this->NM_colspan  = 15;
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opc_psq'])
    {
        $this->NM_colspan++;

@@ -545,6 +545,10 @@ class grid_admin_all_applicants_resumo
            $Lab_application_detail_audition_id,
        );
 
+       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['checklist']))
+       {
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['checklist'] = "Check List"; 
+       }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['image_upload_image_headshot']))
        {
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['image_upload_image_headshot'] = "Image"; 

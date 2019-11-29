@@ -159,7 +159,9 @@ function Sel_cmp_process()
       $tab_ger_campos = array();
       $tab_blk_campos = array();
 
-            $tab_ger_campos['image_upload_image_headshot'] = "on";
+            $tab_ger_campos['checklist'] = "on";
+      $tab_blk_campos[] = "checklist";
+      $tab_ger_campos['image_upload_image_headshot'] = "on";
       $tab_blk_campos[] = "image_upload_image_headshot";
       $tab_ger_campos['basic_information_firstname'] = "on";
       $tab_blk_campos[] = "basic_information_firstname";

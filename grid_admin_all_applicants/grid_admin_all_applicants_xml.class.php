@@ -567,6 +567,31 @@ class grid_admin_all_applicants_xml
       }
       $rs->Close();
    }
+   //----- checklist
+   function NM_export_checklist()
+   {
+         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->checklist))
+         {
+             $this->checklist = sc_convert_encoding($this->checklist, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+          if ($this->Xml_tag_label)
+          {
+              $SC_Label = (isset($this->New_label['checklist'])) ? $this->New_label['checklist'] : "Check List"; 
+          }
+          else
+          {
+              $SC_Label = "checklist"; 
+          }
+          $this->clear_tag($SC_Label); 
+         if ($this->New_Format)
+         {
+             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->checklist) . "</" . $SC_Label . ">\r\n";
+         }
+         else
+         {
+             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->checklist) . "\"";
+         }
+   }
    //----- image_upload_image_headshot
    function NM_export_image_upload_image_headshot()
    {

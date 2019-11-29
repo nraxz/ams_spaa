@@ -617,6 +617,36 @@ class grid_admin_all_applicants_xls
    { 
       foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
       { 
+          $SC_Label = (isset($this->New_label['checklist'])) ? $this->New_label['checklist'] : "Check List"; 
+          if ($Cada_col == "checklist" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+          {
+              $this->count_span++;
+              $current_cell_ref = $this->calc_cell($this->Xls_col);
+              if (!NM_is_utf8($SC_Label))
+              {
+                  $SC_Label = sc_convert_encoding($SC_Label, "UTF-8", $_SESSION['scriptcase']['charset']);
+              }
+              if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'])
+              { 
+                  $this->arr_export['label'][$this->Xls_col]['data']     = $SC_Label;
+                  $this->arr_export['label'][$this->Xls_col]['align']    = "left";
+                  $this->arr_export['label'][$this->Xls_col]['autosize'] = "s";
+                  $this->arr_export['label'][$this->Xls_col]['bold']     = "s";
+              }
+              else
+              { 
+                  if ($this->Use_phpspreadsheet) {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                  }
+                  else {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                  }
+                  $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $SC_Label);
+                  $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
+                  $this->Nm_ActiveSheet->getColumnDimension($current_cell_ref)->setAutoSize(true);
+              }
+              $this->Xls_col++;
+          }
           $SC_Label = (isset($this->New_label['image_upload_image_headshot'])) ? $this->New_label['image_upload_image_headshot'] : "Image"; 
           if ($Cada_col == "image_upload_image_headshot" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
           {
@@ -1040,6 +1070,27 @@ class grid_admin_all_applicants_xls
       $this->Xls_col = 0;
       $this->Xls_row++;
    } 
+   //----- checklist
+   function NM_export_checklist()
+   {
+         $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "CENTER"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
+         if (!NM_is_utf8($this->checklist))
+         {
+             $this->checklist = sc_convert_encoding($this->checklist, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         if ($this->Use_phpspreadsheet) {
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->checklist, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+         }
+         else {
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->checklist, PHPExcel_Cell_DataType::TYPE_STRING);
+         }
+         $this->Xls_col++;
+   }
    //----- image_upload_image_headshot
    function NM_export_image_upload_image_headshot()
    {
@@ -1402,6 +1453,19 @@ class grid_admin_all_applicants_xls
          else {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->audition_audition_title, PHPExcel_Cell_DataType::TYPE_STRING);
          }
+         $this->Xls_col++;
+   }
+   //----- checklist
+   function NM_sub_cons_checklist()
+   {
+         if (!NM_is_utf8($this->checklist))
+         {
+             $this->checklist = sc_convert_encoding($this->checklist, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->checklist;
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "center";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
          $this->Xls_col++;
    }
    //----- image_upload_image_headshot

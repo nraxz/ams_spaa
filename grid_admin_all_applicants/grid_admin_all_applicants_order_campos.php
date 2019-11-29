@@ -94,6 +94,18 @@ function Ord_cmp_init()
    $tab_ger_campos = array();
    $tab_def_campos = array();
    $tab_labels     = array();
+   $tab_ger_campos['checklist'] = "on";
+   if ($use_alias == "S")
+   {
+       $tab_def_campos['checklist'] = "checklist";
+       $tab_converte["checklist"]   = "checklist";
+   }
+   else
+   {
+       $tab_def_campos['checklist'] = "";
+       $tab_converte[""]   = "checklist";
+   }
+   $tab_labels["checklist"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["checklist"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["checklist"] : "Check List";
    $tab_ger_campos['image_upload_image_headshot'] = "on";
    if ($use_alias == "S")
    {
@@ -190,6 +202,7 @@ function Ord_cmp_init()
        $tab_converte[""]   = "view";
    }
    $tab_labels["view"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["view"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["view"] : "View";
+   $tab_ger_campos['checklist'] = "none";
    $tab_ger_campos['view'] = "none";
    if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['field_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['field_display']))
    {

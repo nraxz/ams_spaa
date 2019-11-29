@@ -161,6 +161,17 @@ class grid_admin_all_applicants_rtf
       $this->Texto_tag .= "<tr>\r\n";
       foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
       { 
+          $SC_Label = (isset($this->New_label['checklist'])) ? $this->New_label['checklist'] : "Check List"; 
+          if ($Cada_col == "checklist" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+          {
+              if (!NM_is_utf8($SC_Label))
+              {
+                  $SC_Label = sc_convert_encoding($SC_Label, "UTF-8", $_SESSION['scriptcase']['charset']);
+              }
+              $SC_Label = str_replace('<', '&lt;', $SC_Label);
+              $SC_Label = str_replace('>', '&gt;', $SC_Label);
+              $this->Texto_tag .= "<td>" . $SC_Label . "</td>\r\n";
+          }
           $SC_Label = (isset($this->New_label['image_upload_image_headshot'])) ? $this->New_label['image_upload_image_headshot'] : "Image"; 
           if ($Cada_col == "image_upload_image_headshot" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
           {
@@ -426,6 +437,17 @@ class grid_admin_all_applicants_rtf
           unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['export_sel_columns']['usr_cmp_sel']);
       }
       $rs->Close();
+   }
+   //----- checklist
+   function NM_export_checklist()
+   {
+         if (!NM_is_utf8($this->checklist))
+         {
+             $this->checklist = sc_convert_encoding($this->checklist, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         $this->checklist = str_replace('<', '&lt;', $this->checklist);
+         $this->checklist = str_replace('>', '&gt;', $this->checklist);
+         $this->Texto_tag .= "<td>" . $this->checklist . "</td>\r\n";
    }
    //----- image_upload_image_headshot
    function NM_export_image_upload_image_headshot()

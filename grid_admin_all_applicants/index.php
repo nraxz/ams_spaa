@@ -99,6 +99,7 @@ class grid_admin_all_applicants_ini
    var $path_atual;
    var $Gd_missing;
    var $sc_site_ssl;
+   var $link_admin_application_checklist_cons;
    var $link_admin_application_payment_verify_edit;
    var $link_admin_view_applicant_profile_cons;
    var $nm_cont_lin;
@@ -214,8 +215,8 @@ class grid_admin_all_applicants_ini
       $this->nm_dt_criacao   = "20190907"; 
       $this->nm_hr_criacao   = "131336"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191118"; 
-      $this->nm_hr_ult_alt   = "153908"; 
+      $this->nm_dt_ult_alt   = "20191129"; 
+      $this->nm_hr_ult_alt   = "110745"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -486,6 +487,25 @@ class grid_admin_all_applicants_ini
       }
       $this->sc_lig_target["C_@scinf_application_detail_payment_status"] = '_self';
       $this->sc_lig_target["C_@scinf_application_detail_payment_status_@scinf_admin_application_payment_verify"] = '_self';
+      $Tmp_apl_lig = "admin_application_checklist";
+      if (is_file($this->root . $this->path_link . "_lib/friendly_url/admin_application_checklist_ini.txt"))
+      {
+          $Friendly = file($this->root . $this->path_link . "_lib/friendly_url/admin_application_checklist_ini.txt");
+          if (isset($Friendly[0]) && !empty($Friendly[0]))
+          {
+              $Tmp_apl_lig = trim($Friendly[0]);
+          }
+      }
+      if (is_file($this->root . $this->path_link . $Tmp_apl_lig . "/admin_application_checklist_ini.txt"))
+      {
+          $L_md5 = file($this->root . $this->path_link . $Tmp_apl_lig . "/admin_application_checklist_ini.txt");
+          if (isset($L_md5[6]) && trim($L_md5[6]) == "LigMd5")
+          {
+              $this->sc_lig_md5["admin_application_checklist"] = 'S';
+          }
+      }
+      $this->sc_lig_target["C_@scinf_checklist"] = '_self';
+      $this->sc_lig_target["C_@scinf_checklist_@scinf_admin_application_checklist"] = '_self';
       if ($_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['dashboard_info']['under_dashboard'])
       {
           $sTmpDashboardApp = $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['dashboard_info']['dashboard_app'];
@@ -500,6 +520,7 @@ class grid_admin_all_applicants_ini
               }
           }
       }
+      $this->link_admin_application_checklist_cons =  $this->sc_protocolo . $this->server . $this->path_link . "" . SC_dir_app_name('admin_application_checklist') . "/" ; 
       $this->link_admin_application_payment_verify_edit =  $this->sc_protocolo . $this->server . $this->path_link . "" . SC_dir_app_name('admin_application_payment_verify') . "/" ; 
       $this->link_admin_view_applicant_profile_cons =  $this->sc_protocolo . $this->server . $this->path_link . "" . SC_dir_app_name('admin_view_applicant_profile') . "/" ; 
       if ($Tp_init == "Path_sub")
@@ -911,7 +932,7 @@ class grid_admin_all_applicants_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKDQB/DSN7HQNUHuzGVcBUDWJeHMJwHQNwZ1F7DSBeHQFaDMvCHEXeH5F/HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeHMBiD9BsVIraD1rwV5X7HgBeHErCV5XCDoXGHQFYH9FUHANOHQB/DMBOZSrCV5FYHIraHQBsZ1FaDSrYV5X7DEvsHEFiH5F/HIFGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVorqDcJUZ1BOZ1BeD5F7DErKVkXeV5FaVoBiD9FYH9X7HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1FUZ1BeV5BODErKVkXeHEFqVoFaDcXOZSX7HArYD5JsHuNOVcBOHEFYDoJsDcNwH9B/HABYV5FGDEBOHENiV5FaDoraD9NwDQJwHAveD5rqHuvmVcBOH5FqVoB/D9BsZSFaD1rKD5JeHgvCVkJGDWF/VoJeD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiDcBqVIJsD1rKV5X7HgNOZSJqDWXCZuBOHQBiH9BiZ1BYD5JeHuNOZSJqDWXCVEX7HQXGZ1FaHIBeHuJsHgBeHEFiV5B3DoF7D9XsDuFaHAveHQXGDMvsZSNiDWFYHMBOHQNmH9BOHArKHuBqHgvCHEJqH5F/HMBiDcXGDuBqD1veHQJeDMrwVcB/DWB3VEraHQNwZ1BOHINKZMB/HgvCHArCHEXCHMB/HQFYZSFUD1veHuF7HgNKDkBODuFqDoFGDcBqVIJwD1rwHQF7HgBYDkXKDWrGDoJeHQNmZ9XGHANOHQF7DMrwVcB/DWJeHIXGHQXGZkFGDSBOZMBqHgvCHArsH5BmZuBOHQXODuFaZ1BYHuJwDMrwV9BUHEFYHIJsDcNmZkFGD1NaZMXGDMrYZSXeDuFYVoXGDcJeZ9rqD1BeHuFGDMvsZSNiH5FqHINUHQBiZ1X7D1rKHuBOHgvCHEJqDWF/HIX7HQFYH9FUHAN7HQNUDMrwV9FeDWFYHMJwHQNmZSBOHIveHuXGHgvCHEJqHEXCHIX7HQXODuFaDSN7HuraHgNKDkBODuFqDoFGDcBqVIJwD1rwD5JeDMBYZSJqV5FaDoBODcJeDQFGD1veD5BOHgrYDkBsH5B7VEBiHQFYH9BOHArKD5XGDEBOZSXeDuFaDoJeDcJeDQX7Z1zGV5BiDMNOVIBOHEFYDoJeDcJUZ1FaD1NaD5raHgN7HEBUDurmZuJeHQXOZ9JeDSzGV5JwDMBYVIBODWFYVENUHQBiZ1B/HABYV5JsDMzGHAFKV5FaZuBOHQJeDuBOZ1rwVWXGHuBYDkFCDuX7VoX7D9BsH9B/Z1BeZMB/HgvCZSJGH5FYDoF7D9NwH9X7DSBYV5JeHuBYVcFKH5FqVoB/D9XOH9B/D1zGD5FaDMrYZSXeDuFYVoXGDcJeZ9rqD1BeV5BqHgvsDkB/V5X7DoX7D9BsH9FaD1rwZMB/DMNKZSJ3V5XCHIJwHQFYH9BiHABYHQF7DMzGVcFiV5X/VorqHQNmZ1BiHABYHQJwDEBODkFeH5FYVoFGHQJKDQBqHAvmV5JeDMvOV9BUHEX/VoF7HQNmZkBiHAzGZMXGHgBeHEFiV5B3DoF7D9XsDuFaHANKV5XGHuBOVcBUHEFYHMBODcFYZ1X7D1rwHuB/HgvsVkJGH5F/HMJsHQNmDQB/D1veHQBqDMvOVcXKH5FqVoBiHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMJeDcJeDQFGHANOD5JwHuzGDkBODurGVoFaHQXGH9B/HIveD5NUDEBeHEFiHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcBUHEX/DoJsHQNmZ1XGZ1veZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQFYH9FUD1BeVWBOHuBYVcFeV5X7DoJeD9BiZSB/DSrYV5BqHgNOHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDErKHErCH5X/ZuJeHQNmDQFaHANOV5FUDMNOV9FiV5FYHIXGD9BsZkFGD1zGZMJeDMvCHErCDWXCDoFUHQXODuFaHAveD5NUHgNKDkBOV5FYHMBiD9XOZ1F7HArYD5BiDMBYVkJGDWr/DoB/D9XsH9FGDSN7D5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5FaDMzGZSJGDWr/VoXGDcBwDQB/Z1rwV5FUHgrKVcFKV5FYDoFGD9BsZSBOZ1BeD5NUDEBOHEFiDuFYDoFUDcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1B/Z1NOZMB/DErKDkBsV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHABYHQBODMvCZSJqDuFaDoF7HQNmDQJsD1BeV5raHuBYVcrsH5XCHMBiD9BsVIraD1rwV5X7HgBeHErCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQXODQB/HAN7HQNUDMvsVcFeDurGDoXGHQXGZkFGHAvmZMB/DMvCZSJ3H5FGVoFGHQFYH9FUD1BeHuNUDMNOZSNiDWrmDoXGHQNmH9BqDSBOZMB/HgNKZSJqHEB7DoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoBqHQJeDuBqHAvOV5XGDMvOZSNiHEFYHMBiD9BsVIraD1rwV5X7HgBeHENiDWrGZuFaHQJKZ9XGHIrKHuNUHuNOVcBODur/DoBiHQBiZSB/DSrYHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['initialize'])  
       { 
@@ -2543,6 +2564,7 @@ class grid_admin_all_applicants_apl
       } 
       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order']))
       { 
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "checklist";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "image_upload_image_headshot";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "basic_information_firstname";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "basic_information_lastname";
