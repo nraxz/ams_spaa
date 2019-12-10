@@ -3722,8 +3722,35 @@ $_SESSION['scriptcase']['app_form_edit_users']['contr_erro'] = 'off';
       }
     if ("insert" == $this->sc_evento && $this->nmgp_opcao != "nada") {
         $_SESSION['scriptcase']['app_form_edit_users']['contr_erro'] = 'on';
+if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
+{
+    $original_confirm_pswd = $this->confirm_pswd;
+    $original_email = $this->email;
+    $original_firstname = $this->firstname;
+    $original_lastname = $this->lastname;
+}
   
+$this->send_mail_to_user();
 
+if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
+{
+    if (($original_confirm_pswd != $this->confirm_pswd || (isset($bFlagRead_confirm_pswd) && $bFlagRead_confirm_pswd)))
+    {
+        $this->ajax_return_values_confirm_pswd(true);
+    }
+    if (($original_email != $this->email || (isset($bFlagRead_email) && $bFlagRead_email)))
+    {
+        $this->ajax_return_values_email(true);
+    }
+    if (($original_firstname != $this->firstname || (isset($bFlagRead_firstname) && $bFlagRead_firstname)))
+    {
+        $this->ajax_return_values_firstname(true);
+    }
+    if (($original_lastname != $this->lastname || (isset($bFlagRead_lastname) && $bFlagRead_lastname)))
+    {
+        $this->ajax_return_values_lastname(true);
+    }
+}
 $_SESSION['scriptcase']['app_form_edit_users']['contr_erro'] = 'off'; 
     }
       if (!empty($this->Campos_Mens_erro)) 
@@ -4324,23 +4351,14 @@ $this_is = $this->confirm_pswd ;
 
 
 
-$message = "Dear ".$name .", <br/><br/>Your login has been created for the London Studio Centre audition system.<br/>To login to your account  <br/>";
+$message = "Dear ".$this->firstname ." ".$this->lastname .", <br/><br/>Your login has been created on Application Management System for Sharjah Performing Arts Academy.<br/>To login to your account  <br/>";
 $link = " <a href='http://". $_SERVER['HTTP_HOST']."'> Click here.</a> <br/> Please use your password:  <strong>".$this_is."</strong> <br/> Once you logged in, please change the password for the safety reason.<br/><br/>";
- $email_footer = "
-<p>Kind regards,<br/>
- <span style='font-size: small; font-family: arial,helvetica,sans-serif;'><span style='font-size: Medium;'>London Studio Centre</span></p>
-<table border='0'>
-    <tbody>
-    <tr>
-        <td><img title='LSC' src='http://londonstudiocentre.org/images/logo/logo.jpg' alt='LSC logo' width='88' height='160' /></td>
-        <td>
-           
-           artsdepot, 5 Nether Street</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'>Tally Ho Corner, North Finchley, N12 0GA</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'>United Kingdom</span></p>
-            <p><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Tel:</em> +44 20 7837 7741</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Fax:</em> +44 20 7837 3248</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Enquiries:</em> info@londonstudiocentre.org</span><br /><span style='font-size: small; font-family: arial,helvetica,sans-serif;'><em>Website:</em> www.londonstudiocentre.org </span></p>
-        </td>
-    </tr>
-    </tbody>
-</table>";
+ $email_footer = "<p>Kind regards</p>
+<p>SPAA team</p>
+<p>E: <a href='mailto:admissions@spaa.ae'>admissions@spaa.ae</a></p>
+<p>
+                <img src='http://resources.spaa.ae/images/SPAA_Email_Signature_BIG.png' alt='SPAA Email Signature BIG' style='vertical-align: bottom;' /><br style='clear: both;' /></p>
+";
 
 $mail_smtp_server 	= $this->get_smtp($smtp);       
 $mail_smtp_user 	= $this->get_smtp($smtp_user);                   
