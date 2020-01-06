@@ -100,6 +100,10 @@ if (isset($aParams['nmgp_parms']))
         $aParams[$tmp_p] = $cadapar[1];
     }
 }
+if (!isset($aParams['SC_module_export'])) 
+{ 
+    $aParams['SC_module_export'] = "";
+}
 
 $parms_pdf = (isset($aParams['sc_parms_pdf'])) ? $aParams['sc_parms_pdf'] : "";
 $graf_pdf  = (isset($aParams['sc_graf_pdf']))  ? $aParams['sc_graf_pdf']  : "";
@@ -197,11 +201,6 @@ if (@is_file($_str_btn_file))
  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $STR_btn; ?>" /> 
  <script type="text/javascript" src="<?php echo $STR_prod; ?>/third/jquery/js/jquery.js"></script>
  <script type="text/javascript">
- $(function(){
-  buttonDisable("idBtnView");
-  buttonDisable("idBtnDown");
-  checkPDF();
- });
  function viewClick() {
   if ($("#idBtnView").prop("disabled")) {
    return;
@@ -298,6 +297,59 @@ $NM_volta   = "volta_grid";
 <form name="Fview" method="get" action="<?php echo $NM_pdfurl . "/" . $NM_pdf_output;?>" target="_blank" style="display: none"> 
 </form>
 <table style="border-collapse: collapse; border-width: 0; height: 98%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: middle">
+ <?php
+   $file_to_test = $_SESSION['sc_session']['real_path_third'] . '/wkhtmltopdf';
+   if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+   {
+       $file_to_test .= '/win/wkhtmltopdf.exe';
+   }
+   elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+   {
+       if (FALSE !== strpos(strtolower(php_uname()), 'i686')) 
+       {
+           if (FALSE !== strpos(php_uname(), 'Debian 4.9')) 
+           {
+               $file_to_test .= '/stretch/';
+           }
+           else
+           {
+               $file_to_test .= '/linux-i386/';
+           }
+           $file_to_test .= 'wkhtmltopdf-i386';
+       }
+       else
+       {
+           if (FALSE !== strpos(php_uname(), 'Debian 4.9')) 
+           {
+               $file_to_test .= '/stretch/';
+           }
+           else
+           {
+               $file_to_test .= '/linux-amd64/';
+           }
+           $file_to_test .= 'wkhtmltopdf-amd64';
+       }
+   }
+   elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+   {
+       $file_to_test .= '/osx/Contents/MacOS/wkhtmltopdf';
+   }
+   if(!is_file($file_to_test))
+   {
+   ?>
+      <table class="scExportTable" align="center">
+       <tr>
+        <td class="scExportTitle" style="height: 25px"><?php echo $Nm_lang['lang_sweet_error']; ?></td>
+       </tr>
+       <tr>
+        <td class="scExportLine" style="width: 100%"><?php echo $Nm_lang['lang_pdff_errg_not_found']; ?></td>
+       </tr>
+      </table>
+   <?php
+   }
+   else
+   {
+ ?>
  <table class="scExportTable" align="center">
   <tr>
    <td class="scExportTitle" style="height: 25px">PDF</td>
@@ -339,6 +391,16 @@ else
   </tr>
  </table>
 </td></tr></table>
+<script>
+ $(function(){
+  buttonDisable("idBtnView");
+  buttonDisable("idBtnDown");
+  checkPDF();
+ });
+</script>
+<?PHP
+}
+?>
 </body>
 </html>
 <?php

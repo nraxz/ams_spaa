@@ -401,7 +401,7 @@ class applicant_upcomming_auditions_grid
    if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig']) || $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['prim_cons'] || !empty($nmgp_parms))  
    { 
        $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['prim_cons'] = false;  
-       $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'] = " where audition.status = 'Open'";  
+       $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'] = " where audition.status = 'Open' AND     audition.audition_date > now()- interval 1 day";  
        $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_pesq']        = $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'];  
        $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_pesq_ant']    = $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'];  
        $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['cond_pesq']         = ""; 

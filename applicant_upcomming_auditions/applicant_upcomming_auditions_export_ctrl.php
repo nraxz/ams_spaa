@@ -54,18 +54,6 @@ class applicant_upcomming_auditions_export_control
           include_once("../_lib/lib/php/nm_utf8.php");
       }
       asort($this->Nm_lang_conf_region);
-      foreach ($this->Nm_lang as $ind => $dados)
-      {
-         if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($ind))
-         {
-             $ind = sc_convert_encoding($ind, $_SESSION['scriptcase']['charset'], "UTF-8");
-             $this->Nm_lang[$ind] = $dados;
-         }
-         if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($dados))
-         {
-             $this->Nm_lang[$ind] = sc_convert_encoding($dados, $_SESSION['scriptcase']['charset'], "UTF-8");
-         }
-      }
       $_SESSION['scriptcase']['reg_conf']['html_dir'] = (isset($this->Nm_conf_reg[$this->str_conf_reg]['ger_ltr_rtl'])) ? " DIR='" . $this->Nm_conf_reg[$this->str_conf_reg]['ger_ltr_rtl'] . "'" : "";
       $_SESSION['scriptcase']['reg_conf']['css_dir']  = (isset($this->Nm_conf_reg[$this->str_conf_reg]['ger_ltr_rtl'])) ? $this->Nm_conf_reg[$this->str_conf_reg]['ger_ltr_rtl'] : "LTR";
       $this->str_schema_all = (isset($_SESSION['scriptcase']['str_schema_all']) && !empty($_SESSION['scriptcase']['str_schema_all'])) ? $_SESSION['scriptcase']['str_schema_all'] : "Sc9_SweetAmour/Sc9_SweetAmour";

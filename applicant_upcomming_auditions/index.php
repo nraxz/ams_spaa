@@ -212,8 +212,8 @@ class applicant_upcomming_auditions_ini
       $this->nm_dt_criacao   = "20190916"; 
       $this->nm_hr_criacao   = "165850"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20200106"; 
+      $this->nm_hr_ult_alt   = "103609"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -796,7 +796,7 @@ class applicant_upcomming_auditions_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -872,7 +872,7 @@ class applicant_upcomming_auditions_ini
           echo $SS_cod_html;
           exit;
       }
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -891,7 +891,7 @@ class applicant_upcomming_auditions_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9XsDuBqHArYV5XGHuBOVcXKDWFaDoF7HQJmH9BOHIBeHQNUHgBYHErCDWr/HMJsD9NwDuBqHIrwV5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5BOHgvsHArsHEB3ZuB/HQNwDQBqD1BeHQFaDMBYVcFiV5FYHIJsDcFYZ1X7D1zGZMB/HgvsHEFKV5FqHMJsHQXODuBqHABYHuBODMrYVcFiV5FYHINUHQXOH9BOD1rwHuFUHgBeDkBsH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEBmVoX7HQNmZSBqZ1vmD5XGHgNODkBsV5FqHMX7HQFYZSFUHArYHQJwDMrYZSrCV5X/VENUHQNwVINUHArYHuBODMvCHAFKV5B7ZuXGDcXGDQB/DSBYHuF7DMvsVcFiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEB3DoXGHQNwH9BiHIBeHQNUDMBYV9FiV5FYHIBiHQJmZSBOHAN7HQBqDMvCHEFKV5FqHIFUHQXsDuBqHANOHuBODMBYZSrCV5FYVoBiHQJmVINUHArYHuB/HgBOHAFKH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqHgNKVcFiDur/VEX7HQBqZ1BiHAvmV5JeHgvCZSJ3V5XCVoB/D9NmDQFaZ1BYV5FUHuvmDkBOH5XKVoraD9BiVINUDSvOD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HIX7HQJmZ1BOHAN7HQBiHgNOZSJ3DurmVoFGHQBiDQBqHANKV5XGDMvmVcFKV5BmVoBqD9BsZkFGHArKHQX7DEBeVkJqDuJeHMBOD9NwDuFaDSN7D5BqHgvsVIB/DWFYHIX7HQBsZSBqHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HArYV5JeHuzGVcFKDuFqDoFGDcBqH9B/HABYV5FUDEvsHENiV5FaZuB/D9NwDQJsD1BeV5JwHuNOVcBOV5FYDoFGD9BsZSB/HIBeD5BiDMBYHEJGDWFqVoFaD9JKDQFGD1veD5BqHuNODkBOV5F/VoFGHQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMvmVcFKV5BmVoBqD9BsZkFGHArKZMB/DEBeHArCDWX7ZuBqHQXODQFGDSBYD5BqDMvOZSJ3V5FYHIFGDcNmZ1rqHArYHQJwDEBODkFeH5FYVoFGHQJKDQJwHAveD5JwHgrYDkBODWJeVoX7D9BsH9B/Z1NOZMJwDMzGHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOZSNiDWB3VoF7HQBqZkBiHAzGD5BOHgveHArsH5FYHIJsD9XsZ9JeD1BeD5F7DMvmVcrsH5FqHMraHQBiZ1X7D1NaD5XGHgveZSXeDuJeZuJeD9NwDQFUZ1rwHQBqDMzGVcFCDuX7VoBiHQBqZ1B/Z1rYHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXsH9FUHIvsVWJsHuNOVcBODWF/HMFGD9BsH9B/DSNOV5BqDMzGHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOV9FeV5X/VEBiHQNwZkFGHINKD5JeHgNOHErCDuX/VoFGDcXGDQB/D1veHuJwDMrYVcFeDuB7DoXGHQXGZ1BiD1zGZMFaDMveHErsH5BmVoFGHQNwH9BiDSrwHQF7HgrwVcFeH5B7VoBqD9BsZ1F7DSrYD5rqDMrYZSJ3DurmZuJsHQBiZ9XGHANOHQBODMvOVIB/H5B7DoXGHQXGZSBOD1rwHuJsHgrKDkB/DWB3VoFGHQXODQBqHAvCVWJwDMBYVcB/H5XKDoXGHQBqZ1BOD1rKHQJeHgBeDkB/DurmDoF7D9XsDQJsDSBYV5FGHgNKDkBsHEX/VEBiHQNwZ1X7HANOHuFUHgBYHErCDurmVoFGHQFYDuFaHAvCVWJsHgrwDkBsH5XKDoXGHQXGZSBOD1rwHQFUHgBODkXKDWrGVoFGHQBiZSBiDSNaVWJsDMrYDkB/HEX/VoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSFGHAveV5FUHuBYVcFKDur/VoJwHQJmVIJsDSvmD5FaHgNOHEBUDWr/DoB/DcBwZSFGHANOV5FUHuNOV9FiDWXCHMFaD9JmZ1B/HIrwV5FaDErKDkBsDWBmVoJeD9FYDQBqHIvsVWJeDMNaV9FiV5X7HIX7DcJUZ1FaD1rKHuBODMBYHEXeHEFaVoB/HQXGZSFGHAvCVWBqDMrwDkFCDuX7VEF7D9BiH9FaHAN7D5FaDEBOZSJGH5BmDoB/D9NwZSX7D1BeV5BOHuvmVcFCDWXCVENUDcBqH9B/HABYD5JeDMzGHAFKV5XKDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9B/HIveD5FaDErKZSJGH5F/DoFUHQNmH9BiHArYHQrqDMNOVcB/H5FqHMBOHQFYZkBiHAvsD5BqHgveHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMrYVIB/DWFYDoBiD9XGZ1F7HANOHuFaHgBOHErsH5BmZuJeHQJeDuFaDSrwD5JwHgvOVcBUDWFaHMBiD9BsVIraD1rwV5X7HgBeHEFKV5FaDoraD9NwDQJwHAveD5rqHuvmVcBOH5FqVoB/D9BsZSFaD1rKD5BiDEvsHEJGDWF/DoF7D9XsZSX7Z1BYD5F7HuvmVcBOV5F/DoF7DcNwH9B/HABYZMFaDMzGHEFiHEFqZuFaD9JKDQX7Z1rwD5NUHuzGZSJ3V5F/VorqD9JmZ1rqHArKHQJwDEBODkFeH5FYVoFGHQJKDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZ1FaHABYD5XGHgNOHEFiDuFaHMFGHQFYDQJwD1BeD5FaDMBYZSNiHEFYHMB/HQJmZkFGDSBeHQJwDEBODkFeH5FYVoFGHQJKDQJwHAveD5JwHgrYDkBODWJeVoX7D9BsH9B/Z1NOZMJwDMzGHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOZSNiDWB3VoX7HQNmZ1BiHAvsD5BOHgveHErsDWXCHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWFaDoJsHQJmH9BOHIBeV5JeHgveZSJGH5F/HIX7HQXODQB/HIrwHQB/DMvOVcrsDWJeVoX7DcFYZSBqHIBeHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['applicant_upcomming_auditions']['initialize'])  
       { 
@@ -2665,7 +2665,7 @@ class applicant_upcomming_auditions_apl
       { 
          unset($_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['use_pass_pdf']);
          $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['prim_cons'] = true;  
-         $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'] = " where audition.status = 'Open'";
+         $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'] = " where audition.status = 'Open' AND     audition.audition_date > now()- interval 1 day";
          $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_pesq']       = $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_pesq_ant']   = $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['applicant_upcomming_auditions']['cond_pesq'] = ""; 
