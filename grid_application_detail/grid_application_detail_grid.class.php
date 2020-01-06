@@ -52,8 +52,8 @@ class grid_application_detail_grid
    var $progress_graf;
    var $count_ger;
    var $audition_fees;
-   var $payment;
    var $verify_notification;
+   var $payment;
    var $venue_id;
    var $audition_id;
    var $program;
@@ -358,8 +358,8 @@ class grid_application_detail_grid
    $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'on';
 if (!isset($_SESSION['usr_login'])) {$_SESSION['usr_login'] = "";}
 if (!isset($this->sc_temp_usr_login)) {$this->sc_temp_usr_login = (isset($_SESSION['usr_login'])) ? $_SESSION['usr_login'] : "";}
-  $this->Ini->nm_hidden_blocos[4] = "off";
-$this->Ini->nm_hidden_blocos[3] = "off";
+  $this->Ini->nm_hidden_blocos[3] = "off";
+$this->Ini->nm_hidden_blocos[] = "off";
 
 $this->login = $this->sc_temp_usr_login;
 $myrecord = $this->countRecord($this->login, 'application_detail');
@@ -1793,8 +1793,6 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $this->css_program_grid_line = $compl_css_emb . "css_program_grid_line";
    $this->css_payment_status_label = $compl_css_emb . "css_payment_status_label";
    $this->css_payment_status_grid_line = $compl_css_emb . "css_payment_status_grid_line";
-   $this->css_payment_label = $compl_css_emb . "css_payment_label";
-   $this->css_payment_grid_line = $compl_css_emb . "css_payment_grid_line";
    $this->css_verify_notification_label = $compl_css_emb . "css_verify_notification_label";
    $this->css_verify_notification_grid_line = $compl_css_emb . "css_verify_notification_grid_line";
  }  
@@ -2005,7 +2003,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
                $nm_saida->saida("<table id=\"apl_grid_application_detail#?#$nm_seq_execucoes\" width=\"100%\" style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\">\r\n");
                $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridTabelaTd . " " . "\" style=\"font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:12px;\"><table style=\"padding: 0px; border-spacing: 0px; border-width: 0px; vertical-align: top;\" width=\"100%\">\r\n");
                $nm_id_aplicacao = "";
-               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridFieldOdd . "\"  style=\"padding: 0px; font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:12px;\" colspan = \"8\" align=\"center\">\r\n");
+               $nm_saida->saida("  <tr><td class=\"" . $this->css_scGridFieldOdd . "\"  style=\"padding: 0px; font-family:" . $this->Ini->texto_fonte_tipo_impar . ";font-size:12px;\" colspan = \"7\" align=\"center\">\r\n");
                $nm_saida->saida("     " . $this->nm_grid_sem_reg . "\r\n");
                $nm_saida->saida("  </td></tr>\r\n");
                $nm_saida->saida("  </table></td></tr></table>\r\n");
@@ -2228,121 +2226,87 @@ if (($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['pr
           $this->sc_proc_grid = true;
           $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'on';
   $this->payment  = '<div class="" style="text-align:centjavascript:void(0);er;"><i class="fas fa-credit-card"></i> | Paynow</div>';
-$this->verify_notification  = '<p>If you are paying offline please email your receipt to admissions@spaa.ae</p>
-<p>You will get a confirmation from SHARJAH ACADEMY OF THE ARTS team</p></i>
-<p><strong>Bank Details:</p>
-<table cellspacing="0" cellpadding="0" border="0">
-    <tbody>
-        <tr>
-            <td width="167" valign="top">
-                <p>
-                    Account name
-                </p>
-            </td>
-            <td width="396" valign="top">
-                <p>
-                    SHARJAH ACADEMY OF THE ARTS
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="167" valign="top">
-                <p>
-                    Account number
-                </p>
-            </td>
-            <td width="396" valign="top">
-                <p>
-                    0012061859001
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="167" valign="top">
-                <p>
-                    IBAN
-                </p>
-            </td>
-            <td width="396" valign="top">
-                <p>
-                    AE680410000012061859001
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="167" valign="top">
-                <p>
-                    Bank name
-                </p>
-            </td>
-            <td width="396" valign="top">
-                <p>
-                    Sharjah Islamic Bank
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="167" valign="top">
-                <p>
-                    Branch
-                </p>
-            </td>
-            <td width="396" valign="top">
-                <p>
-                    Main Branch
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="167" valign="top">
-                <p>
-                    Swift
-                </p>
-            </td>
-            <td width="396" valign="top">
-                <p>
-                    NBSHAEAS
-                </p>
-            </td>
-        </tr>
-    </tbody>
+$this->verify_notification  = '<p>If there is no fee for your audition, your place will remain pending until <strong><span style="color: #008080;">verified</span></strong> by the admin.&nbsp;</p>
+<p>&nbsp;</p>
+<p>If there is a payment to be made and you pay offline, please email your confirmation of payment to&nbsp;<a href="mailto:admissions@spaa.ae">admissions@spaa.ae</a></p>
+<p>You will receive a confirmation from the&nbsp;SHARJAH ACADEMY OF THE ARTS team.&nbsp;</p>
+<p><strong>Bank details:</strong></p>
+<table>
+<tbody>
+<tr>
+<td width="167">
+<p><span style="color: #008080;"><strong>Account name</strong></span></p>
+</td>
+<td width="396">
+<p>SHARJAH ACADEMY OF THE ARTS</p>
+</td>
+</tr>
+<tr>
+<td width="167">
+<p><span style="color: #008080;"><strong>Account number</strong></span></p>
+</td>
+<td width="396">
+<p>0012061859001</p>
+</td>
+</tr>
+<tr>
+<td width="167">
+<p><span style="color: #008080;"><strong>IBAN</strong></span></p>
+</td>
+<td width="396">
+<p>AE680410000012061859001</p>
+</td>
+</tr>
+<tr>
+<td width="167">
+<p><span style="color: #008080;"><strong>Bank name</strong></span></p>
+</td>
+<td width="396">
+<p>Sharjah Islamic Bank</p>
+</td>
+</tr>
+<tr>
+<td width="167">
+<p><span style="color: #008080;"><strong>Branch</strong></span></p>
+</td>
+<td width="396">
+<p>Main Branch</p>
+</td>
+</tr>
+<tr>
+<td width="167">
+<p><span style="color: #008080;"><strong>Swift</strong></span></p>
+</td>
+<td width="396">
+<p>NBSHAEAS</p>
+</td>
+</tr>
+</tbody>
 </table>
-<table cellspacing="0" cellpadding="0" border="0" align="left">
-    <tbody>
-        <tr>
-            <td nowrap="">
-            </td>
-            <td nowrap="">
-            </td>
-            <td nowrap="">
-            </td>
-        </tr>
-    </tbody>
-</table>';
+';
 $this->audition_fees  =  $this->GetAuditionFees($this->audition_id);
 if($this->audition_fees  > 0)
 {
 		
 		if($this->payment_status  == 'Complete'){
-			$this->Ini->nm_hidden_blocos[3] = "off";
-			$this->Ini->nm_hidden_blocos[4] = "off";		
+			$this->Ini->nm_hidden_blocos[] = "off";
+			$this->Ini->nm_hidden_blocos[3] = "off";		
 			
 		}
 		if($this->payment_status  == 'Pending'){
-			$this->Ini->nm_hidden_blocos[3] = "on";
-			$this->Ini->nm_hidden_blocos[4] = "yes";		
+			$this->Ini->nm_hidden_blocos[3] = "on";		
 		}
 	
 }
 else
 {
 	if($this->payment_status  == 'Pending'){
-		$this->Ini->nm_hidden_blocos[4] = "on";	
-		$this->Ini->nm_hidden_blocos[3] = "off";
+		$this->Ini->nm_hidden_blocos[3] = "on";	
+		$this->Ini->nm_hidden_blocos[] = "off";
 	}
 	if($this->payment_status  == 'Complete'){
+		$this->Ini->nm_hidden_blocos[] = "off";
 		$this->Ini->nm_hidden_blocos[3] = "off";
-		$this->Ini->nm_hidden_blocos[4] = "off";
 	}
 }
 $_SESSION['scriptcase']['grid_application_detail']['contr_erro'] = 'off';
@@ -2614,7 +2578,7 @@ $nm_saida->saida("   <TR>\r\n");
 $nm_saida->saida("    <TD class=\"" . $this->css_scGridBlock . " css_blk_2\"  colspan=\"1\" height=\"20px\" width=\"100%\" >\r\n");
 $nm_saida->saida("     <TABLE style=\"padding: 0px; spacing: 0px; border-width: 0px; border-collapse:collapse;\" width=\"100%\">\r\n");
 $nm_saida->saida("      <TR>\r\n");
-$nm_saida->saida("       <TD class=\"" . $this->css_scGridBlockFont . " css_blk_2\"  style=\"padding: 0px;\" align=\"\" valign=\"\">" . str_replace("@STYBLK@", "",$Img_tit_blk_i) . "Payment Status" . $Img_tit_blk_f . "</TD>\r\n");
+$nm_saida->saida("       <TD class=\"" . $this->css_scGridBlockFont . " css_blk_2\"  style=\"padding: 0px;\" align=\"\" valign=\"\">" . str_replace("@STYBLK@", "",$Img_tit_blk_i) . "Payment or Booking Status" . $Img_tit_blk_f . "</TD>\r\n");
 $nm_saida->saida("      </TR>\r\n");
 $nm_saida->saida("     </TABLE>\r\n");
 $nm_saida->saida("    </TD>\r\n");
@@ -2655,63 +2619,6 @@ $nm_saida->saida("    <table width=\"100%\" style=\"padding: 0px; border-spacing
      $Img_tit_blk_f = "";
      $Collapse_blk  = "";
 $nm_saida->saida("  <TABLE class=\"" . $this->css_scGridTabela . "\"  style=\"border-collapse:collapse;\" cellspacing=0px cellpadding=0px align=\"center\" id=\"grid_application_detail_hidden_bloco_3_" . $this->nm_contr_album . "\" width=\"100%\" style=\"height: 100%\">\r\n");
-$nm_saida->saida("   <TR>\r\n");
-$nm_saida->saida("    <TD  style=\"border-width: 0px; border-style: none; \" height=\"\" valign=\"top\" width=\"100%\">\r\n");
-$nm_saida->saida("     <TABLE style=\"padding: 0px; spacing: 0px; border-width: 0px; border-collapse:collapse;\" width=\"100%\">\r\n");
-$nm_saida->saida("      <TR>\r\n");
-$nm_saida->saida("     <TD class=\"" . $this->css_line_back . $this->css_sep . $this->css_payment_grid_line . "\"  style=\"" . $this->Css_Cmp['css_payment_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"middle\"   HEIGHT=\"0px\">\r\n");
-          $conteudo = sc_strip_script($this->payment); 
-          if ($conteudo === "") 
-          { 
-              $conteudo = "&nbsp;" ;  
-              $graf = "" ;  
-          } 
-          if (isset($this->NM_cmp_hidden['payment']) && $this->NM_cmp_hidden['payment'] == "off")
-          {
-              $conteudo = "&nbsp;";
-          }
-          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['proc_pdf'])
-          {
-              $this->SC_nowrap = "";
-          }
-          else
-          {
-              $this->SC_nowrap = "";
-          }
-$nm_saida->saida("     \r\n");
- if (!$this->Ini->Proc_print && !$this->Ini->SC_Link_View && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['opcao'] != "pdf" && $_SESSION['scriptcase']['contr_link_emb'] != "pdf" && $conteudo != "&nbsp;"){ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['Ind_lig_mult']++;
-       $linkTarget = isset($this->Ini->sc_lig_target['C_@scinf_payment_@scinf_control_paypal']) ? $this->Ini->sc_lig_target['C_@scinf_payment_@scinf_control_paypal'] : (isset($this->Ini->sc_lig_target['C_@scinf_payment']) ? $this->Ini->sc_lig_target['C_@scinf_payment'] : null);
-       if (isset($this->Ini->sc_lig_md5["control_paypal"]) && $this->Ini->sc_lig_md5["control_paypal"] == "S") {
-           $Parms_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?usr_login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?payment_fee?#?" . str_replace("'", "@aspass@", $this->audition_fees) . "?@?item_id?#?" . str_replace("'", "@aspass@", $this->id) . "?@?venue_id?#?" . str_replace("'", "@aspass@", $this->venue_id) . "?@?payment_status?#?" . str_replace("'", "@aspass@", $this->payment_status) . "?@?audition_id?#?" . str_replace("'", "@aspass@", $this->audition_id) . "?@?NM_btn_insert?#?N?@?NM_btn_update?#?N?@?NM_btn_delete?#?N?@?NM_btn_navega?#?N?@?";
-           if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['dashboard_info']['under_dashboard'] && isset($linkTarget))
-           {
-               if ('' != $Parms_Lig)
-               {
-                   $Parms_Lig .= '*scout';
-               }
-               $Parms_Lig .= 'under_dashboard*scin1*scoutdashboard_app*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['dashboard_info']['dashboard_app'] . '*scoutown_widget*scin' . $linkTarget . '*scoutparent_widget*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['dashboard_info']['own_widget'] . '*scoutcompact_mode*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['dashboard_info']['compact_mode'] ? '1' : '0') . '*scoutremove_margin*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['dashboard_info']['remove_margin'] ? '1' : '0');
-           }
-           $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_application_detail@SC_par@" . md5($Parms_Lig);
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_application_detail']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
-       } else {
-           $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?nmgp_opcao?#?igual?@?usr_login?#?" . str_replace("'", "@aspass@", $this->login) . "?@?payment_fee?#?" . str_replace("'", "@aspass@", $this->audition_fees) . "?@?item_id?#?" . str_replace("'", "@aspass@", $this->id) . "?@?venue_id?#?" . str_replace("'", "@aspass@", $this->venue_id) . "?@?payment_status?#?" . str_replace("'", "@aspass@", $this->payment_status) . "?@?audition_id?#?" . str_replace("'", "@aspass@", $this->audition_id) . "?@?NM_btn_insert?#?N?@?NM_btn_update?#?N?@?NM_btn_delete?#?N?@?NM_btn_navega?#?N?@?";
-       }
-$nm_saida->saida("<a  id=\"id_sc_field_payment_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_control_paypal_edit . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_parent') . "', '', '0', '0', '', 'control_paypal', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_payment_grid_line . "\">" . $conteudo . "</a>\r\n");
-} else {
-$nm_saida->saida(" <span id=\"id_sc_field_payment_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
-       } 
-$nm_saida->saida("    </TD>\r\n");
-$nm_saida->saida("   </tr></table></td>\r\n");
-$nm_saida->saida("   </tr></table>\r\n");
- }
-$nm_saida->saida("   </td></tr></table>\r\n");
-$nm_saida->saida("    <table width=\"100%\" style=\"padding: 0px; border-spacing: 0px; border-width: 0px;\"><tr valign=\"top\"><td style=\"padding: 0px\" width=\"100%\" height=\"\">\r\n");
- if(!isset($this->Ini->nm_hidden_blocos[4]) || $this->Ini->nm_hidden_blocos[4] != "off")
- {
-     $Img_tit_blk_i = "";
-     $Img_tit_blk_f = "";
-     $Collapse_blk  = "";
-$nm_saida->saida("  <TABLE class=\"" . $this->css_scGridTabela . "\"  style=\"border-collapse:collapse;\" cellspacing=0px cellpadding=0px align=\"center\" id=\"grid_application_detail_hidden_bloco_4_" . $this->nm_contr_album . "\" width=\"100%\" style=\"height: 100%\">\r\n");
 $nm_saida->saida("   <TR>\r\n");
 $nm_saida->saida("    <TD  style=\"border-width: 0px; border-style: none; \" height=\"\" valign=\"top\" width=\"100%\">\r\n");
 $nm_saida->saida("     <TABLE style=\"padding: 0px; spacing: 0px; border-width: 0px; border-collapse:collapse;\" width=\"100%\">\r\n");
