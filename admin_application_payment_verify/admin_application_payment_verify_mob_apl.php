@@ -26,7 +26,7 @@ class admin_application_payment_verify_mob_apl
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
                                 'ajaxAlert'         => array(),
-                                'ajaxMessage'       => '',
+                                'ajaxMessage'       => array(),
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
                                 'buttonDisplayVert' => array(),
@@ -3103,6 +3103,49 @@ $_SESSION['scriptcase']['admin_application_payment_verify_mob']['contr_erro'] = 
           }
       }
       $this->sc_force_zero = array();
+    if ("alterar" == $this->nmgp_opcao) {
+      $this->sc_evento = $this->nmgp_opcao;
+      $_SESSION['scriptcase']['admin_application_payment_verify_mob']['contr_erro'] = 'on';
+if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
+{
+    $original_payment_status = $this->payment_status;
+}
+ if($this->payment_status  == "Complete"){
+		$this->register  = "Yes";
+	}
+else{
+	
+		$this->register  = "No";
+	}
+if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
+{
+    if (($original_payment_status != $this->payment_status || (isset($bFlagRead_payment_status) && $bFlagRead_payment_status)))
+    {
+        $this->ajax_return_values_payment_status(true);
+    }
+}
+$_SESSION['scriptcase']['admin_application_payment_verify_mob']['contr_erro'] = 'off'; 
+    }
+      if (!empty($this->Campos_Mens_erro)) 
+      {
+          $this->Erro->mensagem(__FILE__, __LINE__, "critica", $this->Campos_Mens_erro); 
+          $this->Campos_Mens_erro = ""; 
+          $this->nmgp_opc_ant = $this->nmgp_opcao ; 
+          if ($this->nmgp_opcao == "incluir") 
+          { 
+              $GLOBALS["erro_incl"] = 1; 
+          }
+          else
+          { 
+              $this->sc_evento = ""; 
+          }
+          if ($this->nmgp_opcao == "alterar" || $this->nmgp_opcao == "incluir" || $this->nmgp_opcao == "excluir") 
+          {
+              $this->nmgp_opcao = "nada"; 
+          } 
+          $this->NM_rollback_db(); 
+          $this->Campos_Mens_erro = ""; 
+      }
       $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
       $salva_opcao = $this->nmgp_opcao; 
       if ($this->sc_evento != "novo" && $this->sc_evento != "incluir") 
@@ -3334,11 +3377,11 @@ $_SESSION['scriptcase']['admin_application_payment_verify_mob']['contr_erro'] = 
               if (in_array(strtolower($this->Ini->nm_tpbanco), $nm_bases_lob_geral))
               { 
               }   
-          $this->login = $this->login_before_qstr;
-          $this->program = $this->program_before_qstr;
-          $this->payment_status = $this->payment_status_before_qstr;
-          $this->note = $this->note_before_qstr;
-          $this->register = $this->register_before_qstr;
+              $this->login = $this->login_before_qstr;
+              $this->program = $this->program_before_qstr;
+              $this->payment_status = $this->payment_status_before_qstr;
+              $this->note = $this->note_before_qstr;
+              $this->register = $this->register_before_qstr;
               $this->sc_evento = "update"; 
               $this->nmgp_opcao = "igual"; 
               $this->nm_flag_iframe = true;
@@ -3559,6 +3602,11 @@ $_SESSION['scriptcase']['admin_application_payment_verify_mob']['contr_erro'] = 
               }
 
               $this->sc_evento = "insert"; 
+              $this->login = $this->login_before_qstr;
+              $this->program = $this->program_before_qstr;
+              $this->payment_status = $this->payment_status_before_qstr;
+              $this->note = $this->note_before_qstr;
+              $this->register = $this->register_before_qstr;
               if (empty($this->sc_erro_insert)) {
                   $this->record_insert_ok = true;
               } 
