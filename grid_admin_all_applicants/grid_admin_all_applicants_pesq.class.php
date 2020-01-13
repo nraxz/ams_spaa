@@ -2296,7 +2296,7 @@ foreach ($Arr_format as $Part_date)
 
 
 
-      <TD class="scFilterLabelEven"><?php echo (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue Id"; ?></TD>
+      <TD class="scFilterLabelEven"><?php echo (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue"; ?></TD>
       
       <INPUT type="hidden" id="SC_application_detail_venue_id_cond" name="application_detail_venue_id_cond" value="eq">
  
@@ -2305,7 +2305,7 @@ foreach ($Arr_format as $Part_date)
        <TR id="id_hide_application_detail_venue_id" <?php echo $str_hide_application_detail_venue_id?> valign="top">
         <TD class="scFilterFieldFontEven">
            <?php
- $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue Id";
+ $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue";
  $nmgp_tab_label .= "application_detail_venue_id?#?" . $SC_Label . "?@?";
  $date_sep_bw = " " . $this->Ini->Nm_lang['lang_srch_between_values'] . " ";
  if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($date_sep_bw))
@@ -2743,6 +2743,10 @@ foreach ($Arr_format as $Part_date)
       $C_formatado = true;
       if ($this->NM_ajax_flag && ($this->NM_ajax_opcao == "ajax_grid_search" || $this->NM_ajax_opcao == "ajax_grid_search_change_fil"))
       {
+          if ($this->NM_ajax_opcao == "ajax_grid_search")
+          {
+              $C_formatado = false;
+          }
           $Temp_Busca  = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['campos_busca'];
           if ($_SESSION['scriptcase']['charset'] != "UTF-8" && $this->NM_ajax_opcao != "ajax_grid_search_change_fil")
           {
@@ -2800,7 +2804,7 @@ foreach ($Arr_format as $Part_date)
           $L_lookup = substr($application_detail_venue_id, 0, $tmp_pos);
       }
       if ($this->NM_ajax_opcao != "ajax_grid_search_change_fil" && !empty($L_lookup) && !in_array($L_lookup, $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['psq_check_ret']['application_detail_venue_id'])) {
-          if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Venue Id : " . $this->Ini->Nm_lang['lang_errm_ajax_data'];
+          if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Venue : " . $this->Ini->Nm_lang['lang_errm_ajax_data'];
       }
       $tmp_pos = strpos($audition_status, "##@@");
       if ($tmp_pos === false) {

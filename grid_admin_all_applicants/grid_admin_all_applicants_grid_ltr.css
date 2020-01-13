@@ -24,7 +24,11 @@
 .css_application_detail_venue_id_grid_line {vertical-align: top;text-align: right;}
 .css_application_detail_audition_id_label {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
 .css_application_detail_audition_id_grid_line {vertical-align: top;text-align: right;}
+.css_application_detail_program_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_application_detail_program_grid_line {vertical-align: top;text-align: left;}
 .css_audition_audition_date_label {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_audition_audition_date_grid_line {vertical-align: top;text-align: center;}
 .css_audition_audition_title_label {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_audition_audition_title_grid_line {vertical-align: top;text-align: left;}
+.css_basic_information_nationality_label {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_basic_information_nationality_grid_line {vertical-align: top;text-align: right;}

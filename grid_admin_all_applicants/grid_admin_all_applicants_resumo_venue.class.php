@@ -48,6 +48,7 @@ class grid_admin_all_applicants_resumo
       $this->NM_export       = false;
       $this->NM_totaliz_hrz  = false;
       $this->link_graph_tot  = array();
+      $this->proc_res_grid   = false;
       $this->array_final     = array();
       $this->array_links     = array();
       $this->array_links_tit = array();
@@ -375,7 +376,7 @@ class grid_admin_all_applicants_resumo
       {
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] = "";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "audition_audition_date?#?" . "Audition Date" . "?@?";
-          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "application_detail_venue_id?#?" . "Venue Id" . "?@?";
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "application_detail_venue_id?#?" . "Venue" . "?@?";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "audition_status?#?" . "Status" . "?@?";
       }
       if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['grid_search_add']))
@@ -591,11 +592,15 @@ class grid_admin_all_applicants_resumo
        }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_venue_id']))
        {
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_venue_id'] = "Venue Id"; 
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_venue_id'] = "Venue"; 
        }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_audition_id']))
        {
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_audition_id'] = "Audition Id"; 
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_audition_id'] = "Audition"; 
+       }
+       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_program']))
+       {
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_program'] = "Program"; 
        }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['audition_audition_date']))
        {
@@ -604,6 +609,10 @@ class grid_admin_all_applicants_resumo
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['audition_audition_title']))
        {
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['audition_audition_title'] = "Audition Title"; 
+       }
+       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_nationality']))
+       {
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_nationality'] = "Nationality"; 
        }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_login']))
        {
@@ -616,10 +625,6 @@ class grid_admin_all_applicants_resumo
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_middlename']))
        {
            $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_middlename'] = "Middlename"; 
-       }
-       if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_nationality']))
-       {
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_nationality'] = "Nationality"; 
        }
        if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_resident']))
        {
@@ -733,8 +738,8 @@ class grid_admin_all_applicants_resumo
 
        //-----
        $this->comp_links_fl = array(
-           array('name' => 'application_detail.venue_id', 'prot' => '@aspass@'),
-           array('name' => 'application_detail.audition_id', 'prot' => '@aspass@'),
+           array('name' => 'application_detail_venue_id', 'prot' => ''),
+           array('name' => 'application_detail_audition_id', 'prot' => ''),
        );
 
        //-----
@@ -2370,7 +2375,14 @@ class grid_admin_all_applicants_resumo
        $nm_saida->saida("</td>\r\n");
        if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ajax_nav'])
        { 
-           $this->Ini->Arr_result['setValue'][] = array('field' => 'summary_body', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
+           if ($this->proc_res_grid)
+           { 
+               $this->Ini->Arr_result['setValue'][] = array('field' => 'sc_res_grid', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
+           } 
+           else 
+           { 
+               $this->Ini->Arr_result['setValue'][] = array('field' => 'summary_body', 'value' => NM_charset_to_utf8($_SESSION['scriptcase']['saida_html']));
+           } 
            $_SESSION['scriptcase']['saida_html'] = "";
        } 
        $nm_saida->saida("</tr>\r\n");
@@ -4606,7 +4618,7 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['
    //---- 
    function adiciona_registro($quebra_application_detail_venue_id, $quebra_application_detail_audition_id, $quebra_application_detail_venue_id_orig, $quebra_application_detail_audition_id_orig)
    {
-      //----- Venue Id
+      //----- Venue
       if (!isset($this->array_total_application_detail_venue_id[$quebra_application_detail_venue_id_orig]))
       {
          $this->array_total_application_detail_venue_id[$quebra_application_detail_venue_id_orig][0] = 1;
@@ -4617,7 +4629,7 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['
       {
          $this->array_total_application_detail_venue_id[$quebra_application_detail_venue_id_orig][0]++;
       }
-      //----- Audition Id
+      //----- Audition
       if (!isset($this->array_total_application_detail_audition_id[$quebra_application_detail_venue_id_orig][$quebra_application_detail_audition_id_orig]))
       {
          $this->array_total_application_detail_audition_id[$quebra_application_detail_venue_id_orig][$quebra_application_detail_audition_id_orig][0] = 1;
@@ -4687,15 +4699,15 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['
      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ""; 
      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
      { 
-         $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
      } 
      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
      { 
-         $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
      } 
      else 
      { 
-         $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+         $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
      } 
      $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq']; 
      $campos_order = "";
@@ -4760,10 +4772,12 @@ if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['
             $this->application_detail_number = $rs_res->fields[8] ;  
             $this->application_detail_venue_id = $rs_res->fields[9] ;  
             $this->application_detail_audition_id = $rs_res->fields[10] ;  
-            $this->audition_audition_date = $rs_res->fields[11] ;  
-            $this->audition_audition_title = $rs_res->fields[12] ;  
-            $this->application_detail_login = $rs_res->fields[13] ;  
-            $this->sec_users_login = $rs_res->fields[14] ;  
+            $this->application_detail_program = $rs_res->fields[11] ;  
+            $this->audition_audition_date = $rs_res->fields[12] ;  
+            $this->audition_audition_title = $rs_res->fields[13] ;  
+            $this->basic_information_nationality = $rs_res->fields[14] ;  
+            $this->application_detail_login = $rs_res->fields[15] ;  
+            $this->sec_users_login = $rs_res->fields[16] ;  
             $this->application_detail_venue_id_orig = $this->application_detail_venue_id;
             $this->application_detail_audition_id_orig = $this->application_detail_audition_id;
             nmgp_Form_Num_Val($this->application_detail_venue_id, $_SESSION['scriptcase']['reg_conf']['grup_num'], $_SESSION['scriptcase']['reg_conf']['dec_num'], "0", "S", "2", "", "N:" . $_SESSION['scriptcase']['reg_conf']['neg_num'] , $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['num_group_digit']) ; 

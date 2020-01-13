@@ -1049,7 +1049,7 @@ else
    else
    {
 ?>
-   <?php echo nmButtonOutput($this->arr_buttons, "bcancelar_appdiv", "scBtnSaveGridHide('" . $this->tbar_pos . "');buttonunselectedSG();", "scBtnSaveGridHide('" . $this->tbar_pos . "');buttonunselectedSG();", "Bsair", "", "", "", "absmiddle", "", "0px", $this->path_btn, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+   <?php echo nmButtonOutput($this->arr_buttons, "bsair_appdiv", "scBtnSaveGridHide('" . $this->tbar_pos . "');buttonunselectedSG();", "scBtnSaveGridHide('" . $this->tbar_pos . "');buttonunselectedSG();", "Bsair", "", "", "", "absmiddle", "", "0px", $this->path_btn, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
 ?>
 <?php
    }

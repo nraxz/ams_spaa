@@ -47,7 +47,7 @@ class grid_admin_all_applicants_total
    //---- 
    function quebra_geral_venue($res_limit=false)
    {
-      global $nada, $nm_lang , $basic_information_gender;
+      global $nada, $nm_lang , $basic_information_gender, $application_detail_program, $basic_information_nationality;
       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_total_geral'] == "OK") 
       { 
           return; 
@@ -77,14 +77,14 @@ class grid_admin_all_applicants_total
    //-----  application_detail_venue_id
    function quebra_application_detail_venue_id_venue($application_detail_venue_id, $arg_sum_application_detail_venue_id) 
    {
-      global $tot_application_detail_venue_id, $basic_information_gender;
+      global $tot_application_detail_venue_id, $basic_information_gender, $application_detail_program, $basic_information_nationality;
       $tot_application_detail_venue_id = array() ;  
       $tot_application_detail_venue_id[0] = $application_detail_venue_id ; 
    }
    //-----  application_detail_audition_id
    function quebra_application_detail_audition_id_venue($application_detail_venue_id, $application_detail_audition_id, $arg_sum_application_detail_venue_id, $arg_sum_application_detail_audition_id) 
    {
-      global $tot_application_detail_audition_id, $basic_information_gender;
+      global $tot_application_detail_audition_id, $basic_information_gender, $application_detail_program, $basic_information_nationality;
       $tot_application_detail_audition_id = array() ;  
       $tot_application_detail_audition_id[0] = $application_detail_audition_id ; 
    }

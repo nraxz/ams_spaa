@@ -71,8 +71,10 @@ class grid_admin_all_applicants_grid
    var $application_detail_number;
    var $application_detail_venue_id;
    var $application_detail_audition_id;
+   var $application_detail_program;
    var $audition_audition_date;
    var $audition_audition_title;
+   var $basic_information_nationality;
    var $application_detail_login;
    var $sec_users_login;
 //--- 
@@ -264,7 +266,7 @@ class grid_admin_all_applicants_grid
    {
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] = "";
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "audition_audition_date?#?" . "Audition Date" . "?@?";
-       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "application_detail_venue_id?#?" . "Venue Id" . "?@?";
+       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "application_detail_venue_id?#?" . "Venue" . "?@?";
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['pesq_tab_label'] .= "audition_status?#?" . "Status" . "?@?";
    }
    if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['grid_search_add']))
@@ -398,8 +400,16 @@ class grid_admin_all_applicants_grid
    $this->nmgp_botoes['gantt'] = "on";
    $this->nmgp_botoes['groupby'] = "on";
    $this->nmgp_botoes['gridsave'] = "on";
+   $this->Cmps_ord_def['basic_information_dateofbirth'] = " desc";
+   $this->Cmps_ord_def["basic_information.dateofbirth"] = "";
+   $this->Cmps_ord_def['basic_information_gender'] = " asc";
+   $this->Cmps_ord_def["basic_information.gender"] = "";
    $this->Cmps_ord_def['cmp_maior_30_1'] = " asc";
    $this->Cmps_ord_def["application_detail.payment_status"] = "";
+   $this->Cmps_ord_def['application_detail_program'] = " asc";
+   $this->Cmps_ord_def["application_detail.program"] = "";
+   $this->Cmps_ord_def['basic_information_nationality'] = " desc";
+   $this->Cmps_ord_def["basic_information.nationality"] = "";
    if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['btn_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['btn_display']))
    {
        foreach ($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['btn_display'] as $NM_cada_btn => $NM_cada_opc)
@@ -833,15 +843,15 @@ class grid_admin_all_applicants_grid
 //----- 
    if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
    { 
-       $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
    } 
    elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
    { 
-       $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
    } 
    else 
    { 
-       $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+       $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
    } 
    $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq']; 
    if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_resumo']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_resumo'])) 
@@ -936,13 +946,19 @@ class grid_admin_all_applicants_grid
        $this->application_detail_venue_id = (string)$this->application_detail_venue_id;
        $this->application_detail_audition_id = $this->rs_grid->fields[10] ;  
        $this->application_detail_audition_id = (string)$this->application_detail_audition_id;
-       $this->audition_audition_date = $this->rs_grid->fields[11] ;  
-       $this->audition_audition_title = $this->rs_grid->fields[12] ;  
-       $this->application_detail_login = $this->rs_grid->fields[13] ;  
-       $this->sec_users_login = $this->rs_grid->fields[14] ;  
+       $this->application_detail_program = $this->rs_grid->fields[11] ;  
+       $this->audition_audition_date = $this->rs_grid->fields[12] ;  
+       $this->audition_audition_title = $this->rs_grid->fields[13] ;  
+       $this->basic_information_nationality = $this->rs_grid->fields[14] ;  
+       $this->basic_information_nationality = (string)$this->basic_information_nationality;
+       $this->application_detail_login = $this->rs_grid->fields[15] ;  
+       $this->sec_users_login = $this->rs_grid->fields[16] ;  
        if (!isset($this->application_detail_venue_id)) { $this->application_detail_venue_id = ""; }
        if (!isset($this->application_detail_audition_id)) { $this->application_detail_audition_id = ""; }
        $GLOBALS["basic_information_gender"] = $this->rs_grid->fields[4] ;  
+       $GLOBALS["application_detail_program"] = $this->rs_grid->fields[11] ;  
+       $GLOBALS["basic_information_nationality"] = $this->rs_grid->fields[14] ;  
+       $GLOBALS["basic_information_nationality"] = (string)$GLOBALS["basic_information_nationality"] ;
        $this->arg_sum_application_detail_venue_id = ($this->application_detail_venue_id == "") ? " is null " : " = " . $this->application_detail_venue_id;
        $this->arg_sum_application_detail_audition_id = ($this->application_detail_audition_id == "") ? " is null " : " = " . $this->application_detail_audition_id;
        $this->SC_seq_register = $this->nmgp_reg_start ; 
@@ -971,10 +987,12 @@ class grid_admin_all_applicants_grid
            $this->application_detail_number = $this->rs_grid->fields[8] ;  
            $this->application_detail_venue_id = $this->rs_grid->fields[9] ;  
            $this->application_detail_audition_id = $this->rs_grid->fields[10] ;  
-           $this->audition_audition_date = $this->rs_grid->fields[11] ;  
-           $this->audition_audition_title = $this->rs_grid->fields[12] ;  
-           $this->application_detail_login = $this->rs_grid->fields[13] ;  
-           $this->sec_users_login = $this->rs_grid->fields[14] ;  
+           $this->application_detail_program = $this->rs_grid->fields[11] ;  
+           $this->audition_audition_date = $this->rs_grid->fields[12] ;  
+           $this->audition_audition_title = $this->rs_grid->fields[13] ;  
+           $this->basic_information_nationality = $this->rs_grid->fields[14] ;  
+           $this->application_detail_login = $this->rs_grid->fields[15] ;  
+           $this->sec_users_login = $this->rs_grid->fields[16] ;  
            if (!isset($this->application_detail_venue_id)) { $this->application_detail_venue_id = ""; }
            if (!isset($this->application_detail_audition_id)) { $this->application_detail_audition_id = ""; }
        } 
@@ -2041,7 +2059,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
        { 
            if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['SC_Ind_Groupby'] == "venue")
            {
-                   $groupByLabel = sprintf("Venue Id", "application_detail.venue_id");
+                   $groupByLabel = sprintf("Venue", "application_detail.venue_id");
                $nm_saida->saida("          <div style=\"height:1px;overflow:hidden\"><H1 style=\"font-size:0;padding:1px\">{$groupByLabel}</H1></div>\r\n");
            }
        } 
@@ -2194,10 +2212,14 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $this->css_application_detail_venue_id_grid_line = $compl_css_emb . "css_application_detail_venue_id_grid_line";
    $this->css_application_detail_audition_id_label = $compl_css_emb . "css_application_detail_audition_id_label";
    $this->css_application_detail_audition_id_grid_line = $compl_css_emb . "css_application_detail_audition_id_grid_line";
+   $this->css_application_detail_program_label = $compl_css_emb . "css_application_detail_program_label";
+   $this->css_application_detail_program_grid_line = $compl_css_emb . "css_application_detail_program_grid_line";
    $this->css_audition_audition_date_label = $compl_css_emb . "css_audition_audition_date_label";
    $this->css_audition_audition_date_grid_line = $compl_css_emb . "css_audition_audition_date_grid_line";
    $this->css_audition_audition_title_label = $compl_css_emb . "css_audition_audition_title_label";
    $this->css_audition_audition_title_grid_line = $compl_css_emb . "css_audition_audition_title_grid_line";
+   $this->css_basic_information_nationality_label = $compl_css_emb . "css_basic_information_nationality_label";
+   $this->css_basic_information_nationality_grid_line = $compl_css_emb . "css_basic_information_nationality_grid_line";
  }  
  function cabecalho()
  {
@@ -2376,7 +2398,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
       } 
    $nm_saida->saida("    <TR id=\"tit_grid_admin_all_applicants__SCCS__" . $nm_seq_titulos . "\" align=\"center\" class=\"" . $this->css_scGridLabel . " sc-ui-grid-header-row sc-ui-grid-header-row-grid_admin_all_applicants-" . $tmp_header_row . "\">\r\n");
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opc_psq']) { 
-   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_audition_audition_title_label'] . "\" >&nbsp;</TD>\r\n");
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_basic_information_nationality_label'] . "\" >&nbsp;</TD>\r\n");
    } 
    foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_label)
    { 
@@ -2478,7 +2500,67 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    global $nm_saida;
    $SC_Label = (isset($this->New_label['basic_information_dateofbirth'])) ? $this->New_label['basic_information_dateofbirth'] : "Dateofbirth"; 
    if (!isset($this->NM_cmp_hidden['basic_information_dateofbirth']) || $this->NM_cmp_hidden['basic_information_dateofbirth'] != "off") { 
-   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_basic_information_dateofbirth_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_basic_information_dateofbirth_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_basic_information_dateofbirth_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_basic_information_dateofbirth_label'] . "\" >\r\n");
+   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao'] != "pdf")
+   {
+      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
+      {
+          $NM_cmp_class =  "basic_information.dateofbirth";
+      }
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+      {
+          $NM_cmp_class =  "basic_information.dateofbirth";
+      }
+      else
+      {
+          $NM_cmp_class =  "basic_information_dateofbirth";
+      }
+      $link_img = "";
+      $nome_img = $this->Ini->Label_sort;
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_cmp'] == $NM_cmp_class)
+      {
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_label'] == "desc")
+          {
+              $nome_img = $this->Ini->Label_sort_desc;
+          }
+          else
+          {
+              $nome_img = $this->Ini->Label_sort_asc;
+          }
+      }
+      if (empty($this->Ini->Label_sort_pos) || $this->Ini->Label_sort_pos == "right")
+      {
+          $this->Ini->Label_sort_pos = "right_field";
+      }
+      $Css_compl_sort = " style=\"display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;justify-content:inherit;\"";
+      if (empty($nome_img))
+      {
+          $link_img = nl2br($SC_Label);
+          $Css_compl_sort = "";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_field")
+      {
+          $link_img = "<span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_field")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_cell")
+      {
+          $link_img = "<span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_cell")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
+   }
+   else
+   {
+   $nm_saida->saida("" . nl2br($SC_Label) . "\r\n");
+   }
+   $nm_saida->saida("</TD>\r\n");
    } 
  }
  function NM_label_basic_information_gender()
@@ -2486,7 +2568,67 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    global $nm_saida;
    $SC_Label = (isset($this->New_label['basic_information_gender'])) ? $this->New_label['basic_information_gender'] : "Gender"; 
    if (!isset($this->NM_cmp_hidden['basic_information_gender']) || $this->NM_cmp_hidden['basic_information_gender'] != "off") { 
-   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_basic_information_gender_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_basic_information_gender_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_basic_information_gender_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_basic_information_gender_label'] . "\" >\r\n");
+   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao'] != "pdf")
+   {
+      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
+      {
+          $NM_cmp_class =  "basic_information.gender";
+      }
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+      {
+          $NM_cmp_class =  "basic_information.gender";
+      }
+      else
+      {
+          $NM_cmp_class =  "basic_information_gender";
+      }
+      $link_img = "";
+      $nome_img = $this->Ini->Label_sort;
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_cmp'] == $NM_cmp_class)
+      {
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_label'] == "desc")
+          {
+              $nome_img = $this->Ini->Label_sort_desc;
+          }
+          else
+          {
+              $nome_img = $this->Ini->Label_sort_asc;
+          }
+      }
+      if (empty($this->Ini->Label_sort_pos) || $this->Ini->Label_sort_pos == "right")
+      {
+          $this->Ini->Label_sort_pos = "right_field";
+      }
+      $Css_compl_sort = " style=\"display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;justify-content:inherit;\"";
+      if (empty($nome_img))
+      {
+          $link_img = nl2br($SC_Label);
+          $Css_compl_sort = "";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_field")
+      {
+          $link_img = "<span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_field")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_cell")
+      {
+          $link_img = "<span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_cell")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
+   }
+   else
+   {
+   $nm_saida->saida("" . nl2br($SC_Label) . "\r\n");
+   }
+   $nm_saida->saida("</TD>\r\n");
    } 
  }
  function NM_label_sec_users_email()
@@ -2556,7 +2698,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
       {
           $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
       }
-   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\">" . $link_img . "</a>\r\n");
+   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
    }
    else
    {
@@ -2592,7 +2734,7 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
  function NM_label_application_detail_venue_id()
  {
    global $nm_saida;
-   $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue Id"; 
+   $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue"; 
    if (!isset($this->NM_cmp_hidden['application_detail_venue_id']) || $this->NM_cmp_hidden['application_detail_venue_id'] != "off") { 
    $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_application_detail_venue_id_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_application_detail_venue_id_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
    } 
@@ -2600,9 +2742,77 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
  function NM_label_application_detail_audition_id()
  {
    global $nm_saida;
-   $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition Id"; 
+   $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition"; 
    if (!isset($this->NM_cmp_hidden['application_detail_audition_id']) || $this->NM_cmp_hidden['application_detail_audition_id'] != "off") { 
    $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_application_detail_audition_id_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_application_detail_audition_id_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
+   } 
+ }
+ function NM_label_application_detail_program()
+ {
+   global $nm_saida;
+   $SC_Label = (isset($this->New_label['application_detail_program'])) ? $this->New_label['application_detail_program'] : "Program"; 
+   if (!isset($this->NM_cmp_hidden['application_detail_program']) || $this->NM_cmp_hidden['application_detail_program'] != "off") { 
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_application_detail_program_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_application_detail_program_label'] . "\" >\r\n");
+   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao'] != "pdf")
+   {
+      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
+      {
+          $NM_cmp_class =  "application_detail.program";
+      }
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+      {
+          $NM_cmp_class =  "application_detail.program";
+      }
+      else
+      {
+          $NM_cmp_class =  "application_detail_program";
+      }
+      $link_img = "";
+      $nome_img = $this->Ini->Label_sort;
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_cmp'] == $NM_cmp_class)
+      {
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_label'] == "desc")
+          {
+              $nome_img = $this->Ini->Label_sort_desc;
+          }
+          else
+          {
+              $nome_img = $this->Ini->Label_sort_asc;
+          }
+      }
+      if (empty($this->Ini->Label_sort_pos) || $this->Ini->Label_sort_pos == "right")
+      {
+          $this->Ini->Label_sort_pos = "right_field";
+      }
+      $Css_compl_sort = " style=\"display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;justify-content:inherit;\"";
+      if (empty($nome_img))
+      {
+          $link_img = nl2br($SC_Label);
+          $Css_compl_sort = "";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_field")
+      {
+          $link_img = "<span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_field")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_cell")
+      {
+          $link_img = "<span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_cell")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
+   }
+   else
+   {
+   $nm_saida->saida("" . nl2br($SC_Label) . "\r\n");
+   }
+   $nm_saida->saida("</TD>\r\n");
    } 
  }
  function NM_label_audition_audition_date()
@@ -2619,6 +2829,74 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $SC_Label = (isset($this->New_label['audition_audition_title'])) ? $this->New_label['audition_audition_title'] : "Audition Title"; 
    if (!isset($this->NM_cmp_hidden['audition_audition_title']) || $this->NM_cmp_hidden['audition_audition_title'] != "off") { 
    $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_audition_audition_title_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_audition_audition_title_label'] . "\" >" . nl2br($SC_Label) . "</TD>\r\n");
+   } 
+ }
+ function NM_label_basic_information_nationality()
+ {
+   global $nm_saida;
+   $SC_Label = (isset($this->New_label['basic_information_nationality'])) ? $this->New_label['basic_information_nationality'] : "Nationality"; 
+   if (!isset($this->NM_cmp_hidden['basic_information_nationality']) || $this->NM_cmp_hidden['basic_information_nationality'] != "off") { 
+   $nm_saida->saida("     <TD class=\"" . $this->css_scGridLabelFont . $this->css_sep . $this->css_basic_information_nationality_label . "\"  style=\"" . $this->css_scGridLabelNowrap . "" . $this->Css_Cmp['css_basic_information_nationality_label'] . "\" >\r\n");
+   if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao_print'] != "print" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opcao'] != "pdf")
+   {
+      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_access))
+      {
+          $NM_cmp_class =  "basic_information.nationality";
+      }
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_ibase))
+      {
+          $NM_cmp_class =  "basic_information.nationality";
+      }
+      else
+      {
+          $NM_cmp_class =  "basic_information_nationality";
+      }
+      $link_img = "";
+      $nome_img = $this->Ini->Label_sort;
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_cmp'] == $NM_cmp_class)
+      {
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['ordem_label'] == "desc")
+          {
+              $nome_img = $this->Ini->Label_sort_desc;
+          }
+          else
+          {
+              $nome_img = $this->Ini->Label_sort_asc;
+          }
+      }
+      if (empty($this->Ini->Label_sort_pos) || $this->Ini->Label_sort_pos == "right")
+      {
+          $this->Ini->Label_sort_pos = "right_field";
+      }
+      $Css_compl_sort = " style=\"display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;justify-content:inherit;\"";
+      if (empty($nome_img))
+      {
+          $link_img = nl2br($SC_Label);
+          $Css_compl_sort = "";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_field")
+      {
+          $link_img = "<span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_field")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "right_cell")
+      {
+          $link_img = "<span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span><IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/>";
+      }
+      elseif ($this->Ini->Label_sort_pos == "left_cell")
+      {
+          $link_img = "<IMG SRC=\"" . $this->Ini->path_img_global . "/" . $nome_img . "\" BORDER=\"0\"/><span style='display: inline-block; flex-grow: 1; white-space: normal; word-break: normal;'>" . nl2br($SC_Label) . "</span>";
+      }
+   $nm_saida->saida("<a href=\"javascript:nm_gp_submit2('" . $NM_cmp_class . "')\" class=\"" . $this->css_scGridLabelLink . "\"" . $Css_compl_sort . ">" . $link_img . "</a>\r\n");
+   }
+   else
+   {
+   $nm_saida->saida("" . nl2br($SC_Label) . "\r\n");
+   }
+   $nm_saida->saida("</TD>\r\n");
    } 
  }
 // 
@@ -2673,14 +2951,18 @@ $nm_saida->saida("                        <link rel=\"shortcut icon\" href=\"\">
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_id'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['application_detail_number'])) ? $this->New_label['application_detail_number'] : "Number"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_number'] = $SC_Label; 
-   $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue Id"; 
+   $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_venue_id'] = $SC_Label; 
-   $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition Id"; 
+   $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_audition_id'] = $SC_Label; 
+   $SC_Label = (isset($this->New_label['application_detail_program'])) ? $this->New_label['application_detail_program'] : "Program"; 
+   $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['application_detail_program'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['audition_audition_date'])) ? $this->New_label['audition_audition_date'] : "Audition Date"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['audition_audition_date'] = $SC_Label; 
    $SC_Label = (isset($this->New_label['audition_audition_title'])) ? $this->New_label['audition_audition_title'] : "Audition Title"; 
    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['audition_audition_title'] = $SC_Label; 
+   $SC_Label = (isset($this->New_label['basic_information_nationality'])) ? $this->New_label['basic_information_nationality'] : "Nationality"; 
+   $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['labels']['basic_information_nationality'] = $SC_Label; 
    if (!$this->grid_emb_form && isset($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['lig_edit']) && $_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['lig_edit'] != '')
    {
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['mostra_edit'] = $_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['lig_edit'];
@@ -2965,13 +3247,19 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
           $this->application_detail_venue_id = (string)$this->application_detail_venue_id;
           $this->application_detail_audition_id = $this->rs_grid->fields[10] ;  
           $this->application_detail_audition_id = (string)$this->application_detail_audition_id;
-          $this->audition_audition_date = $this->rs_grid->fields[11] ;  
-          $this->audition_audition_title = $this->rs_grid->fields[12] ;  
-          $this->application_detail_login = $this->rs_grid->fields[13] ;  
-          $this->sec_users_login = $this->rs_grid->fields[14] ;  
+          $this->application_detail_program = $this->rs_grid->fields[11] ;  
+          $this->audition_audition_date = $this->rs_grid->fields[12] ;  
+          $this->audition_audition_title = $this->rs_grid->fields[13] ;  
+          $this->basic_information_nationality = $this->rs_grid->fields[14] ;  
+          $this->basic_information_nationality = (string)$this->basic_information_nationality;
+          $this->application_detail_login = $this->rs_grid->fields[15] ;  
+          $this->sec_users_login = $this->rs_grid->fields[16] ;  
           if (!isset($this->application_detail_venue_id)) { $this->application_detail_venue_id = ""; }
           if (!isset($this->application_detail_audition_id)) { $this->application_detail_audition_id = ""; }
           $GLOBALS["basic_information_gender"] = $this->rs_grid->fields[4] ;  
+          $GLOBALS["application_detail_program"] = $this->rs_grid->fields[11] ;  
+          $GLOBALS["basic_information_nationality"] = $this->rs_grid->fields[14] ;  
+          $GLOBALS["basic_information_nationality"] = (string)$GLOBALS["basic_information_nationality"];
           $this->arg_sum_application_detail_venue_id = ($this->application_detail_venue_id == "") ? " is null " : " = " . $this->application_detail_venue_id;
           $this->arg_sum_application_detail_audition_id = ($this->application_detail_audition_id == "") ? " is null " : " = " . $this->application_detail_audition_id;
           $this->SC_seq_page++; 
@@ -3091,7 +3379,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
           $this->SC_ancora = $this->SC_seq_page;
           $nm_saida->saida("    <TR  class=\"" . $this->css_line_back . "\"  style=\"page-break-inside: avoid;\"" . $NM_destaque . " id=\"SC_ancor" . $this->SC_ancora . "\">\r\n");
  if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opc_psq']){ 
-          $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . "\"  style=\"" . $this->Css_Cmp['css_audition_audition_title_grid_line'] . "\" NOWRAP align=\"left\" valign=\"top\" WIDTH=\"1px\"  HEIGHT=\"0px\">\r\n");
+          $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . "\"  style=\"" . $this->Css_Cmp['css_basic_information_nationality_grid_line'] . "\" NOWRAP align=\"left\" valign=\"top\" WIDTH=\"1px\"  HEIGHT=\"0px\">\r\n");
  $Cod_Btn = nmButtonOutput($this->arr_buttons, "bcapture", "document.Fpesq.nm_ret_psq.value='" . $teste . "'; nm_escreve_window();", "document.Fpesq.nm_ret_psq.value='" . $teste . "'; nm_escreve_window();", "", "Rad_psq", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
           $nm_saida->saida(" $Cod_Btn</TD>\r\n");
  } 
@@ -3693,6 +3981,28 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
    $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_application_detail_audition_id_grid_line . "\"  style=\"" . $this->Css_Cmp['css_application_detail_audition_id_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_application_detail_audition_id_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
       }
  }
+ function NM_grid_application_detail_program()
+ {
+      global $nm_saida;
+      if (!isset($this->NM_cmp_hidden['application_detail_program']) || $this->NM_cmp_hidden['application_detail_program'] != "off") { 
+          $conteudo = sc_strip_script($this->application_detail_program); 
+          if ($conteudo === "") 
+          { 
+              $conteudo = "&nbsp;" ;  
+              $graf = "" ;  
+          } 
+          $this->Lookup->lookup_application_detail_program($conteudo , $this->application_detail_program) ; 
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['proc_pdf'])
+          {
+              $this->SC_nowrap = "";
+          }
+          else
+          {
+              $this->SC_nowrap = "";
+          }
+   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_application_detail_program_grid_line . "\"  style=\"" . $this->Css_Cmp['css_application_detail_program_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_application_detail_program_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
+      }
+ }
  function NM_grid_audition_audition_date()
  {
       global $nm_saida;
@@ -3753,9 +4063,31 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
    $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_audition_audition_title_grid_line . "\"  style=\"" . $this->Css_Cmp['css_audition_audition_title_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_audition_audition_title_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
       }
  }
+ function NM_grid_basic_information_nationality()
+ {
+      global $nm_saida;
+      if (!isset($this->NM_cmp_hidden['basic_information_nationality']) || $this->NM_cmp_hidden['basic_information_nationality'] != "off") { 
+          $conteudo = NM_encode_input(sc_strip_script($this->basic_information_nationality)); 
+          if ($conteudo === "") 
+          { 
+              $conteudo = "&nbsp;" ;  
+              $graf = "" ;  
+          } 
+          $this->Lookup->lookup_basic_information_nationality($conteudo , $this->basic_information_nationality) ; 
+          if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['proc_pdf'])
+          {
+              $this->SC_nowrap = "NOWRAP";
+          }
+          else
+          {
+              $this->SC_nowrap = "NOWRAP";
+          }
+   $nm_saida->saida("     <TD rowspan=\"" . $this->Rows_span . "\" class=\"" . $this->css_line_fonf . $this->css_sep . $this->css_basic_information_nationality_grid_line . "\"  style=\"" . $this->Css_Cmp['css_basic_information_nationality_grid_line'] . "\" " . $this->SC_nowrap . " align=\"\" valign=\"top\"   HEIGHT=\"0px\"><span id=\"id_sc_field_basic_information_nationality_" . $this->SC_seq_page . "\">" . $conteudo . "</span></TD>\r\n");
+      }
+ }
  function NM_calc_span()
  {
-   $this->NM_colspan  = 15;
+   $this->NM_colspan  = 17;
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['opc_psq'])
    {
        $this->NM_colspan++;
@@ -4085,7 +4417,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
           {
               $UseAlias =  "S";
           }
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bsort", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "ordcmp_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bsort", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&use_alias=" . $UseAlias . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&use_alias=" . $UseAlias . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "ordcmp_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
               $nm_saida->saida("           $Cod_Btn \r\n");
               $NM_btn = true;
       }
@@ -4751,7 +5083,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['p
               $UseAlias =  "S";
           }
           $nm_saida->saida("            <div class=\"scBtnGrpText scBtnGrpClick\">\r\n");
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bsort", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "ordcmp_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "group_2", "only_text", "text_right", "", "", "", "", "", "", "");
+              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bsort", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&use_alias=" . $UseAlias . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "scBtnOrderCamposShow('" . $this->Ini->path_link . "grid_admin_all_applicants/grid_admin_all_applicants_order_campos.php?path_img=" . $this->Ini->path_img_global . "&path_btn=" . $this->Ini->path_botoes . "&script_case_init=" . NM_encode_input($this->Ini->sc_page) . "&script_case_session=" . session_id() . "&use_alias=" . $UseAlias . "&embbed_groupby=Y&toolbar_pos=top', 'top');", "ordcmp_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "", "", "group_2", "only_text", "text_right", "", "", "", "", "", "", "");
               $nm_saida->saida("           $Cod_Btn \r\n");
           $nm_saida->saida("            </div>\r\n");
               $NM_Gbtn = true;

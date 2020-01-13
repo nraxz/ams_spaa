@@ -215,8 +215,8 @@ class grid_admin_all_applicants_ini
       $this->nm_dt_criacao   = "20190907"; 
       $this->nm_hr_criacao   = "131336"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191129"; 
-      $this->nm_hr_ult_alt   = "110745"; 
+      $this->nm_dt_ult_alt   = "20200113"; 
+      $this->nm_hr_ult_alt   = "112857"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -837,7 +837,7 @@ class grid_admin_all_applicants_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -913,7 +913,7 @@ class grid_admin_all_applicants_ini
           echo $SS_cod_html;
           exit;
       }
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -932,7 +932,7 @@ class grid_admin_all_applicants_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQFYH9FUD1BeVWBOHuBYVcFeV5X7DoJeD9BiZSB/DSrYV5BqHgNOHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDErKHErCH5X/ZuJeHQNmDQFaHANOV5FUDMNOV9FiV5FYHIXGD9BsZkFGD1zGZMJeDMvCHErCDWXCDoFUHQXODuFaHAveD5NUHgNKDkBOV5FYHMBiD9XOZ1F7HArYD5BiDMBYVkJGDWr/DoB/D9XsH9FGDSN7D5JwDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5FaDMzGZSJGDWr/VoXGDcBwDQB/Z1rwV5FUHgrKVcFKV5FYDoFGD9BsZSBOZ1BeD5NUDEBOHEFiDuFYDoFUDcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1B/Z1NOZMB/DErKDkBsV5XCDoBOD9JKDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGHABYHQBODMvCZSJqDuFaDoF7HQNmDQJsD1BeV5raHuBYVcrsH5XCHMBiD9BsVIraD1rwV5X7HgBeHErCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQXODQB/HAN7HQNUDMvsVcFeDurGDoXGHQXGZkFGHAvmZMB/DMvCZSJ3H5FGVoFGHQFYH9FUD1BeHuNUDMNOZSNiDWrmDoXGHQNmH9BqDSBOZMB/HgNKZSJqHEB7DoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoBqHQJeDuBqHAvOV5XGDMvOZSNiHEFYHMBiD9BsVIraD1rwV5X7HgBeHENiDWrGZuFaHQJKZ9XGHIrKHuNUHuNOVcBODur/DoBiHQBiZSB/DSrYHQJwDEBODkFeH5FYVoFGHQJKDQFaZ1N7V5FUHuzGVIBODWFYVoFGD9JmZ1FUHArKHuX7DEBeHEFiDWX7VoJeD9JKDuFaHAveD5NUHgNKDkBOV5FYHMBiHQBqZkFUZ1vmD5Bq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcXOZSX7HIvsD5F7HuNOV9FiV5FYHMB/DcJUZ1BODSNOV5JwDMvCHEXeDWX7DoF7DcBwZSX7Z1N7D5NUHgrKVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgveHArCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQNmDuBqHAvCVWXGHgrwVcBUH5B3DoXGHQBqZkFGDSNOHuBqHgBYHArCH5BmVoFGHQJKZSFUD1BeHurqDMrYVcFeHEBmDoXGHQJmZkBiHAN7HQXGHgveZSJqDurmDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwDEvsZSJqHEXCHIX7DcXGDuBqHANOHQrqHuBYZSNiDWFaVorqD9BsZ1FGHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HIrwV5BOHuvmVcBOH5XCVoJwDcBqZ1B/D1rKV5X7DEBeHEXeV5XCDoFUDcJeDQX7HIBeD5rqHgrYDkBODWFaVorqD9XOZ1F7HIrwV5JeDMBYZSXeDWX7VoBiD9NmDQJwD1BOD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcXKHEF/VorqHQXGZSBqDSrYZMFaHgBOVkJqDuFaVoJsHQXsZ9XGHAveD5JeHgrwVIBsV5FYHMXGD9XGZkFGHArKV5FUDMrYZSXeV5FqHIJsD9NwDQJsHABYV5raHgvsVIFCDWJeVoraD9BsZSFaDSNOV5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5BODMvOVcBUDWrmVorqHQNmZ1BiHAzGD5BOHgveZSJ3DWF/VoBiDcJUZSX7Z1BYHuFaHuBYV9FeDur/HMFUHQXGH9BqHIveZMB/DEBOZSXeDWFqVoFGHQNwDuFaHANOVWBqHgrwVcBUH5FqHMBiD9BsVIraD1rwV5X7HgBeHErCV5XCDoraD9NwH9X7HABYV5BqHuvmVcFiDWXCHIXGD9JmZ1F7HABYV5XGDEBeHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvsV9FiV5BmVorq";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['grid_admin_all_applicants']['initialize'])  
       { 
@@ -2009,6 +2009,10 @@ class grid_admin_all_applicants_apl
                 { 
                     $cadapar[0] = str_replace("application_detail_audition_id", "application_detail.audition_id", $cadapar[0]);
                 } 
+                if ($cadapar[0] == "application_detail_program")  
+                { 
+                    $cadapar[0] = str_replace("application_detail_program", "application_detail.program", $cadapar[0]);
+                } 
                 if ($cadapar[0] == "audition_audition_date")  
                 { 
                     $cadapar[0] = str_replace("audition_audition_date", "audition.audition_date", $cadapar[0]);
@@ -2016,6 +2020,10 @@ class grid_admin_all_applicants_apl
                 if ($cadapar[0] == "audition_audition_title")  
                 { 
                     $cadapar[0] = str_replace("audition_audition_title", "audition.audition_title", $cadapar[0]);
+                } 
+                if ($cadapar[0] == "basic_information_nationality")  
+                { 
+                    $cadapar[0] = str_replace("basic_information_nationality", "basic_information.nationality", $cadapar[0]);
                 } 
                 if ($cadapar[0] == "application_detail_login")  
                 { 
@@ -2028,10 +2036,6 @@ class grid_admin_all_applicants_apl
                 if ($cadapar[0] == "basic_information_middlename")  
                 { 
                     $cadapar[0] = str_replace("basic_information_middlename", "basic_information.middlename", $cadapar[0]);
-                } 
-                if ($cadapar[0] == "basic_information_nationality")  
-                { 
-                    $cadapar[0] = str_replace("basic_information_nationality", "basic_information.nationality", $cadapar[0]);
                 } 
                 if ($cadapar[0] == "basic_information_resident")  
                 { 
@@ -2577,8 +2581,10 @@ class grid_admin_all_applicants_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "application_detail_number";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "application_detail_venue_id";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "application_detail_audition_id";
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "application_detail_program";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "audition_audition_date";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "audition_audition_title";
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'][] = "basic_information_nationality";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order_orig'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'];
           if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']))
           { 
@@ -2588,8 +2594,10 @@ class grid_admin_all_applicants_apl
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['application_detail_number'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['application_detail_venue_id'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['application_detail_audition_id'] = "off";
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['application_detail_program'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['audition_audition_date'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['audition_audition_title'] = "off";
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel']['basic_information_nationality'] = "off";
           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel_orig'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['usr_cmp_sel'];
       } 
       if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['exit']) && $_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['exit'] != '')

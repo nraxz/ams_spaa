@@ -49,7 +49,7 @@ class grid_admin_all_applicants_Ord_cmp
 {
 function Ord_cmp_init()
 {
-  global $sc_init, $path_img, $path_btn, $tab_ger_campos, $tab_def_campos, $tab_converte, $tab_labels, $embbed, $tbar_pos, $_POST, $_GET;
+  global $sc_init, $path_img, $path_btn, $use_alias, $tab_ger_campos, $tab_def_campos, $tab_def_seq, $tab_labels, $embbed, $tbar_pos, $_POST, $_GET;
    if (isset($_POST['script_case_init']))
    {
        $sc_init    = filter_input(INPUT_POST, 'script_case_init', FILTER_SANITIZE_NUMBER_INT);
@@ -98,108 +98,90 @@ function Ord_cmp_init()
    if ($use_alias == "S")
    {
        $tab_def_campos['checklist'] = "checklist";
-       $tab_converte["checklist"]   = "checklist";
    }
    else
    {
        $tab_def_campos['checklist'] = "";
-       $tab_converte[""]   = "checklist";
    }
    $tab_labels["checklist"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["checklist"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["checklist"] : "Check List";
    $tab_ger_campos['image_upload_image_headshot'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['image_upload_image_headshot'] = "image_upload_image_headshot";
-       $tab_converte["image_upload_image_headshot"]   = "image_upload_image_headshot";
    }
    else
    {
        $tab_def_campos['image_upload_image_headshot'] = "image_upload.image_headshot";
-       $tab_converte["image_upload.image_headshot"]   = "image_upload_image_headshot";
    }
    $tab_labels["image_upload_image_headshot"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["image_upload_image_headshot"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["image_upload_image_headshot"] : "Image";
    $tab_ger_campos['basic_information_firstname'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['basic_information_firstname'] = "basic_information_firstname";
-       $tab_converte["basic_information_firstname"]   = "basic_information_firstname";
    }
    else
    {
        $tab_def_campos['basic_information_firstname'] = "basic_information.firstname";
-       $tab_converte["basic_information.firstname"]   = "basic_information_firstname";
    }
    $tab_labels["basic_information_firstname"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_firstname"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_firstname"] : "Firstname";
    $tab_ger_campos['basic_information_lastname'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['basic_information_lastname'] = "basic_information_lastname";
-       $tab_converte["basic_information_lastname"]   = "basic_information_lastname";
    }
    else
    {
        $tab_def_campos['basic_information_lastname'] = "basic_information.lastname";
-       $tab_converte["basic_information.lastname"]   = "basic_information_lastname";
    }
    $tab_labels["basic_information_lastname"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_lastname"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_lastname"] : "Lastname";
    $tab_ger_campos['basic_information_dateofbirth'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['basic_information_dateofbirth'] = "basic_information_dateofbirth";
-       $tab_converte["basic_information_dateofbirth"]   = "basic_information_dateofbirth";
    }
    else
    {
        $tab_def_campos['basic_information_dateofbirth'] = "basic_information.dateofbirth";
-       $tab_converte["basic_information.dateofbirth"]   = "basic_information_dateofbirth";
    }
    $tab_labels["basic_information_dateofbirth"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_dateofbirth"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_dateofbirth"] : "Dateofbirth";
    $tab_ger_campos['basic_information_gender'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['basic_information_gender'] = "basic_information_gender";
-       $tab_converte["basic_information_gender"]   = "basic_information_gender";
    }
    else
    {
        $tab_def_campos['basic_information_gender'] = "basic_information.gender";
-       $tab_converte["basic_information.gender"]   = "basic_information_gender";
    }
    $tab_labels["basic_information_gender"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_gender"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["basic_information_gender"] : "Gender";
    $tab_ger_campos['sec_users_email'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['sec_users_email'] = "sec_users_email";
-       $tab_converte["sec_users_email"]   = "sec_users_email";
    }
    else
    {
        $tab_def_campos['sec_users_email'] = "sec_users.email";
-       $tab_converte["sec_users.email"]   = "sec_users_email";
    }
    $tab_labels["sec_users_email"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["sec_users_email"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["sec_users_email"] : "Email";
    $tab_ger_campos['application_detail_payment_status'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['application_detail_payment_status'] = "cmp_maior_30_1";
-       $tab_converte["cmp_maior_30_1"]   = "application_detail_payment_status";
    }
    else
    {
        $tab_def_campos['application_detail_payment_status'] = "application_detail.payment_status";
-       $tab_converte["application_detail.payment_status"]   = "application_detail_payment_status";
    }
    $tab_labels["application_detail_payment_status"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["application_detail_payment_status"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["application_detail_payment_status"] : "Payment Status";
    $tab_ger_campos['view'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['view'] = "view";
-       $tab_converte["view"]   = "view";
    }
    else
    {
        $tab_def_campos['view'] = "";
-       $tab_converte[""]   = "view";
    }
    $tab_labels["view"]   = (isset($_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["view"])) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['labels']["view"] : "View";
    $tab_ger_campos['checklist'] = "none";
@@ -256,7 +238,7 @@ function Ord_cmp_init()
 }
 function Sel_processa_out_sel($campos_sel)
 {
-   global $tab_ger_campos, $sc_init, $tab_def_campos, $tab_converte, $embbed;
+   global $tab_ger_campos, $sc_init, $tab_def_campos, $embbed;
    $arr_temp = array();
    $campos_sel = explode("@?@", $campos_sel);
    $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['ordem_select'] = array();
@@ -266,9 +248,9 @@ function Sel_processa_out_sel($campos_sel)
    {
        $ordem = (substr($campo_sort, 0, 1) == "+") ? "asc" : "desc";
        $campo = substr($campo_sort, 1);
-       if (isset($tab_converte[$campo]))
+       if (isset($tab_def_campos[$campo]))
        {
-           $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['ordem_select'][$campo] = $ordem;
+           $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['ordem_select'][$tab_def_campos[$campo]] = $ordem;
        }
    }
 ?>
@@ -294,7 +276,7 @@ function Sel_processa_out_sel($campos_sel)
    
 function Sel_processa_form()
 {
-  global $sc_init, $path_img, $path_btn, $tab_ger_campos, $tab_def_campos, $tab_converte, $tab_labels, $embbed, $tbar_pos;
+  global $sc_init, $path_img, $path_btn, $use_alias, $tab_ger_campos, $tab_def_campos, $tab_labels, $embbed, $tbar_pos;
    $size = 10;
    $_SESSION['scriptcase']['charset']  = "UTF-8";
    foreach ($this->Nm_lang as $ind => $dados)
@@ -382,6 +364,7 @@ if ($embbed)
      script_case_session: $("#id_script_case_session_sel_ord").val(),
      path_img: $("#id_path_img_sel_ord").val(),
      path_btn: $("#id_path_btn_sel_ord").val(),
+     use_alias: $("#id_use_alias").val(),
      campos_sel: $("#id_campos_sel_sel_ord").val(),
      sel_regra: $("#id_sel_regra_sel_ord").val(),
      fsel_ok: $("#id_fsel_ok_sel_ord").val(),
@@ -421,6 +404,7 @@ if ($embbed)
   <INPUT type="hidden" name="script_case_session" id="id_script_case_session_sel_ord" value="<?php echo NM_encode_input(session_id()); ?>"> 
   <INPUT type="hidden" name="path_img"            id="id_path_img_sel_ord"            value="<?php echo NM_encode_input($path_img); ?>"> 
   <INPUT type="hidden" name="path_btn"            id="id_path_btn_sel_ord"            value="<?php echo NM_encode_input($path_btn); ?>"> 
+  <INPUT type="hidden" name="use_alias"           id="id_use_alias"                   value="<?php echo NM_encode_input($use_alias); ?>"> 
   <INPUT type="hidden" name="fsel_ok"             id="id_fsel_ok_sel_ord"             value=""> 
 <?php
 if ($embbed)
@@ -529,9 +513,9 @@ if (!$embbed)
            if (!isset($arr_order[$tab_def_campos[$NM_cada_field]]))
            {
 ?>
-     <li class="sc_ui_litem scAppDivSelectFieldsEnabled" id="sc_id_itemord_<?php echo NM_encode_input($tab_def_campos[$NM_cada_field]); ?>">
+     <li class="sc_ui_litem scAppDivSelectFieldsEnabled" id="sc_id_itemord_<?php echo NM_encode_input($NM_cada_field); ?>">
       <?php echo $tab_labels[$NM_cada_field]; ?>
-      <select id="sc_id_class_<?php echo NM_encode_input($tab_def_campos[$NM_cada_field]); ?>" class="scAppDivToolbarInput" style="display: none" onchange="display_btn_restore_ord();">
+      <select id="sc_id_class_<?php echo NM_encode_input($NM_cada_field); ?>" class="scAppDivToolbarInput" style="display: none" onchange="display_btn_restore_ord();">
        <option value="+">Asc</option>
        <option value="-">Desc</option>
       </select><br/>
@@ -554,26 +538,29 @@ if (!$embbed)
        ob_start();
    }
    $arr_order = ($this->restore) ? $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['ordem_select_orig'] : $_SESSION['sc_session'][$sc_init]['grid_admin_all_applicants']['ordem_select'];
-   foreach ($arr_order as $NM_cada_field => $NM_cada_opc)
+   foreach ($tab_ger_campos as $NM_cada_field => $NM_cada_opc)
    {
-       if (isset($tab_converte[$NM_cada_field]))
+       if ($NM_cada_opc != "none")
        {
-           $sAscSelected  = " selected";
-           $sDescSelected = "";
-           if ($NM_cada_opc == "desc")
+           if (isset($arr_order[$tab_def_campos[$NM_cada_field]]))
            {
-               $sAscSelected  = "";
-               $sDescSelected = " selected";
-           }
+               $sAscSelected  = " selected";
+               $sDescSelected = "";
+               if ($arr_order[$tab_def_campos[$NM_cada_field]] == "desc")
+               {
+                   $sAscSelected  = "";
+                   $sDescSelected = " selected";
+               }
 ?>
      <li class="sc_ui_litem scAppDivSelectFieldsEnabled" id="sc_id_itemord_<?php echo $NM_cada_field; ?>">
-      <?php echo $tab_labels[$tab_converte[$NM_cada_field]]; ?>
-      <select id="sc_id_class_<?php echo NM_encode_input($tab_def_campos[ $tab_converte[$NM_cada_field] ]); ?>" class="scAppDivToolbarInput" onchange="$('#f_sel_sub').css('display', 'inline-block');display_btn_restore_ord();">
+      <?php echo $tab_labels[$NM_cada_field]; ?>
+      <select id="sc_id_class_<?php echo NM_encode_input($NM_cada_field); ?>" class="scAppDivToolbarInput" onchange="$('#f_sel_sub').css('display', 'inline-block');display_btn_restore_ord();">
        <option value="+"<?php echo $sAscSelected; ?>>Asc</option>
        <option value="-"<?php echo $sDescSelected; ?>>Desc</option>
       </select>
      </li>
 <?php
+          }
        }
    }
    if ($this->restore) {

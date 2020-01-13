@@ -181,8 +181,10 @@ function Sel_cmp_process()
       $tab_ger_campos['application_detail_number'] = "on";
       $tab_ger_campos['application_detail_venue_id'] = "on";
       $tab_ger_campos['application_detail_audition_id'] = "on";
+      $tab_ger_campos['application_detail_program'] = "on";
       $tab_ger_campos['audition_audition_date'] = "on";
       $tab_ger_campos['audition_audition_title'] = "on";
+      $tab_ger_campos['basic_information_nationality'] = "on";
 
 
       if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['field_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['grid_admin_all_applicants']['field_display']))

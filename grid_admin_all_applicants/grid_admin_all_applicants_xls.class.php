@@ -272,15 +272,15 @@ class grid_admin_all_applicants_xls
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
       { 
-          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
       { 
-          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
       } 
       else 
       { 
-          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
       } 
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq'];
@@ -340,10 +340,13 @@ class grid_admin_all_applicants_xls
          $this->application_detail_venue_id = (string)$this->application_detail_venue_id;
          $this->application_detail_audition_id = $rs->fields[10] ;  
          $this->application_detail_audition_id = (string)$this->application_detail_audition_id;
-         $this->audition_audition_date = $rs->fields[11] ;  
-         $this->audition_audition_title = $rs->fields[12] ;  
-         $this->application_detail_login = $rs->fields[13] ;  
-         $this->sec_users_login = $rs->fields[14] ;  
+         $this->application_detail_program = $rs->fields[11] ;  
+         $this->audition_audition_date = $rs->fields[12] ;  
+         $this->audition_audition_title = $rs->fields[13] ;  
+         $this->basic_information_nationality = $rs->fields[14] ;  
+         $this->basic_information_nationality = (string)$this->basic_information_nationality;
+         $this->application_detail_login = $rs->fields[15] ;  
+         $this->sec_users_login = $rs->fields[16] ;  
          $this->arg_sum_application_detail_venue_id = ($this->application_detail_venue_id == "") ? " is null " : " = " . $this->application_detail_venue_id;
          $this->arg_sum_application_detail_audition_id = ($this->application_detail_audition_id == "") ? " is null " : " = " . $this->application_detail_audition_id;
           if ($this->application_detail_venue_id !== $this->application_detail_venue_id_Old && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['SC_Ind_Groupby'] == "venue") 
@@ -445,6 +448,14 @@ class grid_admin_all_applicants_xls
          $this->look_basic_information_gender = $this->basic_information_gender; 
          $this->Lookup->lookup_basic_information_gender($this->look_basic_information_gender, $this->basic_information_gender) ; 
          $this->look_basic_information_gender = ($this->look_basic_information_gender == "&nbsp;") ? "" : $this->look_basic_information_gender; 
+         //----- lookup - application_detail_program
+         $this->look_application_detail_program = $this->application_detail_program; 
+         $this->Lookup->lookup_application_detail_program($this->look_application_detail_program, $this->application_detail_program) ; 
+         $this->look_application_detail_program = ($this->look_application_detail_program == "&nbsp;") ? "" : $this->look_application_detail_program; 
+         //----- lookup - basic_information_nationality
+         $this->look_basic_information_nationality = $this->basic_information_nationality; 
+         $this->Lookup->lookup_basic_information_nationality($this->look_basic_information_nationality, $this->basic_information_nationality) ; 
+         $this->look_basic_information_nationality = ($this->look_basic_information_nationality == "&nbsp;") ? "" : $this->look_basic_information_nationality; 
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
          { 
@@ -946,7 +957,7 @@ class grid_admin_all_applicants_xls
               }
               $this->Xls_col++;
           }
-          $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue Id"; 
+          $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue"; 
           if ($Cada_col == "application_detail_venue_id" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
           {
               $this->count_span++;
@@ -976,7 +987,7 @@ class grid_admin_all_applicants_xls
               }
               $this->Xls_col++;
           }
-          $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition Id"; 
+          $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition"; 
           if ($Cada_col == "application_detail_audition_id" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
           {
               $this->count_span++;
@@ -999,6 +1010,36 @@ class grid_admin_all_applicants_xls
                   }
                   else {
                       $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+                  }
+                  $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $SC_Label);
+                  $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
+                  $this->Nm_ActiveSheet->getColumnDimension($current_cell_ref)->setAutoSize(true);
+              }
+              $this->Xls_col++;
+          }
+          $SC_Label = (isset($this->New_label['application_detail_program'])) ? $this->New_label['application_detail_program'] : "Program"; 
+          if ($Cada_col == "application_detail_program" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+          {
+              $this->count_span++;
+              $current_cell_ref = $this->calc_cell($this->Xls_col);
+              if (!NM_is_utf8($SC_Label))
+              {
+                  $SC_Label = sc_convert_encoding($SC_Label, "UTF-8", $_SESSION['scriptcase']['charset']);
+              }
+              if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'])
+              { 
+                  $this->arr_export['label'][$this->Xls_col]['data']     = $SC_Label;
+                  $this->arr_export['label'][$this->Xls_col]['align']    = "left";
+                  $this->arr_export['label'][$this->Xls_col]['autosize'] = "s";
+                  $this->arr_export['label'][$this->Xls_col]['bold']     = "s";
+              }
+              else
+              { 
+                  if ($this->Use_phpspreadsheet) {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+                  }
+                  else {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
                   }
                   $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $SC_Label);
                   $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
@@ -1059,6 +1100,36 @@ class grid_admin_all_applicants_xls
                   }
                   else {
                       $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                  }
+                  $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $SC_Label);
+                  $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
+                  $this->Nm_ActiveSheet->getColumnDimension($current_cell_ref)->setAutoSize(true);
+              }
+              $this->Xls_col++;
+          }
+          $SC_Label = (isset($this->New_label['basic_information_nationality'])) ? $this->New_label['basic_information_nationality'] : "Nationality"; 
+          if ($Cada_col == "basic_information_nationality" && (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off"))
+          {
+              $this->count_span++;
+              $current_cell_ref = $this->calc_cell($this->Xls_col);
+              if (!NM_is_utf8($SC_Label))
+              {
+                  $SC_Label = sc_convert_encoding($SC_Label, "UTF-8", $_SESSION['scriptcase']['charset']);
+              }
+              if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['embutida'])
+              { 
+                  $this->arr_export['label'][$this->Xls_col]['data']     = $SC_Label;
+                  $this->arr_export['label'][$this->Xls_col]['align']    = "right";
+                  $this->arr_export['label'][$this->Xls_col]['autosize'] = "s";
+                  $this->arr_export['label'][$this->Xls_col]['bold']     = "s";
+              }
+              else
+              { 
+                  if ($this->Use_phpspreadsheet) {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+                  }
+                  else {
+                      $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
                   }
                   $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $SC_Label);
                   $this->Nm_ActiveSheet->getStyle($current_cell_ref . $this->Xls_row)->getFont()->setBold(true);
@@ -1393,6 +1464,29 @@ class grid_admin_all_applicants_xls
          $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $this->application_detail_audition_id);
          $this->Xls_col++;
    }
+   //----- application_detail_program
+   function NM_export_application_detail_program()
+   {
+         $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "LEFT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
+         $this->look_application_detail_program = html_entity_decode($this->look_application_detail_program, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->look_application_detail_program = strip_tags($this->look_application_detail_program);
+         if (!NM_is_utf8($this->look_application_detail_program))
+         {
+             $this->look_application_detail_program = sc_convert_encoding($this->look_application_detail_program, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         if ($this->Use_phpspreadsheet) {
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->look_application_detail_program, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+         }
+         else {
+             $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->look_application_detail_program, PHPExcel_Cell_DataType::TYPE_STRING);
+         }
+         $this->Xls_col++;
+   }
    //----- audition_audition_date
    function NM_export_audition_audition_date()
    {
@@ -1453,6 +1547,26 @@ class grid_admin_all_applicants_xls
          else {
              $this->Nm_ActiveSheet->setCellValueExplicit($current_cell_ref . $this->Xls_row, $this->audition_audition_title, PHPExcel_Cell_DataType::TYPE_STRING);
          }
+         $this->Xls_col++;
+   }
+   //----- basic_information_nationality
+   function NM_export_basic_information_nationality()
+   {
+         $current_cell_ref = $this->calc_cell($this->Xls_col);
+         if (!isset($this->NM_ctrl_style[$current_cell_ref])) {
+             $this->NM_ctrl_style[$current_cell_ref]['ini'] = $this->Xls_row;
+             $this->NM_ctrl_style[$current_cell_ref]['align'] = "RIGHT"; 
+         }
+         $this->NM_ctrl_style[$current_cell_ref]['end'] = $this->Xls_row;
+         if (!NM_is_utf8($this->look_basic_information_nationality))
+         {
+             $this->look_basic_information_nationality = sc_convert_encoding($this->look_basic_information_nationality, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         if (is_numeric($this->look_basic_information_nationality))
+         {
+             $this->NM_ctrl_style[$current_cell_ref]['format'] = '#,##0';
+         }
+         $this->Nm_ActiveSheet->setCellValue($current_cell_ref . $this->Xls_row, $this->look_basic_information_nationality);
          $this->Xls_col++;
    }
    //----- checklist
@@ -1657,6 +1771,21 @@ class grid_admin_all_applicants_xls
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "#,##0";
          $this->Xls_col++;
    }
+   //----- application_detail_program
+   function NM_sub_cons_application_detail_program()
+   {
+         $this->look_application_detail_program = html_entity_decode($this->look_application_detail_program, ENT_COMPAT, $_SESSION['scriptcase']['charset']);
+         $this->look_application_detail_program = strip_tags($this->look_application_detail_program);
+         if (!NM_is_utf8($this->look_application_detail_program))
+         {
+             $this->look_application_detail_program = sc_convert_encoding($this->look_application_detail_program, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->look_application_detail_program;
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
+         $this->Xls_col++;
+   }
    //----- audition_audition_date
    function NM_sub_cons_audition_audition_date()
    {
@@ -1701,6 +1830,19 @@ class grid_admin_all_applicants_xls
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "left";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "char";
          $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "";
+         $this->Xls_col++;
+   }
+   //----- basic_information_nationality
+   function NM_sub_cons_basic_information_nationality()
+   {
+         if (!NM_is_utf8($this->look_basic_information_nationality))
+         {
+             $this->look_basic_information_nationality = sc_convert_encoding($this->look_basic_information_nationality, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['data']   = $this->look_basic_information_nationality;
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['align']  = "";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['type']   = "num";
+         $this->arr_export['lines'][$this->Xls_row][$this->Xls_col]['format'] = "#,##0";
          $this->Xls_col++;
    }
    function xls_sub_cons_copy_label($row)

@@ -325,12 +325,12 @@ class grid_admin_all_applicants_grafico
       $this->titulo      = $this->list_titulo;
       //---- Label
       $this->label    = array();
-      $this->label[0] = "Venue Id";
+      $this->label[0] = "Venue";
       if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_label_graf']['application_detail_venue_id']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_label_graf']['application_detail_venue_id']))
       {
          $this->label[0] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_label_graf']['application_detail_venue_id'];
       }
-      $this->label[1] = "Audition Id";
+      $this->label[1] = "Audition";
       if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_label_graf']['application_detail_audition_id']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_label_graf']['application_detail_audition_id']))
       {
          $this->label[1] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['contr_label_graf']['application_detail_audition_id'];

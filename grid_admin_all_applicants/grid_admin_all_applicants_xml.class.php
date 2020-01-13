@@ -232,15 +232,15 @@ class grid_admin_all_applicants_xml
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
       { 
-          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, str_replace (convert(char(10),basic_information.dateofbirth,102), '.', '-') + ' ' + convert(char(8),basic_information.dateofbirth,20) as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, str_replace (convert(char(10),audition.audition_date,102), '.', '-') + ' ' + convert(char(8),audition.audition_date,20) as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
       } 
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
       { 
-          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
       } 
       else 
       { 
-          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
+          $nmgp_select = "SELECT image_upload.image_headshot as image_upload_image_headshot, basic_information.firstname as basic_information_firstname, basic_information.lastname as basic_information_lastname, basic_information.dateofbirth as basic_information_dateofbirth, basic_information.gender as basic_information_gender, sec_users.email as sec_users_email, application_detail.payment_status as cmp_maior_30_1, application_detail.id as application_detail_id, application_detail.number as application_detail_number, application_detail.venue_id as application_detail_venue_id, application_detail.audition_id as application_detail_audition_id, application_detail.program as application_detail_program, audition.audition_date as audition_audition_date, audition.audition_title as audition_audition_title, basic_information.nationality as basic_information_nationality, application_detail.login as application_detail_login, sec_users.login as sec_users_login from " . $this->Ini->nm_tabela; 
       } 
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['where_pesq'];
@@ -316,14 +316,25 @@ class grid_admin_all_applicants_xml
          $this->application_detail_venue_id = (string)$this->application_detail_venue_id;
          $this->application_detail_audition_id = $rs->fields[10] ;  
          $this->application_detail_audition_id = (string)$this->application_detail_audition_id;
-         $this->audition_audition_date = $rs->fields[11] ;  
-         $this->audition_audition_title = $rs->fields[12] ;  
-         $this->application_detail_login = $rs->fields[13] ;  
-         $this->sec_users_login = $rs->fields[14] ;  
+         $this->application_detail_program = $rs->fields[11] ;  
+         $this->audition_audition_date = $rs->fields[12] ;  
+         $this->audition_audition_title = $rs->fields[13] ;  
+         $this->basic_information_nationality = $rs->fields[14] ;  
+         $this->basic_information_nationality = (string)$this->basic_information_nationality;
+         $this->application_detail_login = $rs->fields[15] ;  
+         $this->sec_users_login = $rs->fields[16] ;  
          //----- lookup - basic_information_gender
          $this->look_basic_information_gender = $this->basic_information_gender; 
          $this->Lookup->lookup_basic_information_gender($this->look_basic_information_gender, $this->basic_information_gender) ; 
          $this->look_basic_information_gender = ($this->look_basic_information_gender == "&nbsp;") ? "" : $this->look_basic_information_gender; 
+         //----- lookup - application_detail_program
+         $this->look_application_detail_program = $this->application_detail_program; 
+         $this->Lookup->lookup_application_detail_program($this->look_application_detail_program, $this->application_detail_program) ; 
+         $this->look_application_detail_program = ($this->look_application_detail_program == "&nbsp;") ? "" : $this->look_application_detail_program; 
+         //----- lookup - basic_information_nationality
+         $this->look_basic_information_nationality = $this->basic_information_nationality; 
+         $this->Lookup->lookup_basic_information_nationality($this->look_basic_information_nationality, $this->basic_information_nationality) ; 
+         $this->look_basic_information_nationality = ($this->look_basic_information_nationality == "&nbsp;") ? "" : $this->look_basic_information_nationality; 
          $this->sc_proc_grid = true; 
          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_admin_all_applicants']['field_order'] as $Cada_col)
          { 
@@ -861,7 +872,7 @@ class grid_admin_all_applicants_xml
          }
           if ($this->Xml_tag_label)
           {
-              $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue Id"; 
+              $SC_Label = (isset($this->New_label['application_detail_venue_id'])) ? $this->New_label['application_detail_venue_id'] : "Venue"; 
           }
           else
           {
@@ -887,7 +898,7 @@ class grid_admin_all_applicants_xml
          }
           if ($this->Xml_tag_label)
           {
-              $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition Id"; 
+              $SC_Label = (isset($this->New_label['application_detail_audition_id'])) ? $this->New_label['application_detail_audition_id'] : "Audition"; 
           }
           else
           {
@@ -901,6 +912,31 @@ class grid_admin_all_applicants_xml
          else
          {
              $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->application_detail_audition_id) . "\"";
+         }
+   }
+   //----- application_detail_program
+   function NM_export_application_detail_program()
+   {
+         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->look_application_detail_program))
+         {
+             $this->look_application_detail_program = sc_convert_encoding($this->look_application_detail_program, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+          if ($this->Xml_tag_label)
+          {
+              $SC_Label = (isset($this->New_label['application_detail_program'])) ? $this->New_label['application_detail_program'] : "Program"; 
+          }
+          else
+          {
+              $SC_Label = "application_detail_program"; 
+          }
+          $this->clear_tag($SC_Label); 
+         if ($this->New_Format)
+         {
+             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->look_application_detail_program) . "</" . $SC_Label . ">\r\n";
+         }
+         else
+         {
+             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->look_application_detail_program) . "\"";
          }
    }
    //----- audition_audition_date
@@ -966,6 +1002,32 @@ class grid_admin_all_applicants_xml
          else
          {
              $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->audition_audition_title) . "\"";
+         }
+   }
+   //----- basic_information_nationality
+   function NM_export_basic_information_nationality()
+   {
+         nmgp_Form_Num_Val($this->look_basic_information_nationality, $_SESSION['scriptcase']['reg_conf']['grup_num'], $_SESSION['scriptcase']['reg_conf']['dec_num'], "0", "S", "2", "", "N:" . $_SESSION['scriptcase']['reg_conf']['neg_num'] , $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['num_group_digit']) ; 
+         if ($_SESSION['scriptcase']['charset'] == "UTF-8" && !NM_is_utf8($this->look_basic_information_nationality))
+         {
+             $this->look_basic_information_nationality = sc_convert_encoding($this->look_basic_information_nationality, "UTF-8", $_SESSION['scriptcase']['charset']);
+         }
+          if ($this->Xml_tag_label)
+          {
+              $SC_Label = (isset($this->New_label['basic_information_nationality'])) ? $this->New_label['basic_information_nationality'] : "Nationality"; 
+          }
+          else
+          {
+              $SC_Label = "basic_information_nationality"; 
+          }
+          $this->clear_tag($SC_Label); 
+         if ($this->New_Format)
+         {
+             $this->xml_registro .= " <" . $SC_Label . ">" . $this->trata_dados($this->look_basic_information_nationality) . "</" . $SC_Label . ">\r\n";
+         }
+         else
+         {
+             $this->xml_registro .= " " . $SC_Label . " =\"" . $this->trata_dados($this->look_basic_information_nationality) . "\"";
          }
    }
 
