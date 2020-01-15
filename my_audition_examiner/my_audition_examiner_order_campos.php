@@ -49,7 +49,7 @@ class my_audition_examiner_Ord_cmp
 {
 function Ord_cmp_init()
 {
-  global $sc_init, $path_img, $path_btn, $tab_ger_campos, $tab_def_campos, $tab_converte, $tab_labels, $embbed, $tbar_pos, $_POST, $_GET;
+  global $sc_init, $path_img, $path_btn, $use_alias, $tab_ger_campos, $tab_def_campos, $tab_def_seq, $tab_labels, $embbed, $tbar_pos, $_POST, $_GET;
    if (isset($_POST['script_case_init']))
    {
        $sc_init    = filter_input(INPUT_POST, 'script_case_init', FILTER_SANITIZE_NUMBER_INT);
@@ -98,120 +98,100 @@ function Ord_cmp_init()
    if ($use_alias == "S")
    {
        $tab_def_campos['audition_id'] = "audition_id";
-       $tab_converte["audition_id"]   = "audition_id";
    }
    else
    {
        $tab_def_campos['audition_id'] = "audition.id";
-       $tab_converte["audition.id"]   = "audition_id";
    }
    $tab_labels["audition_id"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["audition_id"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["audition_id"] : "Id";
    $tab_ger_campos['audition_audition_date'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['audition_audition_date'] = "audition_audition_date";
-       $tab_converte["audition_audition_date"]   = "audition_audition_date";
    }
    else
    {
        $tab_def_campos['audition_audition_date'] = "audition.audition_date";
-       $tab_converte["audition.audition_date"]   = "audition_audition_date";
    }
    $tab_labels["audition_audition_date"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["audition_audition_date"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["audition_audition_date"] : "Audition Date";
    $tab_ger_campos['audition_audition_title'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['audition_audition_title'] = "audition_audition_title";
-       $tab_converte["audition_audition_title"]   = "audition_audition_title";
    }
    else
    {
        $tab_def_campos['audition_audition_title'] = "audition.audition_title";
-       $tab_converte["audition.audition_title"]   = "audition_audition_title";
    }
    $tab_labels["audition_audition_title"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["audition_audition_title"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["audition_audition_title"] : "Audition Title";
    $tab_ger_campos['auditionees'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['auditionees'] = "auditionees";
-       $tab_converte["auditionees"]   = "auditionees";
    }
    else
    {
        $tab_def_campos['auditionees'] = "";
-       $tab_converte[""]   = "auditionees";
    }
    $tab_labels["auditionees"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["auditionees"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["auditionees"] : "Auditionee";
    $tab_ger_campos['venue_venue_name'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['venue_venue_name'] = "venue_venue_name";
-       $tab_converte["venue_venue_name"]   = "venue_venue_name";
    }
    else
    {
        $tab_def_campos['venue_venue_name'] = "venue.venue_name";
-       $tab_converte["venue.venue_name"]   = "venue_venue_name";
    }
    $tab_labels["venue_venue_name"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_venue_name"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_venue_name"] : "Venue Name";
    $tab_ger_campos['venue_address_1'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['venue_address_1'] = "venue_address_1";
-       $tab_converte["venue_address_1"]   = "venue_address_1";
    }
    else
    {
        $tab_def_campos['venue_address_1'] = "venue.address_1";
-       $tab_converte["venue.address_1"]   = "venue_address_1";
    }
    $tab_labels["venue_address_1"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_address_1"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_address_1"] : "Address 1";
    $tab_ger_campos['venue_address_2'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['venue_address_2'] = "venue_address_2";
-       $tab_converte["venue_address_2"]   = "venue_address_2";
    }
    else
    {
        $tab_def_campos['venue_address_2'] = "venue.address_2";
-       $tab_converte["venue.address_2"]   = "venue_address_2";
    }
    $tab_labels["venue_address_2"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_address_2"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_address_2"] : "Address 2";
    $tab_ger_campos['venue_town_city'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['venue_town_city'] = "venue_town_city";
-       $tab_converte["venue_town_city"]   = "venue_town_city";
    }
    else
    {
        $tab_def_campos['venue_town_city'] = "venue.town_city";
-       $tab_converte["venue.town_city"]   = "venue_town_city";
    }
    $tab_labels["venue_town_city"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_town_city"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_town_city"] : "Town City";
    $tab_ger_campos['venue_county'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['venue_county'] = "venue_county";
-       $tab_converte["venue_county"]   = "venue_county";
    }
    else
    {
        $tab_def_campos['venue_county'] = "venue.county";
-       $tab_converte["venue.county"]   = "venue_county";
    }
    $tab_labels["venue_county"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_county"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_county"] : "County";
    $tab_ger_campos['venue_country'] = "on";
    if ($use_alias == "S")
    {
        $tab_def_campos['venue_country'] = "venue_country";
-       $tab_converte["venue_country"]   = "venue_country";
    }
    else
    {
        $tab_def_campos['venue_country'] = "venue.country";
-       $tab_converte["venue.country"]   = "venue_country";
    }
    $tab_labels["venue_country"]   = (isset($_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_country"])) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['labels']["venue_country"] : "Country";
    $tab_ger_campos['auditionees'] = "none";
@@ -267,7 +247,7 @@ function Ord_cmp_init()
 }
 function Sel_processa_out_sel($campos_sel)
 {
-   global $tab_ger_campos, $sc_init, $tab_def_campos, $tab_converte, $embbed;
+   global $tab_ger_campos, $sc_init, $tab_def_campos, $embbed;
    $arr_temp = array();
    $campos_sel = explode("@?@", $campos_sel);
    $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['ordem_select'] = array();
@@ -277,9 +257,9 @@ function Sel_processa_out_sel($campos_sel)
    {
        $ordem = (substr($campo_sort, 0, 1) == "+") ? "asc" : "desc";
        $campo = substr($campo_sort, 1);
-       if (isset($tab_converte[$campo]))
+       if (isset($tab_def_campos[$campo]))
        {
-           $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['ordem_select'][$campo] = $ordem;
+           $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['ordem_select'][$tab_def_campos[$campo]] = $ordem;
        }
    }
 ?>
@@ -305,7 +285,7 @@ function Sel_processa_out_sel($campos_sel)
    
 function Sel_processa_form()
 {
-  global $sc_init, $path_img, $path_btn, $tab_ger_campos, $tab_def_campos, $tab_converte, $tab_labels, $embbed, $tbar_pos;
+  global $sc_init, $path_img, $path_btn, $use_alias, $tab_ger_campos, $tab_def_campos, $tab_labels, $embbed, $tbar_pos;
    $size = 10;
    $_SESSION['scriptcase']['charset']  = (isset($this->Nm_lang['Nm_charset']) && !empty($this->Nm_lang['Nm_charset'])) ? $this->Nm_lang['Nm_charset'] : "UTF-8";
    foreach ($this->Nm_lang as $ind => $dados)
@@ -394,6 +374,7 @@ if ($embbed)
      script_case_session: $("#id_script_case_session_sel_ord").val(),
      path_img: $("#id_path_img_sel_ord").val(),
      path_btn: $("#id_path_btn_sel_ord").val(),
+     use_alias: $("#id_use_alias").val(),
      campos_sel: $("#id_campos_sel_sel_ord").val(),
      sel_regra: $("#id_sel_regra_sel_ord").val(),
      fsel_ok: $("#id_fsel_ok_sel_ord").val(),
@@ -433,6 +414,7 @@ if ($embbed)
   <INPUT type="hidden" name="script_case_session" id="id_script_case_session_sel_ord" value="<?php echo NM_encode_input(session_id()); ?>"> 
   <INPUT type="hidden" name="path_img"            id="id_path_img_sel_ord"            value="<?php echo NM_encode_input($path_img); ?>"> 
   <INPUT type="hidden" name="path_btn"            id="id_path_btn_sel_ord"            value="<?php echo NM_encode_input($path_btn); ?>"> 
+  <INPUT type="hidden" name="use_alias"           id="id_use_alias"                   value="<?php echo NM_encode_input($use_alias); ?>"> 
   <INPUT type="hidden" name="fsel_ok"             id="id_fsel_ok_sel_ord"             value=""> 
 <?php
 if ($embbed)
@@ -541,9 +523,9 @@ if (!$embbed)
            if (!isset($arr_order[$tab_def_campos[$NM_cada_field]]))
            {
 ?>
-     <li class="sc_ui_litem scAppDivSelectFieldsEnabled" id="sc_id_itemord_<?php echo NM_encode_input($tab_def_campos[$NM_cada_field]); ?>">
+     <li class="sc_ui_litem scAppDivSelectFieldsEnabled" id="sc_id_itemord_<?php echo NM_encode_input($NM_cada_field); ?>">
       <?php echo $tab_labels[$NM_cada_field]; ?>
-      <select id="sc_id_class_<?php echo NM_encode_input($tab_def_campos[$NM_cada_field]); ?>" class="scAppDivToolbarInput" style="display: none" onchange="display_btn_restore_ord();">
+      <select id="sc_id_class_<?php echo NM_encode_input($NM_cada_field); ?>" class="scAppDivToolbarInput" style="display: none" onchange="display_btn_restore_ord();">
        <option value="+">Asc</option>
        <option value="-">Desc</option>
       </select><br/>
@@ -566,26 +548,29 @@ if (!$embbed)
        ob_start();
    }
    $arr_order = ($this->restore) ? $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['ordem_select_orig'] : $_SESSION['sc_session'][$sc_init]['my_audition_examiner']['ordem_select'];
-   foreach ($arr_order as $NM_cada_field => $NM_cada_opc)
+   foreach ($tab_ger_campos as $NM_cada_field => $NM_cada_opc)
    {
-       if (isset($tab_converte[$NM_cada_field]))
+       if ($NM_cada_opc != "none")
        {
-           $sAscSelected  = " selected";
-           $sDescSelected = "";
-           if ($NM_cada_opc == "desc")
+           if (isset($arr_order[$tab_def_campos[$NM_cada_field]]))
            {
-               $sAscSelected  = "";
-               $sDescSelected = " selected";
-           }
+               $sAscSelected  = " selected";
+               $sDescSelected = "";
+               if ($arr_order[$tab_def_campos[$NM_cada_field]] == "desc")
+               {
+                   $sAscSelected  = "";
+                   $sDescSelected = " selected";
+               }
 ?>
      <li class="sc_ui_litem scAppDivSelectFieldsEnabled" id="sc_id_itemord_<?php echo $NM_cada_field; ?>">
-      <?php echo $tab_labels[$tab_converte[$NM_cada_field]]; ?>
-      <select id="sc_id_class_<?php echo NM_encode_input($tab_def_campos[ $tab_converte[$NM_cada_field] ]); ?>" class="scAppDivToolbarInput" onchange="$('#f_sel_sub').css('display', 'inline-block');display_btn_restore_ord();">
+      <?php echo $tab_labels[$NM_cada_field]; ?>
+      <select id="sc_id_class_<?php echo NM_encode_input($NM_cada_field); ?>" class="scAppDivToolbarInput" onchange="$('#f_sel_sub').css('display', 'inline-block');display_btn_restore_ord();">
        <option value="+"<?php echo $sAscSelected; ?>>Asc</option>
        <option value="-"<?php echo $sDescSelected; ?>>Desc</option>
       </select>
      </li>
 <?php
+          }
        }
    }
    if ($this->restore) {

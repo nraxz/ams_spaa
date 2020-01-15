@@ -211,8 +211,8 @@ class my_audition_examiner_ini
       $this->nm_dt_criacao   = "20191019"; 
       $this->nm_hr_criacao   = "204923"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20200106"; 
+      $this->nm_hr_ult_alt   = "113443"; 
       $this->Apl_paginacao   = "FULL"; 
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
@@ -784,7 +784,7 @@ class my_audition_examiner_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -860,7 +860,7 @@ class my_audition_examiner_ini
           echo $SS_cod_html;
           exit;
       }
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -879,7 +879,7 @@ class my_audition_examiner_ini
       $this->nm_ttf_chi  = array("zh_cn", "zh_hk", "ko");
       $_SESSION['sc_session'][$this->sc_page]['my_audition_examiner']['seq_dir'] = 0; 
       $_SESSION['sc_session'][$this->sc_page]['my_audition_examiner']['sub_dir'] = array(); 
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQBiZ9XGHANOD5JsHuvmVcFCDur/HINUHQNmH9BqZ1BeD5rqDMvCHArCDWFGDoJeHQNmZSBiHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiD9JmH9FaHAzGZMJeHgvsHEJqH5FYHMBqHQFYDuFaD1BeHuXGHgrwVIFCDuX7HIFGDcJUZ1B/DSrYD5BOHgBeHEFiV5B3DoF7D9XsDuFaHANKV5JwHuNOVcFCHEFYVoJwDcBqZ1FaHArYV5B/DEBeHEJGH5F/VoXGD9XsZSX7Z1N7V5raHgrKVcFCDur/VoB/D9BsZ1B/DSrYV5FUDMzGHEJGDWrGVoBiD9NwDQJsHIrKV5JeDMvmVcFKV5BmVoBqD9BsZkFGHArKHQJwDEBODkFeH5FYVoFGHQJKDQJwHANOD5JsDMzGV9BUH5XCDoXGD9BsZSB/HABYHuFaDErKHEJGHEFqDoJeHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVorqDcJUZ1BOZ1BeD5F7DErKVkXeV5FaVoBiD9FYH9X7HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHAvCD5BqHgveHArsHEB7DoBqHQBiDuBqHAvOV5BqDMvmVcFKV5BmVoBqD9BsZkFGHArKV5JeHgBeDkB/DWXCVoJsHQJeDuBqHABYHuBqDMBOZSrCV5FYHMBOHQNwH9BOHArKHuFaDEBOHEXeDWFqHIJsD9XsZ9JeD1BeD5F7DMvmVcFeV5F/VoB/D9XOZSB/HArYD5JeDEBeHEFKDWF/HMFGD9JKDQJsHArYD5BOHuvmV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgBYHAFKV5B3DoBO";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NwDQFaHIBeD5JeHgvsVcBODWBmVorqHQBsH9BqDSBeHQFaDEBeZSJqDWr/DoF7DcBwDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHAN7HQJwDEBODkFeH5FYVoFGHQJKDQJsHIBeD5B/HuBOVcBODWFaHIFUD9XOZ1F7Z1BeHuXGHgBOHArsDWB3DoJeHQJKDQJsZ1vCV5FGHuNOV9FeDWXCVorqDcJUZ1BOZ1BeD5F7DErKVkXeV5FaVoBiD9FYH9X7HABYHuFaHuNOZSrCH5FqDoXGHQJmZ1FUZ1BeV5X7DENOHEJqV5FaDoraD9NmDQX7D1veD5BqHuBYVcFKHEFYVoraD9BsZSBOZ1BeV5FaDENOHEFiDWX7VoFGD9JKDQX7Z1N7D5JwHuzGZSrCV5F/VorqD9JmZ1rqHArKHQJwDEBODkFeH5FYVoFGHQJKDQB/HIrKD5JwHuNOVcrsDWFaVoJwD9BiZSBqD1vsZMBOHgveHENiV5FaHIFUDcBiDQBqD1BeHuJeHgrwZSNiDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQNmDuBqHAvCVWXGHgrwVcBUH5B3DoXGHQBqZkFGDSNOHuBqHgBYHArCH5BmVoFGHQJKZSFUD1BeHurqDMrYVcFeHEBmDoXGHQJmZkBiHAN7HQXGHgveZSJqDurmDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgveDkXKDWBmDoJeHQBiDQBqHANKV5XGDMvOV9BUDWFYHMBiD9BsVIraD1rwV5X7HgBeHENiH5FYHIrqD9JKDQBqHAveD5BqDMrYVcFCDWFYVoFGDcNmZ1BiHABYHuXGDMvCVkJ3V5FaDorqHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['my_audition_examiner']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['my_audition_examiner']['initialize'])  
       { 
@@ -2697,7 +2697,7 @@ class my_audition_examiner_apl
       { 
          unset($_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['use_pass_pdf']);
          $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['prim_cons'] = true;  
-         $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['where_orig'] = " where (audition.status = 'Auditioning') AND    (examiner_panel.panel = '" . $_SESSION['usr_login'] . "')";
+         $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['where_orig'] = " where examiner_panel.panel = '" . $_SESSION['usr_login'] . "'";
          $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['where_pesq']       = $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['where_pesq_ant']   = $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['my_audition_examiner']['cond_pesq'] = ""; 
