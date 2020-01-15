@@ -277,8 +277,8 @@ class form_application_detail_mob_ini
       $this->nm_dt_criacao   = "20190904"; 
       $this->nm_hr_criacao   = "163602"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20200106"; 
+      $this->nm_hr_ult_alt   = "113443"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -516,7 +516,7 @@ class form_application_detail_mob_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -907,7 +907,7 @@ class form_application_detail_mob_ini
       $this->Img_export_zip  = array();
       $this->regionalDefault();
       $this->sc_tem_trans_banco = false;
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -917,7 +917,7 @@ class form_application_detail_mob_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKDQFGD1NKVWXGHgvOVIBODWFYVENUD9XGZkBiD1rwHuBqHgNKDkXKDWXCHIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWJeHMBiD9BsVIraD1rwV5X7HgBeHEFiDWXCHMB/DcXGH9FUHArYV5BOHuNOVcBUDWXCHMFUDcJUZ1B/Z1BeV5JeHgveZSJ3H5BmZuFaHQNwDQFUD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHArKV5FaDMNKZSXeDWr/DoJeD9XsZSX7Z1N7VWFaHgrKV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDWXCDoB/D9NwH9X7Z1BYV5raHgvsVcFCDWXCVorqD9BsZ1F7DSrYD5rqDMBYHEJGH5F/VoXGD9XsZSX7Z1N7V5raHgrKVcFKDWFYVENUDcBqZ1B/DSrYV5FGDMNKZSXeV5FqDoB/DcJeZ9JeZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHEFiV5FaVoJeHQXsZSFGHArYVWXGHuNODkFCDuX7HMB/HQBsZ1FGHIrwV5XGHgrKDkXKDWF/HMJwDcXGDQJwHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1FGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgveZSJ3HEXCHMBODcXGDQFaZ1zGD5F7DMBOVcFeDWJeHIJeDcFYZSBOD1vsV5X7HgBOHArCH5FGDoJeDcBiDQFaZ1vCD5F7HgvOVIBsDWrmVEraHQXOZSBqD1zGD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBqHQBiDuBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHArYHQNUHgNKVkXeDWXCVoX7DcBwDuFaZ1vCVWXGHuNOZSJqDur/HMBiD9BsVIraD1rwV5X7HgBeHErCV5XCDoraD9NwH9X7HABYV5BqHuvmVcFiDWXCHIXGD9JmZ1F7HABYV5XGDEBeHArCDWF/VoBiDcJUZSX7Z1BYHuFaDMvsV9FiV5BmVorq";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NwZ9XGD1BOVWBqHgvOV9BUDWJeVoBqDcFYH9FaD1rKHQFUHgrKVkXeDuFaZuBOHQJKZSBiHAveD5NUHgNKDkBOV5FYHMBiHQNmZkFGZ1vOZMJwHgNKHArCDurmDoXGHQFYDQFaHIBOD5F7HgrwVcXKH5XCHMraHQNwZ1FGHINaV5X7HgNOHErsH5FGZuB/DcBiDQBqD1NKD5F7DMzGVIBsHEX7HIXGDcFYZ1FGD1NaD5rqDEBOHEFiHEFqDoF7DcJUZSBiHIvsVWFaDMvOZSNiDWJeHIX7HQNmZSBOD1NaV5X7HgNOVkJqH5FYHMJwHQNwZ9F7HAvCD5F7DMrYVcBUDWBmVEraHQBiZ1BOD1zGV5X7HgBYHEJqH5F/HIXGHQJKZ9F7HIvsV5FGHuNOVcFKHEFYVoBqDcBwH9BqDSvOZMJwHgvsHArsDWB3ZuBqDcXGDQBqD1NKD5F7DMvsV9FeHEF/HIrqHQBqZkFGD1vsV5X7HgBeZSJqH5FYHIX7HQXODQFaDSvCD5F7DMvmV9BUDWJeHMX7HQNmH9BOHINKD5rqDEBOHEFiHEFqDoF7DcJUZSFGD1BeV5FGHgrYDkFCDWXCVoB/D9BiZ1F7HIveD5BiHgBeDkB/HEB3DoB/HQFYDQJwHANOV5JwHgrKDkFCDWJeVoB/D9BsZkFUHArKHQraDEBeHEXeDuFYVoB/D9NwZ9rqHANKD5BOHuBOVcBUDurGVErqHQNGZkFUZ1BeHuXGDMzGHEJGH5F/HMBqDcJeDQX7DSrwD5JwDMrwDkFCDWBmVEFGHQFYH9FaHIBeZMBODEvsZSJGDWr/DoB/D9XsZSFGD1NKV5JwHuzGDkBOH5FqVoX7D9JmZ1FaHArKZMB/DMBYZSXeDWX7DoXGDcBwDuBOZ1NaV5FGHuNOVcFKHEFYVoBqDcBwH9FaD1rwD5rqDMNKZSXeDuJeDoB/D9NwZSFGD1veV5raDMBYVIBsDWFaHIJeHQBsZ1BOD1rwHQF7HgvCHArsDWBmDoBOHQBiDuFaHAveD5NUHgNKDkBOV5FYHMBiDcJUZ1F7HIveV5JeHgBOZSJ3DurmZuBqDcBwDQFGHIrwHQJsDMvODkBsV5FYHMBiD9BsVIraD1rwV5X7HgBeHEFKV5FaVoBOD9XsZSFGHANOD5F7HgrYDkBODWFaVorqD9XOZ1F7HIrwV5JeDMBYZSXeDWX7ZuFaD9JKDQX7Z1rwD5NUHgrYDkBOH5XCDoraD9BiZ1F7HABYV5JeDEBOHENiV5FaVoFGD9XsZSX7HAvmD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HIJsD9XsZ9JeD1BeD5F7DMvmVcFKDuX7VEF7HQXOZ1rqHIveHQBqDMveHErsDWr/ZuJsDcXGH9BiHIBeVWBODMvmVcFKV5BmVoBqD9BsZkFGHArKD5BqDMzGHEJqV5FaDorqD9NwH9X7Z1rwD5NUHuBOVIBODWFYHMBiD9BsVIraD1rwV5X7HgBeHErsDWrGDoBOHQBiZ9XGHANKV5JeDMvOV9BUDWXKVEraHQJmZ1F7Z1vmD5rqDEBOHArCDWF/VoFaHQNmDQFUHIrKHuFGDMBYVcB/HEF/HMJsDcBqZkBiHIveV5B/HgNOHEFiDWFqDoXGHQNmDQBqD1veVWJwDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_application_detail_mob']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_application_detail_mob']['initialize'])  
       { 

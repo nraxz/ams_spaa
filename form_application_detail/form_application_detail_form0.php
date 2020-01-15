@@ -1602,7 +1602,7 @@ $note_val = str_replace('<br />', '__SC_BREAK_LINE__', nl2br($note));
  ?>
 <input type="hidden" name="note" value="<?php echo $this->form_encode_input($note) . "\">" . $note_val . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_note" class="sc-ui-readonly-note css_note_line" style="<?php echo $sStyleReadLab_note; ?>"><?php echo $this->form_encode_input($note_val); ?></span><span id="id_read_off_note" class="css_read_off_note" style="white-space: nowrap;<?php echo $sStyleReadInp_note; ?>">
+<span id="id_read_on_note" class="sc-ui-readonly-note css_note_line" style="<?php echo $sStyleReadLab_note; ?>"><?php echo $note_val; ?></span><span id="id_read_off_note" class="css_read_off_note" style="white-space: nowrap;<?php echo $sStyleReadInp_note; ?>">
  <textarea  class="sc-js-input scFormObjectOdd css_note_obj" style="white-space: pre-wrap;" name="note" id="id_sc_field_note" rows="3" cols="40"
  alt="{datatype: 'text', maxLength: 256, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" >
 <?php echo $note; ?>
@@ -1662,7 +1662,7 @@ $note_val = str_replace('<br />', '__SC_BREAK_LINE__', nl2br($note));
 <input type="hidden" name="info" value="<?php echo $this->form_encode_input($info) . "\">"; ?>
 <?php } else { $sc_hidden_no++; ?>
 
-    <TD class="scFormDataOdd css_info_line" id="hidden_field_data_info" style="<?php echo $sStyleHidden_info; ?>"> <table style="border-width: 0px; border-collapse: collapse; width: 100%"><tr><td  class="scFormDataFontOdd css_info_line" style="vertical-align: top;padding: 0px"><span id="id_read_on_info css_info_line" style="<?php echo $sStyleReadLab_info; ?>"><?php echo $this->form_encode_input($this->info); ?></span><span id="id_read_off_info" class="css_read_off_info" style="<?php echo $sStyleReadInp_info; ?>"><span id="id_ajax_label_info"><?php echo $info?></span>
+    <TD class="scFormDataOdd css_info_line" id="hidden_field_data_info" style="<?php echo $sStyleHidden_info; ?>"> <table style="border-width: 0px; border-collapse: collapse; width: 100%"><tr><td  class="scFormDataFontOdd css_info_line" style="vertical-align: top;padding: 0px"><span id="id_read_on_info css_info_line" style="<?php echo $sStyleReadLab_info; ?>"><?php echo $fieldContent; ?></span><span id="id_read_off_info" class="css_read_off_info" style="<?php echo $sStyleReadInp_info; ?>"><span id="id_ajax_label_info"><?php echo $info?></span>
 </span><input type="hidden" name="info" value="<?php echo $this->form_encode_input($info); ?>">
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_info_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_info_text"></span></td></tr></table></td></tr></table> </TD>
    <?php }?>

@@ -278,8 +278,8 @@ class form_application_detail_ini
       $this->nm_dt_criacao   = "20190904"; 
       $this->nm_hr_criacao   = "163602"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20200106"; 
+      $this->nm_hr_ult_alt   = "113443"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -517,7 +517,7 @@ class form_application_detail_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -909,7 +909,7 @@ class form_application_detail_ini
       $this->Img_export_zip  = array();
       $this->regionalDefault();
       $this->sc_tem_trans_banco = false;
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -919,7 +919,7 @@ class form_application_detail_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcJeH9BiDSN7HQJeDMvmVIBODurGVEFGD9XOVIJsHArKD5FaHgBeHEFiV5B3DoF7D9XsDuFaHANKV5XGDMBYV9BUHEBmVEraHQXOZ1BiD1rwHuJwHgvsHEFKV5FqHMBiDcXGDQB/D1vOVWJsDMBYVcFiV5FYHIBiHQNwZkBiHArYHQXGHgNKHEFKV5FqHMFaHQNwZSFUD1BeHQNUDMvmZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqHgrKHErsHEB3DoJeHQBiH9BiZ1vCV5BODMBOZSJ3V5FYHIJeHQXGH9BOHABYHuFaHgNKDkFeV5B7ZuFaHQXOZ9XGHABYHQXGHgrwV9FiV5X/VEFGDcFYZ1X7DSrYHQX7HgBYHEFKH5FYVoX7D9JKDQX7D1BOV5FGDMzGV9BUHEBmVoFGHQXOZSBqHIrwHuFUHgvsHAFKV5FqHMJsHQJKH9FUHANOHuJeHgrwVcFiV5FYHMJwHQBsZkBiHAN7HQXGHgvsDkFeV5FqDoJsHQJKZ9XGHABYHQJsDMNOV9FiH5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9NwDQJsHArYVWJsHuvmVcXKV5X7HMXGHQBqVIraZ1BeHuJwDErKVkXeV5FaVoBqD9NwH9X7HArYD5F7HgNKVcFeDWF/DoFGD9BsZ1F7HArYD5JeDMrYHEFKDuJeZuJeHQJeDQBqHAvCD5BqDMrwDkBsV5F/DoraD9BiZ1FGZ1rYD5NUDEBeZSXeH5FGDoB/D9NmZ9XGDSzGV5JwHuBYDkFCDuX7VEF7D9XOZSB/Z1BeD5FaDEvsHEFKV5FaDoXGDcJeZSFGHANOD5BqHuzGVcrsH5XCVoBqDcBqZ1FaD1rwV5FaHgvCDkBsH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9JmZ1F7Z1BeD5JeDEvsHENiV5FaHMJeHQJKDQFUHANOHuraDMBODkBsDurGDoXGHQNmZ1BiHAvsD5BOHgBeHEFiV5B3DoF7D9XsDuFaHAveVWJeHgvOVcBOHEX7DoFGHQXGZkBiD1vsZMBOHgveVkXeDWB3ZuBOHQNmZ9XGHAvCVWBqDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5FaDMzGVkXeV5FaDoJeD9XsDQFUZ1rwV5FUHuzGVcrsDWXCDoJeD9JmZ1B/D1rwD5NUDEvsHEFiHEFqDoB/D9XsH9FUZ1rwD5JsHgrKVcFCH5XCVoB/D9JmZ1B/HINaV5FUDErKHEFiDuJeDoBOHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHMBiD9BsVIraD1rwV5X7HgBeHENiDWr/ZuJeHQXsDuBqD1BeHuNUHuBYV9BUDur/HMFGDcBqZ1BODSNOD5NUDEvsVkXeHEFqHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBqHQBiDuBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1F7Z1vmZMXGDEBOHEFiH5FYDoraDcBwDQB/HIrwHuFUDMvOVcB/H5FqVEBiHQXOZ1BiHArKV5FUHgBeHEFiV5B3DoF7D9XsDuFaHAveHQBOHgvsVcFCDWJeDoraD9XOH9B/HINKD5raHgNOZSXeDuJeDoraD9JKDQJsDSBYHuFaHuNOZSrCH5FqDoXGHQJmZ1BiDSvOV5FUHgveHEBOV5JeZura";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1HQXsDQX7Z1vCVWJwDMrYVIB/H5XCHMF7DcNmZ1BOHANOZMJwHgrKHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMvOVIBsDWXCDoJsDcBwH9B/Z1rYHQJwDErKZSJqHEXCHIrqD9FYDQFUD1BeHQFaHuvmV9FeDWFaHIX7D9XOZSB/DSBeZMB/DMveHArsDuFaHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQFYH9B/HANOD5FaDErKVkXeV5FqDoFUDcJeDQFGHAveV5JeHuNOVcFKHEFYVoBqDcBqZ1FaD1rKV5JeDEBOZSXeV5XCDoFUDcBwDQJsHABYVWJsHgvsVcBOHEFYDoJeHQFYZSFaHArKV5XGDErKHErCDWF/VoBiDcJUZSX7Z1BYHuFaHgvsVcFCDWJeVoraHQBsVINUD1rKV5FaHgNKHEFiDuJeVoFGHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIF7HQBqVINUHArYHQF7HgveZSJqDWF/HMBOHQXGDQFUD1veHQNUHgrwV9BUH5XCHIrqHQFYZ1BOHAvsZMFaHgNKHEJqDurmZuFaHQXGDuFaDSN7HQJwDMBODkB/H5XCHMXGDcBwH9B/HIrwV5JeDMBYDkBsH5FYHIrqHQJeZ9XGHAvmV5BODMBYZSNiDWJeHIXGHQFYZ1BOHAN7HuX7HgNOHArCHEXKZuBOHQXGDuBqD1NKVWJeDMrYV9FeV5FYHMraHQFYZkBiDSrYHuFUDMveHArCH5X/ZuJeDcJUZSX7HIBeD5BqHgvsZSJ3H5FqHMBqHQBqZSBqZ1vOZMBqHgNKZSJqH5BmZuFaHQXGDuBqDSBYHQJsDMBYVcBUHEFYHMJsHQFYZkFGD1rwHuX7HgBeDkXKH5F/HMFaHQXGDuFaHAvOV5BOHgvOVcBUH5FqHMX7DcBwH9B/HIrwV5JeDMBYDkBsH5FYDoXGDcJeZSFUZ1rwV5JeHgvsVcFCH5XCDoX7DcNwH9BqD1NaZMJwHgvCZSJqDWF/DoJeD9XsZSX7HIrwV5BOHgvsVcBOV5X/VoFaHQBsZSB/DSrYV5FGDMzGHEJGH5X/DoNUHQJwDQJwHIvsVWBODMrYZSrCHEX/VoraHQBiZSB/HArYZMB/HgvsHEXeDWX7VoJwDcBwDuBOZ1rwVWJeDMvsV9FiV5X7VEF7D9BiH9FaHIBeD5XGDEBOZSXeV5FaZuFaHQXGZSFGD1BeV5FGHuzGVIBOHEFYVorqD9BiZ1F7D1rwD5NUDErKZSXeH5FGDoB/DcJUZSX7HIBeD5BqHgvsZSJ3H5FqVoFGDcBqH9BOZ1BeV5XGDEBOZSJGH5FYZuFaDcXOZSBiZ1N7HuB/DMBOVIBsDWFYHIXGHQXOZ1FUZ1vOD5BqHgveHErsDWX7HIJsD9XsZ9JeD1BeD5F7DMvmVcBUDWrmVorqHQNmVINUHAvsD5BqHgveHArsDWFGZuB/HQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoFGHQXGZ1X7DSrYD5XGDErKVkJ3HEFaDoXGHQFYDQFGDSBYD5BODMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_application_detail']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_application_detail']['initialize'])  
       { 

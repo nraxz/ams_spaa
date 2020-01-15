@@ -26,7 +26,7 @@ class form_application_detail_apl
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
                                 'ajaxAlert'         => array(),
-                                'ajaxMessage'       => '',
+                                'ajaxMessage'       => array(),
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
                                 'buttonDisplayVert' => array(),
@@ -1102,9 +1102,7 @@ $_SESSION['scriptcase']['form_application_detail']['contr_erro'] = 'off';
       }
       if (!$this->NM_ajax_flag || 'alterar' != $this->nmgp_opcao || 'submit_form' != $this->NM_ajax_opcao)
       {
-         $this->info = "<strong>Important:</strong> Once you complete your audition fee payment, you are unable to make any changes to your audition date. If you do wish to change please contact us<br>
-Tel: 020 7837 7741 <a href = \"mailto: sarah@londonstudiocentre.org\">Send Email</a>
-";
+         $this->info = "<strong>Important:</strong> Once your booking is complete, you are unable to make any changes on your audition date. if you do wish to change please contact <a href=\"mailto:admissions@spaa.ae\">Send Email</a>";
       }
 //
 //-----> 
@@ -3304,11 +3302,11 @@ $_SESSION['scriptcase']['form_application_detail']['contr_erro'] = 'off';
               if (in_array(strtolower($this->Ini->nm_tpbanco), $nm_bases_lob_geral))
               { 
               }   
-          $this->login = $this->login_before_qstr;
-          $this->program = $this->program_before_qstr;
-          $this->payment_status = $this->payment_status_before_qstr;
-          $this->note = $this->note_before_qstr;
-          $this->register = $this->register_before_qstr;
+              $this->login = $this->login_before_qstr;
+              $this->program = $this->program_before_qstr;
+              $this->payment_status = $this->payment_status_before_qstr;
+              $this->note = $this->note_before_qstr;
+              $this->register = $this->register_before_qstr;
               $this->sc_evento = "update"; 
               $this->nmgp_opcao = "igual"; 
               $this->nm_flag_iframe = true;
@@ -3525,6 +3523,11 @@ $_SESSION['scriptcase']['form_application_detail']['contr_erro'] = 'off';
               }
 
               $this->sc_evento = "insert"; 
+              $this->login = $this->login_before_qstr;
+              $this->program = $this->program_before_qstr;
+              $this->payment_status = $this->payment_status_before_qstr;
+              $this->note = $this->note_before_qstr;
+              $this->register = $this->register_before_qstr;
               if (empty($this->sc_erro_insert)) {
                   $this->record_insert_ok = true;
               } 
@@ -5386,7 +5389,11 @@ if (parent && parent.scAjaxDetailValue)
     {
         if ($this->NM_ajax_flag)
         {
-            $this->NM_ajax_info['ajaxJavascript'][] = array($sJsFunc, $aParam);
+            foreach ($aParam as $i => $v)
+            {
+                $aParam[$i] = NM_charset_to_utf8($v);
+            }
+            $this->NM_ajax_info['ajaxJavascript'][] = array(NM_charset_to_utf8($sJsFunc), $aParam);
         }
         else
         {
