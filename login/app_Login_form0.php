@@ -606,7 +606,7 @@ sc_userSweetAlertDisplayed = false;
  ?>
 <input type="hidden" name="pswd" value="<?php echo $this->form_encode_input($pswd) . "\">" . $pswd . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_pswd" class="sc-ui-readonly-pswd css_pswd_line" style="<?php echo $sStyleReadLab_pswd; ?>"><?php echo $this->form_encode_input($this->pswd); ?></span><span id="id_read_off_pswd" class="css_read_off_pswd" style="white-space: nowrap;<?php echo $sStyleReadInp_pswd; ?>">
+<span id="id_read_on_pswd" class="sc-ui-readonly-pswd css_pswd_line" style="<?php echo $sStyleReadLab_pswd; ?>"><?php echo $this->pswd; ?></span><span id="id_read_off_pswd" class="css_read_off_pswd" style="white-space: nowrap;<?php echo $sStyleReadInp_pswd; ?>">
  <input class="sc-js-input scFormObjectOdd css_pswd_obj" style="" id="id_sc_field_pswd" type=text name="pswd" value="<?php echo $this->form_encode_input($pswd) ?>"
  size=10 maxlength=40 alt="{datatype: 'text', maxLength: 40, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: true, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none; position: absolute" id="id_error_display_pswd_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_pswd_text"></span></td></tr></table></td></tr></table></TD>
@@ -660,7 +660,7 @@ sc_userSweetAlertDisplayed = false;
  ?>
 <input type="hidden" name="user_email" value="<?php echo $this->form_encode_input($user_email) . "\">" . $user_email . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_user_email" class="sc-ui-readonly-user_email css_user_email_line" style="<?php echo $sStyleReadLab_user_email; ?>"><?php echo $this->form_encode_input($this->user_email); ?></span><span id="id_read_off_user_email" class="css_read_off_user_email" style="white-space: nowrap;<?php echo $sStyleReadInp_user_email; ?>">
+<span id="id_read_on_user_email" class="sc-ui-readonly-user_email css_user_email_line" style="<?php echo $sStyleReadLab_user_email; ?>"><?php echo $this->user_email; ?></span><span id="id_read_off_user_email" class="css_read_off_user_email" style="white-space: nowrap;<?php echo $sStyleReadInp_user_email; ?>">
  <input class="sc-js-input scFormObjectOdd css_user_email_obj" style="" id="id_sc_field_user_email" type=text name="user_email" value="<?php echo $this->form_encode_input($user_email) ?>"
  size=10 maxlength=50 alt="{datatype: 'text', maxLength: 50, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: true, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none; position: absolute" id="id_error_display_user_email_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_user_email_text"></span></td></tr></table></td></tr></table></TD>

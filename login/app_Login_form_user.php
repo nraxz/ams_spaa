@@ -111,7 +111,7 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 					<div class="col-lg-12">
 						<div class="page-header mt-3">
 
-							<div class="jumbotron text-center ">
+							<div class="jumbotron text-center mb-2">
 								<div class="row">
 									<div class="col-2 img-right">
 										<img src="http://resources.spaa.ae/images/logo.png" style="height:100px; width:auto;" class="img-fluid" />
@@ -121,12 +121,18 @@ if (isset($this->redir_modal) && !empty($this->redir_modal))
 										<h5 id="typography" class="text-primary">Application Management System</h5>
 									</div>
 								</div>
-
+								
 
 							</div>
+							<div class="alert alert-success" role="alert">
+									<h6>Full scholarships available for eligible students upon acceptance into the Academy.</h6>
+							</div>
+							
 						</div>
 					</div>
 				</div>
+				
+
 
 				<!-- Headings -->
 

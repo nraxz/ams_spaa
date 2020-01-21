@@ -26,7 +26,7 @@ class app_Login_apl
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
                                 'ajaxAlert'         => array(),
-                                'ajaxMessage'       => '',
+                                'ajaxMessage'       => array(),
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
                                 'buttonDisplayVert' => array(),
