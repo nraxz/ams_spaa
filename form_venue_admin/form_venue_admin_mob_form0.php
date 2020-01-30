@@ -729,6 +729,10 @@ if (isset($_SESSION['scriptcase']['form_venue_admin']['error_buffer']) && '' != 
 {
     echo $_SESSION['scriptcase']['form_venue_admin']['error_buffer'];
 }
+elseif (!isset($this->NM_ajax_info['param']['buffer_output']) || !$this->NM_ajax_info['param']['buffer_output'])
+{
+    echo $sOBContents;
+}
 
 ?>
 <div id="idJSSpecChar" style="display: none;"></div>
@@ -1106,7 +1110,7 @@ unset($NM_ult_sep);
  ?>
 <input type="hidden" name="venue_name" value="<?php echo $this->form_encode_input($venue_name) . "\">" . $venue_name . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_venue_name" class="sc-ui-readonly-venue_name css_venue_name_line" style="<?php echo $sStyleReadLab_venue_name; ?>"><?php echo $this->form_encode_input($this->venue_name); ?></span><span id="id_read_off_venue_name" class="css_read_off_venue_name" style="white-space: nowrap;<?php echo $sStyleReadInp_venue_name; ?>">
+<span id="id_read_on_venue_name" class="sc-ui-readonly-venue_name css_venue_name_line" style="<?php echo $sStyleReadLab_venue_name; ?>"><?php echo $this->venue_name; ?></span><span id="id_read_off_venue_name" class="css_read_off_venue_name" style="white-space: nowrap;<?php echo $sStyleReadInp_venue_name; ?>">
  <input class="sc-js-input scFormObjectOdd css_venue_name_obj" style="" id="id_sc_field_venue_name" type=text name="venue_name" value="<?php echo $this->form_encode_input($venue_name) ?>"
  size=50 maxlength=128 alt="{datatype: 'text', maxLength: 128, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_venue_name_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_venue_name_text"></span></td></tr></table></td></tr></table> </TD>
@@ -1167,7 +1171,7 @@ unset($NM_ult_sep);
  ?>
 <input type="hidden" name="address_1" value="<?php echo $this->form_encode_input($address_1) . "\">" . $address_1 . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_address_1" class="sc-ui-readonly-address_1 css_address_1_line" style="<?php echo $sStyleReadLab_address_1; ?>"><?php echo $this->form_encode_input($this->address_1); ?></span><span id="id_read_off_address_1" class="css_read_off_address_1" style="white-space: nowrap;<?php echo $sStyleReadInp_address_1; ?>">
+<span id="id_read_on_address_1" class="sc-ui-readonly-address_1 css_address_1_line" style="<?php echo $sStyleReadLab_address_1; ?>"><?php echo $this->address_1; ?></span><span id="id_read_off_address_1" class="css_read_off_address_1" style="white-space: nowrap;<?php echo $sStyleReadInp_address_1; ?>">
  <input class="sc-js-input scFormObjectOdd css_address_1_obj" style="" id="id_sc_field_address_1" type=text name="address_1" value="<?php echo $this->form_encode_input($address_1) ?>"
  size=50 maxlength=100 alt="{datatype: 'text', maxLength: 100, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_address_1_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_address_1_text"></span></td></tr></table></td></tr></table> </TD>
@@ -1229,7 +1233,7 @@ unset($NM_ult_sep);
  ?>
 <input type="hidden" name="address_2" value="<?php echo $this->form_encode_input($address_2) . "\">" . $address_2 . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_address_2" class="sc-ui-readonly-address_2 css_address_2_line" style="<?php echo $sStyleReadLab_address_2; ?>"><?php echo $this->form_encode_input($this->address_2); ?></span><span id="id_read_off_address_2" class="css_read_off_address_2" style="white-space: nowrap;<?php echo $sStyleReadInp_address_2; ?>">
+<span id="id_read_on_address_2" class="sc-ui-readonly-address_2 css_address_2_line" style="<?php echo $sStyleReadLab_address_2; ?>"><?php echo $this->address_2; ?></span><span id="id_read_off_address_2" class="css_read_off_address_2" style="white-space: nowrap;<?php echo $sStyleReadInp_address_2; ?>">
  <input class="sc-js-input scFormObjectOdd css_address_2_obj" style="" id="id_sc_field_address_2" type=text name="address_2" value="<?php echo $this->form_encode_input($address_2) ?>"
  size=50 maxlength=100 alt="{datatype: 'text', maxLength: 100, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_address_2_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_address_2_text"></span></td></tr></table></td></tr></table> </TD>
@@ -1290,7 +1294,7 @@ unset($NM_ult_sep);
  ?>
 <input type="hidden" name="town_city" value="<?php echo $this->form_encode_input($town_city) . "\">" . $town_city . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_town_city" class="sc-ui-readonly-town_city css_town_city_line" style="<?php echo $sStyleReadLab_town_city; ?>"><?php echo $this->form_encode_input($this->town_city); ?></span><span id="id_read_off_town_city" class="css_read_off_town_city" style="white-space: nowrap;<?php echo $sStyleReadInp_town_city; ?>">
+<span id="id_read_on_town_city" class="sc-ui-readonly-town_city css_town_city_line" style="<?php echo $sStyleReadLab_town_city; ?>"><?php echo $this->town_city; ?></span><span id="id_read_off_town_city" class="css_read_off_town_city" style="white-space: nowrap;<?php echo $sStyleReadInp_town_city; ?>">
  <input class="sc-js-input scFormObjectOdd css_town_city_obj" style="" id="id_sc_field_town_city" type=text name="town_city" value="<?php echo $this->form_encode_input($town_city) ?>"
  size=50 maxlength=56 alt="{datatype: 'text', maxLength: 56, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_town_city_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_town_city_text"></span></td></tr></table></td></tr></table> </TD>
@@ -1317,7 +1321,7 @@ unset($NM_ult_sep);
    <?php
     if (!isset($this->nm_new_label['postcode']))
     {
-        $this->nm_new_label['postcode'] = "Postcode";
+        $this->nm_new_label['postcode'] = "Postcode/Zipcode";
     }
 ?>
 <?php
@@ -1345,13 +1349,13 @@ unset($NM_ult_sep);
 <input type="hidden" name="postcode" value="<?php echo $this->form_encode_input($postcode) . "\">"; ?>
 <?php } else { $sc_hidden_no++; ?>
 
-    <TD class="scFormDataOdd css_postcode_line" id="hidden_field_data_postcode" style="<?php echo $sStyleHidden_postcode; ?>"> <table style="border-width: 0px; border-collapse: collapse; width: 100%"><tr><td  class="scFormDataFontOdd css_postcode_line" style="vertical-align: top;padding: 0px"><span class="scFormLabelOddFormat css_postcode_label"><span id="id_label_postcode"><?php echo $this->nm_new_label['postcode']; ?></span><?php if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin_mob']['php_cmp_required']['postcode']) || $_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin_mob']['php_cmp_required']['postcode'] == "on") { ?> <span class="scFormRequiredOdd">*</span> <?php }?></span><br>
+    <TD class="scFormDataOdd css_postcode_line" id="hidden_field_data_postcode" style="<?php echo $sStyleHidden_postcode; ?>"> <table style="border-width: 0px; border-collapse: collapse; width: 100%"><tr><td  class="scFormDataFontOdd css_postcode_line" style="vertical-align: top;padding: 0px"><span class="scFormLabelOddFormat css_postcode_label"><span id="id_label_postcode"><?php echo $this->nm_new_label['postcode']; ?></span></span><br>
 <?php if ($bTestReadOnly && $this->nmgp_opcao != "novo" && isset($this->nmgp_cmp_readonly["postcode"]) &&  $this->nmgp_cmp_readonly["postcode"] == "on") { 
 
  ?>
 <input type="hidden" name="postcode" value="<?php echo $this->form_encode_input($postcode) . "\">" . $postcode . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_postcode" class="sc-ui-readonly-postcode css_postcode_line" style="<?php echo $sStyleReadLab_postcode; ?>"><?php echo $this->form_encode_input($this->postcode); ?></span><span id="id_read_off_postcode" class="css_read_off_postcode" style="white-space: nowrap;<?php echo $sStyleReadInp_postcode; ?>">
+<span id="id_read_on_postcode" class="sc-ui-readonly-postcode css_postcode_line" style="<?php echo $sStyleReadLab_postcode; ?>"><?php echo $this->postcode; ?></span><span id="id_read_off_postcode" class="css_read_off_postcode" style="white-space: nowrap;<?php echo $sStyleReadInp_postcode; ?>">
  <input class="sc-js-input scFormObjectOdd css_postcode_obj" style="" id="id_sc_field_postcode" type=text name="postcode" value="<?php echo $this->form_encode_input($postcode) ?>"
  size=40 maxlength=10 alt="{datatype: 'text', maxLength: 10, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_postcode_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_postcode_text"></span></td></tr></table></td></tr></table> </TD>
@@ -1412,7 +1416,7 @@ unset($NM_ult_sep);
  ?>
 <input type="hidden" name="county" value="<?php echo $this->form_encode_input($county) . "\">" . $county . ""; ?>
 <?php } else { ?>
-<span id="id_read_on_county" class="sc-ui-readonly-county css_county_line" style="<?php echo $sStyleReadLab_county; ?>"><?php echo $this->form_encode_input($this->county); ?></span><span id="id_read_off_county" class="css_read_off_county" style="white-space: nowrap;<?php echo $sStyleReadInp_county; ?>">
+<span id="id_read_on_county" class="sc-ui-readonly-county css_county_line" style="<?php echo $sStyleReadLab_county; ?>"><?php echo $this->county; ?></span><span id="id_read_off_county" class="css_read_off_county" style="white-space: nowrap;<?php echo $sStyleReadInp_county; ?>">
  <input class="sc-js-input scFormObjectOdd css_county_obj" style="" id="id_sc_field_county" type=text name="county" value="<?php echo $this->form_encode_input($county) ?>"
  size=40 maxlength=32 alt="{datatype: 'text', maxLength: 32, allowedChars: '<?php echo $this->allowedCharsCharset("") ?>', lettersCase: '', enterTab: false, enterSubmit: false, autoTab: false, selectOnFocus: true, watermark: '', watermarkClass: 'scFormObjectOddWm', maskChars: '(){}[].,;:-+/ '}" ></span><?php } ?>
 </td></tr><tr><td style="vertical-align: top; padding: 0"><table class="scFormFieldErrorTable" style="display: none" id="id_error_display_county_frame"><tr><td class="scFormFieldErrorMessage"><span id="id_error_display_county_text"></span></td></tr></table></td></tr></table> </TD>

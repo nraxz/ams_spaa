@@ -278,8 +278,8 @@ class form_venue_admin_ini
       $this->nm_dt_criacao   = "20190904"; 
       $this->nm_hr_criacao   = "124237"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20200130"; 
+      $this->nm_hr_ult_alt   = "104145"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -516,7 +516,7 @@ class form_venue_admin_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -908,7 +908,7 @@ class form_venue_admin_ini
       $this->Img_export_zip  = array();
       $this->regionalDefault();
       $this->sc_tem_trans_banco = false;
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -918,7 +918,7 @@ class form_venue_admin_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9NwDuBqHIrKHQJeHuzGVcFeV5X7VoraD9BsH9BODSrYD5NUDMzGZSXeHEFqHIX7HQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoF7HQBiZkBiDSvmZMFaHgrKHErsH5FYHMJsHQNmDQBOZ1BYHQNUHgrwVcXKH5XKVENUHQBiZ1FUZ1rYHuJwHgNKHArsDWFqHIJeHQXODQBOZ1BYHQJsDMzGDkB/H5FqHIJsHQJmVIJwD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSvCV5BODMvOVIBsV5BmVoX7HQXGVIJwZ1rYHuFGHgNOZSJqDWX7HMB/HQXOZ9JeZ1zGVWJsDMrYZSNiDWFYHIF7DcFYZkFUZ1vOZMJeDMvCHENiHEFqHIFGHQJeDQBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSvmD5JeHgrKVkJ3DuFYHMBiHQNmDuBOZ1BYHQFaDMvmVIB/DWJeHMrqDcFYZ1FUZ1rYHQBiHgBOHArsDWr/HIJeHQNmZ9JeZ1BYV5FaDMvmZSNiDWFYHINUHQBsZkFUD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQX7HgBYDkFeV5FaHMJsD9NwH9X7Z1rwD5XGHuzGVIBODWFaDoXGDcBwZ1FGHANOV5JeDEBOHEFiDWFqDoXGDcJUDQBOHIrKVWBODMvsVcBUDWBmDoFGHQFYH9BqZ1NOV5FaDEvsHErCV5FqDoraD9JKZSX7D1vOV5JwHuBYZSNiHEX/VoraD9BiH9FaHIBeZMBODErKVkXeV5FaDoB/D9NmDQBOZ1rwV5BqHgvsDkFCDWJeDoFGD9XOZ1rqD1rKD5rqDMBYHEJGH5FYVoB/HQXGZ9rqD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDEBeHEFiV5FaDoXGD9NmDQB/Z1rwHQBODMvmVcB/DWJeHMJwHQXGH9BqHINKV5X7HgveHErsDWBmDoBqHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7D9XOZ1BOD1rKV5BqDEvsZSJ3HEB7DoJeHQFYDQFGHINaV5BODMvmVcFKV5BmVoBqD9BsZkFGHAvsD5FaDMzGVkXeV5FaDoJeD9XsDQFUZ1rwVWJeHgrKVcBOV5F/VEraDcJUZ1BOZ1BeD5NUDMzGHEFiV5FqVoXGD9XsZ9JeZ1N7V5JeHuvmVcrsDWXCHMBiD9BsVIraD1rwV5X7HgBeHErCDWF/VoBiDcJUZSX7Z1BYHuFaDMBYV9BUDuX7DoXGHQNmZ1BOHArKHuB/HgBYHEBUDWXCHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBqHQBiDuBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1rqDSvmD5BqHgveVkJ3V5XCHMFGDcXGDuBqHANOHQrqDMBODkBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvsVkXeDWX7DoJeDcBwDQFGD1BeD5BOHgNKVcXKH5FqDoX7DcBqZ1B/HIveV5JeHgBeHEFiV5B3DoF7D9XsDuFaHANKVWBqDMrwZSNiDWB3VEB/";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9JKH9X7DSN7V5BODMvOVcrsH5FqVEFGD9BiVINUHArYV5B/HgveHErCDWr/DorqHQNmDuFaD1veHuFaHuNOZSrCH5FqDoXGHQJmZ1BiHAN7HQJwDEBODkFeH5FYVoFGHQJKDQJsDSrwHQF7HuBYDkBsDur/VEBiHQBiZ1BiD1rKHuFGDMzGHArsHEFqHIJwD9FYH9FGHAveHuFaHuNOZSrCH5FqDoXGHQJmZ1rqHArKV5FaDMNKZSXeDWr/DoJeD9XsZSX7Z1N7VWFaHgrKV9FeDWXCDoJsDcBwH9B/Z1rYHQJwHgvCZSXeDWXCDoB/D9NwH9X7Z1BYV5raHuBYVIBODWFYDoJsD9BiZ1B/HArYD5BiDMBYHEXeH5F/VoFGD9JKDQX7Z1vCD5NUHuzGVcFKDur/VorqHQJmZ1F7Z1vmD5rqDEBOHArCDWF/HMBiHQFYH9BiD1BOV5XGHuzGVIB/H5B3VoF7HQBiZ1FGHABYV5X7HgrKZSJGH5FYHIF7HQXsDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBiZkBiDSvmZMFaHgrKHErsH5FYHMJsHQNmDQBOZ1BYHQNUHgrwVcXKH5XKVENUHQBiZ1FUZ1rYHuJwHgNKHArsDWFqHIJeHQXODQBOZ1BYHQJsDMzGDkB/H5FqHIJsHQJmVIJwD1rwV5FGDEBeHEXeH5X/DoF7HQNwDQBqDSvCV5BODMvOVIBsV5BmVoX7HQXGVIJwZ1rYHuFGHgNOZSJqDWX7HMB/HQXOZ9JeZ1zGVWJsDMrYZSNiDWFYHIF7DcFYZkFUZ1vOZMJeDMvCHENiHEFqHIFGHQJeDQBOD1BeD5rqHuvmVcBOH5B7VoBqHQXOZkBiDSNOHuBOHgNKDkXKDuFaHMBiHQXODQBOZ1zGVWBqDMzGVIBsDuB7VEFGHQBsZ1FUZ1rYHQX7HgNOZSJ3DWrGZuFaHQNwZ9JeZ1BYHuB/DMvOVIB/DurGVoFGDcNmZ1FUD1rwV5FGDEBeHEXeH5X/DoF7D9NwZSX7D1BeV5raHuzGVcFKDWFaVENUD9JmZ1X7Z1BeHQX7HgBYDkFeV5FaHMJsD9NwH9X7Z1rwD5XGHuzGVIBODWFaDoXGDcBwZ1FGHANOV5JeDEBOHEFiDWFqDoXGDcJUDQBOHIrKVWBODMvsVcBUDWBmDoFGHQFYH9BqZ1NOV5FaDEvsHErCV5FqDoraD9JKZSX7D1vOV5JwHuBYZSNiHEX/VoraD9BiH9FaHIBeZMBODErKVkXeV5FaDoB/D9NmDQBOZ1rwV5BqHgvsDkFCDWJeDoFGD9XOZ1rqD1rKD5rqDMBYHEJGH5FYVoB/HQXGZ9rqD1BeD5rqHuvmVcBOH5B7VoBqD9XOH9B/D1rwD5BiDEBeHEFiV5FaDoXGD9NmDQB/Z1rwHQBODMvmVcB/DWJeHMJwHQXGH9BqHINKV5X7HgveHErsDWBmDoBqHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoX7HQNmZ1BiHAvCD5BqHgveHErsDWFGDoXGHQBiDQFaHAveD5NUHgNKDkBOV5FYHMBiHQBsZSBqHIBOD5XGDENOVkJqDuJeDorqHQXsH9FUHIrwD5JwDMvmVcFKV5BmVoBqD9BsZkFGHArKHuXGDMBYHEJGDWr/VoB/D9NwZSX7HIvsV5BiDMBODkBODur/VoB/D9JmZ1F7DSrYHQJwDEBODkFeH5FYVoFGHQJKDQBqDSzGD5NUDMvOVcXeV5r/VEB/";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_venue_admin']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_venue_admin']['initialize'])  
       { 

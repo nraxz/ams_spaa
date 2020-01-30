@@ -277,8 +277,8 @@ class form_venue_admin_mob_ini
       $this->nm_dt_criacao   = "20190904"; 
       $this->nm_hr_criacao   = "124237"; 
       $this->nm_autor_alt    = "admin"; 
-      $this->nm_dt_ult_alt   = "20191113"; 
-      $this->nm_hr_ult_alt   = "121452"; 
+      $this->nm_dt_ult_alt   = "20200130"; 
+      $this->nm_hr_ult_alt   = "104145"; 
       list($NM_usec, $NM_sec) = explode(" ", microtime()); 
       $this->nm_timestamp    = (float) $NM_sec; 
       $this->nm_app_version  = "1.0.0"; 
@@ -515,7 +515,7 @@ class form_venue_admin_mob_ini
           $SS_cod_html .= "<HTML>\r\n";
           $SS_cod_html .= " <HEAD>\r\n";
           $SS_cod_html .= "  <TITLE></TITLE>\r\n";
-          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "/>\r\n";
+          $SS_cod_html .= "   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\"/>\r\n";
           if ($_SESSION['scriptcase']['proc_mobile']) {
               $SS_cod_html .= "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\r\n";
           }
@@ -906,7 +906,7 @@ class form_venue_admin_mob_ini
       $this->Img_export_zip  = array();
       $this->regionalDefault();
       $this->sc_tem_trans_banco = false;
-      $this->nm_bases_access     = array("access", "ado_access");
+      $this->nm_bases_access     = array("access", "ado_access", "ace_access");
       $this->nm_bases_ibase      = array("ibase", "firebird", "pdo_firebird", "borland_ibase");
       $this->nm_bases_mysql      = array("mysql", "mysqlt", "mysqli", "maxsql", "pdo_mysql");
       $this->nm_bases_postgres   = array("postgres", "postgres64", "postgres7", "pdo_pgsql");
@@ -916,7 +916,7 @@ class form_venue_admin_mob_ini
       $this->nm_bases_odbc       = array("odbc");
       $this->nm_bases_progress   = array("progress", "pdo_progress_odbc");
       $this->nm_bases_all        = array_merge($this->nm_bases_access, $this->nm_bases_ibase, $this->nm_bases_mysql, $this->nm_bases_postgres, $this->nm_bases_sqlite, $this->nm_bases_sybase, $this->nm_bases_vfp, $this->nm_bases_odbc, $this->nm_bases_progress);
-      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1DcBwDuFaZ1N7V5FUDMBYVcrsH5FqHMBqHQXGZSFaD1rKD5XGDEvsVkJGDWXCVoX7DcJeZSBiHArYHuFGHuNOVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgveHArCV5B7ZuJsHQXODuFaHIvsV5BqDMBOVcFeDuB7DoXGDcFYZ1X7D1rKHQFaHgNKHErCDuX/VoFGHQFYDQBqD1vOVWJwHgvOVcBUH5B3DoXGHQXOZSBqDSBeHuX7DMvCHErCH5X/DoF7D9XsDQJsDSBYV5FGHgNKDkBsDurGVEBiHQNmVINUHAN7HuXGHgveVkJqH5X/VoFGHQFYH9FUD1BeHQB/DMzGZSJqDWBmDoXGHQNwZ1BiHAvmZMFaHgvsHEJqH5FGVoFGHQJeDQFUD1veHuBqDMvmZSJqDurGVoBqD9BsZ1F7DSrYD5rqDMrYZSJ3HEB7ZuJsHQBiZSBiDSN7HQJeHgrwVcFeV5X/DoXGHQXGZ1FGHAN7HuFGDMvCVkJqH5BmVoFGHQXsDuFaD1vOV5BOHgvOVcFeV5BmDoXGDcNmZSBqHAvCZMFaHgrKVkJ3H5FGDoF7D9XsDQJsDSBYV5FGHgNKDkFCH5FqVoBqDcNwH9FaHArKD5NUDEvsHEFiDuJeDoFUHQJKZ9F7DSvCV5JwDMBOVcrsDWJeVoraDcJUH9FaHAN7D5NUDEBOHAFKDWF/HINUD9JKDQX7HIBeD5JwHuzGZSJ3DWB3DoX7D9XGZ1BiHINKZMBqHgN7HAFKV5FaHMJeDcBwDQFGD1veHQXGHgvsVcBOHEX7DoraHQFYH9FaHAvmZMJeHgvCZSJGDuFaZuBqD9NmZSFGHANOV5JwHuNODkFCH5B3VoraD9XOH9B/D1rwD5XGDEBeHEJGDWF/ZuFaDcJeZSX7HArYV5BqHgrKV9FiV5FGVoBqD9BsZ1F7DSrYD5rqDMrYZSJGH5FYDoF7DcXOZSX7HIrKV5JwHuzGDkFCH5XCVoJwHQBiZSBqHABYHuFGHgBOHEJqH5FYHIrqHQXGDuBqHANKV5JeDMvOV9FeDWXCDoJsDcBwH9B/Z1rYHQJwDEBOZSXeDWrGZuBqHQNmDQJsZ1rwHuB/HuzGDkFCDWFYVoB/HQBiH9BqHArKV5FUDMrYZSXeV5FqHIJsHQXGZSX7HAN7V5JwHuzGVIBOV5FYVoJwD9BiZSB/HArYV5FUDEvsHEXeDWFqDoFUDcJeDQX7D1veD5F7HuvmVcBOV5F/VoJwD9BsZ1B/Z1BeD5F7HgvCVkJGDWF/VoJeD9NwDQFaHAveD5NUHgNKDkBOV5FYHMBiHQJmZ1F7Z1vmD5rqDEBOHArCDWF/DoBOHQJKH9BiZ1rwD5BODMrYVcBOH5XKVEFGD9BiZ1BOHAN7ZMJeHgBOHENiDuJeHIJsD9XsZ9JeD1BeD5F7DMvmVcrsDWXCDoraDcNwH9B/HAN7D5XGDEBOZSXeV5XCZuJsDcBwDuFaHAveD5NUHgNKDkBOV5FYHMBiHQNmVINUHAvsD5BOHgBYHArsDWFGDoBqHQBiDuBqD1BeHuFaHuNOZSrCH5FqDoXGHQJmZ1F7HIBeHuB/HgNOVkJGH5FYVoXGD9NwDQFGHANOD5FaDMrYVcBODuX7DorqHQNmZkFGHArKV5FUDMrYZSXeV5FqHIJsHQNmH9X7HArYV5BOHgrKVcFCH5FqDoX7DcBwZ1X7D1rwV5XGDMBYHEXeDuJeVoXGHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VEFGHQFYVINUHAvsZMNU";
+      $_SESSION['scriptcase']['nm_bases_security']  = "enc_nm_enc_v1D9FYDuFaHIrKD5B/DMrYVIBsDWrmVoF7D9JmH9FaHIveHQJwDEBODkFeH5FYVoFGHQJKDQBqHANOHuFaHuNOZSrCH5FqDoXGHQJmZ1rqDSNOZMJwDMzGHEJqHEFqHMX7DcXGZSBiHANOHQrqDMzGVcFeDWXCDoJsDcBwH9B/Z1rYHQJwDErKHEFiDWFqDoFUDcJeH9FGHANOV5JwHuNOVIFCHEF/DoraHQJmZ1F7Z1vmD5rqDEBOHArCDWBmDoB/DcBwH9X7Z1rwV5BOHuNOVcB/V5X7VErqDcJUZ1B/Z1NOZMFaDMzGHEJqV5FaDoraDcBwDQJsZ1BYD5BqHuNOVIB/V5X7DoXGD9BsH9B/HAvCV5FUDErKHEFiDuJeDoBOHQJKDQJsZ1vCV5FGHuNOV9FeDWB3VoFGHQBiZ1BODSNOHuFaHgBOZSJGDuJeVoFGD9NwZSX7D1BeHuJeHuBYVIBsDWXCDoJsDcBwH9B/Z1rYHQJwHgvsHArsHEB3ZuB/HQNwDQBqD1BeHQFaDMBYVcFiV5FYHIJsDcFYZ1X7D1zGZMB/HgvsHEFKV5FqHMJsHQXODuBqHABYHuBODMrYVcFiV5FYHINUHQXOH9BOD1rwHuFUHgBeDkBsH5FYVoX7D9JKDQX7D1BOV5FGDMzGVcBUHEBmVoX7HQNmZSBqZ1vmD5XGHgNODkBsV5FqHMX7HQFYZSFUHArYHQJwDMrYZSrCV5X/VENUHQNwVINUHArYHuBODMvCHAFKV5B7ZuXGDcXGDQB/DSBYHuF7DMvsVcFiH5FqDoJeD9JmZ1B/D1NaD5rqHgrKHArsHEXCHMBqHQXOZ9XGHIrwHQNUDMrYVcFiV5X/VEFGHQXOZSBqHINaZMJeHgBOHEFKV5FqHIFGHQFYZSBiHAvmVWJsDMzGZSrCV5FYHMFUHQNmZSBOHINKD5JeDMveHEFKH5FYVoX7D9JKDQX7D1BOV5FGHuzGDkBOH5FqVoJwD9XOZ1F7HABYZMB/DEBeHENiV5FaHIFGHQJeZ9JeZ1rwHQFaHuzGVIBOV5X7DoF7D9XOZSB/HABYV5X7DMrYHErCDWXCVoXGD9XsDQJsHABYV5BqHgNKVcFiDur/VEX7HQBqZ1BiHAvmV5JeHgvCZSJ3V5XCVoB/D9NmDQFaZ1BYV5FUHuvmDkBOH5XKVoraD9BiVINUDSvOD5FaDEvsZSJGDuFaZuBqD9NwH9X7Z1rwV5JwHuBYVcFiV5X7VoFGDcBqH9FaHAN7V5JeDErKHEBUH5F/DoF7DcJeDQFGD1BeD5JwDMrwZSJ3H5FqDoJeD9JmZ1B/D1NaD5rqDErKZSXeH5FYDoFUD9JKDQJsZ1rwV5BqHuBYVcXKV5X7HIX7HQJmZ1BOHAN7HQBiHgNOZSJ3DurmVoFGHQBiDQBqHANKV5XGDMvmVcFKV5BmVoBqD9BsZkFGHAvsD5XGHgveHErsDWrGDoBOHQBiDQBqHAvOV5BqDMvOVcFeDWXCDoJsDcBwH9B/Z1rYHQJwHgBOHErCDWB3ZuFaDcBwDQBqD1vOVWJeDMrYV9FeDWFaHMBqD9XGZ1BOHIveHQJeHgvsVkXeDuJeZuFaHQJKDQJsZ1vCV5FGHuNOV9FeDWXCHIX7DcBqZ1FaHAN7V5FaDErKZSXeDurmDoNUHQFYZSX7HIrKV5FUHuvmVcFKHEFYHMBiD9BsVIraD1rwV5X7HgBeHErsHEB7VoBiHQBiDQNUZ1rKVWFU";
       $this->prep_conect();
       if (isset($_SESSION['sc_session'][$this->sc_page]['form_venue_admin_mob']['initialize']) && $_SESSION['sc_session'][$this->sc_page]['form_venue_admin_mob']['initialize'])  
       { 

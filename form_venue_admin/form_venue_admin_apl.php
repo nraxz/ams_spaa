@@ -26,7 +26,7 @@ class form_venue_admin_apl
                                 'readOnly'          => array(),
                                 'btnVars'           => array(),
                                 'ajaxAlert'         => array(),
-                                'ajaxMessage'       => '',
+                                'ajaxMessage'       => array(),
                                 'ajaxJavascript'    => array(),
                                 'buttonDisplay'     => array(),
                                 'buttonDisplayVert' => array(),
@@ -1696,7 +1696,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
                return "Town/City";
                break;
            case 'postcode':
-               return "Postcode";
+               return "Postcode/Zipcode";
                break;
            case 'county':
                return "County/Province";
@@ -1979,30 +1979,12 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
     {
         global $teste_validade;
         $hasError = false;
-      if ($this->nmgp_opcao != "excluir" && (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin']['php_cmp_required']['postcode']) || $_SESSION['sc_session'][$this->Ini->sc_page]['form_venue_admin']['php_cmp_required']['postcode'] == "on")) 
-      { 
-          if ($this->postcode == "")  
-          { 
-              $hasError = true;
-              $Campos_Falta[] =  "Postcode" ; 
-              if (!isset($Campos_Erros['postcode']))
-              {
-                  $Campos_Erros['postcode'] = array();
-              }
-              $Campos_Erros['postcode'][] = $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
-                  if (!isset($this->NM_ajax_info['errList']['postcode']) || !is_array($this->NM_ajax_info['errList']['postcode']))
-                  {
-                      $this->NM_ajax_info['errList']['postcode'] = array();
-                  }
-                  $this->NM_ajax_info['errList']['postcode'][] = $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
-          } 
-      } 
       if ($this->nmgp_opcao != "excluir") 
       { 
           if (NM_utf8_strlen($this->postcode) > 10) 
           { 
               $hasError = true;
-              $Campos_Crit .= "Postcode " . $this->Ini->Nm_lang['lang_errm_mxch'] . " 10 " . $this->Ini->Nm_lang['lang_errm_nchr']; 
+              $Campos_Crit .= "Postcode/Zipcode " . $this->Ini->Nm_lang['lang_errm_mxch'] . " 10 " . $this->Ini->Nm_lang['lang_errm_nchr']; 
               if (!isset($Campos_Erros['postcode']))
               {
                   $Campos_Erros['postcode'] = array();
@@ -3403,15 +3385,15 @@ $_SESSION['scriptcase']['form_venue_admin']['contr_erro'] = 'off';
               if (in_array(strtolower($this->Ini->nm_tpbanco), $nm_bases_lob_geral))
               { 
               }   
-          $this->venue_name = $this->venue_name_before_qstr;
-          $this->address_1 = $this->address_1_before_qstr;
-          $this->address_2 = $this->address_2_before_qstr;
-          $this->town_city = $this->town_city_before_qstr;
-          $this->county = $this->county_before_qstr;
-          $this->postcode = $this->postcode_before_qstr;
-          $this->lat = $this->lat_before_qstr;
-          $this->lng = $this->lng_before_qstr;
-          $this->status = $this->status_before_qstr;
+              $this->venue_name = $this->venue_name_before_qstr;
+              $this->address_1 = $this->address_1_before_qstr;
+              $this->address_2 = $this->address_2_before_qstr;
+              $this->town_city = $this->town_city_before_qstr;
+              $this->county = $this->county_before_qstr;
+              $this->postcode = $this->postcode_before_qstr;
+              $this->lat = $this->lat_before_qstr;
+              $this->lng = $this->lng_before_qstr;
+              $this->status = $this->status_before_qstr;
               $this->sc_evento = "update"; 
               $this->nmgp_opcao = "igual"; 
               $this->nm_flag_iframe = true;
@@ -3636,6 +3618,15 @@ $_SESSION['scriptcase']['form_venue_admin']['contr_erro'] = 'off';
               }
 
               $this->sc_evento = "insert"; 
+              $this->venue_name = $this->venue_name_before_qstr;
+              $this->address_1 = $this->address_1_before_qstr;
+              $this->address_2 = $this->address_2_before_qstr;
+              $this->town_city = $this->town_city_before_qstr;
+              $this->county = $this->county_before_qstr;
+              $this->postcode = $this->postcode_before_qstr;
+              $this->lat = $this->lat_before_qstr;
+              $this->lng = $this->lng_before_qstr;
+              $this->status = $this->status_before_qstr;
               if (empty($this->sc_erro_insert)) {
                   $this->record_insert_ok = true;
               } 
